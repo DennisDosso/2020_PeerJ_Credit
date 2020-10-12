@@ -1,0 +1,29 @@
+\section{Conclusions}
+\label{section:conclusions}
+
+In this paper we expanded on our previous work on data credit and data credit distribution by defining two new distribution strategies, based on the why- and how-provenance. 
+The first distribution is based on the concept of witness and it is able to give more credit to tuples that appear in more than one witness. 
+In other words, tuples that are more important to the query and are used in different ways by a query, are also rewarded more by the distribution.
+The second distribution, based on how-provenance, is also able to consider the frequency in which a tuple or a combination of tuples are used in the query through the information contained in the provenance polynomial, and in this sense it is even more sensible than the first one.
+
+To show the differences between the three DS (also considering the one based on lineage, defined in our previous work), we performed different experiments on GtoPdb, a curated scientific relational database. 
+In the first set of experiments we used SPJ queries extracted by data citations present in papers published in the British Journal of Pharmacology. 
+Through the use of these queries we were able to distribute the credit to the tuples in different tables of the database, highlighting the tuples that are used more than others. 
+We showed that with these queries the three strategies produce the same distribution. This is due to the fact that, with the specific type of queries, that do not present self-joins, the formulas at the base of the strategies produce the same output. The tuples are, in this specific case, used in the same way by the tuples, thus the DS do not register any particular difference in the role of the tuples.
+
+In the second and third set of experiments we considered more complex queries, i.e. nested queries whose provenance polynomials presents coefficients and exponents bigger than $1$.
+In this way we discovered that, even though all three DS are able to highlight all the tuples used by the queries in the database, the three have a different behavior. 
+While the DS based on lineage rewards all the tuples used by a query in equal measure, the strategy based on why-provenance tends to reward more the tuples more important to the query. 
+In particular, why-provenance is able to take into consideration the different ways in which one tuple is used in a query.  
+How-provenance is even more sensible to the role of the tuples: it is able to also consider the frequency by which a tuple or a set of tuples is used in the case of more complex queries. Depending on the goal of a user, one provenance may be preferred on another. 
+
+In the fourth set of experiments, we showed how, when compared with traditional citations, the credit distributed with the three strategies works as a new tool highlighting different aspects of the role of an author in the research context identified by queries. Authors that have a limited number of citations can still have a high quantity of credit due to the importance of the data to which they contributed in the context of the queries. 
+
+In our future work we plan to explore the different potential applications of credit on relational databases.
+One example is the so-called \emph{data pricing}. Data pricing consists in giving a price to a query submitted by a user who wants to buy the produced information. Currently, the most used strategy to face data pricing is based on query rewriting. A database stores a set of views, correlated with their price. When a new query arrives, the system tries to rewrite it using the stored views and obtain a price for the query. This process is computationally expensive.
+We plan on distribute credit through the use of carefully planned and representative queries and use it as information to define a new faster, flexible and fair pricing function.
+
+Another application is \emph{data reduction}~\cite{milo2019getting}, concerned with reducing the huge mole of data that is produced in the evolving world of research and information technology. Data reduction deals with different aspects of dealing with huge amounts of data, such as finding reduced and relevant data streams from the multiple gigabytes of data produced by big data systems every second or dealing with the curse of dimensionality which requires unbounded computational resources to uncover actionable knowledge patters~\citep{ur2016big}.
+
+Data credit can also help in this regard by helping finding ``hotspots'' and ``coldspots''. An hotspot is data in a database (a tuple or a single attribute, for example), that presents high quantity of credit and is therefore valuable for the set of queries that distributed that credit. 
+On the other hand, a coldspot is data that present low quantities of credit and therefore can be considered as useless or less relevant, and can therefore be removed or moved in another cheaper and less efficient memory location. 
