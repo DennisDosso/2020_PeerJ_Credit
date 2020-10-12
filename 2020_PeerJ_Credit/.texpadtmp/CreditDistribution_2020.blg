@@ -1,0 +1,79 @@
+This is BibTeX, Version 0.99d (TeX Live 2019)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+The top-level auxiliary file: /Users/dennisdosso/MEGAsync/MegaDocuments/paper backups/2020_PeerJ_Credit/2020_PeerJ_Credit/.texpadtmp/CreditDistribution_2020.aux
+The style file: apalike.bst
+Database file #1: .././ultimateBibliographyBib.bib
+You're missing a field name---line 1252 of file .././ultimateBibliographyBib.bib
+ : 
+ : % Author = {Dosso, D.},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 2471 of file .././ultimateBibliographyBib.bib
+ :   
+ :   urldate={2020-04-03}}
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+Repeated entry---line 2609 of file .././ultimateBibliographyBib.bib
+ : @inproceedings{ProllR13
+ :                        ,
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 2778 of file .././ultimateBibliographyBib.bib
+ :   
+ :   title={UniProt: the universal protein Knowledge Base},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+You're missing a field part---line 2796 of file .././ultimateBibliographyBib.bib
+ : day = 
+ :       (28),
+I'm skipping whatever remains of this entry
+A bad cross reference---entry "buneman2006cite"
+refers to entry "DBLP:conf/ssdbm/2006", which doesn't exist
+Warning--I didn't find a database entry for "DBLP:conf/ssdbm/2006"
+Name 5 in "Peters, I. and Kraker, P. and Lex, E. and Gumpenberger, C. and Gorraiz, J.," has a comma at the end for entry Peters2016
+while executing---line 1023 of file apalike.bst
+Warning--empty journal in bertin2011million
+Warning--empty publisher in CODATA2013
+Name 5 in "Peters, I. and Kraker, P. and Lex, E. and Gumpenberger, C. and Gorraiz, J.," has a comma at the end for entry Peters2016
+while executing---line 1098 of file apalike.bst
+You've used 58 entries,
+            1935 wiz_defined-function locations,
+            847 strings with 16748 characters,
+and the built_in function-call counts, 27930 in all, are:
+= -- 2627
+> -- 1635
+< -- 31
++ -- 609
+- -- 589
+* -- 2594
+:= -- 4912
+add.period$ -- 178
+call.type$ -- 58
+change.case$ -- 580
+chr.to.int$ -- 58
+cite$ -- 60
+duplicate$ -- 891
+empty$ -- 1663
+format.name$ -- 659
+if$ -- 5308
+int.to.chr$ -- 1
+int.to.str$ -- 0
+missing$ -- 56
+newline$ -- 290
+num.names$ -- 178
+pop$ -- 507
+preamble$ -- 1
+purify$ -- 581
+quote$ -- 0
+skip$ -- 679
+stack$ -- 0
+substring$ -- 1751
+swap$ -- 119
+text.length$ -- 9
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 346
+warning$ -- 2
+while$ -- 209
+width$ -- 0
+write$ -- 749
+(There were 8 error messages)

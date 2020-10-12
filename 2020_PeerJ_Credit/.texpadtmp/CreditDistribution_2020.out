@@ -1,0 +1,18 @@
+\BOOKMARK [1][-]{section.1}{Introduction}{}% 1
+\BOOKMARK [1][-]{section.2}{Background}{}% 2
+\BOOKMARK [2][-]{subsection.2.1}{Data Citation in Relational Databases}{section.2}% 3
+\BOOKMARK [2][-]{subsection.2.2}{Data Credit}{section.2}% 4
+\BOOKMARK [2][-]{subsection.2.3}{Data Provenance}{section.2}% 5
+\BOOKMARK [1][-]{section.3}{USe Case: GtoPdb}{}% 6
+\BOOKMARK [1][-]{section.4}{Data Provenances}{}% 7
+\BOOKMARK [2][-]{subsection.4.1}{Lineage}{section.4}% 8
+\BOOKMARK [2][-]{subsection.4.2}{Why-Provenance}{section.4}% 9
+\BOOKMARK [2][-]{subsection.4.3}{How-Provenance}{section.4}% 10
+\BOOKMARK [1][-]{section.5}{Credit Distribution and Distribution Strategies}{}% 11
+\BOOKMARK [2][-]{subsection.5.1}{Data Credit and Data Credit Distribution}{section.5}% 12
+\BOOKMARK [2][-]{subsection.5.2}{A Lineage-based Distribution Strategy}{section.5}% 13
+\BOOKMARK [2][-]{subsection.5.3}{A Why-Provenance-Based Distribution Strategy}{section.5}% 14
+\BOOKMARK [2][-]{subsection.5.4}{A How-Provenance Based Distribution Strategy}{section.5}% 15
+\BOOKMARK [1][-]{section.6}{Experimental Evaluation: comparing provenances}{}% 16
+\BOOKMARK [1][-]{section.7}{Conclusions}{}% 17
+\BOOKMARK [1][-]{section.7}{References}{}% 18
