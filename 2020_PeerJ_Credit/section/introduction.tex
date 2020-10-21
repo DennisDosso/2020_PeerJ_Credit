@@ -1,11 +1,15 @@
 
 \section{Introduction}
 
-In the current world of research citations are an essential method to disseminate knowledge and scientific development. 
-They can be considered as a fundamental basis to give credit to authors, papers, and venues, and to achieve scholarship~\citep{ZouP16}. Citations are used, among other things, to decide on tenure, promotion, hiring and funding grants of researchers~\citep{meho2007impact, Cronin01, Hartley17, Kosten16}.
+%In the current world of research citations are an essential method to disseminate knowledge and scientific development. They can be considered as a 
+%fundamental basis to give credit to authors, papers, and venues, and to achieve scholarship
+Citations are an essential component of research, enabling research products to be found as well as the relationships between research products to be understood. 
+They form a basis on which to give credit to authors, papers, and venues~\citep{ZouP16}.
+\SBD{Certainly this isn't the only paper on giving credit?}%, and to achieve scholarship~\citep{ZouP16}. 
+Citations are used, among other things, to decide on tenure, promotion, hiring and funding of grants for researchers~\citep{meho2007impact, Cronin01, Hartley17, Kosten16}.
 
-Nowadays, science and research are mainly digital. Curated, scientific databases, are numerous and at the core of the current scientific research~\citep{bunemann2016citation}.
-It is therefore globally accepted that data must be cited and citable~\citep{LawrenceEtAl2011,CallaghanDPTCKABBLLMHSWW12}, and that data citations should contribute to the scientific reputation of researchers, scientists, data curators, and creators~\citep{AltmanEtAl2015,Spengler2012}.
+Nowadays, science and research are increasingly digital. There are numerous curated databases which are at the core of the current scientific research~\citep{bunemann2016citation}.
+It is therefore generally accepted that data must be cited and citable~\citep{LawrenceEtAl2011,CallaghanDPTCKABBLLMHSWW12}, and that data citations should contribute to the scientific reputation of researchers, scientists, data curators, and creators~\citep{AltmanEtAl2015,Spengler2012}.
 It is also accepted that data citations should be also counted alongside traditional citations, and contribute to bibliometrics indicators~\citep{Belter2014,Peters2016}.
 
 One of the central aspects of data citation is how to attribute credit to data creators and curators~\citep{buneman2019summ}. 
@@ -15,21 +19,22 @@ Data, in fact, is often cited at the ``database level'' or the the ``webpage lev
 In the first case, the whole database is cited, therefore all credit goes to database key personnel.
 In the second case the database has a website with webpages that can be cited instead. 
 The webpages are composed from data extracted from the database and aggregated by topic, and are built in a way to resemble a traditional research paper.
-Often the creators and curators of the webpages data are not credited or only marginally credited for their work.~\citep{AlawiniDSTW17}.
+Often the creators and curators of the webpages data are not credited or only marginally credited for their work~\citep{AlawiniDSTW17}.
 
-This lack of recognition is a great problem for researchers that may want to share their data and research results. Phenomenons like the ``research parasites'' controversy \citep{longo2016data}, i.e. researchers who steal the work of others for their own ends, discourage researchers to share their contributions and are huge hindrances for the achievement of the fourth paradigm of science.
-Appropriate data citation is essential to fight these phenomenons and ensure a healthy collaboration among researchers.
+%This lack of recognition is a great problem for researchers that may want to share their data and research results. Phenomenons like the ``research parasites'' controversy \citep{longo2016data}, i.e. researchers who steal the work of others for their own ends, discourage researchers to share their contributions and are huge hindrances for the achievement of the fourth paradigm of science.
+%Appropriate data citation is essential to fight these phenomenons and ensure a healthy collaboration among researchers.
+% Gianmaria: To save some space, this paragraph can be easily removed without any losses. 
 
 In recent years the idea of crediting data emerged in the academic discussion through the concepts of \emph{data credit} and \emph{Data Credit Distribution} (DCD)~\citep{creditFang18,transitiveCreditKatz2014,zeng2020assigning}, built on top of the methodologies of data citation. 
 Data credit is a value that is computed based on the importance of data being cited by a paper, and it represents the impact of the data in the citing paper. 
 The Data Credit Distribution problem consists in distributing this credit to the elements in the databases in the citation graph that are responsible for the generation of the data being cited. The goal of DCD is to improve and expand the reach of data citation techniques, and not to be an alternative to it. This means that to employ DCD techniques, data citations (at any level of granularity) must be available.
 
-Katz, in \citep{katz2020SoftwareandData}, more specifically defined credit as a ``quantity'' that describes the importance of a research entity, such as papers or data mentioned in a citation, and proposed the idea of a \emph{distribution} of credit from research entities, such as papers or data, to other research entities through citations. 
+\cite{katz2020SoftwareandData} more specifically defined credit as a ``quantity'' that describes the importance of a research entity, such as papers or data mentioned in a citation, and proposed the idea of a \emph{distribution} of credit from research entities, such as papers or data, to other research entities through citations. 
 This can be done exploiting the structure of the \emph{citation graph}, a general model represented by a directed graph where the nodes are the publications and the edges are the citations between them.
 This graph is the model at the base of systems such as Google Scholar and Web of Science.
-Works such as \citep{zeng2020assigning} and \citep{creditFang18} further explored this concept by defining general frameworks for the automatic computation and distribution of credit between papers, authors, and data used by papers in the citation graph. 
+\cite{zeng2020assigning} and \cite{creditFang18} further explored this concept by defining general frameworks for the automatic computation and distribution of credit between papers, authors, and data used by papers in the citation graph. 
 
-In this paper we consider data credit as a data value measure in a (curated) scientific database. Credit can be assigned to data of any kind and at any level of granularity, therefore the concept of ``data'' is left intentionally vague here, although in this paper we focus on relational databases.
+In this paper, we consider data credit as a data value measure in a (curated) scientific database. Credit can be assigned to data of any kind and at any level of granularity, therefore the concept of ``data'' is left intentionally vague here, although in this paper we focus on relational databases.
 Credit is a \emph{real} positive value, acting as a proxy for the value of certain data based on the measure of citations, accesses, clicks, downloads or other surrogates for data use. We call Data Credit Distribution the process, method, or algorithm used to assign credit to a given datum or dataset.
 
 DCD differs from common citation procedures that we are accustomed to since:
@@ -57,11 +62,11 @@ market alone has revenue upwards of \$50B''~\citep{AbadiEtAl2020}. Known outside
     \label{fig:system_overview}
 \end{figure}
 
-In Figure \ref{fig:system_overview}, we represent the DCD process:
+In Figure \ref{fig:system_overview}, we visually summarize the DCD process:
 \begin{description}
-	\item[Step 1] The Data Curators are scientist and experts that contribute to the information contained in a scientific database. 
-	\item[Step 2] Other researchers use these data in their research. To do so, they use data citation, and thus a query, to identify data in the database.
-	\item[Step 3] The citation of data inside the context of a paper generates some credit, that represents the impact of the used data in the research of the paper. The credit is represented as a real value $k \in \mathbb{R}_{>0}$. Without loss of generality, we consider this value as already given.
+	\item[Step 1] The Data Curators are scientists and experts contributing to the information contained in a scientific database. 
+	\item[Step 2] Other researchers use these data in their research. \textbf{Gianmaria: this is weird and somehow worng: }To do so, they use data citation, and thus a query, to identify data in the database.
+	\item[Step 3] The citation to data generates some credit, that can be used as a proxy for the impact of the used data in the citing paper. This credit is represented as a real value $k \in \mathbb{R}_{>0}$. %Without loss of generality, we consider this value as already given.
 	\item[Step 4] Given the database instance $I$ and the query $Q$, it is possible to compute the \emph{data provenance} of $Q(I)$. The provenance of $Q(I)$ is a form of metadata that describes the generation process undertaken by $Q$, and the data used in $I$ to generate the output~\citep{CheneyProvSurvey}. Many different notions of provenance have been proposed in the literature for data in database management systems~\citep{lineageCui, WhyProvBuneman, howProvenanceGreen, dosso2020prov}, describing different kinds of relationships between data in the input and the output of a query. As reported in \citep{CheneyProvSurvey}, these provenances, beyond the intrinsic information on how queries work, have been used in several applications, as the study of annotation propagation and view update. In this paper we consider three type of provenance: lineage, why-provenance and how-provenance.
 	\item[Step 5] The provenance is the input of the CDC problem, whose aim is the computation of the \emph{Credit Distribution Strategy} (CDS, also referred only as Distribution Strategy, DS). The CDS is a function that distributes $k$ to the data in the input database $I$. 
 	CDS functions are to be defined on the basis of citation policies decided at the database administration level or, even better, at the domain community level. 
