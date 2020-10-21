@@ -5,7 +5,7 @@
 Given a database instance $I$, a \emph{recipient of credit} corresponds to a unit of information within the same database. In the case of relational databases, recipients may be (i) the whole database itself; (ii) a tuple; (iii) a table; (iv) an attribute.
 
 As already defined in \citep{dosso2020data}, \emph{data credit} is a value $k \in \mathbb{R}_{>0}$ used to represent the value of a recipient in a database. 
-Every recipient in a database is annotated with a given quantity of credit, a proxy for its importance in a certain context. In this paper we focus on tuples as recipients of credit. 
+Every recipient in a database is annotated with a given quantity of credit, a proxy for its importance in a certain context. In this paper, we focus on tuples as recipients of credit. 
 
 \emph{Data Credit Distributions} (DCD) considers a database instance $I$, a certain quantity of credit $k$ (here, without loss of generality, considered as given), and a query $Q$ producing a result set $Q(I)$.  
 DCD consists in defining a function, here called \emph{distribution strategy} (DS), to split credit into portions to be assigned to the tuples in $I$.
@@ -19,7 +19,7 @@ The following is the definition of DCD at \emph{tuple level}. We refer to the le
     Given a database instance $I$, a query $Q$ over $I$ and the value $k \in \mathbb{R}_{>0}$, DCD is defined as the computation of the function $f_{I, Q} : TupleLoc \times \mathbb{R}_{> 0} \rightarrow \mathbb{R}_{\geq0}$ such that $f_{I,Q}(t, k)=h$ where $0 \leq h \leq k$ and $\sum_{t \in TupleLoc}f_{I, Q}(t, k) = k$.
 \end{definition}
 
-As we see, the DS is a function that annotates each tuple in the database with a real value, that is a fraction of the given quantity $k$. The only constraint is that the sum of the credit fractions annotation the tuples must be $k$ (i.e. no credit is generated nor destroyed during the distribution).
+As we see, the DS is a function that annotates each tuple in the database with a real value, which is a fraction of the given quantity $k$. The only constraint is that the sum of the credit fractions annotation the tuples must be $k$ (i.e. no credit is generated nor destroyed during the distribution).
 Given $I$ and $Q$, many different DS may be defined as long as they sum up to $k$. We use the information provided by data provenance to define sensible functions that take into account the issued query. 
 
 \subsection{A Lineage-based Distribution Strategy}
@@ -37,7 +37,7 @@ With the information provided by the lineage, we defined the following DS:
     \end{equation*}
 \end{definition}
 
-%It is trivial to see how this is actually a Distribution Strategy, since the sum of all the values assigned by the set of functions returns exactly the value $k$:
+%It is trivial to see how this is actually a Distribution Strategy since the sum of all the values assigned by the set of functions returns exactly the value $k$:
 %
 %\[
 %\begin{array}{ll}
@@ -49,24 +49,24 @@ With the information provided by the lineage, we defined the following DS:
 %\]
 
 The DS is defined for one tuple of the output. Therefore, to perform credit distribution for a whole set of output tuples, it is necessary to first divide the credit to each tuple in the output, and then compute the distribution for each one of them.
-In this paper we assume that each output tuple carries credit equal to 1. 
-This lineage-based DS distributes credit only among tuples that have a role, whichever it is, in the creation of $o$ by the query $Q$. Each of them receives an equal share of credit. The more the tuples in a lineage set, the less the quantity of credit each of them receives. 
+In this paper, we assume that each output tuple carries credit equal to 1. 
+This lineage-based DS distributes credit only among tuples that have a role, whichever it is, in the creation of $o$ by the query $Q$. Each of them receives an equal share of the credit. The more the tuples in a lineage set, the less the quantity of credit each of them receives. 
 
 
 As an example, consider the output tuples of Table \ref{table:result}.
 Each output tuple has credit $k = 1$.
 The lineage of the first tuple is the set $\{f_1, c2f_1, c_1, c2f_2, c_2\}$. Therefore, each tuple in this set receives credit $1/5$. The other tuples of the database receive credit 0.
-The lineage of the second output tuple is $\{ f_4, c2f_4, c_1\}$, therefore each of these tuples receive credit $1/3$ in this case.
+The lineage of the second output tuple is $\{ f_4, c2f_4, c_1\}$, therefore each of these tuples receives credit $1/3$ in this case.
 
 At the end of the process of distribution over the whole output, tuples $f_1, c2f_2, c_2$ all have credit $1/5$, tuples $f_4$ and $c2f_4$ have credit $1/3$, while tuple $c_1$ has credit $8/15$.  
-If one tuple appears in more than one lineage set, it will accumulate the credit from the distribution associated to each one of these sets, implying its bigger relevance in the context of the considered query, as is the case with $c_1$ in this example.
+If one tuple appears in more than one lineage set, it will accumulate the credit from the distribution associated with each one of these sets, implying its bigger relevance in the context of the considered query, as is the case with $c_1$ in this example.
  
 Not all of the tuples of the lineage of $o_1$ are necessary at the same time for the generation of the tuple. 
 If the database only had the set of  tuples $\{f_1, c2f_1, c_1\}$ or the set $\{f_1, c2f_2, c_2\}$, its existence would still be guaranteed. 
 In other words, only one among the couples of tuples $\langle c2f_1, c_1 \rangle$ and $\langle c2f_2, c_2 \rangle$ is really necessary, while $f_1$ is absolutely mandatory. 
 One could argue that it would be fairer for $f_1$ to receive more credit than the other four tuples, given its role in the production of $o_1$.  
 
-This highlights one limitation of the DS based on lineage: while able to find all and only the relevant tuples of an output, it is unable to distinguish the \emph{importance} of tuples in the query computations. 
+This highlights one limitation of the DS based on lineage: while able to find all and only the relevant tuples of the output, it is unable to distinguish the \emph{importance} of tuples in the query computations. 
 This information could be incorporated in the definition of a DS in order to distribute credit based on the actual role that tuples play in the computation. 
 
 For this reason, we present in this paper more sophisticated forms of Distribution Strategies, based on the other two provenances discussed above.
@@ -110,7 +110,7 @@ The credit is first divided among the two witnesses, that both receive credit $1
 The credit is then further divided among the tuples in each witness. Each tuple in each witness receives $1/6$ of credit. At the end of the distribution, $f_1$ receives a cumulative total credit of $1/3$, the other tuples receive $1/6$ each.
 This distribution better reflects the role of $f_1$ in the generation of $o_1$ since, as we discussed, it is the only mandatory tuple for the production of the output, while we need only one of the two other couples of tuples to get the result. 
 
-From this example it is immediately evident how why-provenance can better reward the tuples depending on their role. Tuples that appear in more than one witness are rewarded more than others. This means that tuples that are more important to the generation of the output, since they are used more by the query, are rewarded more than tuples that are ``interchangeable'' with others. 
+From this example, it is immediately evident how why-provenance can better reward the tuples depending on their role. Tuples that appear in more than one witness are rewarded more than others. This means that tuples that are more important to the generation of the output, since they are used more by the query, are rewarded more than tuples that are ``interchangeable'' with others. 
 
 \subsection{A How-Provenance Based Distribution Strategy}
 \label{section:how_prov_distr_tuples}
@@ -133,7 +133,7 @@ Consider the provenance polynomial $\mathcal{H} = H(Q, I, o)$ of a tuple $o$. We
     \]
 \end{definition}
 
-%We demonstrate that this is a Distribution Strategy by considering the contributions of the single monomials one at the time in the sum. With abuse of language in the following demonstration, we write $t \in M$ to indicate one tuple $t$ appearing in the monomial $M$.
+%We demonstrate that this is a Distribution Strategy by considering the contributions of the single monomials one at a time in the sum. With abuse of language in the following demonstration, we write $t \in M$ to indicate one tuple $t$ appearing in the monomial $M$.
 %
 %\[
 %\begin{array}{rl}
@@ -181,7 +181,7 @@ As an example consider this new query \texttt{Q2}, that asks for the families of
 \end{table}
 
 Table \ref{table:difference_result} presents the result, composed of one tuple, annotated with the three provenances. As can be seen, lineage and why-provenance are identical to the ones of the tuple $o_1$ in the previous example. 
-The how-provenance is different, since tuple $t_1$ is used twice: firstly in the join of the inner query, secondly in the join of the outer query. This information is lost in the first two provenances since they are sets, but it is maintained in the how-provenance through the use of the operator `$\cdot$'.
+The how-provenance is different since tuple $t_1$ is used twice: firstly in the join of the inner query, secondly in the join of the outer query. This information is lost in the first two provenances since they are sets, but it is maintained in the how-provenance through the use of the operator `$\cdot$'.
 
 \begin{figure}[]
   \includegraphics[width=\textwidth]{figures/how_distribution}

@@ -2,15 +2,15 @@
 \label{sec:related}
 
 \paragraph{Data in Research} As described by Jim Gray in his last talk~\citep{hey2009jim}, the world of research is rapidly transitioning towards the \emph{fourth paradigm of science}, that is, data-intensive scientific discovery, where data are important for scientific advances as well as for traditional publications~\citep{Bechhofer2013linkisnotenough}.
-%More and more scientific data from different scientific domain are contained and made available through structured, evolving and often distributed curated scientific databases~\citep{bunemann2016citation}.
+%More and more scientific data from different scientific domains are contained and made available through structured, evolving, and often distributed curated scientific databases~\citep{bunemann2016citation}.
 The scientific community is promoting an \emph{open research culture}~\citep{nosek2015promoting}, founded on methods and tools to share, discover, and access experimental data. 
 The community has identified the FAIR principles~\citep{fair2016Wilikinson} (Findable, Accessible, Interoperable, and Reusable), that should be enforced by every database. 
 In particular, data should be accessible from the articles, journals, and papers that cite or use them~\citep{cousijn2019bringing}.
-Aspects such as the need for the \emph{reproducibility} of experiments through the used data; the \emph{availability} of scientific data; and the \emph{connections} between data and the scientific results are all needed aspects for the fourth paradigm, and are all relevant to the domain of \emph{data citation}~\citep{honor2016data}.
+Aspects such as the need for the \emph{reproducibility} of experiments through the used data; the \emph{availability} of scientific data; the \emph{connections} between data and the scientific results are all needed aspects for the fourth paradigm, and are all relevant to the domain of \emph{data citation}~\citep{honor2016data}.
 
 \paragraph{Data Citation: Principles and Motivations} Data Citation principles were first described in detail in \citep{CODATA2013}, and later summarized and endorsed by the Joint Declaration of Data Citation Principles (JDDCP)~\citep{martone2014joint}. 
-The principles are divided into two groups~ \citep{Silvello18jasist}. The first one contains principles concerning the role of data citation in scholarly and research activities such as: the (i) \emph{importance} of data (why data citation is important and why data should be considered as first-class citizen); (ii) \emph{credit} and \emph{attribution} to the creators and curators of the data; (iii)\emph{evidence}; (iv) \emph{verifiability}; and \emph{interoperability}, with these last three requiring data citation methods to be flexible enough to operate through different communities. 
-The second group defines the main guidelines to establish a data citation systems, and contains principles such as the (i) \emph{unique identification} of the data being cited; (ii) \emph{(open) access} to data; (iii) guarantee of \emph{persistence} and \emph{availability} of citations even after the lifespan of the cited entity; and the (iv) \emph{specificity} of a citation, i.e. it must lead to the data set originally cited.
+The principles are divided into two groups~ \citep{Silvello18jasist}. The first one contains principles concerning the role of data citation in scholarly and research activities such as the (i) \emph{importance} of data (why data citation is important and why data should be considered as first-class citizens); (ii) \emph{credit} and \emph{attribution} to the creators and curators of the data; (iii)\emph{evidence}; (iv) \emph{verifiability}; and \emph{interoperability}, with these last three requiring data citation methods to be flexible enough to operate through different communities. 
+The second group defines the main guidelines to establish a data citation systems, and contains principles such as the (i) \emph{unique identification} of the data being cited; (ii) \emph{(open) access} to data; (iii) guarantee of \emph{persistence} and \emph{availability} of citations even after the lifespan of the cited entity; the (iv) \emph{specificity} of a citation, i.e. it must lead to the data set originally cited.
 
 It is possible to outline six main motivations for data citation~\citep{Silvello18jasist}:
 \begin{itemize}
@@ -23,10 +23,10 @@ It is possible to outline six main motivations for data citation~\citep{Silvello
 \end{itemize}
 
 \subsection{Data Citation in Relational Databases}
-In this paper we develop our methods and experiments on relational databases. RDBs have been the main target of data citation methods since the surge of the data-centric research paradigm. 
+In this paper, we develop our methods and experiments on relational databases. RDBs have been the main target of data citation methods since the surge of the data-centric research paradigm. 
 %The RDA (Resource Data Alliance)\footnote{\url{https://www.rd-alliance.org/}} promoted a working group on data citation focusing specifically on RDBs.
-%The RDA is a community-driven initiative launched in 2013 by different commissions, including the European Commission and the Unites States Government's National Science Foundation. Its goal is to build the social and technical infrastructures to enable open sharing and re-use of data. RDA members come together through focused Working Groups and Interest Groups, formed by experts from all around the world (academia, the private sector and government).
-The RDA ``Working Group on Data Citation: Making Dynamic Data Citable''\footnote{\url{https://www.rd-alliance.org/groups/data-citation-wg.html}}~\citep{RauberEtAl2016} has been working in the last years on large, dynamic and changing datasets. The working group has finished the development of its guidelines, and has now moved on into an adoption phase. 
+%The RDA is a community-driven initiative launched in 2013 by different commissions, including the European Commission and the United States Government's National Science Foundation. Its goal is to build the social and technical infrastructures to enable open sharing and re-use of data. RDA members come together through focused Working Groups and Interest Groups, formed by experts from all around the world (academia, the private sector, and government).
+The RDA ``Working Group on Data Citation: Making Dynamic Data Citable''\footnote{\url{https://www.rd-alliance.org/groups/data-citation-wg.html}}~\citep{RauberEtAl2016} has been working in the last years on large, dynamic, and changing datasets. The working group has finished the development of its guidelines and has now moved on into an adoption phase. 
 The datasets considered by the WG are often relational.
 
 In one of its most recent sessions~\citep{rauber2015data}, the Working Group (WG) on Data Citation reported that there are various implementations of its guidelines for Data Citation on MySQL/Postgres relational databases. 
@@ -34,20 +34,20 @@ Some of these databases are: DEXHELPP\footnote{\url{http://www.dexhelpp.at/}} (S
 %All these initiatives and databases support the RDA WG specifications for Data Citation, instantiated based on their needs and specific structures. This means that in all these databases it is possible to implement DCD as a tool built on top of the Data Citation techniques. 
 
 More examples of work on data citation in relational databases are~\citep{bunemann2016citation, WuSIGMOD18, AlawiniDHW17,davidson2017model, buneman2010rule}. 
-The website \texttt{\url{https://fairsharing.org/}} keeps a long updated list of curated and scientific databases (many of which are relational or graph-based) following FAIR guidelines. These databases are citable since they are complaint with the most recent guidelines, and they are in the vast majority of cases accessible via dynamically created Webpages. 
-In all these databases is therefore possible to implement DCD on top of the existing infrastructures for Data Citation.
+The website \texttt{\url{https://fairsharing.org/}} keeps a long updated list of curated and scientific databases (many of which are relational or graph-based) following FAIR guidelines. These databases are citable since they are compliant with the most recent guidelines, and they are in the vast majority of cases accessible via dynamically created Webpages. 
+In all these databases is, therefore, possible to implement DCD on top of the existing infrastructures for Data Citation.
 
-Data citation techniques are primarily applied to relational database because of their diffusion and also because the portions of data that are to be cited are easily identified: the whole database, a relation, a tuple, or an attribute. 
+Data citation techniques are primarily applied to relational databases because of their diffusion and also because the portions of data that are to be cited are easily identified: the whole database, a relation, a tuple, or an attribute. 
 Many papers \citep{buneman2006cite, bunemann2016citation, AlawiniDHW17} consider more complex citable units, recognizing that often the \emph{views} of a database are the ones to be cited. Generally, a \emph{view} is a query on the database.
-To this end, \citep{WuSIGMOD18} suggested decomposing the database in a set of views, where each view is associated to its citation. 
+To this end, \citep{WuSIGMOD18} suggested decomposing the database in a set of views, where each view is associated with its citation. 
 %Through a well-crafted algorithm that generates combinations of views, new citations can be built from the ones associated with the views every time a query is issued. 
-%The most common queries over relational databases, both for citation and view building purposes, are the so-called \emph{conjunctive queries} (for a complete reference, see \citep{abiteboul1995foundations}). These queries are ``universal'' across different types of database, such as relational, semistructured, and RDF. 
+%The most common queries over relational databases, both for citation and view building purposes, are the so-called \emph{conjunctive queries} (for a complete reference, see \citep{abiteboul1995foundations}). These queries are ``universal'' across different types of databases, such as relational, semistructured, and RDF. 
 %They also simplify the reasoning process used in generating citations. 
 
 At present, the most common practices to cite databases include:
 \begin{enumerate}
-    \item A database cited as a whole, even though only parts of the databases are used in the papers or datasets. Alternatively, the so called ``data papers'' can be cited, being traditional papers that describe a database~\citep{CandelaEtAl2015}. \\
-    In this case, all the credit from the citations go to the database administrators or to the authors of the data papers. 
+    \item A database cited as a whole, even though only parts of the databases are used in the papers or datasets. Alternatively, the so-called ``data papers'' can be cited, being traditional papers that describe a database~\citep{CandelaEtAl2015}. \\
+    In this case, all the credit from the citations goes to the database administrators or to the authors of the data papers. 
     \item Subsets of data, obtained by issuing queries to a database, are individually cited. This is the solution adopted by the \emph{Resource Data Alliance} (RDA) working group on Data Citation~\citep{RauberEtAl2016}. \\
     In this case, the credit from citations can be distributed amongst those contributing to the portions of data returned by the cited queries and/or to the database administrators. 
     \item The database is accessible via a series of Webpages that arrange the content of the database by topic or theme. Examples in the life science domain include the Reactome Pathway database~\citep{reactome2016}, the GtoPdb \citep{iuphar2018}, and the VAMDC~\citep{ZwolfEtAl2016}.
@@ -59,23 +59,23 @@ At present, the most common practices to cite databases include:
     %In works like \citep{cousijn2019bringing} the results of RDA workshops such as The Scholix WH and the Data Usage Metrics WG are used to assess data reuse and make data usage statistics and citations available. All with the aim to help researchers get credit for their work. 
 \end{enumerate}
 
-Despite all the research efforts dedicated to the study and promotion of data citation, none of the largest citation-based systems, such as Elsevier Scopus, Web of Science, Microsoft Academia or Google Scholar, consider scientific datasets as citable objects in academic work. 
-Clarivate Analytics Data Citation Index (DCI) \citep{force2016research} is an exception, since its infrastructure tracks data usage in scientific domains and provides the technical means to connect datasets and repositories to scientific papers. However, DCI considers only citations to (previously registered and approved) databases as a whole and do not count citations to database portions such as views, tables or tuples.
+Despite all the research efforts dedicated to the study and promotion of data citation, none of the largest citation-based systems, such as Elsevier Scopus, Web of Science, Microsoft Academia, or Google Scholar, consider scientific datasets as citable objects in academic work. 
+Clarivate Analytics Data Citation Index (DCI) \citep{force2016research} is an exception, since its infrastructure tracks data usage in scientific domains and provides the technical means to connect datasets and repositories to scientific papers. However, DCI considers only citations to (previously registered and approved) databases as a whole and does not count citations to database portions such as views, tables, or tuples.
 %\black{However, it is still in its infancy, and it has already to be proven ``cost-effective or efficient''~\citep{peerDatasets2015}}.
 
 %Scholix
-%Publishers, data centers, and indexing services have started to create bidirectional links between research data and scholarly literature. Such links, however, usually stem from agreements implemented by two organizations. They therefore lack a universally accepted industrial standard, and each agreement differs from the other~\citep{burton2017scholix}. 
-%The rapid growth of bilateral agreements hinders interoperability, that is one of the principles of data citation. In fact, this kind of agreement has generated a series of undesirable side-effects. Many publishers, data centers, repositories, and infrastructure providers remain disconnected.
-%Moreover, the heterogeneity that ensues from (considerably differente) agreements and practices hinders the global interoperability among different agreements. 
+%Publishers, data centers, and indexing services have started to create bidirectional links between research data and scholarly literature. Such links, however, usually stem from agreements implemented by two organizations. They, therefore, lack a universally accepted industrial standard, and each agreement differs from the other~\citep{burton2017scholix}. 
+%The rapid growth of bilateral agreements hinders interoperability, which is one of the principles of data citation. In fact, this kind of agreement has generated a series of undesirable side-effects. Many publishers, data centers, repositories, and infrastructure providers remain disconnected.
+%Moreover, the heterogeneity that ensues from (considerably different) agreements and practices hinders the global interoperability among different agreements. 
 %One example of such heterogeneity may be found in identification systems such as Digital Object Identifiers\footnote{\url{https://www.doi.org}} (DOI) and Life Science Identifiers\footnote{\url{http://www.lsid.info}} (LSID).
 %
-%The Scholix framework \citep{burton2017scholix} addresses this issue. As community and multi-stakeholder driven effort, it strives to facilitate information exchange between data and literature and between data and data. 
-%It can be regarded as a framework, a set of guidelines and lightweight models to facilitate interoperability among link providers. 
+%The Scholix framework \citep{burton2017scholix} addresses this issue. As a community and multi-stakeholder driven effort, it strives to facilitate information exchange between data and literature and between data and data. 
+%It can be regarded as a framework, a set of guidelines, and lightweight models to facilitate interoperability among link providers. 
 
 
 
 \subsection{Data Credit}
-Data credit is related to data citation, since they both refer to recognizing the work of data creators and curators. 
+Data credit is related to data citation since they both refer to recognizing the work of data creators and curators. 
 In a sense, data credit can be seen as a by-product of data citation since credit attribution is not possible without the citations to data.
 
 Kats in \citep{transitiveCreditKatz2014} suggests the need for a \emph{modified citation system} that includes the idea of \emph{transient} and \emph{fractional credit}, to be used by developers of research products as software and data.
@@ -83,7 +83,7 @@ In the paper two considerations are made: (i) research objects such as data and 
 (ii) even in traditional papers, the contribution of each author to the work is hard to understand, unless explicitly specified in the paper. 
 This is even more true for data, where different groups of people work on the same database.
 
-In \citep{transitiveCreditKatz2014} credit is defined as a ``quantity'' that describes the importance of a research entity, such as papers, software or data, mentioned in a citation. 
+In \citep{transitiveCreditKatz2014} credit is defined as a ``quantity'' that describes the importance of a research entity, such as papers, software, or data, mentioned in a citation. 
 We add that the concept of credit can be built on top of the existing infrastructure handling traditional and data citations.
 \citep{transitiveCreditKatz2014} further explores the idea of a \emph{distribution} of credit from research entities (i.e., papers and data) to other research entities through citations that connect them. 
 Thanks to traditional citations and now also to data citations, this distribution is finally possible, at least between papers and data. 
@@ -94,23 +94,23 @@ Some problems related to traditional citations can thus be solved by citations, 
 %\item Credit can reward research entity authors %(``we can envision combining the idea of credit to contributors, as currently listed in authorship lists''), 
 %similarly to what citations do.
 \item Credit can reward authors in a \emph{proportionate} way, taking into consideration their role in generating the entity. The more an author contributed to a paper, the more credit is given to him.
-%  -- ``Some journals have tried to solve this problem by requiring that the contribution of each author be defined [...]. A technologically simple solution is to give partial credit to all authors, which can also be done for software and data. Arguably, determining how to weight credit of the authors may be difficult, but it should be possible''~\citep{transitiveCreditKatz2014}. This is something that only credit can do, since traditional citations are \emph{atomic} in nature.
-\item Credit can be \emph{transitively} transmitted through a chain of papers citing each other. This allows to reward papers that are no more cited but that are nevertheless important in a research area for the influence of their content.
-%For example, if a paper A cites a paper B, some credit goes from A to B. Then, if B in turn cites data contained in the database C, a fraction of the credit received by B from A could be transitively transmitted to C.  ``The primary value of transitive credit is in measuring the indirect contributions to a product, which today are not quantitatively captured''. 
-This is something that only credit can do, but is possible because of the existence of a network of citations among the entities.
+%  -- ``Some journals have tried to solve this problem by requiring that the contribution of each author be defined [...]. A technologically simple solution is to give partial credit to all authors, which can also be done for software and data. Arguably, determining how to weigh the credit of the authors may be difficult, but it should be possible''~\citep{transitiveCreditKatz2014}. This is something that only credit can do since traditional citations are \emph{atomic} in nature.
+\item Credit can be \emph{transitively} transmitted through a chain of papers citing each other. This allows them to reward papers that are no more cited but that are nevertheless important in a research area for the influence of their content.
+%For example, if a paper A cites a paper B, some credit goes from A to B. Then, if B, in turn, cites data contained in database C, a fraction of the credit received by B from A could be transitively transmitted to C.  ``The primary value of transitive credit is in measuring the indirect contributions to a product, which today are not quantitatively captured''. 
+This is something that only credit can do but is possible because of the existence of a network of citations among the entities.
 \end{enumerate}
 
 %A effective and shared use of credit and credit distribution could drive more and more researchers to share and disclose their results and data, helping the promotion of the fourth paradigm. This goal is shared with data citation, and credit can help to achieve it. 
 
 \citep{creditFang18} presents a framework to distribute the credit generated by a paper to its authors and to the papers in its reference list in a transitive way. 
 Let us consider the \emph{citation graph} as the graph where the nodes are papers and the links are the citations among them.
-In this graph, every paper is a source of credit, which is then transferred to the neighbouring nodes.
+In this graph, every paper is a source of credit, which is then transferred to the neighboring nodes.
 The quantity of credit received by each cited paper depends on its impact/role in the citing paper. 
 So far, this theoretical framework is limited to papers, but it can be easily extended to a citation graph that comprises papers and data. 
 
-\citep{zeng2020assigning} propose the first method designed to compute credit within a network of papers citing data. 
+\citep{zeng2020assigning} proposes the first method designed to compute credit within a network of papers citing data. 
 Adopting a network flow algorithm, they simulate a random walker to estimate a score for each dataset, leveraging real-world usage data to compute the credit.
-This is a first step towards an automatic credit computation procedure.
+This is the first step towards an automatic credit computation procedure.
 However, it is limited to assigning credit to the whole datasets, without considering the granularity of data. Therefore, this is not a way to assign credit to a single research entity within a dataset. 
 Differently from \citep{zeng2020assigning}, we do not treat the credit computation process, but we focus on the distribution process.
 
@@ -121,29 +121,29 @@ Differently from \citep{zeng2020assigning}, we do not treat the credit computati
 To distribute credit, we base our methods on a form of metadata, called \emph{data provenance}, which describes the origin and life of data. 
 
 In the past, data was stored in curated databases or in other trusted sources of information kept under centralized control~\citep{CheneyProvSurvey}. 
-With the advent of the Internet, this assumption is no longer valid~\citep{lynch2001documents}. Data are today created, shared, copied, cited, reported, moved around and combined indiscriminately.
-On the other hand, data management is growing in complexity~\citep{SimmhanPG05} also thanks to new algorithms, applications and more abundant storage capacity.
-In such an environment, it becomes more and more difficult to keep track of the origins, the reliability and the process of elaboration of data used in research.
+With the advent of the Internet, this assumption is no longer valid~\citep{lynch2001documents}. Data are today created, shared, copied, cited, reported, moved around, and combined indiscriminately.
+On the other hand, data management is growing in complexity~\citep{SimmhanPG05} also thanks to new algorithms, applications, and more abundant storage capacity.
+In such an environment, it becomes more and more difficult to keep track of the origins, the reliability, and the process of elaboration of data used in research.
 One way to face such challenges is the deployment of data provenance. 
 
-Data provenance is information attached to data that describes its origin and the process which created it. It can also be seen as metadata pertaining the derivation history of the data. 
+Data provenance is information attached to data that describes its origin and the process which created it. It can also be seen as metadata pertaining to the derivation history of the data. 
 It is becoming more and more important in these years since with the advent of the internet and the evolution of the fourth paradigm of science it is necessary to keep track of the life cycle of data to guarantee its quality and reliability~\citep{SimmhanPG05, CheneyProvSurvey}. 
- It is particularly useful to help users to understand from where data are coming from, and the process they went through. 
+ It is particularly useful to help users to understand where data are coming from, and the process they went through. 
  Data warehouses and curated databases are examples where provenance information is essential since in both environments enormous and often manual effort is usually expended in the construction of the resulting database~\citep{CheneyProvSurvey}. 
- Data citation and data provenance are closely linked~\citep{AlawiniDSTW17}, since both are forms of annotations on data retrieved through queries. 
+ Data citation and data provenance are closely linked~\citep{AlawiniDSTW17} since both are forms of annotations on data retrieved through queries. 
 
 Data provenance has been widely studied in different areas of data management. 
-In this thesis we focus on provenance in the database management systems environment. For further details on data provenance, please refer to surveys like \citep{CheneyProvSurvey} and \citep{SimmhanPG05}.
+In this paper, we focus on provenance in the database management systems environment. For further details on data provenance, please refer to surveys like \citep{CheneyProvSurvey} and \citep{SimmhanPG05}.
 
 In \citep{CheneyProvSurvey} four main types of data citation for database management systems are discusses: \emph{lineage}~\citep{lineageCui}, \emph{why-provenance}~\citep{WhyProvBuneman}, \emph{how-provenance}~\citep{howProvenanceGreen} and \emph{where-provenance}~\citep{WhyProvBuneman}.
 
-Let us start from the first three provenances. Given a database instance $I$, a query $Q$ and the result $Q(D)$, consider one tuple $t$ of the output. 
-The provenance of $t$ is information about the generation of this tuple through the tuples of the input that are used by $Q$. Different types of provenance convey different levels of information. Since these three provenances are computed for each tuple of the output, they are also referred as \emph{tuple-based}.
+Let us start with the first three provenances. Given a database instance $I$, a query $Q$, and the result $Q(D)$, consider one tuple $t$ of the output. 
+The provenance of $t$ is information about the generation of this tuple through the tuples of the input that are used by $Q$. Different types of provenance convey different levels of information. Since these three provenances are computed for each tuple of the output, they are also referred to as \emph{tuple-based}.
 
-Lineage is somehow the simplest among the forms of provenance. It has been defined in different ways~\citep{CheneyProvSurvey}, but it can be thought as the set of all the tuples that are used in some way by the query to produce the output tuple, the ones that are somehow \emph{relevant} to its generation. 
+Lineage is somehow the simplest among the forms of provenance. It has been defined in different ways~\citep{CheneyProvSurvey}, but it can be thought of as the set of all the tuples that are used in some way by the query to produce the output tuple, the ones that are somehow \emph{relevant} to its generation. 
 
-The definition of why-provenance is based on the notion of \emph{witness set}. A witness is a set of relevant tuples that guarantees the existence of $t$ in $Q(D)$. The lineage is therefore an example of witness. The why-provenance of a tuple $t$ is a peculiar set of witnesses  -- described in \citep{WhyProvBuneman} -- that are computed from the query, called \emph{witness basis}. 
-A witness basis may be composed by more than one witness. 
+The definition of why-provenance is based on the notion of \emph{witness set}. A witness is a set of relevant tuples that guarantees the existence of $t$ in $Q(D)$. The lineage is therefore an example of a witness. The why-provenance of a tuple $t$ is a peculiar set of witnesses  -- described in \citep{WhyProvBuneman} -- that are computed from the query, called \emph{witness basis}. 
+A witness basis may be composed of more than one witness. 
 Therefore, the why-provenance contains more information than the lineage, since it describes \emph{alternative} ways in which the same output may be generated. 
 
 The how-provenance takes the form of a polynomial, called \emph{provenance polynomial}, where the variables are taken from the set of identifiers of the tuples (provided that each tuple in $I$ has an identifier) and the coefficients are taken from $\mathbb{N}$. 
@@ -153,4 +153,4 @@ It has been shown in \citep{CheneyProvSurvey} that the how-provenance is the mor
 
 The where-provenance, differently from the other three, is \emph{attribute-based}. Given a tuple $t$ and an attribute $A$ of $Q(I)$, the where-provenance of the value $t \bullet A$ is the set of cells in $I$ from where $t \bullet A$ has been copied. In this sense, the where-provenance describes from \emph{where} an attribute is coming with respect to the starting database from which it was computed. 
 
-In this thesis we base our methods to distribute credit on these four provenances. Moreover, we define three new kind of provenances that are the attribute-based counter-parts of lineage, why-provenance and how-provenance. We also show how these new provenances are more informative of their original counter-parts. 
+In this paper, we base our methods to distribute credit on these four provenances. Moreover, we define three new kinds of provenances that are the attribute-based counter-parts of lineage, why-provenance, and how-provenance. We also show how these new provenances are more informative about their original counter-parts. 

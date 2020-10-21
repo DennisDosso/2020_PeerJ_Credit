@@ -10,8 +10,15 @@ Abadi, D., Ailamaki, A., Andersen, D., Bailis, P., Balazinska, M., Bernstein,
 \newblock The seattle report on database research.
 \newblock {\em SIGMOD Rec.}, 48(4):44--53.
 
-\bibitem[Alawini et~al., 2017]{AlawiniDHW17}
-Alawini, A., Davidson, S.~B., Hu, W., and Wu, Y. (2017).
+\bibitem[Alawini et~al., 2017a]{eagleI2017}
+Alawini, A., Chen, L., Davidson, S.~B., Da~Silva, N.~P., and Silvello, G.
+  (2017a).
+\newblock Automating data citation: The eagle-i experience.
+\newblock In {\em 2017 {ACM/IEEE} Joint Conference on Digital Libraries, {JCDL}
+  2017}, pages 169--178. IEEE.
+
+\bibitem[Alawini et~al., 2017b]{AlawiniDHW17}
+Alawini, A., Davidson, S.~B., Hu, W., and Wu, Y. (2017b).
 \newblock Automating data citation in citedb.
 \newblock {\em {PVLDB}}, 10(12):1881--1884.
 
@@ -113,6 +120,12 @@ Cheney, J., Chiticariu, L., and Tan, W. (2009).
 Cousijn, H., Feeney, P., Lowenberg, D., Presani, E., and Simons, N. (2019).
 \newblock Bringing citations and usage metrics together to make data count.
 \newblock {\em Data Science Journal}, 18(1).
+
+\bibitem[Cronin, 1984]{cronin1984}
+Cronin, B. (1984).
+\newblock {\em {The citation process. The role and significance of citations in
+  scientific communication}}.
+\newblock London: Taylor Graham.
 
 \bibitem[Cronin, 2001]{Cronin01}
 Cronin, B. (2001).
@@ -230,12 +243,6 @@ Lawrence, B., Jones, C., Matthews, B., Pepler, S., and Callaghan, S. (2011).
 \newblock {Citation and Peer Review of Data: Moving Towards Formal Data
   Publication}.
 \newblock {\em {International Journal of Digital Curation}}, 6(2):4--37.
-
-\bibitem[Longo and Drazen, 2016]{longo2016data}
-Longo, D.~L. and Drazen, J.~M. (2016).
-\newblock Data sharing.
-\newblock The New England Journal of Medicine, Editorial. Mass Medical Soc.
-\newblock {doi}: 10.1056/NEJMe1516564.
 
 \bibitem[Lynch, 2001]{lynch2001documents}
 Lynch, C.~A. (2001).

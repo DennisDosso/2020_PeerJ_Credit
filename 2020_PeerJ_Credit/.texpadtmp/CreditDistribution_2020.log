@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.10.23)  12 OCT 2020 11:55
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.10.23)  21 OCT 2020 15:15
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1023,30 +1023,30 @@ Package: blindtext 2012/01/06 V2.0 blindtext-Package
 \c@blind@pangrammax=\count347
 ))
 \c@definition=\count348
-) (./title.tex) (./abstract.tex) (/Users/dennisdosso/MEGAsync/MegaDocuments/paper backups/2020_PeerJ_Credit/2020_PeerJ_Credit/.texpadtmp/CreditDistribution_2020.aux)
+) (./title.tex) (./abstract.tex) (/Users/dennisdosso/Dropbox/paper/2020_PeerJ_Credit/2020_PeerJ_Credit/.texpadtmp/CreditDistribution_2020.aux)
 \openout1 = `CreditDistribution_2020.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 12.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 12.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 14.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 14.
  (/usr/local/texlive/2019/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Try loading font information for OT1+ptm on input line 12.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Try loading font information for OT1+ptm on input line 14.
  (/usr/local/texlive/2019/texmf-dist/tex/latex/psnfss/ot1ptm.fd
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 ) (/usr/local/texlive/2019/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
@@ -1115,8 +1115,8 @@ Package caption Info: subfigure package is loaded.
 Package caption Info: End \AtBeginDocument code.
 Package lastpage Info: Please have a look at the pageslts package at
 (lastpage)             https://www.ctan.org/pkg/pageslts
-(lastpage)             ! on input line 12.
-LaTeX Info: Redefining \microtypecontext on input line 12.
+(lastpage)             ! on input line 14.
+LaTeX Info: Redefining \microtypecontext on input line 14.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
@@ -1129,14 +1129,14 @@ Package microtype Info: No adjustment of character kerning.
 (/usr/local/texlive/2019/texmf-dist/tex/latex/microtype/mt-ptm.cfg
 File: mt-ptm.cfg 2006/04/20 v1.7 microtype config. file: Times (RS)
 ) ABD: EverySelectfont initializing macros
-LaTeX Info: Redefining \selectfont on input line 12.
+LaTeX Info: Redefining \selectfont on input line 14.
  (/usr/local/texlive/2019/texmf-dist/tex/latex/translator/translator-basic-dictionary-English.dict
 Dictionary: translator-basic-dictionary, Language: English 
 ) (/usr/local/texlive/2019/texmf-dist/tex/latex/siunitx/siunitx-abbreviations.cfg
 File: siunitx-abbreviations.cfg 2017/11/26 v2.7k siunitx: Abbreviated units
 )
 \AtBeginShipoutBox=\box72
-Package hyperref Info: Link coloring OFF on input line 12.
+Package hyperref Info: Link coloring OFF on input line 14.
  (/usr/local/texlive/2019/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
  (/usr/local/texlive/2019/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
@@ -1144,14 +1144,14 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count355
 )
-LaTeX Info: Redefining \ref on input line 12.
-LaTeX Info: Redefining \pageref on input line 12.
-LaTeX Info: Redefining \nameref on input line 12.
- (/Users/dennisdosso/MEGAsync/MegaDocuments/paper backups/2020_PeerJ_Credit/2020_PeerJ_Credit/.texpadtmp/CreditDistribution_2020.out) (/Users/dennisdosso/MEGAsync/MegaDocuments/paper backups/2020_PeerJ_Credit/2020_PeerJ_Credit/.texpadtmp/CreditDistribution_2020.out)
+LaTeX Info: Redefining \ref on input line 14.
+LaTeX Info: Redefining \pageref on input line 14.
+LaTeX Info: Redefining \nameref on input line 14.
+ (/Users/dennisdosso/Dropbox/paper/2020_PeerJ_Credit/2020_PeerJ_Credit/.texpadtmp/CreditDistribution_2020.out) (/Users/dennisdosso/Dropbox/paper/2020_PeerJ_Credit/2020_PeerJ_Credit/.texpadtmp/CreditDistribution_2020.out)
 \@outlinefile=\write3
 \openout3 = `CreditDistribution_2020.out'.
 
-LaTeX Font Info:    Try loading font information for OT1+ztmcm on input line 12.
+LaTeX Font Info:    Try loading font information for OT1+ztmcm on input line 14.
  (/usr/local/texlive/2019/texmf-dist/tex/latex/psnfss/ot1ztmcm.fd
 File: ot1ztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OT1/ztmcm.
 )
@@ -1159,24 +1159,24 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `ztmcm' (encoding: OT1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-LaTeX Font Info:    Try loading font information for OML+ztmcm on input line 12.
+LaTeX Font Info:    Try loading font information for OML+ztmcm on input line 14.
  (/usr/local/texlive/2019/texmf-dist/tex/latex/psnfss/omlztmcm.fd
 File: omlztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OML/ztmcm.
 )
-LaTeX Font Info:    Try loading font information for OMS+ztmcm on input line 12.
+LaTeX Font Info:    Try loading font information for OMS+ztmcm on input line 14.
  (/usr/local/texlive/2019/texmf-dist/tex/latex/psnfss/omsztmcm.fd
 File: omsztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OMS/ztmcm.
 )
-LaTeX Font Info:    Try loading font information for OMX+ztmcm on input line 12.
+LaTeX Font Info:    Try loading font information for OMX+ztmcm on input line 14.
  (/usr/local/texlive/2019/texmf-dist/tex/latex/psnfss/omxztmcm.fd
 File: omxztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OMX/ztmcm.
 )
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 12.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 14.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7.4> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 12.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 14.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <6> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 12.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 14.
  (/usr/local/texlive/2019/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 ) (/usr/local/texlive/2019/texmf-dist/tex/latex/microtype/mt-msb.cfg
@@ -1190,7 +1190,7 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `cmtt' (encoding: OT1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-LaTeX Font Info:    Try loading font information for OT1+phv on input line 16.
+LaTeX Font Info:    Try loading font information for OT1+phv on input line 18.
  (/usr/local/texlive/2019/texmf-dist/tex/latex/psnfss/ot1phv.fd
 File: ot1phv.fd 2001/06/04 scalable font definitions for OT1/phv.
 )
@@ -1199,42 +1199,42 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <10> not available
-(Font)              Font shape `OT1/phv/b/n' tried instead on input line 16.
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 18.
 LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <20> not available
-(Font)              Font shape `OT1/phv/b/n' tried instead on input line 16.
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 18.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 16.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 18.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <9> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 16.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 18.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 16.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 18.
 LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <12> not available
-(Font)              Font shape `OT1/phv/b/n' tried instead on input line 16.
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 18.
  (./section/introduction.tex [1
 
 {/usr/local/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <8> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 37.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 41.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <5> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 37.
-LaTeX Font Info:    Try loading font information for TS1+ptm on input line 46.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 41.
+LaTeX Font Info:    Try loading font information for TS1+ptm on input line 50.
  (/usr/local/texlive/2019/texmf-dist/tex/latex/psnfss/ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 )
 LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <9> not available
-(Font)              Font shape `OT1/phv/b/n' tried instead on input line 47.
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 53.
  [2]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 53.
+               Default added (so using `tbp') on input line 57.
 
-<figures/overview.pdf, id=177, 1162.3425pt x 694.595pt>
+<figures/overview.pdf, id=184, 1162.3425pt x 694.595pt>
 File: figures/overview.pdf Graphic file (type pdf)
 <use figures/overview.pdf>
-Package pdftex.def Info: figures/overview.pdf  used on input line 55.
+Package pdftex.def Info: figures/overview.pdf  used on input line 59.
 (pdftex.def)             Requested size: 352.85939pt x 210.86018pt.
 [3 <./figures/overview.pdf>]
-LaTeX Font Info:    Try loading font information for OT1+pcr on input line 88.
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 93.
  (/usr/local/texlive/2019/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
@@ -1252,7 +1252,7 @@ Overfull \hbox (22.9746pt too wide) in paragraph at lines 33--33
 LaTeX Warning: No positions in optional float specifier.
                Default added (so using `tbp') on input line 4.
 
-<figures/iuphar_schema.pdf, id=465, 1071.00125pt x 737.75626pt>
+<figures/iuphar_schema.pdf, id=476, 1071.00125pt x 737.75626pt>
 File: figures/iuphar_schema.pdf Graphic file (type pdf)
 <use figures/iuphar_schema.pdf>
 Package pdftex.def Info: figures/iuphar_schema.pdf  used on input line 6.
@@ -1262,7 +1262,7 @@ Package pdftex.def Info: figures/iuphar_schema.pdf  used on input line 6.
 LaTeX Warning: No positions in optional float specifier.
                Default added (so using `tbp') on input line 20.
 
-<figures/family_structure.pdf, id=483, 1182.4175pt x 735.74875pt>
+<figures/family_structure.pdf, id=494, 1182.4175pt x 735.74875pt>
 File: figures/family_structure.pdf Graphic file (type pdf)
 <use figures/family_structure.pdf>
 Package pdftex.def Info: figures/family_structure.pdf  used on input line 22.
@@ -1295,7 +1295,7 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <10> not available
 LaTeX Warning: No positions in optional float specifier.
                Default added (so using `tbp') on input line 101.
 
-<figures/why_distribution.pdf, id=625, 553.06625pt x 368.37625pt>
+<figures/why_distribution.pdf, id=636, 553.06625pt x 368.37625pt>
 File: figures/why_distribution.pdf Graphic file (type pdf)
 <use figures/why_distribution.pdf>
 Package pdftex.def Info: figures/why_distribution.pdf  used on input line 103.
@@ -1313,25 +1313,25 @@ LaTeX Warning: No positions in optional float specifier.
 LaTeX Warning: No positions in optional float specifier.
                Default added (so using `tbp') on input line 186.
 
-<figures/how_distribution.pdf, id=740, 1666.225pt x 397.485pt>
+<figures/how_distribution.pdf, id=751, 1666.225pt x 397.485pt>
 File: figures/how_distribution.pdf Graphic file (type pdf)
 <use figures/how_distribution.pdf>
 Package pdftex.def Info: figures/how_distribution.pdf  used on input line 187.
 (pdftex.def)             Requested size: 415.12572pt x 99.02528pt.
 ) [15] (./section/experiments.tex
-<figures/paper_based_comparison.png, id=760, 1807.75375pt x 1392.20125pt>
+<figures/paper_based_comparison.png, id=771, 1807.75375pt x 1392.20125pt>
 File: figures/paper_based_comparison.png Graphic file (type png)
 <use figures/paper_based_comparison.png>
 Package pdftex.def Info: figures/paper_based_comparison.png  used on input line 5.
 (pdftex.def)             Requested size: 415.12572pt x 319.68971pt.
  [16 <./figures/how_distribution.pdf>] [17 <./figures/paper_based_comparison.png>]
-<figures/synthetic_queries.png, id=922, 1807.75375pt x 1392.20125pt>
+<figures/synthetic_queries.png, id=933, 1807.75375pt x 1392.20125pt>
 File: figures/synthetic_queries.png Graphic file (type png)
 <use figures/synthetic_queries.png>
 Package pdftex.def Info: figures/synthetic_queries.png  used on input line 100.
 (pdftex.def)             Requested size: 415.12572pt x 319.68971pt.
  [18]
-<figures/synthetic_polynomials_2.png, id=932, 1814.78pt x 1392.20125pt>
+<figures/synthetic_polynomials_2.png, id=943, 1814.78pt x 1392.20125pt>
 File: figures/synthetic_polynomials_2.png Graphic file (type png)
 <use figures/synthetic_polynomials_2.png>
 Package pdftex.def Info: figures/synthetic_polynomials_2.png  used on input line 130.
@@ -1341,18 +1341,18 @@ Package pdftex.def Info: figures/synthetic_polynomials_2.png  used on input line
 LaTeX Warning: No positions in optional float specifier.
                Default added (so using `tbp') on input line 187.
 
-<figures/radar_top_synthetic_enhanced.pdf, id=947, 463.7325pt x 356.33125pt>
+<figures/radar_top_synthetic_enhanced.pdf, id=958, 463.7325pt x 356.33125pt>
 File: figures/radar_top_synthetic_enhanced.pdf Graphic file (type pdf)
 <use figures/radar_top_synthetic_enhanced.pdf>
 Package pdftex.def Info: figures/radar_top_synthetic_enhanced.pdf  used on input line 189.
 (pdftex.def)             Requested size: 332.10184pt x 255.18813pt.
-[21 <./figures/radar_top_synthetic_enhanced.pdf>]) (./section/conclusions.tex [22]) (/Users/dennisdosso/MEGAsync/MegaDocuments/paper backups/2020_PeerJ_Credit/2020_PeerJ_Credit/.texpadtmp/CreditDistribution_2020.bbl [23]
-Underfull \hbox (badness 5681) in paragraph at lines 248--253
+[21 <./figures/radar_top_synthetic_enhanced.pdf>]) (./section/conclusions.tex [22]) (/Users/dennisdosso/Dropbox/paper/2020_PeerJ_Credit/2020_PeerJ_Credit/.texpadtmp/CreditDistribution_2020.bbl [23]
+Underfull \hbox (badness 5681) in paragraph at lines 255--260
 []\OT1/ptm/m/n/10 (+20) Martone, M. (2014).  Joint dec-la-ra-tion of data ci-ta-tion prin-ci-ples.  \OT1/ptm/m/it/10 (+20) FORCE11. San
  []
 
 
-Underfull \hbox (badness 4556) in paragraph at lines 248--253
+Underfull \hbox (badness 4556) in paragraph at lines 255--260
 \OT1/ptm/m/it/10 (+20) Diego CA. Data Ci-ta-tion Syn-the-sis Group. doi: https://doi.org/10.25490/a97f-egyk, url:
  []
 
@@ -1362,32 +1362,28 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
  [24]) 
 AED: lastpage setting LastPage
 [25]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 35.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 35.
- (/Users/dennisdosso/MEGAsync/MegaDocuments/paper backups/2020_PeerJ_Credit/2020_PeerJ_Credit/.texpadtmp/CreditDistribution_2020.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 35.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 35.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 37.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 37.
+ (/Users/dennisdosso/Dropbox/paper/2020_PeerJ_Credit/2020_PeerJ_Credit/.texpadtmp/CreditDistribution_2020.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 37.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 37.
 Package rerunfilecheck Info: File `CreditDistribution_2020.out' has not changed.
 (rerunfilecheck)             Checksum: <no file>.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 35.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 37.
  ) 
 Here is how much of TeX's memory you used:
- 28246 strings out of 492616
- 508150 string characters out of 6129480
- 715853 words of memory out of 5000000
- 31278 multiletter control sequences out of 15000+600000
- 607835 words of font info for 351 fonts, out of 8000000 for 9000
+ 28248 strings out of 492616
+ 507879 string characters out of 6129480
+ 715894 words of memory out of 5000000
+ 31282 multiletter control sequences out of 15000+600000
+ 607634 words of font info for 349 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 47i,18n,77p,979b,1002s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 47i,18n,77p,982b,1002s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/rsfs/rsfs10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/symbol/usyr.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/symbol/usyr.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on "/Users/dennisdosso/MEGAsync/MegaDocuments/paper backups/2020_PeerJ_Credit/2020_PeerJ_Credit/.texpadtmp/CreditDistribution_2020.pdf" (25 pages, 1270964 bytes).
+Output written on /Users/dennisdosso/Dropbox/paper/2020_PeerJ_Credit/2020_PeerJ_Credit/.texpadtmp/CreditDistribution_2020.pdf (25 pages, 1272249 bytes).
 PDF statistics:
- 1093 PDF objects out of 1200 (max. 8388607)
- 965 compressed objects within 10 object streams
- 147 named destinations out of 1000 (max. 500000)
+ 1104 PDF objects out of 1200 (max. 8388607)
+ 976 compressed objects within 10 object streams
+ 148 named destinations out of 1000 (max. 500000)
  54974 words of extra memory for PDF output out of 61914 (max. 10000000)
 
