@@ -4,8 +4,8 @@
 %In the current world of research citations are an essential method to disseminate knowledge and scientific development. They can be considered as a 
 %fundamental basis to give credit to authors, papers, and venues, and to achieve scholarship
 Citations are an essential component of research, enabling research products to be found as well as the relationships between research products to be understood. 
-They form a basis on which to give credit to authors, papers, and venues~\citep{ZouP16}.
-\SBD{Certainly this isn't the only paper on giving credit?}%, and to achieve scholarship~\citep{ZouP16}. 
+They form a basis on which to give credit to authors, papers, and venues~\citep{ZouP16, cousijn2019bringing, cronin1984}.
+% \SBD{Certainly this isn't the only paper on giving credit?}%, and to achieve scholarship~\citep{ZouP16}. 
 Citations are used, among other things, to decide on tenure, promotion, hiring and funding of grants for researchers~\citep{meho2007impact, Cronin01, Hartley17, Kosten16}.
 
 Nowadays, science and research are increasingly digital. There are numerous curated databases which are at the core of the current scientific research~\citep{bunemann2016citation}.
@@ -65,7 +65,8 @@ market alone has revenue upwards of \$50B''~\citep{AbadiEtAl2020}. Known outside
 In Figure \ref{fig:system_overview}, we visually summarize the DCD process:
 \begin{description}
 	\item[Step 1] The Data Curators are scientists and experts contributing to the information contained in a scientific database. 
-	\item[Step 2] Other researchers use these data in their research. \textbf{Gianmaria: this is weird and somehow worng: }To do so, they use data citation, and thus a query, to identify data in the database.
+	\item[Step 2] Other researchers use these data in their research. Researchers have different ways to access data contained in curated databases, such as web interfaces, in the case of databases such as GtoPdb \citep{iuphar2018} or Eagle-i~\citep{eagleI2017}. When possible, researchers also cite these data. In the case of GtoPd and 
+% 	\textbf{Gianmaria: this is weird and somehow worng: }To do so, they use data citation, and thus a query, to identify data in the database.
 	\item[Step 3] The citation to data generates some credit, that can be used as a proxy for the impact of the used data in the citing paper. This credit is represented as a real value $k \in \mathbb{R}_{>0}$. %Without loss of generality, we consider this value as already given.
 	\item[Step 4] Given the database instance $I$ and the query $Q$, it is possible to compute the \emph{data provenance} of $Q(I)$. The provenance of $Q(I)$ is a form of metadata that describes the generation process undertaken by $Q$, and the data used in $I$ to generate the output~\citep{CheneyProvSurvey}. Many different notions of provenance have been proposed in the literature for data in database management systems~\citep{lineageCui, WhyProvBuneman, howProvenanceGreen, dosso2020prov}, describing different kinds of relationships between data in the input and the output of a query. As reported in \citep{CheneyProvSurvey}, these provenances, beyond the intrinsic information on how queries work, have been used in several applications, as the study of annotation propagation and view update. In this paper we consider three type of provenance: lineage, why-provenance and how-provenance.
 	\item[Step 5] The provenance is the input of the CDC problem, whose aim is the computation of the \emph{Credit Distribution Strategy} (CDS, also referred only as Distribution Strategy, DS). The CDS is a function that distributes $k$ to the data in the input database $I$. 
