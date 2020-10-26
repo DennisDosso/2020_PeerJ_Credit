@@ -10,15 +10,8 @@ Abadi, D., Ailamaki, A., Andersen, D., Bailis, P., Balazinska, M., Bernstein,
 \newblock The seattle report on database research.
 \newblock {\em SIGMOD Rec.}, 48(4):44--53.
 
-\bibitem[Alawini et~al., 2017a]{eagleI2017}
-Alawini, A., Chen, L., Davidson, S.~B., Da~Silva, N.~P., and Silvello, G.
-  (2017a).
-\newblock Automating data citation: The eagle-i experience.
-\newblock In {\em 2017 {ACM/IEEE} Joint Conference on Digital Libraries, {JCDL}
-  2017}, pages 169--178. IEEE.
-
-\bibitem[Alawini et~al., 2017b]{AlawiniDHW17}
-Alawini, A., Davidson, S.~B., Hu, W., and Wu, Y. (2017b).
+\bibitem[Alawini et~al., 2017]{AlawiniDHW17}
+Alawini, A., Davidson, S.~B., Hu, W., and Wu, Y. (2017).
 \newblock Automating data citation in citedb.
 \newblock {\em {PVLDB}}, 10(12):1881--1884.
 
