@@ -7,29 +7,29 @@
   \label{figure:comparison_on_papers}
 \end{figure}
 
-In this paper, we perform our experiments on GtoPdband in particular we focus on target families, all of those are described in webpages. 
+We evaluate the proposed distribution strategies on GtoPdb, and in we focus on target families, all of those are described in webpages. 
 GtoPdb in particular identifies eight family types: \emph{GPCR}, \emph{Ion channels}, \emph{NHRs}, \emph{Kinases}, \emph{Catalytic receptors}, \emph{Transporters}, \emph{Enzymes} and \emph{Other protein targets}.  
 
 When a paper uses data from GtoPdb, it can cite the full database, the family webpage of interest, or a subset of data extracted with a query. 
-In this work we consider a full-fledged data citation context in which papers cite the specific \emph{data} subset of interest and not the webpage or the full database acting as data proxies.  
-Therefore, when a paper cites family data, it is actually citing a set of queries needed to retrieve all the information provided by the family webpage, i.e. one query for each section composing a page, as depicted in Figure \ref{figure:family_structure}. 
-The figure maps the structure of one family, ``Adenosine receptors'', and the queries to obtain the information to build the corresponding page, apart from the list of references. 
+In this work, we consider a full-fledged data citation context in which papers cite the specific \emph{data} subset of interest and not the webpage or the full database acting as data proxies.  
+Therefore, when a paper cites family data, it is citing a set of queries needed to retrieve all the information provided by the family webpage, i.e., one query for each section composing a page, as depicted in Figure \ref{figure:family_structure}. 
+In the figure, we can see how the structure of one family, ``Adenosine receptors'', is mapped into several queries to obtain the information to build the corresponding webpage. 
 In GtoPdb, all family pages share a similar structure (the only differences may be the presence/absence and length of the receptors lists, further readings, and contributors sections).
-The same queries are therefore used to build all other pages by simply changing the family id (which, in our example, is 3). All these queries are SPJ. 
+Therefore, the same queries are used to build all other pages by simply changing the family id (which, in our example, is 3). All these queries are SPJ. 
 
 As already stated, many papers that draw information from the GtoPdb website\footnote{\url{https://www.guidetopharmacology.org}} cite papers published every two years by the GtoPdb Committee on Receptor Nomenclature and Drug Classification (NC-IUPHAR).
-To obtain a set of citations capable of representing what actually happens, we consider a paper subset citing the 2018 GtoPdb~\citep{iuphar2018} data paper. 
+To obtain a set of citations capable of representing what happens, we consider a paper subset citing the 2018 GtoPdb~\citep{iuphar2018} data paper. 
 At the time of writing, this paper received more than $1200$ citations. 
 
 As explained in Section \ref{section:use_case}, in the papers published in the British Journal of Clinical Pharmacology, that cite GtoPdb, the name of families are hyperlinks that point to the corresponding webpages.
 We considered all the $460$ papers in BJCP citing \citep{iuphar2018} as of February 2020. 
-URL references to family pages were automatically extracted to guide in building the queries to produce corresponding webpages.
+We automatically extracted the URL references to family pages were automatically extracted to guide in building the queries to produce corresponding webpages.
 A total of $5,945$ different queries were built in this way. \footnote{For reproducibility purposes, the code we used for our experiments and all the produced queries can be found at the following link: \url{https://bitbucket.org/dennis_dosso/credit_distribution_project}.}
 
 Figure \ref{figure:comparison_on_papers} shows the heat-maps obtained by three different DS on the table \texttt{contributor}.
-It is immediately evident that the result of the distribution is the same with the three strategies. The same result is also obtained in the other tables of the database used by the considered queries. 
+It is immediately evident that the result of the distribution is the same with the three strategies. The same effect is also obtained in the other tables of the database used by the considered queries. 
 Why is that? 
-It is the case that the conditions in which we produced this experiment are quite peculiar. The queries that we used all share similar characteristics. They are all SPJ queries, each of them utilizes each table only once in the join condition (there are no self-joins) and all the joins are made using key attributes. 
+It is the case that the conditions in which we produced this experiment are quite peculiar. The queries that we used share similar characteristics. They are all SPJ queries, each of them utilizes each table only once in the join condition (there are no self-joins), and all the joins are made using key attributes. 
 In this particular condition, each tuple of the output presents: (i) a how-provenance that is a single monomial with coefficient $1$ and exponent $1$ in each variable; (ii) a why-provenance that is composed by only one witness; (iii) a lineage that coincides with the only witness in the witness basis.
 It is easy to see how, given these queries, the three distributions act in the same way.
 The credit is always uniformly distributed among the tuples appearing in each provenance. 
@@ -49,7 +49,7 @@ It is easy to see that the why-provenance of this tuple is $\{\{c_{939}, cf_{496
 Therefore, the credit assigned to these tuples is $1/2$ using all three DS.
 This actually happens for each tuple of the output of each query of GtoPdb, thus making the distributions equivalent.
 
-This is not always the case with general queries and other databases. As we showed in the examples in the previous section, when two or more tuples are merged by the effect of a projection or union, alternatives appear. These are represented as multiple witnesses and multiple monomials. 
+This is not always the case with general queries and other databases. As we showed in the examples in the previous section, when two or more tuples are merged by the effect of a projection or union, we see sensible differences between the three distribution strategies. %These are represented as multiple witnesses and multiple monomials. 
 
 To give an example of how the CDS can differ from one another in their behavior, let us consider a different query:
 \begin{verbatim}
@@ -124,7 +124,7 @@ This is also why when we look at the legend for each part of Figure \ref{figure:
 This clearly shows the ability of the different strategies to adapt to situations. All three of them can highlight the relevant tuples in the table. However, they differ in the way they reward the tuples. 
 Depending on the task, one provenance can be preferred to the other. 
 If the only interest is to highlight the relevant tuples, lineage is sufficient. 
-If the interest is also to reward more the tuples that are more fundamental to the output, one can also choose why- or how-provenance, knowing that how-provenance rewards even more than why-provenance the relevant tuples that are indispensable for the output.  
+If the interest is also to reward more the tuples that are fundamental to the output, one can also choose why- or how-provenance, knowing that how-provenance rewards even more than why-provenance the relevant tuples that are indispensable for the output.  
 
 \begin{figure}[tb]
   \includegraphics[width=1\textwidth]{figures/synthetic_polynomials_2}
@@ -132,8 +132,7 @@ If the interest is also to reward more the tuples that are more fundamental to t
   \label{figure:comparison_on_synthetic_polynomials_2}
 \end{figure}
 
-One may ask now if it is possible to obtain results whose heat maps are visibly different. 
-Consider for this Figure \ref{figure:comparison_on_synthetic_polynomials_2}. 
+Let us consider another interesting case we show in Figure \ref{figure:comparison_on_synthetic_polynomials_2}. 
 The figure reports a distribution of credit performed on \texttt{family} through the generation of \emph{synthetic} polynomials. 
 In this last case, we did not produce full-fledged queries. Rather, we randomly generated provenance polynomials that might be the how-provenance of randomly generated synthetic queries. 
 An example of such synthetic polynomial is:
@@ -192,15 +191,15 @@ How-provenance, finally, produces the distribution more sensible to the way a tu
 \end{figure}
 
 For our last set of experiments, consider Figure \ref{figure:synthetic_authors}.
-We still use the $100$ polynomials described above, and the credit distributed through them. Since these polynomials correspond to queries whose corresponding authors are not easily identifiable, we considered $20$ ``synthetic'' authors and we randomly assigned one author to each tuple in the database. The authors receive ``blocks'' of consecutive tuples, with each block of the size varying between $10$ and $40$. 
+We still use the $100$ polynomials described above and the credit distributed through them. Since these polynomials correspond to queries whose corresponding authors are not easily identifiable, we considered $20$ ``synthetic'' authors, and we randomly assigned one author to each tuple in the database. The authors receive ``blocks'' of consecutive tuples, with each block of the size varying between $10$ and $40$. 
 Every time a tuple was used in a provenance polynomial, we assigned one citation to the author corresponding to the tuple.  The same author also receives the three different credits assigned to the tuple at the end of the distribution process using the three DS.
 
 Figure \ref{figure:synthetic_authors} presents the radar plot where the 20 authors are sorted based on the normalized number of received citations, together with the corresponding normalized quantities of credits.
-Credit presents a different behavior from the one of citations, and each form of credit, i.e. the credit obtained from the different DS, behaves differently from the others.
-It appears, for example, that authors T, C, and R that are low in the number of citations, are still rewarded more than other more cited authors in terms of credit.
-This is because, even if the tuples of these authors received fewer citations, they still received more credit than other more cited tuples. This shows how credit can be an effective new method to use together with traditional citations to reward curators, highlighting aspects that are lost using the traditional bibliometrics.
+Credit presents a different behavior from one of the citations, and each form of credit, i.e., the credit obtained from the different DS, behaves differently from the others.
+For example, it appears that authors T, C, and R that are low in the number of citations are still rewarded more than other more cited authors in terms of credit.
+Even if the tuples of these authors received fewer citations, they still received more credit than other more cited tuples. This shows how credit can be an effective new method to use together with traditional citations to reward curators, highlighting aspects lost using the traditional bibliometrics.
 
-The three DS are all effective ways to distribute credit and there is not one distribution that is preferable to the other all the time. It all depends on the needs of the users. 
-Lineage is to be preferred when users only want to see the tuples used in queries and to reward more the tuples that are used in many queries. It only rewards based on the \emph{presence} of the tuples. 
-Why-provenance is more versatile when users also want to take into consideration how many ways a tuple is used, thus, in a way, its \emph{versatility} inside the queries that used it.
+The three DS are all effective ways to distribute credit, and there is not one distribution that is preferable to the other all the time. It all depends on the needs of the users. 
+Lineage is to be preferred when users only want to see the tuples used in queries and reward more the tuples used in many queries. It only rewards based on the \emph{presence} of the tuples. 
+Why-provenance is more versatile when users also want to consider how many ways a tuple is used; thus, in a way, its \emph{versatility} inside the queries that used it.
 Finally, how-provenance also counts how many times a tuple is used, its \emph{frequency} in the computation of a query. 

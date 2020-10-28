@@ -2,15 +2,15 @@
 \label{section:distribution_strategies}
 
 \subsection{Data Credit and Data Credit Distribution}
-Given a database instance $I$, a \emph{recipient of credit} corresponds to a unit of information within the same database. In the case of relational databases, recipients may be (i) the whole database itself; (ii) a tuple; (iii) a table; (iv) an attribute.
+Given a database instance $I$, a \emph{recipient of credit} corresponds to a unit of information within the same database. In the case of relational databases, recipients may be (i) the whole database itself; (ii) a table; (iii) a tuple; (iv) an attribute.
 
-As already defined in \citep{dosso2020data}, \emph{data credit} is a value $k \in \mathbb{R}_{>0}$ used to represent the value of a recipient in a database. 
-Every recipient in a database is annotated with a given quantity of credit, a proxy for its importance in a certain context. In this paper, we focus on tuples as recipients of credit. 
+\emph{Data credit} is a value $k \in \mathbb{R}_{>0}$ used to represent the value of a recipient in a database. 
+Every recipient in a database is annotated with a given quantity of credit, as a proxy for its importance in a certain context. In this paper, we focus on tuples as recipients of credit. 
 
-\emph{Data Credit Distributions} (DCD) considers a database instance $I$, a certain quantity of credit $k$ (here, without loss of generality, considered as given), and a query $Q$ producing a result set $Q(I)$.  
-DCD consists in defining a function, here called \emph{distribution strategy} (DS), to split credit into portions to be assigned to the tuples in $I$.
+\emph{Data Credit Distributions} (DCD) considers a database instance $I$, a certain quantity of credit $k$ (here, without loss of generality, deemed to be given), and a query $Q$ producing a result set $Q(I)$.  
+DCD consists of defining a function, i.e., a \emph{distribution strategy} (DS), to split credit into portions to be assigned to the tuples in $I$.
 
-In the following we used some of the notation in \citep{CheneyProvSurvey}: a \emph{tuple location} is defined as a tuple in one relation of $I$, tagged with its name. It is indicated with $(R, t)$, where $R$ is the relation in the database, and $t$ is the tuple in $R$. With reference to the running example, \texttt{(family, $\langle f_1$, Dopamine Receptors, gpcr$\rangle$)} is the tuple location of the first tuple in the \texttt{family} relation.  The set of all the tuple locations in $I$ is called \emph{TupleLoc}.
+In the following, we follow the notation given by \cite{CheneyProvSurvey}: a \emph{tuple location} is defined as a tuple in one relation of $I$, tagged with its name. It is indicated with $(R, t)$, where $R$ is the relation in the database, and $t$ is the tuple in $R$. With reference to the running example, \texttt{(family, $\langle f_1$, Dopamine Receptors, gpcr$\rangle$)} is the tuple location of the first tuple in the \texttt{family} relation.  The set of all the tuple locations in $I$ is called \emph{TupleLoc}.
 The following is the definition of DCD at \emph{tuple level}. We refer to the level of tuple because the credit is annotated to tuples.
 
 \begin{definition}
@@ -28,7 +28,7 @@ With the information provided by the lineage, we defined the following DS:
 \begin{definition}{Lineage-based Distribution Strategy}~\citep{dosso2020data}
     \label{def:lineage_ds}\\
     Let $I$ be a database instance, $Q$ a query over $I$, $o \in Q(I)$ an output tuple and $k$ the credit associated to $o$.
-    Let $L$ be the lineage of $o$ and $t$ be a generic tuple in $I$. $t$ receives a credit equal to:
+    Let $L$ be the lineage of $o$ and $t$ be a generic tuple in $I$, then $t$ receives a credit equal to:
     \begin{equation*}
         f_{I, Q}(t, k) =  \begin{cases}
          0 & \mbox{if $t \notin L$} \\
@@ -48,26 +48,26 @@ With the information provided by the lineage, we defined the following DS:
 %\end{array}{}
 %\]
 
-The DS is defined for one tuple of the output. Therefore, to perform credit distribution for a whole set of output tuples, it is necessary to first divide the credit to each tuple in the output, and then compute the distribution for each one of them.
+The DS is defined for one tuple of the output. Therefore, to perform credit distribution for a whole set of output tuples, it is necessary to first divide the credit to each tuple in the output and then compute the distribution for each one of them.
 In this paper, we assume that each output tuple carries credit equal to 1. 
-This lineage-based DS distributes credit only among tuples that have a role, whichever it is, in the creation of $o$ by the query $Q$. Each of them receives an equal share of the credit. The more the tuples in a lineage set, the less the quantity of credit each of them receives. 
+This lineage-based DS distributes credit only among tuples that have a role, whichever it is, in creating $o$ by the query $Q$. Each of them receives an equal share of the credit. The more the tuples in a lineage set, the less the credit every single tuple receives. 
 
 
 As an example, consider the output tuples of Table \ref{table:result}.
 Each output tuple has credit $k = 1$.
-The lineage of the first tuple is the set $\{f_1, c2f_1, c_1, c2f_2, c_2\}$. Therefore, each tuple in this set receives credit $1/5$. The other tuples of the database receive credit 0.
-The lineage of the second output tuple is $\{ f_4, c2f_4, c_1\}$, therefore each of these tuples receives credit $1/3$ in this case.
+The lineage of the first tuple is the set $\{f_1, c2f_1, c_1, c2f_2, c_2\}$. Therefore, each tuple in this set receives credit $1/5$. The other tuples of the database receive zero credit.
+The lineage of the second output tuple is $\{ f_4, c2f_4, c_1\}$, therefore each of these tuples receives credit $1/3$.
 
-At the end of the process of distribution over the whole output, tuples $f_1, c2f_2, c_2$ all have credit $1/5$, tuples $f_4$ and $c2f_4$ have credit $1/3$, while tuple $c_1$ has credit $8/15$.  
-If one tuple appears in more than one lineage set, it will accumulate the credit from the distribution associated with each one of these sets, implying its bigger relevance in the context of the considered query, as is the case with $c_1$ in this example.
+At the end of the process, tuples $f_1, c2f_2, c_2$ receive credit $1/5$ each, tuples $f_4$ and $c2f_4$ receive $1/3$, while tuple $c_1$ receive $8/15$.  
+Suppose one tuple appears in more than one lineage set. In that case, it will accumulate credit from the distribution associated with each one of these sets, implying its more significant relevance in the context of the considered query, as is the case with $c_1$ in this example.
  
 Not all of the tuples of the lineage of $o_1$ are necessary at the same time for the generation of the tuple. 
 If the database only had the set of  tuples $\{f_1, c2f_1, c_1\}$ or the set $\{f_1, c2f_2, c_2\}$, its existence would still be guaranteed. 
-In other words, only one among the couples of tuples $\langle c2f_1, c_1 \rangle$ and $\langle c2f_2, c_2 \rangle$ is really necessary, while $f_1$ is absolutely mandatory. 
-One could argue that it would be fairer for $f_1$ to receive more credit than the other four tuples, given its role in the production of $o_1$.  
+In other words, only one among the couples of tuples $\langle c2f_1, c_1 \rangle$ and $\langle c2f_2, c_2 \rangle$ is required, while $f_1$ is always needed. 
+One could argue that it would be fairer for $f_1$ to receive more credit than the other four tuples, given its role in producing $o_1$.  
 
-This highlights one limitation of the DS based on lineage: while able to find all and only the relevant tuples of the output, it is unable to distinguish the \emph{importance} of tuples in the query computations. 
-This information could be incorporated in the definition of a DS in order to distribute credit based on the actual role that tuples play in the computation. 
+This highlights one limitation of the DS based on lineage: while able to find all and only the relevant tuples of the output, it cannot distinguish the \emph{importance} of tuples in the query computations. 
+This information could be incorporated in the definition of a DS to distribute credit based on the actual role that tuples play in the computation. 
 
 For this reason, we present in this paper more sophisticated forms of Distribution Strategies, based on the other two provenances discussed above.
 
@@ -77,13 +77,15 @@ For this reason, we present in this paper more sophisticated forms of Distributi
         \label{def:why_distribution}
     Let $I$ be a database instance, $Q$ a query over $I$, $o \in Q(I)$ an output tuple and $k$ the total credit associated to $o$. Let $t$ be a generic tuple in $I$.
     Let us call $\mathcal{W} = Why(Q, I, o)$ the witness basis of $o$ according to $Q$ and $I$, where $W \in \mathcal{W}$ is a generic witness. 
-    Let us call $\gamma(\mathcal{W}, t): (\mathcal{W}, t) \mapsto \mathcal{P}(\mathcal{P}(TupleLoc))$ the function which returns the set of all the witnesses $W \in \mathcal{W}$ such that $t \in W$. The tuple $t$ receives a credit equal to:
+    Let us call $\gamma(\mathcal{W}, t): (\mathcal{W}, t) \mapsto \mathcal{P}(\mathcal{P}(TupleLoc))$ the function that returns the set 
+    $\{W \in \mathcal{W} : t \in W\}$.
+    % of all the witnesses $W \in \mathcal{W}$ such that $t \in W$. 
+    The tuple $t$ receives a credit equal to:
     \begin{equation*}
         f_{I, Q}(t, k) =
             \frac{k}{|\mathcal{W}|}\sum_{W \in \gamma(\mathcal{W}, t)}\frac{1}{|W|}
     \end{equation*}
 \end{definition}
-
 %We now prove that this set of functions is a Distribution Strategy. As we can see, with abuse of language we use $t \notin \mathcal{W}$ to indicate the input tuples $t$ that are not present in any witness.
 %\[
 %\begin{array}{rl}
@@ -94,7 +96,6 @@ For this reason, we present in this paper more sophisticated forms of Distributi
 %                    & = k
 %\end{array}
 %\]
-
 This strategy first equally distributes the credit among the witnesses of the witness basis then, successively, it further equally divides the credit among the tuples in a witness. 
 Since one tuple may appear in more than one witness, it will receive more than one portion of credit from the same distribution. 
 
@@ -151,8 +152,8 @@ Going back to the example of Table \ref{table:result_how_prov}, consider $o_1$, 
 Since in our example each variable has exponent $1$, the credit is further divided equally among the three variables. Thus, at the end of the computation, $f_1$ receives $1/3$, the other tuples receive $1/6$.
 If, for example, the first monomial was $f_1^2 c2f_1 c_1$, then the portion of credit of this monomial would be divided in this way: $1/2$ to $f_1$ and $1/4$ to each of the other two tuples. 
 
-One may observe that, in this example, the how-provenance-based distribution has the same outcome of the strategy based on why-provenance. Consequently, one may ask if there is a significant difference between the two strategies. 
-As an example consider this new query \texttt{Q2}, that asks for the families of type gpcr that have as contributor a researcher localized in the UK from GtoPdb:
+In this specific example, the how-provenance-based distribution has the same outcome of the strategy based on why-provenance. %Consequently, one may ask if there is a significant difference between the two strategies. 
+Thus, let us consider this new query \texttt{Q2}, that asks for the families of type \texttt{gpcr} that have as contributor a researcher localized in the UK from GtoPdb:
 \begin{verbatim}
 	Q2: SELECT DISTINCT F.name 
 	FROM family as F JOIN
@@ -180,8 +181,8 @@ As an example consider this new query \texttt{Q2}, that asks for the families of
   \label{table:difference_result}
 \end{table}
 
-Table \ref{table:difference_result} presents the result, composed of one tuple, annotated with the three provenances. As can be seen, lineage and why-provenance are identical to the ones of the tuple $o_1$ in the previous example. 
-The how-provenance is different since tuple $t_1$ is used twice: firstly in the join of the inner query, secondly in the join of the outer query. This information is lost in the first two provenances since they are sets, but it is maintained in the how-provenance through the use of the operator `$\cdot$'.
+Table \ref{table:difference_result} presents the result, composed of one tuple, annotated with the three provenances. As can be seen, lineage and why-provenance are identical to those of the tuple $o_1$ in the previous example. 
+The how-provenance is different since tuple $f_1$ is used twice: firstly, in the join of the inner query, secondly in the join of the outer query. This information is lost in the first two provenances since they are sets, but it is maintained in the how-provenance through the use of the operator `$\cdot$'.
 
 \begin{figure}[]
   \includegraphics[width=\textwidth]{figures/how_distribution}
@@ -191,7 +192,7 @@ The how-provenance is different since tuple $t_1$ is used twice: firstly in the 
 
 
 Figure \ref{figure:distributions_differences} shows the differences between the three DS for the tuple $o_1$ of Table \ref{table:difference_result}. In subfigure \ref{table:difference_result}.a we used lineage, in sub-figure \ref{table:difference_result}.b we used why-provenance, and in sub-figure \ref{table:difference_result}.c we used how-provenance. 
-The DS based on the provenance polynomial gives credit $1/2$ to $f_1$, and $1/8$ to the other tuples, as can be seen.
+The DS based on the provenance polynomial gives credit $1/2$ to $f_1$, and $1/8$ to the other tuples.
 This is reasonable since \texttt{Q2} utilizes $f_1$ even more than \texttt{Q1}. 
-The distribution based on how-provenance can reward $f_1$ more, proving that how-provenance is even more sensitive to the role of the tuples in a query than why-provenance, while in this case, the why-provenance is not sensible to this difference. 
+The distribution based on how-provenance can reward $f_1$ more, proving that how-provenance is even more sensitive to the tuples' role in a query than why-provenance. In this case, the why-provenance is not sensible to this difference. 
 This is somehow a direct consequence of the fact that, as demonstrated in \citep{howProvenanceGreen}, how-provenance is more general than why-provenance and lineage, in the sense that it contains more information. 
