@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.10.23)  28 OCT 2020 19:15
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.10.23)  28 OCT 2020 19:22
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1366,23 +1366,23 @@ File: figures/how_distribution.pdf Graphic file (type pdf)
 Package pdftex.def Info: figures/how_distribution.pdf  used on input line 188.
 (pdftex.def)             Requested size: 415.12572pt x 99.02528pt.
 ) [15] (./section/experiments.tex
-<figures/paper_based_comparison.png, id=775, 1807.75375pt x 1391.1975pt>
+<figures/paper_based_comparison.png, id=775, 1807.75375pt x 1396.21625pt>
 File: figures/paper_based_comparison.png Graphic file (type png)
 <use figures/paper_based_comparison.png>
 Package pdftex.def Info: figures/paper_based_comparison.png  used on input line 5.
-(pdftex.def)             Requested size: 415.12572pt x 319.45923pt.
+(pdftex.def)             Requested size: 415.12572pt x 320.61168pt.
  [16 <./figures/how_distribution.pdf>] [17 <./figures/paper_based_comparison.png>]
-<figures/synthetic_queries.png, id=936, 1819.79875pt x 1392.20125pt>
+<figures/synthetic_queries.png, id=936, 1823.81375pt x 1387.1825pt>
 File: figures/synthetic_queries.png Graphic file (type png)
 <use figures/synthetic_queries.png>
 Package pdftex.def Info: figures/synthetic_queries.png  used on input line 100.
-(pdftex.def)             Requested size: 415.12572pt x 317.56538pt.
+(pdftex.def)             Requested size: 415.12572pt x 315.74326pt.
  [18]
-<figures/synthetic_polynomials_2.png, id=946, 1814.78pt x 1508.63625pt>
+<figures/synthetic_polynomials_2.png, id=946, 1814.78pt x 1392.20125pt>
 File: figures/synthetic_polynomials_2.png Graphic file (type png)
 <use figures/synthetic_polynomials_2.png>
 Package pdftex.def Info: figures/synthetic_polynomials_2.png  used on input line 130.
-(pdftex.def)             Requested size: 415.12572pt x 345.09142pt.
+(pdftex.def)             Requested size: 415.12572pt x 318.45761pt.
  [19 <./figures/synthetic_queries.png>] [20 <./figures/synthetic_polynomials_2.png>]
 
 LaTeX Warning: No positions in optional float specifier.
@@ -1393,7 +1393,7 @@ File: figures/radar_top_synthetic_enhanced.pdf Graphic file (type pdf)
 <use figures/radar_top_synthetic_enhanced.pdf>
 Package pdftex.def Info: figures/radar_top_synthetic_enhanced.pdf  used on input line 188.
 (pdftex.def)             Requested size: 332.10184pt x 255.18813pt.
-[21 <./figures/radar_top_synthetic_enhanced.pdf>]) (./section/conclusions.tex) [22] (/Users/dennisdosso/Dropbox/paper di Dennis/IN CORSO/2020_PeerJ_Credit/2020_PeerJ_Credit/.texpadtmp/CreditDistribution_2020.bbl [23]
+) [21 <./figures/radar_top_synthetic_enhanced.pdf>] (./section/conclusions.tex) [22] (/Users/dennisdosso/Dropbox/paper di Dennis/IN CORSO/2020_PeerJ_Credit/2020_PeerJ_Credit/.texpadtmp/CreditDistribution_2020.bbl [23]
 Underfull \hbox (badness 5681) in paragraph at lines 235--240
 []\OT1/ptm/m/n/10 (+20) Martone, M. (2014).  Joint dec-la-ra-tion of data ci-ta-tion prin-ci-ples.  \OT1/ptm/m/it/10 (+20) FORCE11. San
  []
@@ -1427,7 +1427,7 @@ Here is how much of TeX's memory you used:
  1141 hyphenation exceptions out of 8191
  47i,18n,77p,1095b,1014s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/rsfs/rsfs10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/symbol/usyr.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/symbol/usyr.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on "/Users/dennisdosso/Dropbox/paper di Dennis/IN CORSO/2020_PeerJ_Credit/2020_PeerJ_Credit/.texpadtmp/CreditDistribution_2020.pdf" (25 pages, 1363076 bytes).
+Output written on "/Users/dennisdosso/Dropbox/paper di Dennis/IN CORSO/2020_PeerJ_Credit/2020_PeerJ_Credit/.texpadtmp/CreditDistribution_2020.pdf" (25 pages, 1363755 bytes).
 PDF statistics:
  1107 PDF objects out of 1200 (max. 8388607)
  968 compressed objects within 10 object streams
