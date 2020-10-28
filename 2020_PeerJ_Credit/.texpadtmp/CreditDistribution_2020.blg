@@ -1,6 +1,6 @@
 This is BibTeX, Version 0.99d (TeX Live 2019)
 Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
-The top-level auxiliary file: /Users/dennisdosso/Dropbox/paper/2020_PeerJ_Credit/2020_PeerJ_Credit/.texpadtmp/CreditDistribution_2020.aux
+The top-level auxiliary file: /Users/dennisdosso/Dropbox/paper di Dennis/IN CORSO/2020_PeerJ_Credit/2020_PeerJ_Credit/.texpadtmp/CreditDistribution_2020.aux
 The style file: apalike.bst
 Database file #1: ../ultimateBibliographyBib.bib
 You're missing a field name---line 1252 of file ../ultimateBibliographyBib.bib
@@ -39,45 +39,45 @@ Warning--empty journal in bertin2011million
 Warning--empty publisher in CODATA2013
 Name 5 in "Peters, I. and Kraker, P. and Lex, E. and Gumpenberger, C. and Gorraiz, J.," has a comma at the end for entry Peters2016
 while executing---line 1098 of file apalike.bst
-You've used 58 entries,
+You've used 56 entries,
             1935 wiz_defined-function locations,
-            846 strings with 16678 characters,
-and the built_in function-call counts, 27910 in all, are:
-= -- 2620
-> -- 1629
-< -- 31
-+ -- 607
-- -- 587
-* -- 2590
-:= -- 4906
-add.period$ -- 177
-call.type$ -- 58
-change.case$ -- 578
-chr.to.int$ -- 58
-cite$ -- 60
-duplicate$ -- 895
-empty$ -- 1671
-format.name$ -- 655
-if$ -- 5307
+            836 strings with 16275 characters,
+and the built_in function-call counts, 27229 in all, are:
+= -- 2553
+> -- 1604
+< -- 30
++ -- 599
+- -- 579
+* -- 2534
+:= -- 4782
+add.period$ -- 171
+call.type$ -- 56
+change.case$ -- 564
+chr.to.int$ -- 56
+cite$ -- 58
+duplicate$ -- 868
+empty$ -- 1623
+format.name$ -- 645
+if$ -- 5178
 int.to.chr$ -- 1
 int.to.str$ -- 0
-missing$ -- 58
-newline$ -- 289
-num.names$ -- 178
-pop$ -- 512
+missing$ -- 56
+newline$ -- 279
+num.names$ -- 172
+pop$ -- 501
 preamble$ -- 1
-purify$ -- 580
+purify$ -- 566
 quote$ -- 0
-skip$ -- 680
+skip$ -- 659
 stack$ -- 0
-substring$ -- 1751
-swap$ -- 120
+substring$ -- 1708
+swap$ -- 118
 text.length$ -- 9
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 344
+type$ -- 332
 warning$ -- 2
-while$ -- 209
+while$ -- 203
 width$ -- 0
-write$ -- 747
+write$ -- 722
 (There were 9 error messages)

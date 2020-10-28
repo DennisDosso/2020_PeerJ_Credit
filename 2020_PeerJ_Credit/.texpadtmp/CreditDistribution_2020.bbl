@@ -137,12 +137,6 @@ Davidson, S.~B., Deutch, D., Milo, T., and Silvello, G. (2017).
 \newblock In {\em {CIDR} 2017, 8th Biennial Conference on Innovative Data
   Systems Research}. www.cidrdb.org.
 
-\bibitem[Dosso et~al., 2020]{dosso2020prov}
-Dosso, D., Davidson, S.~B., and Silvello, G. (2020).
-\newblock Data provenance for attributes: Attribute lineage.
-\newblock {\em Proceedings of ProvWeek 2020, 12th Workshop on Theory and
-  Practice of Provenance (TaPP 2020)}.
-
 \bibitem[Dosso and Silvello, 2020]{dosso2020data}
 Dosso, D. and Silvello, G. (2020).
 \newblock Data credit distribution: A new method to estimate databases impact.
@@ -236,13 +230,6 @@ Lawrence, B., Jones, C., Matthews, B., Pepler, S., and Callaghan, S. (2011).
 \newblock {Citation and Peer Review of Data: Moving Towards Formal Data
   Publication}.
 \newblock {\em {International Journal of Digital Curation}}, 6(2):4--37.
-
-\bibitem[Lynch, 2001]{lynch2001documents}
-Lynch, C.~A. (2001).
-\newblock When documents deceive: Trust and provenance as new factors for
-  information retrieval in a tangled web.
-\newblock {\em Journal of the American Society for Information Science and
-  Technology}, 52(1):12--17.
 
 \bibitem[Martone, 2014]{martone2014joint}
 Martone, M. (2014).

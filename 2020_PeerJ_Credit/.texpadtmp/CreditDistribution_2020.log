@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.10.23)  26 OCT 2020 11:48
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.10.23)  28 OCT 2020 19:15
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1044,7 +1044,7 @@ Package: blindtext 2012/01/06 V2.0 blindtext-Package
 \c@blind@pangrammax=\count348
 ))
 \c@definition=\count349
-) (./title.tex) (./abstract.tex) (/Users/dennisdosso/Dropbox/paper/2020_PeerJ_Credit/2020_PeerJ_Credit/.texpadtmp/CreditDistribution_2020.aux)
+) (./title.tex) (./abstract.tex) (/Users/dennisdosso/Dropbox/paper di Dennis/IN CORSO/2020_PeerJ_Credit/2020_PeerJ_Credit/.texpadtmp/CreditDistribution_2020.aux)
 \openout1 = `CreditDistribution_2020.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 15.
@@ -1169,7 +1169,7 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 15.
 LaTeX Info: Redefining \pageref on input line 15.
 LaTeX Info: Redefining \nameref on input line 15.
- (/Users/dennisdosso/Dropbox/paper/2020_PeerJ_Credit/2020_PeerJ_Credit/.texpadtmp/CreditDistribution_2020.out) (/Users/dennisdosso/Dropbox/paper/2020_PeerJ_Credit/2020_PeerJ_Credit/.texpadtmp/CreditDistribution_2020.out)
+ (/Users/dennisdosso/Dropbox/paper di Dennis/IN CORSO/2020_PeerJ_Credit/2020_PeerJ_Credit/.texpadtmp/CreditDistribution_2020.out) (/Users/dennisdosso/Dropbox/paper di Dennis/IN CORSO/2020_PeerJ_Credit/2020_PeerJ_Credit/.texpadtmp/CreditDistribution_2020.out)
 \@outlinefile=\write3
 \openout3 = `CreditDistribution_2020.out'.
 
@@ -1267,26 +1267,26 @@ LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <12> not available
 (Font)              Font shape `OT1/phv/b/n' tried instead on input line 23.
  (./section/introduction.tex [2]
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <8> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 43.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 34.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <5> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 43.
-LaTeX Font Info:    Try loading font information for TS1+ptm on input line 68.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 34.
+LaTeX Font Info:    Try loading font information for TS1+ptm on input line 57.
  (/usr/local/texlive/2019/texmf-dist/tex/latex/psnfss/ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 )
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 74.
+               Default added (so using `tbp') on input line 63.
 
-<figures/overview.pdf, id=195, 1162.3425pt x 694.595pt>
+<figures/overview.pdf, id=193, 1162.3425pt x 694.595pt>
 File: figures/overview.pdf Graphic file (type pdf)
 <use figures/overview.pdf>
-Package pdftex.def Info: figures/overview.pdf  used on input line 76.
+Package pdftex.def Info: figures/overview.pdf  used on input line 65.
 (pdftex.def)             Requested size: 352.85939pt x 210.86018pt.
 LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <9> not available
-(Font)              Font shape `OT1/phv/b/n' tried instead on input line 86.
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 78.
 [3] [4 <./figures/overview.pdf>]
-LaTeX Font Info:    Try loading font information for OT1+pcr on input line 114.
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 99.
  (/usr/local/texlive/2019/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
@@ -1295,131 +1295,123 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 ) (./section/related.tex [5]
-Overfull \hbox (22.9746pt too wide) in paragraph at lines 33--33
+Overfull \hbox (22.9746pt too wide) in paragraph at lines 31--31
 [][][][]$\OT1/pcr/m/n/8 https : / / medicine . missouri . edu / centers-[]institutes-[]labs / center-[]for-[]biomedical-[]informatics$[]| 
  []
 
-[6] [7] [8]) (./section/use_case.tex
+[6] [7]) (./section/use_case.tex
 
 LaTeX Warning: No positions in optional float specifier.
                Default added (so using `tbp') on input line 4.
 
-<figures/iuphar_schema.pdf, id=509, 1071.00125pt x 737.75626pt>
+<figures/iuphar_schema.pdf, id=472, 1071.00125pt x 737.75626pt>
 File: figures/iuphar_schema.pdf Graphic file (type pdf)
 <use figures/iuphar_schema.pdf>
 Package pdftex.def Info: figures/iuphar_schema.pdf  used on input line 6.
 (pdftex.def)             Requested size: 373.61061pt x 257.363pt.
+[8]
 
 LaTeX Warning: No positions in optional float specifier.
                Default added (so using `tbp') on input line 20.
 
-<figures/family_structure.pdf, id=518, 1182.4175pt x 735.74875pt>
+<figures/family_structure.pdf, id=492, 1182.4175pt x 735.74875pt>
 File: figures/family_structure.pdf Graphic file (type pdf)
 <use figures/family_structure.pdf>
 Package pdftex.def Info: figures/family_structure.pdf  used on input line 22.
 (pdftex.def)             Requested size: 415.12572pt x 258.30177pt.
-[9] [10 <./figures/iuphar_schema.pdf> <./figures/family_structure.pdf>]
+[9 <./figures/iuphar_schema.pdf>]
 
 LaTeX Warning: No positions in optional float specifier.
                Default added (so using `tbp') on input line 50.
 
-) (./section/preliminaries.tex
+) (./section/preliminaries.tex [10 <./figures/family_structure.pdf>]
 Overfull \hbox (10.87428pt too wide) in paragraph at lines 11--11
 []\OT1/pcr/m/n/10 FROM family AS f JOIN contributor2family AS c2f ON f.id = c2f.family_id[] 
  []
 
-
-Overfull \hbox (7.11856pt too wide) in paragraph at lines 37--40
-[]\OT1/ptm/m/n/10 (-20) Using the ids of the sin-gle tu-ples to iden-tify them, for tu-ple $\OML/ztmcm/m/it/10 o[]$ \OT1/ptm/m/n/10 (-20) the lin-eage is the set $\OMS/ztmcm/m/n/10 f\OML/ztmcm/m/it/10 f[]; c\OT1/ztmcm/m/n/10 2\OML/ztmcm/m/it/10 f[]; c[]; c\OT1/ztmcm/m/n/10 2\OML/ztmcm/m/it/10 f[]; c[]\OMS/ztmcm/m/n/10 g$\OT1/ptm/m/n/10 (-20) ,
- []
-
-[11] [12]
+[11]
 
 LaTeX Warning: No positions in optional float specifier.
                Default added (so using `tbp') on input line 152.
 
-) (./section/methods.tex
+) (./section/methods.tex [12]
 LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <10> not available
 (Font)              Font shape `OT1/ptm/b/it' tried instead on input line 17.
  [13]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 101.
+               Default added (so using `tbp') on input line 102.
 
-<figures/why_distribution.pdf, id=661, 553.06625pt x 368.37625pt>
+<figures/why_distribution.pdf, id=639, 553.06625pt x 368.37625pt>
 File: figures/why_distribution.pdf Graphic file (type pdf)
 <use figures/why_distribution.pdf>
-Package pdftex.def Info: figures/why_distribution.pdf  used on input line 103.
+Package pdftex.def Info: figures/why_distribution.pdf  used on input line 104.
 (pdftex.def)             Requested size: 186.8053pt x 124.41998pt.
-[14]
-Overfull \hbox (10.87428pt too wide) in paragraph at lines 160--160
+[14 <./figures/why_distribution.pdf>]
+Overfull \hbox (10.87428pt too wide) in paragraph at lines 161--161
 []\OT1/pcr/m/n/10 FROM family AS f JOIN contributor2family AS c2f ON f.id = c2f.family_id[] 
  []
 
-[15 <./figures/why_distribution.pdf>]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 166.
+               Default added (so using `tbp') on input line 167.
 
-
-LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 186.
-
-<figures/how_distribution.pdf, id=788, 1666.225pt x 397.485pt>
-File: figures/how_distribution.pdf Graphic file (type pdf)
-<use figures/how_distribution.pdf>
-Package pdftex.def Info: figures/how_distribution.pdf  used on input line 187.
-(pdftex.def)             Requested size: 415.12572pt x 99.02528pt.
-) (./section/experiments.tex
-<figures/paper_based_comparison.png, id=796, 1807.75375pt x 1392.20125pt>
-File: figures/paper_based_comparison.png Graphic file (type png)
-<use figures/paper_based_comparison.png>
-Package pdftex.def Info: figures/paper_based_comparison.png  used on input line 5.
-(pdftex.def)             Requested size: 415.12572pt x 319.68971pt.
- [16 <./figures/how_distribution.pdf>] [17 <./figures/paper_based_comparison.png>]
-<figures/synthetic_queries.png, id=959, 1807.75375pt x 1392.20125pt>
-File: figures/synthetic_queries.png Graphic file (type png)
-<use figures/synthetic_queries.png>
-Package pdftex.def Info: figures/synthetic_queries.png  used on input line 100.
-(pdftex.def)             Requested size: 415.12572pt x 319.68971pt.
- [18] [19 <./figures/synthetic_queries.png>]
-<figures/synthetic_polynomials_2.png, id=975, 1814.78pt x 1392.20125pt>
-File: figures/synthetic_polynomials_2.png Graphic file (type png)
-<use figures/synthetic_polynomials_2.png>
-Package pdftex.def Info: figures/synthetic_polynomials_2.png  used on input line 130.
-(pdftex.def)             Requested size: 415.12572pt x 318.45761pt.
- [20 <./figures/synthetic_polynomials_2.png>]
 
 LaTeX Warning: No positions in optional float specifier.
                Default added (so using `tbp') on input line 187.
 
-<figures/radar_top_synthetic_enhanced.pdf, id=984, 463.7325pt x 356.33125pt>
+<figures/how_distribution.pdf, id=754, 1666.225pt x 397.485pt>
+File: figures/how_distribution.pdf Graphic file (type pdf)
+<use figures/how_distribution.pdf>
+Package pdftex.def Info: figures/how_distribution.pdf  used on input line 188.
+(pdftex.def)             Requested size: 415.12572pt x 99.02528pt.
+) [15] (./section/experiments.tex
+<figures/paper_based_comparison.png, id=775, 1807.75375pt x 1391.1975pt>
+File: figures/paper_based_comparison.png Graphic file (type png)
+<use figures/paper_based_comparison.png>
+Package pdftex.def Info: figures/paper_based_comparison.png  used on input line 5.
+(pdftex.def)             Requested size: 415.12572pt x 319.45923pt.
+ [16 <./figures/how_distribution.pdf>] [17 <./figures/paper_based_comparison.png>]
+<figures/synthetic_queries.png, id=936, 1819.79875pt x 1392.20125pt>
+File: figures/synthetic_queries.png Graphic file (type png)
+<use figures/synthetic_queries.png>
+Package pdftex.def Info: figures/synthetic_queries.png  used on input line 100.
+(pdftex.def)             Requested size: 415.12572pt x 317.56538pt.
+ [18]
+<figures/synthetic_polynomials_2.png, id=946, 1814.78pt x 1508.63625pt>
+File: figures/synthetic_polynomials_2.png Graphic file (type png)
+<use figures/synthetic_polynomials_2.png>
+Package pdftex.def Info: figures/synthetic_polynomials_2.png  used on input line 130.
+(pdftex.def)             Requested size: 415.12572pt x 345.09142pt.
+ [19 <./figures/synthetic_queries.png>] [20 <./figures/synthetic_polynomials_2.png>]
+
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `tbp') on input line 186.
+
+<figures/radar_top_synthetic_enhanced.pdf, id=961, 463.7325pt x 356.33125pt>
 File: figures/radar_top_synthetic_enhanced.pdf Graphic file (type pdf)
 <use figures/radar_top_synthetic_enhanced.pdf>
-Package pdftex.def Info: figures/radar_top_synthetic_enhanced.pdf  used on input line 189.
+Package pdftex.def Info: figures/radar_top_synthetic_enhanced.pdf  used on input line 188.
 (pdftex.def)             Requested size: 332.10184pt x 255.18813pt.
-) [21] (./section/conclusions.tex [22 <./figures/radar_top_synthetic_enhanced.pdf>]) (/Users/dennisdosso/Dropbox/paper/2020_PeerJ_Credit/2020_PeerJ_Credit/.texpadtmp/CreditDistribution_2020.bbl [23]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [24]
-Underfull \hbox (badness 5681) in paragraph at lines 248--253
+[21 <./figures/radar_top_synthetic_enhanced.pdf>]) (./section/conclusions.tex) [22] (/Users/dennisdosso/Dropbox/paper di Dennis/IN CORSO/2020_PeerJ_Credit/2020_PeerJ_Credit/.texpadtmp/CreditDistribution_2020.bbl [23]
+Underfull \hbox (badness 5681) in paragraph at lines 235--240
 []\OT1/ptm/m/n/10 (+20) Martone, M. (2014).  Joint dec-la-ra-tion of data ci-ta-tion prin-ci-ples.  \OT1/ptm/m/it/10 (+20) FORCE11. San
  []
 
 
-Underfull \hbox (badness 4556) in paragraph at lines 248--253
+Underfull \hbox (badness 4556) in paragraph at lines 235--240
 \OT1/ptm/m/it/10 (+20) Diego CA. Data Ci-ta-tion Syn-the-sis Group. doi: https://doi.org/10.25490/a97f-egyk, url:
  []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [25]) 
+ [24]) 
 AED: lastpage setting LastPage
-[26]
+[25]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 42.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 42.
- (/Users/dennisdosso/Dropbox/paper/2020_PeerJ_Credit/2020_PeerJ_Credit/.texpadtmp/CreditDistribution_2020.aux)
+ (/Users/dennisdosso/Dropbox/paper di Dennis/IN CORSO/2020_PeerJ_Credit/2020_PeerJ_Credit/.texpadtmp/CreditDistribution_2020.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 42.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 42.
 Package rerunfilecheck Info: File `CreditDistribution_2020.out' has not changed.
@@ -1427,18 +1419,18 @@ Package rerunfilecheck Info: File `CreditDistribution_2020.out' has not changed.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 42.
  ) 
 Here is how much of TeX's memory you used:
- 28861 strings out of 492616
- 518248 string characters out of 6129480
- 728998 words of memory out of 5000000
- 31866 multiletter control sequences out of 15000+600000
- 608202 words of font info for 353 fonts, out of 8000000 for 9000
+ 28844 strings out of 492616
+ 518228 string characters out of 6129480
+ 727846 words of memory out of 5000000
+ 31860 multiletter control sequences out of 15000+600000
+ 607687 words of font info for 347 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 47i,18n,77p,982b,1038s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 47i,18n,77p,1095b,1014s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/rsfs/rsfs10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/symbol/usyr.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/symbol/usyr.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on /Users/dennisdosso/Dropbox/paper/2020_PeerJ_Credit/2020_PeerJ_Credit/.texpadtmp/CreditDistribution_2020.pdf (26 pages, 1313430 bytes).
+Output written on "/Users/dennisdosso/Dropbox/paper di Dennis/IN CORSO/2020_PeerJ_Credit/2020_PeerJ_Credit/.texpadtmp/CreditDistribution_2020.pdf" (25 pages, 1363076 bytes).
 PDF statistics:
- 1135 PDF objects out of 1200 (max. 8388607)
- 995 compressed objects within 10 object streams
- 149 named destinations out of 1000 (max. 500000)
+ 1107 PDF objects out of 1200 (max. 8388607)
+ 968 compressed objects within 10 object streams
+ 147 named destinations out of 1000 (max. 500000)
  55506 words of extra memory for PDF output out of 61914 (max. 10000000)
 
