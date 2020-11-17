@@ -1,6 +1,6 @@
 This is BibTeX, Version 0.99d (TeX Live 2019)
 Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
-The top-level auxiliary file: /Users/dennisdosso/Dropbox/paper di Dennis/IN CORSO/2020_PeerJ_Credit/2020_PeerJ_Credit/.texpadtmp/CreditDistribution_2020.aux
+The top-level auxiliary file: /Users/dennisdosso/Dropbox/paper di Dennis/IN CORSO/2020_PeerJ_Credit/2020_Elsevier_DSS/.texpadtmp/credit_distribution.aux
 The style file: apalike.bst
 Database file #1: ../ultimateBibliographyBib.bib
 You're missing a field name---line 1252 of file ../ultimateBibliographyBib.bib
@@ -41,7 +41,7 @@ Name 5 in "Peters, I. and Kraker, P. and Lex, E. and Gumpenberger, C. and Gorrai
 while executing---line 1098 of file apalike.bst
 You've used 56 entries,
             1935 wiz_defined-function locations,
-            836 strings with 16275 characters,
+            836 strings with 16267 characters,
 and the built_in function-call counts, 27229 in all, are:
 = -- 2553
 > -- 1604
