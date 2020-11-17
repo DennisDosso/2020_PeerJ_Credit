@@ -32,7 +32,7 @@ Credit is a positive \emph{real} value, acting as a proxy for the value of data 
 The DCD problem differs from the traditional citation setting since:
 \begin{enumerate}
     \item In a traditional setting, when a paper cites another paper, a $+1$ ``credit' is given to the cited paper (and to its authors). It does not matter why or how paper $p_1$ cites paper $p_2$\footnote{Note that there is vast research on this topic and many alternative proposals, but none of them currently work at a large scale.}, the result is always $+1$ from $p_1$ to $p_2$ and thus a $+1$ to the citation count of the authors of $p_2$. With a different credit distribution strategy, the ``value'' given to the cited entity can be \emph{proportional} to the role played in the citing entity. Hence, we can weigh the importance of the cited entities and assign credit according to their role.
-    \textbf{Gianmaria: talk about the zp-index in the related work}
+    % \textbf{Gianmaria: talk about the zp-index in the related work}
     \item Traditional citations are considered to be  \emph{atomic}. One citation from $p_1$ to $p_2$ can never be broken into pieces and assigned in part to $p_2$ and in part to other papers or data that contributed to $p_2$. This is due to the intrinsic difficulty in grasping the role and ``weight'' of the other papers and data, and in automating the credit assignment process.
 	In contrast, we consider data credit to be a \emph{non-atomic} real value, which can be divided and distributed to multiple components of a database. 
 	\item Credit can be \emph{transitive}, that is, it can be propagated through one cited entity to other entities cited by it that contributed to its content.
@@ -105,7 +105,7 @@ We perform three sets of experiments. In the first one, real queries are extract
 In the second and third experiment we analyse the behaviour of the different DS when  complex citation queries are employed.
 
 
-\paragraph{\textbf{Contributions}} of this work include:
+\paragraph{\textbf{Contributions}}of this work include:
 \begin{itemize}
     \item the definition of new Distribution Strategies for the problem of Data Credit Distribution, based on why-provenance and how-provenance;
     \item an in-depth analysis of the effects of credit distribution on real-world curated data and of the differences between the three proposed Distribution Strategies.
