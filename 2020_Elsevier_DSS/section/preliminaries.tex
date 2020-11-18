@@ -1,16 +1,19 @@
 \section{Data Provenances}
 \label{section:preliminaries}
+In this section, we present the three types of provenance discussed in this paper:  lineage, why-provenance, and how-provenance.
 
 \subsection{Lineage}
-Lineage was first introduced by \citet{lineageCui}, and given a database instance $I$ a query $Q$, it associates each tuple $o \in Q(I)$ to a set of tuples in the input.
-In general, the lineage of one tuple $o$ is a collection of tuples that helped to ``produce'' it~\citep{CheneyProvSurvey}.
-To give an idea of what can happen with the lineage of tuples, consider the following SQL query \texttt{Q1}, applied to the database described in Table \ref{table:running_example}, that asks for the names of families curated by researchers based in the United Kingdom (UK):
+Lineage was first introduced by \citet{lineageCui}. Given a database instance $I$ and query $Q$, lineage associates with each tuple $o \in Q(I)$ the set of tuples in the input
+%That is, the lineage of a tuple is the set of tuples 
+that helped ``produce'' it~\citep{CheneyProvSurvey}.
+As an example, consider the following SQL query \texttt{Q1}, applied to the database described in Table \ref{table:running_example}, that asks for the names of families curated by researchers based in the United Kingdom (UK):
 
 \begin{verbatim}
 	Q1: SELECT DISTINCT f.name
-	FROM family AS f JOIN contributor2family AS c2f ON f.id = c2f.family_id
+	FROM family AS f JOIN contributor2family AS c2f 
+	ON f.id = c2f.family_id
 	JOIN contributor AS c ON c2f.contributor_id = c.id
-	WHERE c.country = 'UK'citet{
+	WHERE c.country = 'UK'
 \end{verbatim}
 
 \begin{table}[hbt]
@@ -28,28 +31,28 @@ To give an idea of what can happen with the lineage of tuples, consider the foll
   	$\{f_1, c2f_1, c_1, c2f_2, c_2\}$ \\
   	$\{ f_4, c2f_4, c_1\}$ \\
   \end{tabular}
-    \caption{Result of a SQL query applied on the database of Table \ref{table:running_example}, asking the names of the families curated by a researcher based in the UK. The attribute \texttt{id} is not part of the output and we added it to easily identify the two tuples. Every tuple is annotated with its lineage, we use the id of the tuples to identify them.}
+    \caption{Result of an SQL query applied to the database instance in Table \ref{table:running_example}, which asks for the names of families curated by a researcher based in the UK. Attribute \texttt{id} is not part of the output and was added to succinctly identify each tuple as provenance token. Each tuple is also annotated with its lineage.}
   \label{table:result}
 \end{table}
 
-Table \ref{table:result} reports the query result, composed of two tuples. The attribute \texttt{id} is added by us to easily identify them.
-
-For tuple $o_1$ the lineage is the set $\{f_1, c2f_1, c_1, c2f_2, c_2\}$, since the tuple $f_1$ was joined with $c2f_1$ and then with $c_1$, but also with $c2f_2$ and $c_2$. No other tuple is used in the database to produce $o_1$.
-For tuple $o_2$, instead, the lineage is $\{ f_4, c2f_4, c_1\}$.
-Therefore, as we see, the lineage is defined for each tuple of the output, and it can be different for tuples in the same output. 
+Table \ref{table:result} shows the query result, which consists of two tuples. We add an extra  attribute \texttt{id} so that we can easily refer to each result tuple.  
+The lineage for tuple $o_1$ is the set $\{f_1, c2f_1, c_1, c2f_2, c_2\}$, since the tuple $f_1$ was joined with $c2f_1$ and then with $c_1$, and was also joined with $c2f_2$ and $c_2$. No other tuple is used in the database to produce $o_1$.
+For tuple $o_2$ the lineage is $\{ f_4, c2f_4, c_1\}$.
+Lineage is defined for each tuple of the output, and can differ between tuples.
 
 \subsection{Why-Provenance}
-Why-Provenance was first defined in \citep{WhyProvBuneman} in terms of a deterministic semistructured data model and query language. 
-While why-provenance can be defined in many ways, we refer to \citep{CheneyProvSurvey}, where it is expressed in terms of relational model and relational algebra query language.
+Why-Provenance was first defined in terms of a deterministic semistructured data model and query language \citep{WhyProvBuneman}. 
+While why-provenance can be defined in many ways, we refer to \citep{CheneyProvSurvey}, where it is expressed in terms of the relational model using the relational algebra.
 
 In particular, while lineage aims to find all and only the tuples in the input relevant to the production of an output tuple, why-provenance aims to find sub-instances of the input that ``witness'' a part of the output. 
 Given a tuple $t$ in the query's output, a \emph{witness} is any sub-instance of the database that produces $t$.
 In particular, the whole database and the lineage of $t$ are both witnesses of $t$.
-Since the definition of witness allows for the presence of ``irrelevant'' tuples, all the witnesses' set is finite (if the database instance $I$ is finite), but it is potentially exponentially large~\citep{CheneyProvSurvey}.
+% \scream{the next sentence was unclear, I modified but you should check.}
+Since the definition of witness allows for the presence of ``irrelevant'' tuples, the set of all witnesses is finite (since the database instance $I$ is finite), but it is potentially exponentially large~\citep{CheneyProvSurvey}.
 
-\citet{WhyProvBuneman} defined the why-provenance of an output tuple $t$ in the result $Q(I)$ as a \emph{particular subset} of the set of witnesses, that is, a particular selection of witnesses. This subset is called \emph{witness basis}.
-The witnesses of the basis depend on $ Q $; thus, each basis's size is bounded by the size of $ Q $. The witnesses of the basis exclude tuples that are irrelevant to $t$ being produced by $Q$. Thus, the basis tends to be very small compared to the set of all possible witnesses~\citep{CheneyProvSurvey}.
-Also, the witnesses are minimal, in the sense that if one tuple is removed from one of these witnesses, it cannot produce the output. % This is not true for the lineage. For example, it is sufficient to consider the lineage of $o_1$ in the example above, where the tuples $c2f_2$ and $c_2$ may be eliminated without affecting the output. 
+\citet{WhyProvBuneman} defined the why-provenance of an output tuple $t$ in the result $Q(I)$ as a special \emph{subset} of the set of witnesses called the \emph{witness basis}.
+The witnesses of the basis depend on $ Q $; thus, each basis's size is bounded by the size of $ Q $. The witnesses of the basis exclude tuples that are irrelevant to $t$ being produced by $Q$, and thus the basis tends to be very small compared to the set of all possible witnesses~\citep{CheneyProvSurvey}.
+The witnesses are also {\em minimal}, in the sense that if one tuple is removed from one of these witnesses, it cannot produce the output. % This is not true for the lineage. For example, it is sufficient to consider the lineage of $o_1$ in the example above, where the tuples $c2f_2$ and $c_2$ may be eliminated without affecting the output. 
 
 
 %FORMAL DEFINITION
@@ -106,23 +109,22 @@ Also, the witnesses are minimal, in the sense that if one tuple is removed from 
   	$\{\{f_1, c2f_1, c_1\}, \{f_1, c2f_2, c_2\}\}$ \\
   	$\{\{ f_4, c2f_4, c_1\}\}$ \\
   \end{tabular}
-    \caption{Result of a SQL query applied on the database of Table \ref{table:running_example} with the why-provenances of the corresponding results.}
+    \caption{Result of a SQL query applied on the database of Table \ref{table:running_example} with the why-provenance of the corresponding results.}
   \label{table:result_why_prov}
 \end{table}
  
-In a sense, each witness in the witness basis captures one possible ``way'' in which the query can generate the output. 
-To better understand this property, consider the example in Table \ref{table:result_why_prov}, where we reported the result of query \texttt{Q1} with the tuples annotated with their why-provenance. 
+In a sense, each witness in the witness basis captures one possible way in which the query can generate the output. 
+To better understand this, consider the example in Table \ref{table:result_why_prov}, where each tuple in the result of query \texttt{Q1} is annotated with its why-provenance. 
 
-Output tuple $o_2$ presents a why-provenance composed of only one witness, which coincides with its lineage. This happens because there is only one way this output tuple can be produced, i.e., for tuple $f_4$ to be joined with $c2f_4$ and $c_1$.
-On the other hand, $o_1$ presents a witness basis made of two witnesses. 
-These two sets fundamentally represent the two possible ways in which the query can generate $o_1$. 
-One possibility is that $f_1$ is joined with $c2f_1$ and $c_1$, and is represented by the first witness. The second possibility is that $f_1$ is joined with $c2f_2$ and $c_2$. This means that to generate $o_1$ it is sufficient that only one of the two witnesses is present in the input database. 
+The why-provenance of output tuple $o_2$ has only one witness, which coincides with its lineage. This happens because there is only one way this output tuple can be produced, i.e., for tuple $f_4$ to be joined with $c2f_4$ and $c_1$.
+On the other hand, $o_1$ has a witness basis with of two witnesses, since there are two possible ways in which the query can generate $o_1$. 
+One possibility is that $f_1$ is joined with $c2f_1$ and $c_1$ (the first witness), and the second possibility is that $f_1$ is joined with $c2f_2$ and $c_2$ (the second witness). This means that to generate $o_1$, it is sufficient that only one of the two witnesses is present in the input database. 
 
 \subsection{How-Provenance}
 \label{section:how_provenance_tuples}
 
-While why-provenance describes the source tuples that witness an output tuple in the result of the query, it leaves out some information.
-How-provenance was firstly defined in \citep{howProvenanceGreen}, based on the introduction of a \emph{semiring} algebraic structure, and it is a form of provenance that takes the form of a \emph{polynomial}.
+While why-provenance describes the source tuples that witness an output tuple in the result of the query, it leaves out  information about how the source tuples are used.
+How-provenance was therefore defined in \citep{howProvenanceGreen} to capture this information using a \emph{semiring} algebraic structure, and is a form of provenance that takes the form of a \emph{polynomial}.
 % SOME FORMALISM
 %A semiring $K$ is a \emph{set} equipped with two operations, typically denoted with the symbols $+$ and $\cdot$, satisfying the following axioms ~\cite[pg. 26]{berstel1985theory}:
 %\begin{enumerate}
@@ -145,7 +147,7 @@ How-provenance was firstly defined in \citep{howProvenanceGreen}, based on the i
 %	\item Multiplication by $0$ annihilates $K$, i.e. $\forall x \in K, 0 \cdot x = x \cdot 0 = 0$
 %\end{enumerate}
 
-The key idea of \citet{howProvenanceGreen} is to use the two operators $+$ and $\cdot$ to represent two basic transformations that source tuples undergo as a result of applying a relational query to a database~\citep{CheneyProvSurvey}. 
+The key idea in \citet{howProvenanceGreen} is to use the two operators $+$ and $\cdot$ to represent two basic transformations that source tuples undergo as a result of applying a relational query to a database~\citep{CheneyProvSurvey}. 
 Two tuples may either be joined together, as an effect of a join (represented with the $\cdot$ operator) or merged via union or projection (represented with the $+$ operator).
 
 
@@ -168,11 +170,11 @@ Two tuples may either be joined together, as an effect of a join (represented wi
   \label{table:result_how_prov}
 \end{table} 
 
-For a simple example of how how-provenance works, refer to Table \ref{table:result_how_prov}, where the two output tuples of our running example are annotated with their respective how-provenances. 
+Table \ref{table:result_how_prov} shows a simple example in which the two output tuples of our running example are annotated with their respective how-provenances. 
 Tuple $o_2$ was produced through the join among the input tuples $f_4, c2f_4$, and $c_1$. The three provenance tokens are, therefore  ``multiplied'' together. 
 The case of $o_1$ is slightly more complex. This tuple, as already discussed, can be obtained through two different joins. The two monomials composing the polynomial represent these two alternatives. They correspond, in a way, to the witnesses of the why-provenance of $o_1$.
-The $+$ operator represents the fact that the two monomials describe alternatives. The output tuple is the result of a merge of two distinct tuples after the projection on the attribute \texttt{name}. This merge is, in turn, due to the presence of the \texttt{DISTINCT} operator in the SQL query. 
-This simple example gives a first basic idea behind how-provenance and how it allows us to track the operations that produced an output tuple. 
+The $+$ operator represents the fact that the two monomials describe alternative derivations. The output tuple is the result of a merge of two distinct tuples after the projection on the attribute \texttt{name}. This merge is due to the fact that the result of a relational algebra expression is always a {\em set} of tuples, which corresponds to the presence of the \texttt{DISTINCT} operator in an SQL query. 
+This simple example gives the basic idea behind how-provenance and how it allows us to track the operations that produced an output tuple. 
 
 %MORE FORMALISM
 %Now we formally introduce the mathematical framework behind how-provenance~\citep{howProvenanceGreen}.

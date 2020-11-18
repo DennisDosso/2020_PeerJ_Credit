@@ -10,12 +10,13 @@
 
 As use case we refer to the IUPHAR/BPS Guide to Pharmacology \citep{iuphar2018} or  GtoPdb\footnote{\url{https://www.guidetopharmacology.org/}}.
 GtoPdb is a well-known and well structured scientific relational database that contains expertly curated information about diseases, drugs in clinical use, their cellular targets, and the mechanisms of action on the human body. 
-It is curated and maintained by the GtoPdb Committee, and by 96 subcommittees, comprising 512 scientists collaborating with in-house curators that draw the information contained in the database from high-quality pharmacological and medicinal chemistry literature.
-Circa 1000 researchers from many parts of the world have contributed to the database. The curators desire to give recognition to the contributors that led to some early work on data citation~\citep{buneman2006cite}.  
+It is curated and maintained by the GtoPdb Committee, and by 96 subcommittees, comprising 512 scientists collaborating with in-house curators who draw the information contained in the database from high-quality pharmacological and medicinal chemistry literature.
+Roughly 1000 researchers from all over the world have contributed to the database, and the curators wanted to give recognition to these contributors.  This led to some early work on data citation~\citep{buneman2006cite}.  
 
-GtoPdb is relational, but its logical structure is hierarchical, as shown in Figure \ref{figure:iuphar_schema}, and the information contained in the database is also organized into webpages focused on specific diseases, targets or ligands and families (i.e., groups) of them for easier access by the users. 
-As depicted in Figure \ref{figure:iuphar_schema}, the database can be thought of as a tree where the root is the database itself in its entirety; the first level is composed of the Targets, Ligands, and Diseases considered in their entirety. 
-In this paper, we focus on target and target families; thus, in the figure, at the third level, we show some of the family types, that is, groups of targets. At the third level, we show families of targets, a finer level of granularity, and finally, at the last level, the single targets, also known as receptors. 
+GtoPdb is relational, but its logical structure is hierarchical as shown in Figure \ref{figure:iuphar_schema}.  The information contained in the database is also organized into webpages focused on specific diseases, targets or ligands, and families % (i.e., groups) of them 
+for easier access by users. 
+As depicted in Figure \ref{figure:iuphar_schema}, the database can be thought of as a tree where the root is the database; the first level consists of all targets, ligands, and diseases; and the lower levels consists of specific targets, ligands and diseases. 
+In this paper, we focus on targets; thus at the third level in the figure we show examples of family types, at the fourth level we show specific families of targets (a finer level of granularity), and finally, at the last level, the single targets (also known as receptors). 
 
 \begin{figure}[]
 \centering
@@ -25,27 +26,27 @@ In this paper, we focus on target and target families; thus, in the figure, at t
 \end{figure}
 
 
-The GtoPdb provides access to the webpages corresponding to all these nodes through URLs, as shown in the figure. 
+GtoPdb provides access to the webpages corresponding to all these nodes through URLs. 
 The webpages corresponding to target families all present a similar structure, as shown in Figure \ref{figure:family_structure} for the ``Adenosine receptors'' family. 
-Each page has an \emph{Overview}, a brief text describing the content of the page; a list of \emph{Receptors} composing the family; a section of \emph{comments} about the family;
+Each page has an \emph{Overview}, a brief text describing the content of the page; a list of \emph{Receptors} comprising the family; a section of \emph{comments} about the family;
 the \emph{References}, a list of the papers consulted by the curators of the page, similar to a reference list of a paper;
 the \emph{further reading} list, reporting papers that an interested reader may want to consult to obtain more insight on the family; and a final section called \emph{How to cite this family page}, containing text snippets useful to cite the specific page or the whole database. 
-In Figure \ref{figure:family_structure}, we show the SQL code that retrieves the information that is used to build the corresponding sections (apart from the References section).
-Therefore, each family page can be considered a full-fledged traditional publication, comprising title, authors, abstract (the overview), content, and references. 
+Figure \ref{figure:family_structure} shows the SQL code that retrieves the information used to build the corresponding sections (apart from the References section).
+Therefore, each family page can be considered a full-fledged traditional publication, consisting of title, authors, abstract (the overview), content, and references. 
 
-What happens is that many papers in the literature use the GtoPdb's information without including a reference to the specific page being cited. 
-Instead, they only cite one data paper describing GtoPdb (e.g., the more recent \citep{iuphar2018}) and refer to targets, ligands, diseases, etc. only by their name. 
-Thus, the citations to the specific families turn out to be \emph{de-facto} ``hidden'' to the citation systems such as Google Scholar, and useless for the computation of bibliometrics. 
+In practice, many papers in the literature only reference GtoPdb (the root) without including a reference to the specific page being cited. 
+That is, they only cite a paper describing GtoPdb as a whole (e.g., \citep{iuphar2018}) and refer to targets, ligands, diseases, etc. only by name. 
+Thus, citations to specific families are \emph{de-facto} ``hidden'' to citation systems such as Google Scholar, and useless for the computation of bibliometrics. 
 
-In specific ``lucky'' circumstances, as in the case of papers available in PDF and published in the British Journal of Clinical Pharmacology~\footnote{\url{https://bpspubs.onlinelibrary.wiley.com/journal/13652125}} (BJCP), when a  family, a ligand, a receptor name, etc. are used, they also have a hyperlink pointing to the corresponding webpage in GtoPdb. Therefore, the citations to the families can be spotted and counted using the URLs reported in the papers.
-These citations to GtoPdb webpages, in any case, are not counted as such by the citation systems, so they are not converted into credit for curators and collaborators. 
+In certain ``lucky'' cases, as with papers available in PDF and published in the British Journal of Clinical Pharmacology~\footnote{\url{https://bpspubs.onlinelibrary.wiley.com/journal/13652125}} (BJCP), when a  family, ligand, receptor name, etc. are used, they have a hyperlink pointing to the corresponding webpage in GtoPdb. Therefore, the citations to the families can be detected and counted using the URLs reported in the papers.
+However, these citations to GtoPdb webpages are not counted as such by citation systems, so they are not converted into credit for curators and collaborators. 
 
-For our running example, consider Table \ref{table:running_example}. This simplified version of GtoPdb illustrates three relations: \texttt{family}, \texttt{contributor} and \texttt{contributor2family}.
-
-The first table's tuples represent four families, composed of three attributes: the id of the family, its name, and type. 
-\texttt{contributor} contains the people who have helped to generate the data of the database.
-Finally, table \texttt{contributor2family} serves as a link between the families and the people who contributed to them.
-For instance, ``John Smith'' ($\mathtt{c_1}$) contributed to ``Dopamine Receptors'' ($\mathtt{f_1}$) as well as to the ``YANK Family'' ($\mathtt{f_4}$). We use this example throughout the rest of the paper.
+For our running example, consider Table \ref{table:running_example}. This simplified version of GtoPdb illustrates three tables: \texttt{family}, \texttt{contributor} and \texttt{contributor2family}.
+% \scream{You have an id column which is "separate" from the other attributes in table.  Are these introduced as provenance tokens, or are they real attributes?  Later you speak about introducing an id in the query result, is this the same?}
+The first table, \texttt{family}, has tuples representing families with three attributes: the id of the family, its name, and type. 
+Table \texttt{contributor} consists of people who have helped generate the data of the database.
+The third table, \texttt{contributor2family}, serves as a link between the families and the people who contributed to them.
+For instance, ``John Smith'' ($\mathtt{c_1}$) contributed to ``Dopamine Receptors'' ($\mathtt{f_1}$) as well as to the ``YANK Family'' ($\mathtt{f_4}$). We use this example throughout the rest of the paper. In particular, we are using the \texttt{id} attribute of the tables as \emph{provenance token} of its corresponding tuples, that is, as a symbol that serves to identify a tuple when talking about provenance.
 
 \begin{table*}[]
 \centering
@@ -82,6 +83,6 @@ For instance, ``John Smith'' ($\mathtt{c_1}$) contributed to ``Dopamine Receptor
   $c_4$ & Roberta Rossi & Italy \\
 \hline
 \end{tabular}		
-\caption{Example of a database composed by three tables. \texttt{family} includes some receptor families in the database; \texttt{contributor}, with the name and country of contributors of the database; \texttt{contributor2family}, connecting the contributors to the families they contributed to.}
+\caption{Example of a database consisting of three tables. \texttt{family} includes some receptor families in the database; \texttt{contributor} contains the name and country of contributors; \texttt{contributor2family} connects contributors to the families they contributed to.}
 \label{table:running_example}
 \end{table*}
