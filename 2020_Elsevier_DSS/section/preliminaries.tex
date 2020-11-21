@@ -176,6 +176,9 @@ The case of $o_1$ is slightly more complex. This tuple, as already discussed, ca
 The $+$ operator represents the fact that the two monomials describe alternative derivations. The output tuple is the result of a merge of two distinct tuples after the projection on the attribute \texttt{name}. This merge is due to the fact that the result of a relational algebra expression is always a {\em set} of tuples, which corresponds to the presence of the \texttt{DISTINCT} operator in an SQL query. 
 This simple example gives the basic idea behind how-provenance and how it allows us to track the operations that produced an output tuple. 
 
+% talking a little bit about coefficients and exponents
+A provenance polynomial may also present monomials that have exponents and coefficients different from one. One provenance polynomial can also be, for example, $3f_1 \cdot c2f_1 \cdot c_1 + f_1 \cdot c2f_2^3 \cdot c_2^3$. This is a polynomial of a tuple produced by a query where the result of the join between the tuples $f_1$, $c2f_1$, and $c_1$ is produced three times and then merged (e.g. as the result of a projection), and the tuples $c2f_2$ and $c_2$ are used three times in the operation described by the second monomial (e.g., with nested queries). 
+
 %MORE FORMALISM
 %Now we formally introduce the mathematical framework behind how-provenance~\citep{howProvenanceGreen}.
 %Let $K$ be a set containing an element $0$. 

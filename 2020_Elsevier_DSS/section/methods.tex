@@ -101,7 +101,7 @@ Since a tuple may appear in more than one witness, it will receive more than one
     Let $\mathcal{W} = Why(Q, I, o)$ be the witness basis of $o$ according to $Q$ and $I$, and $W \in \mathcal{W}$ be a witness. 
     
     \eat{
-    Let \gamma(\mathcal{W}, t): (\mathcal{W}, t) \mapsto \mathcal{P}(\mathcal{P}(TupleLoc))$ be the function that returns the set 
+    Let $\gamma(\mathcal{W}, t): (\mathcal{W}, t) \mapsto \mathcal{P}(\mathcal{P}(TupleLoc))$ be the function that returns the set 
     $\{W \in \mathcal{W} : t \in W\}$.
     % of all the witnesses $W \in \mathcal{W}$ such that $t \in W$.
     }
@@ -143,16 +143,29 @@ This example illustrates that why-provenance can better reward input tuples depe
 \subsection{A How-Provenance Based Distribution Strategy}
 \label{section:how_prov_distr_tuples}
 
-\scream{You did not talk about coefficients in section 4, you only talked about monomials.}
+%\scream{You did not talk about coefficients in section 4, you only talked about monomials.}
 
 How-provenance conveys more information than why-provenance since it not only captures what tuples are relevant to the output and in which combination, but also how they are used. The ``how" is captured through the provenance polynomials.
 
 The how-provenance-based DS therefore first distributes the credit to the monomials of the polynomial accordingly to the weight represented by their coefficients, then to the tuples of each monomial accordingly to the weights represented by their exponents. 
 
 To define the distribution strategy based on the how-provenance, we introduce some preliminaries.
+Consider, as example, the provenance polynomial $\mathcal{H}$ presented in Figure \ref{figure:how_example}. 
 
-\scream{This needs to be simplified.  Get rid of the mathematical notation and just give an English definition.}
-Consider the provenance polynomial $\mathcal{H} = H(Q, I, o)$ of a tuple $o$. We define: 
+
+\begin{figure}[]
+\centering
+  \includegraphics[width=.5\textwidth]{figures/how_example}
+  \caption{Example of provenance polynomial and the different notations used to define the how-provenance based distribution of Definition \ref{def:how_distribution}.}
+  \label{figure:how_example}
+\end{figure}
+
+In this figure we show the notation that we use to refer to different information taken from the provenance polynomial. We call $c$ the function that returns the sum of the coefficients of the polynomial. We use the same name for the function that, taken in input one monomial, in the example $M_1$, outputs the sum of its exponents. 
+$mc$ is the function that takes in input a monomial and returns its coefficient. $e$ is a function with parameters a monomial and a tuple, that returns the exponent of that tuple in the monomial, if present. $\gamma$ takes in input a tuple and the whole polynomial, and returns a set containing the monomials containing that tuple, if present in the polynomial. 
+
+
+%\scream{This needs to be simplified.  Get rid of the mathematical notation and just give an English definition.}
+More formally, consider the provenance polynomial $\mathcal{H} = H(Q, I, o)$ of a tuple $o$. We define: 
 \begin{enumerate}
 	\item $c(\mathcal{H}) = n$ the function $c: \mathbb{N}[TupleLoc] \mapsto \mathbb{N}$ that, given a polynomial, returns the sum of its coefficients;
 	\item $c(M)$ the function $c: \mathcal{M} \mapsto \mathbb{N}$ that, given a monomial $M$, returns the sum of its exponents (with $\mathcal{M} \subset \mathbb{N}[TupleLoc]$ such that $\mathcal{M}$  is made only by the monomials $M$ in $\mathbb{N}[TupleLoc]$); 
@@ -161,7 +174,7 @@ Consider the provenance polynomial $\mathcal{H} = H(Q, I, o)$ of a tuple $o$. We
 	\item $\gamma(t, \mathcal{H})$ the function $\gamma: TupleLoc \times \mathbb{N}[TupleLoc] \mapsto \mathcal{M}$ that, given a tuple $t$ and a provenance polyomial $\mathcal{H}$, returns the (possibly empty) set of monomials $M$ in $\mathcal{H}$ such that $t$ appears in $M$.
 \end{enumerate}
 
-\scream{You need to give a little example to clarify the ideas.}
+%\scream{You need to give a little example to clarify the ideas.}
 \begin{definition}{How-Provenance-Based Distribution Strategy}
     \label{def:how_distribution}\\
     Let $I$ be a database instance, $Q$ a query over $I$, $o \in Q(I)$ an output tuple and $k_o$ the credit given to $o$.
@@ -210,7 +223,8 @@ We therefore consider another query over GtoPdb, \texttt{Q2}, that asks for the 
     $oxs_1$ &  Dopamine Receptors\\
     \hline
   \end{tabular}
-
+  \newline
+\vspace{2mm}
   \begin{tabular}{c | c | c}
   	lineage & why-provenance & how-provenance   \\
   	$\{f_1, c2f_1, c_1, c2f_2, c_2\}$ & $\{\{f_1, c2f_1, c_1\}, \{f_1, c2f_2, c_2\}\}$ & $f_1(f_1 c2f_1 c_1 + f_1 c2f_2 c_2)$\\
