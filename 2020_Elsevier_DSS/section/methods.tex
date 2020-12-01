@@ -1,6 +1,5 @@
 \section{Credit Distribution and Distribution Strategies}
 \label{section:distribution_strategies}
-\scream{This whole section is heavily modified.}
 We now give formal definitions of data credit and Data Credit Distribution (DCD), and present three different Distribution Strategies (DSs) based on the forms of provenance discussed earlier:  Lineage-based DS, Why-Provenance-based DS, and How-Provenance-based DS.  We also show how these strategies distribute credit in the IUPHAR example discussed earlier.
 
 
@@ -21,17 +20,17 @@ and query $Q$ over $I$, and splits $k$ among the recipients of credit in $I$.
 In the following, we use the notation in \citet{CheneyProvSurvey}: a \emph{tuple location} is defined as a tuple in a relation in $I$, tagged with its name. It is indicated with $(R, t)$, where $R$ is the relation in the database, and $t$ is the tuple in $R$. With reference to the running example, \texttt{(family, $\langle f_1$, Dopamine Receptors, gpcr$\rangle$)} is the tuple location of the first tuple in the \texttt{family} relation.  The set of all the tuple locations in $I$ is called \emph{TupleLoc}.
 The following is the definition of DCD at \emph{tuple level}. We refer to the level of tuple because the credit is annotated to tuples.}
 
-In the following, we use the notation in \citet{CheneyProvSurvey}: Given an instance $I$, a \emph{tuple location} $(R, t)$ is a tuple $t$ in  relation $R$. With reference to the running example, \texttt{(family, $\langle f_1$, Dopamine Receptors, gpcr$\rangle$)} is the tuple location of the first tuple in the \texttt{family} relation.  The set of all tuple locations in $I$ is called \emph{TupleLoc}.  We use this to formally define DCD at the \emph{tuple level}, i.e. where the recipients of credit are tuples.
+In the following, we use the notation in \citet{CheneyProvSurvey}: Given an instance $I$, a \emph{tuple location} $(R, t)$ is a tuple $t$ in  relation $R$. With reference to the running example, \texttt{(family, $\langle f_1$, Dopamine Receptors, gpcr$\rangle$)} is the tuple location of the first tuple in the \texttt{family} relation.  The set of all tuple locations in $I$ is called \emph{TupleLoc}.  We use this to formally define DCD at the \emph{tuple level}.
 
 
 \begin{definition}
     \textbf{Tuple Level Data Credit Distribution (DCD)}~\citep{dosso2020data}
     \label{def:CDT}\\
-    Given a query $Q$ over $I$ and $k \in \mathbb{R}_{>0}$, {DCD} is defined as the computation of the 
+    Given a query $Q$ over $I$ and $k \in \mathbb{R}_{>0}$, {DCD} is defined by the 
     function $f_{I, Q} : TupleLoc \times \mathbb{R}_{> 0} \rightarrow \mathbb{R}_{\geq0}$ such that $f_{I,Q}(t, k)=h$ where $0 \leq h \leq k$ and $\sum_{t \in TupleLoc}f_{I, Q}(t, k) = k$.  The function $f_{I Q}$ is the distribution strategy (DS).
 \end{definition}
 
-As we see, the DS is a function that annotates each tuple in the database with a real value, which is a fraction of the given quantity $k$. The only constraint is that the sum of the credit annotations on tuples must be $k$, i.e. that no credit is generated or destroyed during the distribution.
+As we can see, the DS is a function that annotates each tuple in the database with a real value, which is a fraction of the given quantity $k$. The only constraint is that the sum of the credit annotations on tuples must be $k$, i.e. that no credit is generated or destroyed during the distribution.
 Given $I$ and $Q$, many different DSs may be defined as long as they sum up to $k$. 
 
 In what follows, we use information provided by data provenance to define distribution functions.
@@ -149,21 +148,21 @@ How-provenance conveys more information than why-provenance since it not only ca
 
 The how-provenance-based DS therefore first distributes the credit to the monomials of the polynomial accordingly to the weight represented by their coefficients, then to the tuples of each monomial accordingly to the weights represented by their exponents. 
 
-To define the distribution strategy based on the how-provenance, we introduce some preliminaries.
-Consider, as example, the provenance polynomial $\mathcal{H}$ presented in Figure \ref{figure:how_example}. 
+To define the DS more formally, we introduce some notation and illustrate it using the provenance polynomial $\mathcal{H}$ shown in Figure \ref{figure:how_example}. 
 
 
 \begin{figure}[]
 \centering
   \includegraphics[width=.5\textwidth]{figures/how_example}
-  \caption{Example of provenance polynomial and the different notations used to define the how-provenance based distribution of Definition \ref{def:how_distribution}.}
+  \caption{Illustration of notation used to define the how-provenance based DS in Definition \ref{def:how_distribution}.}
   \label{figure:how_example}
 \end{figure}
 
-In this figure we show the notation that we use to refer to different information taken from the provenance polynomial. We call $c$ the function that returns the sum of the coefficients of the polynomial. We use the same name for the function that, taken in input one monomial, in the example $M_1$, outputs the sum of its exponents. 
-$mc$ is the function that takes in input a monomial and returns its coefficient. $e$ is a function with parameters a monomial and a tuple, that returns the exponent of that tuple in the monomial, if present. $\gamma$ takes in input a tuple and the whole polynomial, and returns a set containing the monomials containing that tuple, if present in the polynomial. 
+%In this figure we show the notation that we use to refer to different information taken from the provenance polynomial. 
+We call $c$ the function that, given a polynomial, returns the sum of the coefficients of the polynomial; thus $c(\mathcal{H})=\;3+1=4$. We use the same name for the function that, given a monomial, returns the sum of its exponents; thus $c(M_2)=1+3+3=7$. 
+$mc$ is the function that takes as input a monomial and returns its coefficient. $e$ is a function that takes as input a tuple and a monomial, and returns the exponent of the tuple in the monomial, if present; thus $e(c_2, M_2)=3$. $\gamma$ takes as input a tuple and the whole polynomial, and returns a set containing the monomials containing that tuple, if present in the polynomial; thus $\gamma(f_1, \mathcal{H})=\;\{M_1, M_2\}$. 
 
-
+\eat{
 %\scream{This needs to be simplified.  Get rid of the mathematical notation and just give an English definition.}
 More formally, consider the provenance polynomial $\mathcal{H} = H(Q, I, o)$ of a tuple $o$. We define: 
 \begin{enumerate}
@@ -173,11 +172,11 @@ More formally, consider the provenance polynomial $\mathcal{H} = H(Q, I, o)$ of 
 	\item $mc(M)$ the function $mc: \mathcal{M} \mapsto \mathbb{N}$ that, given in input one monomial, returns its coefficient;
 	\item $\gamma(t, \mathcal{H})$ the function $\gamma: TupleLoc \times \mathbb{N}[TupleLoc] \mapsto \mathcal{M}$ that, given a tuple $t$ and a provenance polyomial $\mathcal{H}$, returns the (possibly empty) set of monomials $M$ in $\mathcal{H}$ such that $t$ appears in $M$.
 \end{enumerate}
-
+}
 %\scream{You need to give a little example to clarify the ideas.}
 \begin{definition}{How-Provenance-Based Distribution Strategy}
     \label{def:how_distribution}\\
-    Let $I$ be a database instance, $Q$ a query over $I$, $o \in Q(I)$ an output tuple and $k_o$ the credit given to $o$.
+    Let $I$ be a database instance, $Q$ a query over $I$, $o \in Q(I)$ an output tuple, $\mathcal{H}$ be the provenance polynomial for $o$, and $k_o$ the credit given to $o$.
     The credit given to tuple $t$ in $I$ is:
     \[
     f_{I, Q}(t, k_o) = \frac{k_o}{c(\mathcal{H})} \sum_{M \in \gamma(t, \mathcal{H})} mc(M) \frac{e(t, M)}{c(M)}
@@ -198,9 +197,10 @@ More formally, consider the provenance polynomial $\mathcal{H} = H(Q, I, o)$ of 
 
 \eat{The how-provenance-based DS first distributes the credit to the monomials of the polynomial accordingly to the weight represented by their coefficients, then to the single tuples in every monomial accordingly to the weights represented by their exponents. }
 
-Going back to the example of Table \ref{table:result_how_prov}, consider $o_1$ with provenance polynomial $f_1 c2f_1 c_1 + f_1 c2f_2 c_2$. The DS firstly divides the credit between the two monomials. Since the coefficients of each monomial are $1$, the credit is split in half. If they were, for example, $1$ and $2$ respectively, $1/3$ of the credit would go to the first monomial, and $2/3$ to the second.  
+Going back to the example of Table \ref{table:result_how_prov}, consider $o_1$ with provenance polynomial $f_1 c2f_1 c_1 + f_1 c2f_2 c_2$. The how-provenance-based DS firstly divides the credit between the two monomials. Since the coefficients of each monomial are $1$, the credit is split in half. If they were, for example, $1$ and $2$ respectively, $1/3$ of the credit would go to the first monomial, and $2/3$ to the second.  
 Since in our example each variable has exponent $1$, the credit is further divided equally among the three variables. Thus, at the end of the computation, $f_1$ receives $1/3$, and the other tuples receive $1/6$.
 If, for example, the first monomial was $f_1^2 c2f_1 c_1$, then the portion of credit of this monomial would be divided in this way: $1/2$ to $f_1$ and $1/4$ to each of the other two tuples. 
+
 
 In this specific example, the how-provenance-based DS has the same outcome as the one based on why-provenance. %Consequently, one may ask if there is a significant difference between the two strategies. 
 We therefore consider another query over GtoPdb, \texttt{Q2}, that asks for the families of type \texttt{gpcr} that have as contributor a researcher located in the UK:
