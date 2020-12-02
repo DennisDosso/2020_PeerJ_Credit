@@ -1,6 +1,9 @@
 \section{Experimental Evaluation: comparing provenances}
 \label{sec:experiments}
 
+\subsection{Real-world queries}
+\label{sec:real_world_queries}
+
 \begin{figure}[t]
   \includegraphics[width=1\textwidth]{figures/paper_based}
   \caption{Comparison of three DS on the same table \texttt{family} using the distribution given by the queries retrieved from papers.}
@@ -152,9 +155,12 @@ If the interest is also to reward more the tuples that are fundamental to the ou
 
 \end{comment}
 
+
+\subsection{Synthetic queries}
+
 \begin{figure}[tb]
   \includegraphics[width=1\textwidth]{figures/synthetic_polynomials}
-  \caption{Comparison of three DS on the same table \texttt{family} after the distribution computed using 10K synthetic and randomly generated provenance polynomials.}
+  \caption{Comparison of three DS on the same table \texttt{family} after the distribution computed using 10K synthetic and randomly generated provenance polynomials. The tuples in the blue rectangles are used as example in the discussion connected to Figure \ref{fig:comparison}.}
   \label{figure:comparison_on_synthetic_polynomials_2}
 \end{figure}
 
@@ -255,18 +261,51 @@ From this progression we see how, given the peculiar synthetic provenance polyno
 
 %%%%%%%%
 
+\subsection{Credit vs Citations}
+
 \begin{figure}[]
 \centering
-  \includegraphics[width=.8\textwidth]{figures/radar_top_synthetic_enhanced}
-  \caption{Top 20 authors by number of citations and their credit given through the three different DS.}
-  \label{figure:synthetic_authors}
+  \includegraphics[width=1\textwidth]{figures/2_radars}
+  \caption{Radars presenting the top 20 authors citation-wise and credit wise, together with their (normalized between 0 and 1) values of citations and credit.}
+  \label{figure:2_radars}
 \end{figure}
 
-For our last set of experiments, consider Figure \ref{figure:synthetic_authors}.
-This time we produced $100$ synthetic polynomials and the credit distributed through them. Since these polynomials correspond to queries whose authors are not easily identifiable, we created $20$ ``synthetic'' authors, and we randomly assigned one author to each tuple in the database. The authors receive ``blocks'' of consecutive tuples, with each block of the size varying between $10$ and $40$. 
+For our last set of experiments, we confront traditional citations and credit, to see if they differ in their behaviour in the case if rewarding the curators of data.
+Consider first Figure \ref{figure:2_radars}, where we report two radar plots.
+The first plot presents the top 20 author (we identify the authors with their ID instead of their name), ordered based on the normalized value of citations distributed by the queries taken from the papers published in BJP as described in Section \ref{sec:real_world_queries}, together with their normalized value of credit. 
+An author transitively receives credit from the data of which he or she is the curator. That is, the credit assigned to data is then split equally to the authors of those tuples. 
+As we show in Section \ref{sec:real_world_queries}, there is no difference for these queries in the distribution of credit between the three DS, thus these values are equal for the three distributions.  
+The second plot is similar to the first one, but the authors are ordered based on the received credit. 
+
+As we see, the quantity of credit does not follow the quantity of citations, i.e. it is not true that an author that presents the highest number of citations also has the highest value of credit. 
+As shown in Figure \ref{figure:2_radars}.b, the authors with the highest value of credit do not also have the highest number of citations. 
+This means that there are citations that are much more ``valueble'' for an author in terms of credit. This is due to the fact that the quantity of credit assigned by these citations is very high, i.e. the impact of those cited data is high. 
+
+This shows how credit is able to reward authors that are cited less than others but, nonetheless, have a high impact on the research community. 
+
+
+\begin{figure}[]
+\centering
+  \includegraphics[width=1\textwidth]{figures/3_radars}
+  \caption{Radars presenting 20 authors ordered citation-wise and credit-wise, together with their (normalized between 0 and 1) values of citations and credit, through the execution of different numbers of polynomials (100, 1K, and 10K).}
+  \label{figure:3_radars}
+\end{figure}
+
+Consider now Figure \ref{figure:3_radars}.
+In this case, we produced $100$, $1K$, and $10K$ synthetic polynomials and we distributed credit and assigned citations through them. Since these polynomials correspond to queries whose authors are not easily identifiable, we created $20$ ``synthetic'' authors, and we randomly assigned one author to each tuple in the database. The authors receive ``blocks'' of consecutive tuples, with each block of the size varying between $10$ and $40$. 
 Every time a tuple was used in a provenance polynomial, we assigned one citation to the author corresponding to the tuple.  The same author also receives the three different credits assigned to the tuple at the end of the distribution process using the three DS.
 
-Figure \ref{figure:synthetic_authors} presents the radar plot where the 20 authors are sorted based on the normalized number of received citations, together with the corresponding normalized quantities of credits.
+The three radar plots in the upper row presents 20 authors are sorted based on the normalized number of received citations, together with the corresponding normalized quantities of credits assigned using the 3 different strategies.
+The ones in the bottom row present the authors ordered based on the quantity of credit assigned by the DS based on how-provenance.
+In this way we can see the behavior of the different DS in rewarding the authors with the highest levels of citations. 
+Given the synthetic nature of these queries, the correlation between the number of citations and the quantity of credit assigned to the authors appears to be a much stronger with respect to the case with the real-world queries.
+
+Nonetheless, it is possible to note that credit still behaves differently,. In particular we still see that certain authors that are not in the top 10 positions citation-wise are still rewarded with high quantities of credit, showing their importance with respect to their impact. 
+Interestingly, scaling up to $1K$ and $10K$ polynomials, it appears that the distribution performed via why-provenance and how-provenance become equivalent for the authors. We can note that, although not exactly equal, the values of credit assigned to the authors by those DS become quite similar with these higher quantities of polynomials. 
+
+
+
+
 Credit presents a different behavior from one of the citations, and each form of credit, i.e., the credit obtained from the different DS, behaves differently from the others.
 For example, it appears that authors T, C, and R that are low in the number of citations are still rewarded more than other more cited authors in terms of credit.
 Even if the tuples of these authors received fewer citations, they still received more credit than other more cited tuples. This shows how credit can be an effective new method to use together with traditional citations to reward curators, highlighting aspects lost using the traditional bibliometrics.

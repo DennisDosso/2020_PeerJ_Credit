@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.10.23)  2 DEC 2020 12:28
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.10.23)  2 DEC 2020 16:07
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -383,53 +383,63 @@ Package pdftex.def Info: figures/how_distribution.pdf  used on input line 249.
 <figures/paper_based.pdf, id=427, 1797.71625pt x 1403.2425pt>
 File: figures/paper_based.pdf Graphic file (type pdf)
 <use figures/paper_based.pdf>
-Package pdftex.def Info: figures/paper_based.pdf  used on input line 5.
+Package pdftex.def Info: figures/paper_based.pdf  used on input line 8.
 (pdftex.def)             Requested size: 390.0pt x 304.41054pt.
  [25 <./figures/how_distribution.pdf>] [26 <./figures/paper_based.pdf>] [27] Excluding 'comment' comment.
 <figures/synthetic_polynomials.pdf, id=591, 1799.72375pt x 1381.16pt>
 File: figures/synthetic_polynomials.pdf Graphic file (type pdf)
 <use figures/synthetic_polynomials.pdf>
-Package pdftex.def Info: figures/synthetic_polynomials.pdf  used on input line 156.
+Package pdftex.def Info: figures/synthetic_polynomials.pdf  used on input line 162.
 (pdftex.def)             Requested size: 390.0pt x 299.28291pt.
  [28 <./figures/synthetic_polynomials.pdf>] [29]
-Overfull \hbox (14.682pt too wide) in paragraph at lines 226--229
+Overfull \hbox (14.682pt too wide) in paragraph at lines 232--235
 []\OT1/cmr/m/n/12 Considering now the heat-map pro-duced by the DS based onhow-provenance,
  []
 
 <figures/comparison_2.pdf, id=619, 2123.935pt x 1755.55875pt>
 File: figures/comparison_2.pdf Graphic file (type pdf)
 <use figures/comparison_2.pdf>
-Package pdftex.def Info: figures/comparison_2.pdf  used on input line 235.
+Package pdftex.def Info: figures/comparison_2.pdf  used on input line 241.
 (pdftex.def)             Requested size: 390.0pt x 322.33562pt.
 [30] [31 <./figures/comparison_2.pdf>]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 258.
+               Default added (so using `tbp') on input line 266.
 
-<figures/radar_top_synthetic_enhanced.pdf, id=666, 463.7325pt x 356.33125pt>
-File: figures/radar_top_synthetic_enhanced.pdf Graphic file (type pdf)
-<use figures/radar_top_synthetic_enhanced.pdf>
-Package pdftex.def Info: figures/radar_top_synthetic_enhanced.pdf  used on input line 260.
-(pdftex.def)             Requested size: 312.00119pt x 239.74657pt.
-[32]) [33 <./figures/radar_top_synthetic_enhanced.pdf>] (./section/more_experiments.tex) (./section/conclusions.tex [34]) (/Users/dennisdosso/Dropbox/paper di Dennis/IN CORSO/2020_PeerJ_Credit/2020_Elsevier_DSS/.texpadtmp/credit_distribution.bbl [35]
+<figures/2_radars.pdf, id=666, 872.25874pt x 379.4175pt>
+File: figures/2_radars.pdf Graphic file (type pdf)
+<use figures/2_radars.pdf>
+Package pdftex.def Info: figures/2_radars.pdf  used on input line 268.
+(pdftex.def)             Requested size: 390.0pt x 169.64209pt.
+[32]
+
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `tbp') on input line 287.
+
+<figures/3_radars.pdf, id=670, 1298.8525pt x 777.90625pt>
+File: figures/3_radars.pdf Graphic file (type pdf)
+<use figures/3_radars.pdf>
+Package pdftex.def Info: figures/3_radars.pdf  used on input line 289.
+(pdftex.def)             Requested size: 390.0pt x 233.57545pt.
+[33 <./figures/2_radars.pdf>] [34 <./figures/3_radars.pdf>]) [35] (./section/more_experiments.tex) (./section/conclusions.tex [36]) (/Users/dennisdosso/Dropbox/paper di Dennis/IN CORSO/2020_PeerJ_Credit/2020_Elsevier_DSS/.texpadtmp/credit_distribution.bbl [37]
 Underfull \hbox (badness 1062) in paragraph at lines 30--33
 []\OT1/cmr/m/n/12 Baggerly, K. (2010).  Dis-close all data in pub-li-ca-tions.  \OT1/cmr/m/it/12 Na-ture\OT1/cmr/m/n/12 ,
  []
 
-[36] [37] [38] [39] [40]) [41] (/Users/dennisdosso/Dropbox/paper di Dennis/IN CORSO/2020_PeerJ_Credit/2020_Elsevier_DSS/.texpadtmp/credit_distribution.aux) ) 
+[38] [39] [40] [41] [42]) [43] (/Users/dennisdosso/Dropbox/paper di Dennis/IN CORSO/2020_PeerJ_Credit/2020_Elsevier_DSS/.texpadtmp/credit_distribution.aux) ) 
 Here is how much of TeX's memory you used:
- 3694 strings out of 492616
- 52583 string characters out of 6129480
- 121423 words of memory out of 5000000
- 7499 multiletter control sequences out of 15000+600000
+ 3701 strings out of 492616
+ 52650 string characters out of 6129480
+ 121444 words of memory out of 5000000
+ 7505 multiletter control sequences out of 15000+600000
  13300 words of font info for 53 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  41i,15n,30p,1070b,333s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmti7.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on "/Users/dennisdosso/Dropbox/paper di Dennis/IN CORSO/2020_PeerJ_Credit/2020_Elsevier_DSS/.texpadtmp/credit_distribution.pdf" (41 pages, 2209870 bytes).
+Output written on "/Users/dennisdosso/Dropbox/paper di Dennis/IN CORSO/2020_PeerJ_Credit/2020_Elsevier_DSS/.texpadtmp/credit_distribution.pdf" (43 pages, 2542094 bytes).
 PDF statistics:
- 790 PDF objects out of 1000 (max. 8388607)
- 602 compressed objects within 7 object streams
+ 813 PDF objects out of 1000 (max. 8388607)
+ 619 compressed objects within 7 object streams
  0 named destinations out of 1000 (max. 500000)
- 51 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 56 words of extra memory for PDF output out of 10000 (max. 10000000)
 
