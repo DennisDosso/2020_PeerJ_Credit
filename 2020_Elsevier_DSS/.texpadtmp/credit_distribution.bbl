@@ -46,8 +46,10 @@ Belter, C.~W. (2014).
 \newblock {\em {PLoS ONE}}, 9(3):e92590.
 
 \bibitem[Bertin-Mahieux et~al., 2011]{bertin2011million}
-Bertin-Mahieux, T., Ellis, D. P.~W., Whitman, B., and Lamere, P. (2011).
+Bertin-Mahieux, T., Ellis, D., Whitman, B., and Lamere, P. (2011).
 \newblock The million song dataset.
+\newblock In {\em Proceedings of the 12th International Conference on Music
+  Information Retrieval (ISMIR 2011)}, pages 591--596.
 
 \bibitem[Borgman, 2016]{Borgman2016}
 Borgman, C.~L. (2016).
@@ -65,7 +67,7 @@ Buneman, P. (2006).
 Buneman, P., Christie, G., Davies, J.~A., Dimitrellou, R., Harding, S.~D.,
   Pawson, A.~J., Sharman, J.~L., and Wu, Y. (2020).
 \newblock Why data citation isn't working, and what to do about it.
-\newblock {\em Database}.
+\newblock {\em Database J. Biol. Databases Curation}, 2020.
 
 \bibitem[Buneman et~al., 2016]{bunemann2016citation}
 Buneman, P., Davidson, S.~B., and Frew, J. (2016).
@@ -164,6 +166,7 @@ Force, M., Robinson, N., Matthews, M., Auld, D., and Boletta, M. (2016).
 \bibitem[Garfield, 1999]{garfield1999journal}
 Garfield, E. (1999).
 \newblock Journal impact factor: a brief review.
+\newblock {\em Can. Med. Assoc.}, 979-980.
 
 \bibitem[G{\"o}{\ss}wein et~al., 2019]{gosswein2019data}
 G{\"o}{\ss}wein, B., Miksa, T., Rauber, A., and Wagner, W. (2019).
@@ -234,9 +237,9 @@ Lawrence, B., Jones, C., Matthews, B., Pepler, S., and Callaghan, S. (2011).
 \bibitem[Martone, 2014]{martone2014joint}
 Martone, M. (2014).
 \newblock Joint declaration of data citation principles.
-\newblock {\em FORCE11. San Diego CA. Data Citation Synthesis Group. doi:
-  https://doi.org/10.25490/a97f-egyk, url:
-  https://www.force11.org/datacitationprinciples (visited on 2020/03/17)}.
+\newblock {\em FORCE11. San Diego CA. Data Citation Synthesis Group.}
+\newblock \url{https://www.force11.org/datacitationprinciples}, online
+  September 2020.
 
 \bibitem[Meho and Yang, 2007]{meho2007impact}
 Meho, L.~I. and Yang, K. (2007).

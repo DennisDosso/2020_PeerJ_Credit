@@ -153,7 +153,7 @@ To define the DS more formally, we introduce some notation and illustrate it usi
 
 \begin{figure}[]
 \centering
-  \includegraphics[width=.5\textwidth]{figures/how_example}
+  \includegraphics[width=.4\textwidth]{figures/how_example}
   \caption{Illustration of notation used to define the how-provenance based DS in Definition \ref{def:how_distribution}.}
   \label{figure:how_example}
 \end{figure}
@@ -204,15 +204,20 @@ If, for example, the first monomial was $f_1^2 c2f_1 c_1$, then the portion of c
 
 In this specific example, the how-provenance-based DS has the same outcome as the one based on why-provenance. %Consequently, one may ask if there is a significant difference between the two strategies. 
 We therefore consider another query over GtoPdb, \texttt{Q2}, that asks for the families of type \texttt{gpcr} that have as contributor a researcher located in the UK:
+
+{\footnotesize
+\begin{adjustwidth}{25pt}{5pt}
 \begin{verbatim}
 	Q2: SELECT DISTINCT F.name 
 	FROM family as F JOIN
 		(SELECT DISTINCT f.name AS name
 		FROM family AS f JOIN contributor2family AS c2f ON f.id = c2f.family_id
 		JOIN contributor AS c ON c2f.contributor_id = c.id
-		WHERE c.country = 'UK') AS R ON F.name = R.name
-	WHERE F.type = 'gpcr'
-\end{verbatim}
+		WHERE c.country = "UK") AS R ON F.name = R.name
+	WHERE F.type = "gpcr"
+\end{verbatim}	
+\end{adjustwidth}
+}
 
 \begin{table}[]
 \centering
@@ -227,7 +232,7 @@ We therefore consider another query over GtoPdb, \texttt{Q2}, that asks for the 
 \vspace{2mm}
   \begin{tabular}{c | c | c}
   	lineage & why-provenance & how-provenance   \\
-  	$\{f_1, c2f_1, c_1, c2f_2, c_2\}$ & $\{\{f_1, c2f_1, c_1\}, \{f_1, c2f_2, c_2\}\}$ & $f_1(f_1 c2f_1 c_1 + f_1 c2f_2 c_2)$\\
+  	$\{f_1, c2f_1, c_1, c2f_2, c_2\}$ & $\{\{f_1, c2f_1, c_1\}, \{f_1, c2f_2, c_2\}\}$ & $f_1^2 c2f_1 c_1 + f_1^2 c2f_2 c_2$\\
   \end{tabular}
     \caption{Result of query \texttt{Q2} applied on the database of Table \ref{table:running_example} and its different provenances. The reported numbers are the credit distributed through the process.}
   \label{table:difference_result}
@@ -236,7 +241,7 @@ We therefore consider another query over GtoPdb, \texttt{Q2}, that asks for the 
 The result of \texttt{Q2} is shown in Table \ref{table:difference_result}, and consists of one tuple, annotated with each of the three provenances. As can be seen, lineage and why-provenance are identical to those of the tuple $o_1$ in the previous example. 
 The how-provenance, however, is different since tuple $f_1$ is used twice: first in the join of the inner query, and second in the join of the outer query. This information is lost in the first two forms of provenances since they are sets, but it is captured in how-provenance through the use of the operator `$\cdot$'.
 
-\scream{This polynomial still doesn't have coefficients other than 1, but ok. Why don't you rewrite the polynomial to $f_1^2c2f_1c_1 + f_1^2c2f_2c_2$ to make the exponents clearer?}
+%\scream{This polynomial still doesn't have coefficients other than 1, but ok. Why don't you rewrite the polynomial to $f_1^2c2f_1c_1 + f_1^2c2f_2c_2$ to make the exponents clearer?}
 
 \begin{figure}[]
   \includegraphics[width=\textwidth]{figures/how_distribution}

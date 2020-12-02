@@ -2,17 +2,17 @@
 \label{sec:experiments}
 
 \begin{figure}[t]
-  \includegraphics[width=1\textwidth]{figures/paper_based_comparison}
-  \caption{Comparison of three DS on the same table \texttt{contributor} using the distribution given by the queries retrieved from papers.}
+  \includegraphics[width=1\textwidth]{figures/paper_based}
+  \caption{Comparison of three DS on the same table \texttt{family} using the distribution given by the queries retrieved from papers.}
   \label{figure:comparison_on_papers}
 \end{figure}
 
-We evaluate the proposed distribution strategies on GtoPdb, and in we focus on target families, all of those are described in webpages. 
+We evaluate the proposed distribution strategies on GtoPdb, and in particular we focus on target families, all of those are described in webpages. 
 GtoPdb in particular identifies eight family types: \emph{GPCR}, \emph{Ion channels}, \emph{NHRs}, \emph{Kinases}, \emph{Catalytic receptors}, \emph{Transporters}, \emph{Enzymes} and \emph{Other protein targets}.  
 
 When a paper uses data from GtoPdb, it can cite the full database, the family webpage of interest, or a subset of data extracted with a query. 
 In this work, we consider a full-fledged data citation context in which papers cite the specific \emph{data} subset of interest and not the webpage or the full database acting as data proxies.  
-Therefore, when a paper cites family data, it is citing a set of queries needed to retrieve all the information provided by the family webpage, i.e., one query for each section composing a page, as depicted in Figure \ref{figure:family_structure}. 
+Therefore, when a paper cites the data of a family, it is citing a set of queries needed to retrieve all the information provided by the family webpage, i.e., one query for each section composing a page, as depicted in Figure \ref{figure:family_structure}. 
 In the figure, we can see how the structure of one family, ``Adenosine receptors'', is mapped into several queries to obtain the information to build the corresponding webpage. 
 In GtoPdb, all family pages share a similar structure (the only differences may be the presence/absence and length of the receptors lists, further readings, and contributors sections).
 Therefore, the same queries are used to build all other pages by simply changing the family id (which, in our example, is 3). All these queries are SPJ. 
@@ -21,12 +21,12 @@ As already stated, many papers that draw information from the GtoPdb website\foo
 To obtain a set of citations capable of representing what happens, we consider a paper subset citing the 2018 GtoPdb~\citep{iuphar2018} data paper. 
 At the time of writing, this paper received more than $1200$ citations. 
 
-As explained in Section \ref{section:use_case}, in the papers published in the British Journal of Clinical Pharmacology, that cite GtoPdb, the name of families are hyperlinks that point to the corresponding webpages.
-We considered all the $460$ papers in BJCP citing \citep{iuphar2018} as of February 2020. 
-We automatically extracted the URL references to family pages were automatically extracted to guide in building the queries to produce corresponding webpages.
-A total of $5,945$ different queries were built in this way. \footnote{For reproducibility purposes, the code we used for our experiments and all the produced queries can be found at the following link: \url{https://bitbucket.org/dennis_dosso/credit_distribution_project}.}
+As explained in Section \ref{section:use_case},in the papers published in the British Journal of Clinical Pharmacology (many of those cite GtoPdb) the names of families are hyperlinks that point to the corresponding webpages.
+We considered all the $889$ papers in BJCP citing \citep{iuphar2018} as of October 2020. 
+The URL references to family pages were automatically extracted, and were used to build the queries associated to the webpages that we inferred from the pages, as described in Figure \ref{figure:family_structure}.
+A total of more than $12K$ different queries were built in this way. \footnote{For reproducibility purposes, the code we used for our experiments and all the produced queries can be found at the following link: \url{https://bitbucket.org/dennis_dosso/credit_distribution_project}.}
 
-Figure \ref{figure:comparison_on_papers} shows the heat-maps obtained by three different DS on the table \texttt{contributor}.
+Figure \ref{figure:comparison_on_papers} shows the heat-maps obtained by three different DS on the table \texttt{family}.
 It is immediately evident that the result of the distribution is the same with the three strategies. The same effect is also obtained in the other tables of the database used by the considered queries. 
 Why is that? 
 It is the case that the conditions in which we produced this experiment are quite peculiar. The queries that we used share similar characteristics. They are all SPJ queries, each of them utilizes each table only once in the join condition (there are no self-joins), and all the joins are made using key attributes. 

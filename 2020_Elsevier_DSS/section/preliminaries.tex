@@ -8,13 +8,19 @@ Lineage was first introduced by \citet{lineageCui}. Given a database instance $I
 that helped ``produce'' it~\citep{CheneyProvSurvey}.
 As an example, consider the following SQL query \texttt{Q1}, applied to the database described in Table \ref{table:running_example}, that asks for the names of families curated by researchers based in the United Kingdom (UK):
 
+\vspace{2mm}
+{\footnotesize
+\begin{adjustwidth}{25pt}{0pt}
 \begin{verbatim}
-	Q1: SELECT DISTINCT f.name
-	FROM family AS f JOIN contributor2family AS c2f 
-	ON f.id = c2f.family_id
-	JOIN contributor AS c ON c2f.contributor_id = c.id
-	WHERE c.country = 'UK'
-\end{verbatim}
+		Q1: SELECT DISTINCT f.name
+		FROM family AS f JOIN contributor2family AS c2f 
+		ON f.id = c2f.family_id
+		JOIN contributor AS c ON c2f.contributor_id = c.id
+		WHERE c.country = 'UK'
+\end{verbatim}	
+\end{adjustwidth}
+}
+\vspace{2mm}
 
 \begin{table}[hbt]
 \centering
