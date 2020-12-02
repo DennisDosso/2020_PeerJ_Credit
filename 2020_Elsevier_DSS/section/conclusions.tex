@@ -1,23 +1,26 @@
 \section{Conclusions}
 \label{section:conclusions}
 
-This paper expanded on our previous work on data credit and data credit distribution by defining two new distribution strategies, based on the why- and how-provenance. 
+This paper expanded on our previous work on data credit and data credit distribution in \cite{dosso2020data} by defining two new distribution strategies, based on why- and how-provenance. 
 The first distribution is based on the concept of witness, and it can give more credit to tuples that appear in more than one witness. 
-In other words, tuples that are more important to the query and are used in different ways by a query are also rewarded more by the distribution.
-The second distribution, based on how-provenance, considers the frequency in which a tuple or a combination of tuples is used in the query through the provenance polynomial information. In this sense, it is even more sensitive than the first one.
+In other words, tuples that are more important to the query and are used in different ways are also rewarded more by the strategy.
+The second DS, based on how-provenance, considers the frequency in which a tuple or a combination of tuples is used in the query through the information contained in the provenance polynomial. In this case, the distribution is even more sensitive than the first one to the role and importance of tuples.
 
-To show the differences between the three DS (also considering the one based on lineage, defined in our previous work), we performed different experiments on GtoPdb, a curated scientific relational database. 
+To show the differences between the three DS (also considering the one based on lineage, defined in our previous work), we performed different experiments on GtoPdb, a curated scientific relational database, with the use of both real and synthetic queries. 
 In the first set of experiments, we used SPJ queries extracted by data citations present in papers published in the British Journal of Pharmacology. 
 Employing these queries, we were able to distribute the credit to the tuples in different tables of the database, highlighting the tuples used more than others. 
-We showed that with these queries, the three strategies produce the same distribution. With the specific type of queries that do not present self-joins, the formulas at the base of the strategies have the same output. In this particular case, the tuples are used in the same way by the queries; thus, the DSs do not register any particular difference in the tuples' role.
+We showed that with these queries, the three strategies produce the same distribution. These are SPJ queries that do not present self-joins, and therefore the formulas at the base of the DS have the same output.
 
-In the second and third sets of experiments, we synthetically produced more complex queries, i.e., nested queries whose provenance polynomials presents coefficients and exponents bigger than $1$.
+In the second set of experiments, we synthetically produced more complex provenance polynomials, corresponding to more complex synthetic queries, that present exponents and coefficients different than $1$.
 In this way, we showed that, even though all three DS can highlight all the tuples used by the queries in the database, the three have different behaviors. 
 While the DS based on lineage rewards all the tuples used by a query in equal measure, the strategy based on why-provenance tends to reward the tuples more critical to the query. 
 In particular, why-provenance can consider the different ways in which one tuple is used in a query.  
 How-provenance is even more sensitive to the tuples' role: it can also consider the frequency by which a tuple or a set of tuples is used in the case of more complex queries. Depending on the goal of a user, one provenance may be preferred to another. 
 
-In the fourth set of experiments, we showed how, compared with traditional citations, the credit distributed with the three strategies works as a new tool highlighting different aspects of an author's role in the research context identified by queries. Authors with a limited number of citations can still have a high quantity of credit due to the importance of the data to which they contributed to the queries. 
+We also showed how the differences between the DS become more and more evident with the passing of time, i.e. when more and more polynomials are processed by the system.
+
+In the third set of experiments we compared the citations to the authors to the credit brought to them. We showed how, both in the real-world and synthetic scenarios the credit rewards more the authors that have a higher impact, i.e. the authors connected to the data that produce the highest quantities of credit, and not necessarily the data with the highest citation count. 
+In this sense, credit appears to be an useful new measure to discover data and their corresponding curators that have a high impact in the research world, even when they are cited few times or do not appear at all in the data that are cited (i.e. the case of data used to build the output of a query but that is not visualized in the output itself).
 
 In future work, we plan to explore the different potential applications of credit on relational databases.
 One example is the so-called \emph{data pricing}. Data pricing consists of giving a price to a query submitted by a user who wants to buy the produced information. Currently, a commonly used strategy to face data pricing is based on query rewriting. A database stores a set of views correlated with their price. When a new query arrives, the system tries to rewrite it using the stored views and obtain a query price. This process is computationally expensive.

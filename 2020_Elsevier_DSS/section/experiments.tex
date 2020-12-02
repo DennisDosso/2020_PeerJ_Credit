@@ -259,6 +259,15 @@ Finally, the highest differences are shown in the 10K group. In this case, we se
 
 From this progression we see how, given the peculiar synthetic provenance polynomials that we presented, it is actually possible to see the differences between the three distribution. These differences become more and more evident with the passing of time, i.e. the more credit is distributed to the tuples. 
 
+Therefore, although all the three DS considered here are effective in distributing credit, they actually behave differently. 
+The DS based on lineage is sufficient when a user only wants to highlight the tuples of the database that are used by a query (and not only visualized in the output). However, it distributes the credit equally to the tuples of the lineage, therefore losing information on the role of the tuples in the production of the output. 
+
+For this, a user may want (depending on the nature of the queries) to use DS based on why-provenance and how-provenance. The two are more sensitive than the DS based on lineage (and the DS based on how-provenance is more sensible than the one based on why-provenance). 
+Therefore, using these DS, it is possible to change the distribution of credit to the tuple, rewarding more the tuples that have a more important role in the generation of the output. These two DS can therefore be preferred when the aim of the user is to find ``hotspots'' in the database based on the role of the tuples. 
+
+In particular, the DS based on why-provenance rewards more the tuples that are used in different ways by queries (i.e. are members of more witnesses). The DS based on how-provenance also takes into consideration how many times a tuple is used, adding even more sensibility to the distribution. 
+One may choose one other the other depending what are the aspects he wants to highlight in the data.
+
 %%%%%%%%
 
 \subsection{Credit vs Citations}
@@ -284,10 +293,10 @@ This means that there are citations that are much more ``valueble'' for an autho
 This shows how credit is able to reward authors that are cited less than others but, nonetheless, have a high impact on the research community. 
 
 
-\begin{figure}[]
+\begin{figure}[t]
 \centering
   \includegraphics[width=1\textwidth]{figures/3_radars}
-  \caption{Radars presenting 20 authors ordered citation-wise and credit-wise, together with their (normalized between 0 and 1) values of citations and credit, through the execution of different numbers of polynomials (100, 1K, and 10K).}
+  \caption{Radars presenting 20 authors ordered citation-wise and credit-wise, together with their (normalized between 0 and 1) values of citations and credit, through the execution of different numbers of polynomials (100, 1K, and 10K). The radar plots ordered by credit consider the credit assigned by the DS based on how-provenance.}
   \label{figure:3_radars}
 \end{figure}
 
@@ -303,14 +312,47 @@ Given the synthetic nature of these queries, the correlation between the number 
 Nonetheless, it is possible to note that credit still behaves differently,. In particular we still see that certain authors that are not in the top 10 positions citation-wise are still rewarded with high quantities of credit, showing their importance with respect to their impact. 
 Interestingly, scaling up to $1K$ and $10K$ polynomials, it appears that the distribution performed via why-provenance and how-provenance become equivalent for the authors. We can note that, although not exactly equal, the values of credit assigned to the authors by those DS become quite similar with these higher quantities of polynomials. 
 
+\subsection{Execution times}
+
+\begin{table}[hbt]
+\centering
+  \begin{tabular}{| l |c | c | c | c ||}
+  \hline
+    \# of polynomials  & lineage & why-prov. & how-prov. \\
+    \hline
+    100 & 226.6 ms & 192.0 ms & 185.5 ms \\
+    200 & 431.2 ms & 392.2 ms & 403.2 ms \\
+    500 & 1.013 s  & 934.2 ms & 881.8 ms \\ 
+    1K  & 2.041 s  & 1.934 s  & 1.744 s  \\
+    2K  & 3.773 s  & 3.491 s  & 3.510 s  \\
+    5K  & 8.992 s  & 8.653 s  & 8.889 s  \\
+    10K & 17.10 s  & 16.84 s  & 16.84 s  \\
+    20K & 34.59 s  & 35.30 s  & 39.70 s \\
+    100K & 3.289 min & 3.442 min & 3.652 min \\
+    1M  & 35.91 min & 34.87 min & 37.91 min \\
+    \hline
+  \end{tabular}
+  \caption{The times required to perform the three DS for different number of synthetic polynomials.}
+  \label{table:times}
+\end{table}
+
+In Table \ref{table:difference_result} we report the time required to compute the distribution using the DS based on the three provenances as described above. As we see, the execution time grows linearly with the number of polynomials that are submitted to the system. With high values of polynomials (1M), the time required by the DS based on lineage and why-provenance is lower than the time required by the DS based on how-provenance, due to the bigger number of operations the last DS requires during the computations of the portions of credit to assign to the different tuples. 
+We note that, since we created these polynomials on-the-fly, these values do not include the time required to compute the provenances.
+Therefore, limited to the time required to distribute credit, the three DS are equivalent in terms of performances. The first differences can be seen only with high number of polynomials, when lineage and why-provenance may be preferred if there are no requirements to assign credit with the strategy implemented by the how-provenance-based DS.
+
+All the experiments were carried on a MacBook Pro 13-inch, 2019 with 2.4 GHz processor Intel Core i5 quad-core, 8 GB of memory at 2133 MHz with code written in Java and the support of a PostgreSQL database. 
 
 
-
-Credit presents a different behavior from one of the citations, and each form of credit, i.e., the credit obtained from the different DS, behaves differently from the others.
-For example, it appears that authors T, C, and R that are low in the number of citations are still rewarded more than other more cited authors in terms of credit.
-Even if the tuples of these authors received fewer citations, they still received more credit than other more cited tuples. This shows how credit can be an effective new method to use together with traditional citations to reward curators, highlighting aspects lost using the traditional bibliometrics.
-
-The three DS are all effective ways to distribute credit, and there is not one distribution that is preferable to the other all the time. It all depends on the needs of the users. 
-Lineage is to be preferred when users only want to see the tuples used in queries and reward more the tuples used in many queries. It only rewards based on the \emph{presence} of the tuples. 
-Why-provenance is more versatile when users also want to consider how many ways a tuple is used; thus, in a way, its \emph{versatility} inside the queries that used it.
-Finally, how-provenance also counts how many times a tuple is used, its \emph{frequency} in the computation of a query. 
+%\subsection{Discussion}
+%
+%In the previous sections we showed, through the use of different experiments, the behavior of credit and its distribution with the use of different DS. 
+%It appeared that, in the case of SPJ queries, the three distributions behave in the same way on GtoPdb. 
+%
+%Using synthetic polynomials, we showed how the three DS actually behave differently, in particular with the passage of time, i.e. when more and more polynomials are processed. 
+%The three DS are all effective ways to distribute credit, and there is not one distribution that is preferable to the other all the time. It all depends on the needs of the users. 
+%
+%Lineage is to be preferred when users only want to find tuples that are used in a database by queries applied to this database. With the accumulation of credit coming from many queries, the DS based on lineage is also able to create ``hotspots'' among the tuples of the relational database.
+%However, lineage rewards equally the tuples used by a query.
+% 
+%Why-provenance is more versatile when users also want to consider how many ways a tuple is used; thus, in a way, its \emph{versatility} inside the queries that used it.
+%Finally, how-provenance also counts how many times a tuple is used, its \emph{frequency} in the computation of a query. 
