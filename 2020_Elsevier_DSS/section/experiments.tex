@@ -1,6 +1,6 @@
 \section{Experimental Evaluation: comparing provenances}
 \label{sec:experiments}
-To understand the tradeoff between these distribution strategies, we performed three sets of experiments using queries over GtoPdb.  The first set of experiments used real queries extracted from citations to GtoPdb published in the British Journal of Pharmacology.  
+To understand the trade-off between these Distribution Strategies (DS), we performed three sets of experiments using queries over GtoPdb.  The first set of experiments used real queries extracted from citations to GtoPdb published in the British Journal of Pharmacology.  
 The second set uses different sets of synthetically produced provenance polynomials, corresponding to more complex queries, apt to highlight the differences between the DS.
 In the third set of experiments we compare the differences between traditional citations and credit in rewarding data curators. 
 
@@ -14,31 +14,29 @@ In the third set of experiments we compare the differences between traditional c
 \end{figure}
 
 
-We evaluate the proposed distribution strategies on GtoPdb, and in particular we focus on target families, all of those are described in pages of the GtoPdb website. 
+We evaluate the proposed distribution strategies on GtoPdb, and in particular we focus on target families described in the GtoPdb website. 
 There are eight family types: \emph{GPCR}, \emph{Ion channels}, \emph{NHRs}, \emph{Kinases}, \emph{Catalytic receptors}, \emph{Transporters}, \emph{Enzymes} and \emph{Other protein targets}.  
 
 When a paper uses data from GtoPdb, it can cite the full database, the webpage of interest, or a subset of data extracted with a query. 
 We consider as sources of citations the papers published in the British Journal of Pharmacology (BJP)~\footnote{\url{https://bpspubs.onlinelibrary.wiley.com}}, since each time they cite a webpage from GtoPdb, they report the URL of that page. From that URL it is possible to reverse-engineer the queries that are used to obtain the data contained in the pages. 
-In particular, we considered all the $889$ papers in BJCP citing the IUPHAR/BPS guide to PHARMACOLOGY \citep{iuphar2018} as of October 2020. \citep{iuphar2018} is a data journal that describes the structure and evolution of GtoPdb. ERach two years the GtoPdb consortium releases such a journal to describe the evolution of the databases.
-At the time of writing, this paper received more than $1200$ citations. 
+In particular, we considered all the $889$ papers in BJCP citing the IUPHAR/BPS guide to pharmacology \citep{iuphar2018} as of October 2020. The IUPHAR/BPS guide is a data journal that describes the structure and evolution of GtoPdb. Each two years the GtoPdb consortium releases such a journal to describe the evolution of the databases.
+At the time of writing, \citep{iuphar2018} received more than $1200$ citations on Google Scholar. 
 
-The queries that we inferred are the ones building the information that constitutes a target family webpage are depicted in Figure \ref{figure:family_structure} (with the exception of the section References). 
-In the figure, we can see how the structure of one family, ``Adenosine receptors'', is mapped into several queries to obtain the information to build the corresponding webpage. 
+The queries that we inferred are those used to build a target family webpage that we reported in Figure \ref{figure:family_structure}, where we see how the structure of the ``Adenosine receptors'' family is mapped into the queries to get the information reported in the corresponding webpage. 
 In GtoPdb, all target family pages share a similar structure (the only differences is that certain sections, such as ``contributors'' or ``further readings'', may be absent).
-The same queries can therefore be used to build all the target family pages by simply changing the family id used in the query (which, in the example of Figure \ref{figure:family_structure}, is 3). All these queries are SPJ. 
-A total of more than $12K$ different queries were built in this way\footnote{For reproducibility purposes, the code we used for our experiments and all the produced queries can be found at the following link: \url{https://bitbucket.org/dennis_dosso/credit_distribution_project}.}.
-We assumed that each tuple in the output of each of these queries carries credit 1.
+Therefore, the same queries can be used to build all the target family pages by simply changing the family id used in the query (which, in the example of Figure \ref{figure:family_structure}, is 3). All these queries are SPJ. 
+A total of more than $12K$ different queries were built in this way\footnote{For reproducibility purposes, the code we used for our experiments and all the produced queries are available here: \url{https://bitbucket.org/dennis_dosso/credit_distribution_project}.}.
+Without any loss of generality, we decided that each tuple in the output of these queries carries default credit of $1$.
 
 Figure \ref{figure:comparison_on_papers} shows the heat-maps obtained by the distribution of credit performed by the three different DS on the GtoPdb table \texttt{family}.
 \texttt{family} is a table describing the characteristics and basic information of the receptor families and, as can be seen in Figure \ref{figure:family_structure}, it is often used in join with other tables in the queries that build a webpage.
 
-It is immediately evident that the result of the distribution is the same with the three strategies. The same effect is also obtained in the other tables of the database used by the queries shown in Figure \ref{figure:family_structure}. 
+It appears to evident that the result of the distribution is the same with the three strategies. The same effect is also obtained in the other tables of the database used by the queries shown in Figure \ref{figure:family_structure}. 
 
-Why is that? 
-It is the case that the conditions in which we produced this experiment are quite peculiar. The queries that we used share similar characteristics. They are all SPJ queries, each of them utilizes each table only once in the join condition (there are no self-joins), and all the joins are made using key attributes. 
-In this particular condition, each tuple of the output presents: (i) a how-provenance that is a single monomial with coefficient $1$ and exponent $1$ in each variable; (ii) a why-provenance that is composed by only one witness; (iii) a lineage that coincides with the only witness in the witness basis.
-It is easy to see how, given these queries, the three distributions act in the same way.
-The credit is always uniformly distributed among the tuples appearing in each provenance. 
+Why is that?  The conditions in which we produced this experiment are quite peculiar since the used queries  share similar characteristics. They are all SPJ queries, each of them utilizes each table only once in the join condition (there are no self-joins), and all the joins are on key attributes. 
+In this particular condition, each tuple of the output presents: (i) a how-provenance that is a single monomial with coefficient $1$ and exponent $1$ in each variable; (ii) a why-provenance that is composed of only one witness; (iii) a lineage that coincides with the only witness in the basis.
+Hence, given these queries, the three distributions act in the same way.
+The credit is always uniformly distributed among the tuples presentx in each provenance. 
 
 To better clarify what is happening, let us consider one of the types of queries used to build the output webpage, as shown in Figure \ref{figure:family_structure}:
 
