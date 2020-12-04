@@ -19,7 +19,7 @@ There are eight family types: \emph{GPCR}, \emph{Ion channels}, \emph{NHRs}, \em
 
 When a paper uses data from GtoPdb, it can cite the full database, the webpage of interest, or a subset of data extracted with a query. 
 We consider as sources of citations the papers published in the British Journal of Pharmacology (BJP)~\footnote{\url{https://bpspubs.onlinelibrary.wiley.com}}, since each time they cite a webpage from GtoPdb, they report the URL of that page. From that URL it is possible to reverse-engineer the queries that are used to obtain the data contained in the pages. 
-In particular, we considered all the $889$ papers in BJCP citing \citep{iuphar2018} as of October 2020. \citep{iuphar2018} is a data journal that describes the structure and evolution of GtoPdb. ERach two years the GtoPdb consortium releases such a journal to describe the evolution of the databases.
+In particular, we considered all the $889$ papers in BJCP citing the IUPHAR/BPS guide to PHARMACOLOGY \citep{iuphar2018} as of October 2020. \citep{iuphar2018} is a data journal that describes the structure and evolution of GtoPdb. ERach two years the GtoPdb consortium releases such a journal to describe the evolution of the databases.
 At the time of writing, this paper received more than $1200$ citations. 
 
 The queries that we inferred are the ones building the information that constitutes a target family webpage are depicted in Figure \ref{figure:family_structure} (with the exception of the section References). 
@@ -173,6 +173,7 @@ To show how the three DS can actually behave differently, let us consider anothe
 The figure reports a distribution of credit performed on the table \texttt{family} through the generation of 10K \emph{synthetic} polynomials. 
 We randomly generated provenance polynomials that might be the how-provenance of randomly generated synthetic queries, using the three GtoPdb tables \texttt{family}, \texttt{contributor2family}, and \texttt{contributor}. 
 An example of such synthetic polynomial is:
+
 {\footnotesize
 \[
 3 f_1^3 c2f_1^2 c_1^2 + 2 f_1 c2f_2^3 c_2^3 + 4 f_5 c2f_{17}^4 c_{18}^3
@@ -180,6 +181,7 @@ An example of such synthetic polynomial is:
 
 As can be seen, we made sure to also include coefficients and exponents that differ from $1$.
 Its corresponding why-provenance is: 
+
 {\footnotesize
 \[
 \{ \{f_1, c2f_1, c_1\}, \{f_1, c2f_2, cf_2\}, \{ f_5, c2f_{17}, c_{18}\} \}
@@ -187,6 +189,7 @@ Its corresponding why-provenance is:
 }
 
 its lineage is: 
+
 {\footnotesize
 \[
 \{f_1, f_5, c2f_1, c_1, c2f_1, c2f_2, c2f_{17}, c_1, c_2, c_{18} \}
@@ -197,6 +200,7 @@ These types of polynomials are not impossible to obtain in real life, since they
 We randomly generated a set of $10$K such polynomials. 
 
 Using how-provenance, this is the distribution obtained from the example polynomial we are considering:
+
 {\footnotesize
 \[
 f_1 = \frac{59}{315}, f_5 = \frac{1}{18}, c2f_1 = \frac{2}{21}, c2f_2 = \frac{2}{15}, 
@@ -205,6 +209,7 @@ c2f_{17}=\frac{2}{9} , c_1 = \frac{2}{21}, c_2 = \frac{2}{15}, c_{17} = \frac{1}
 }
 
 Using why-provenance, this is the output:
+
 {\footnotesize
 \[
 f_1 = \frac{2}{9}, f_5 = \frac{1}{9}, c2f_1 = \frac{1}{9}, c2f_2 = \frac{1}{9}, 
@@ -214,6 +219,7 @@ c2f_{17}=\frac{1}{9} , c_1 = \frac{1}{9}, c_2 = \frac{1}{9}, c_{17} = \frac{1}{9
 
 
 Finally, with lineage, this is the distribution:
+
 {\footnotesize
 \[
 f_1 = \frac{1}{8}, f_5 = \frac{1}{8}, c2f_1 = \frac{1}{8}, c2f_2 = \frac{1}{8}, 
