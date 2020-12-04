@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.10.23)  3 DEC 2020 18:15
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.10.23)  4 DEC 2020 12:04
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -383,41 +383,42 @@ Package pdftex.def Info: figures/how_distribution.pdf  used on input line 249.
 <figures/paper_based.pdf, id=427, 1797.71625pt x 1403.2425pt>
 File: figures/paper_based.pdf Graphic file (type pdf)
 <use figures/paper_based.pdf>
-Package pdftex.def Info: figures/paper_based.pdf  used on input line 8.
+Package pdftex.def Info: figures/paper_based.pdf  used on input line 11.
 (pdftex.def)             Requested size: 390.0pt x 304.41054pt.
  [25 <./figures/how_distribution.pdf>] [26 <./figures/paper_based.pdf>] [27] Excluding 'comment' comment.
 <figures/synthetic_polynomials.pdf, id=591, 1799.72375pt x 1381.16pt>
 File: figures/synthetic_polynomials.pdf Graphic file (type pdf)
 <use figures/synthetic_polynomials.pdf>
-Package pdftex.def Info: figures/synthetic_polynomials.pdf  used on input line 162.
+Package pdftex.def Info: figures/synthetic_polynomials.pdf  used on input line 165.
 (pdftex.def)             Requested size: 390.0pt x 299.28291pt.
- [28 <./figures/synthetic_polynomials.pdf>] [29]
-Overfull \hbox (14.682pt too wide) in paragraph at lines 232--235
+ [28] [29 <./figures/synthetic_polynomials.pdf>]
+Overfull \hbox (14.682pt too wide) in paragraph at lines 235--238
 []\OT1/cmr/m/n/12 Considering now the heat-map pro-duced by the DS based onhow-provenance,
  []
 
-<figures/comparison_2.pdf, id=619, 2123.935pt x 1755.55875pt>
+[30]
+<figures/comparison_2.pdf, id=622, 2123.935pt x 1755.55875pt>
 File: figures/comparison_2.pdf Graphic file (type pdf)
 <use figures/comparison_2.pdf>
-Package pdftex.def Info: figures/comparison_2.pdf  used on input line 241.
+Package pdftex.def Info: figures/comparison_2.pdf  used on input line 244.
 (pdftex.def)             Requested size: 390.0pt x 322.33562pt.
-[30] [31 <./figures/comparison_2.pdf>] [32]
+ [31 <./figures/comparison_2.pdf>] [32]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 275.
+               Default added (so using `tbp') on input line 278.
 
 <figures/2_radars.pdf, id=669, 872.25874pt x 379.4175pt>
 File: figures/2_radars.pdf Graphic file (type pdf)
 <use figures/2_radars.pdf>
-Package pdftex.def Info: figures/2_radars.pdf  used on input line 277.
+Package pdftex.def Info: figures/2_radars.pdf  used on input line 280.
 (pdftex.def)             Requested size: 390.0pt x 169.64209pt.
-[33 <./figures/2_radars.pdf>]
-<figures/3_radars.pdf, id=693, 1298.8525pt x 772.8875pt>
+[33]
+<figures/3_radars.pdf, id=673, 1298.8525pt x 772.8875pt>
 File: figures/3_radars.pdf Graphic file (type pdf)
 <use figures/3_radars.pdf>
-Package pdftex.def Info: figures/3_radars.pdf  used on input line 298.
+Package pdftex.def Info: figures/3_radars.pdf  used on input line 301.
 (pdftex.def)             Requested size: 390.0pt x 232.06851pt.
- [34 <./figures/3_radars.pdf>] [35]) (./section/more_experiments.tex) (./section/conclusions.tex [36] [37]) (/Users/dennisdosso/Dropbox/paper di Dennis/IN CORSO/2020_DSS_Credit/2020_Elsevier_DSS/.texpadtmp/credit_distribution.bbl [38]
+ [34 <./figures/2_radars.pdf>] [35 <./figures/3_radars.pdf>]) (./section/more_experiments.tex) (./section/conclusions.tex [36] [37]) (/Users/dennisdosso/Dropbox/paper di Dennis/IN CORSO/2020_DSS_Credit/2020_Elsevier_DSS/.texpadtmp/credit_distribution.bbl [38]
 Underfull \hbox (badness 1062) in paragraph at lines 30--33
 []\OT1/cmr/m/n/12 Baggerly, K. (2010).  Dis-close all data in pub-li-ca-tions.  \OT1/cmr/m/it/12 Na-ture\OT1/cmr/m/n/12 ,
  []
@@ -432,7 +433,7 @@ Here is how much of TeX's memory you used:
  1141 hyphenation exceptions out of 8191
  41i,15n,30p,1070b,333s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmti7.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on "/Users/dennisdosso/Dropbox/paper di Dennis/IN CORSO/2020_DSS_Credit/2020_Elsevier_DSS/.texpadtmp/credit_distribution.pdf" (44 pages, 2545506 bytes).
+Output written on "/Users/dennisdosso/Dropbox/paper di Dennis/IN CORSO/2020_DSS_Credit/2020_Elsevier_DSS/.texpadtmp/credit_distribution.pdf" (44 pages, 2546060 bytes).
 PDF statistics:
  816 PDF objects out of 1000 (max. 8388607)
  621 compressed objects within 7 object streams
