@@ -285,7 +285,7 @@ Using the why-provenance and how-provenance DS, it is possible to change the dis
 
 We compare traditional citations and credit for the last set of experiments to check their behavior difference when rewarding data curators.
 Consider the two radar plots in Figure \ref{figure:2_radars}.
-The plot on the left reports the top 20 author (we identify the authors with their ID instead of their name), ordered based on the normalized value of citations distributed by the queries taken from the papers published in BJP as described in Section \ref{sec:real_world_queries}, together with their normalized value of credit. 
+Figure \ref{figure:2_radars}.a reports the top 20 author (we identify the authors with their ID instead of their name), ordered based on the normalized value of citations distributed by the queries taken from the papers published in BJP as described in Section \ref{sec:real_world_queries}, together with their normalized value of credit. 
 An author transitively receives credit from the data s/he created or curated. The credit assigned to data is then split equally to the authors of those tuples. 
 As shown in Section \ref{sec:real_world_queries}, there is no difference for these queries in the distribution of credit between the three DS. Thus these values are equal for the three distributions.  
 The second plot is similar to the first one, but the authors are ordered based on the received credit. 
@@ -296,16 +296,27 @@ This means that there are citations that are more ``valuable'' for an author reg
 This shows how credit can reward authors that are cited less than others but, nonetheless, have a high impact on the research community. 
 
 
+%\begin{figure}[t]
+%\centering
+%  \includegraphics[width=1\textwidth]{figures/3_radars}
+%  \caption{Radars presenting 20 authors ordered citation-wise and credit-wise, together with their (normalized between 0 and 1) values of citations and credit, through the execution of different numbers of polynomials (100, 1K, and 10K). The radar plots ordered by credit consider the credit assigned by the DS based on how-provenance.}
+%  \label{figure:3_radars}
+%\end{figure}
+
 \begin{figure}[t]
 \centering
-  \includegraphics[width=1\textwidth]{figures/3_radars}
-  \caption{Radars presenting 20 authors ordered citation-wise and credit-wise, together with their (normalized between 0 and 1) values of citations and credit, through the execution of different numbers of polynomials (100, 1K, and 10K). The radar plots ordered by credit consider the credit assigned by the DS based on how-provenance.}
+  \includegraphics[width=1\textwidth]{figures/fixed_radars}
+  \caption{
+  Radars presenting the 20 synthetic authors with corresponding citation and quantities of credit distributed through the 3 DS (all values normalized between 0 and 1) through different numbers of queries (respectively, 100, 1K and 10K). 
+  The order is the descending one of the citations of the authors with 100 queries. }
   \label{figure:3_radars}
 \end{figure}
 
 Let us consider Figure \ref{figure:3_radars}.
-In this case, we produced $100$, $1K$, and $10K$ synthetic polynomials, and we distributed credit through them. Since these polynomials correspond to queries whose authors are not easily identifiable, we created $20$ ``synthetic'' authors, and we randomly assigned one author to each tuple in the database. The authors receive ``blocks'' of consecutive tuples, with each block of the size varying between $10$ and $40$. 
+In this case, we produced $100$, $1K$, and $10K$ synthetic polynomials, and we distributed credit through them. Since these polynomials correspond to queries whose authors are not easily identifiable, we created $20$ ``synthetic'' authors, and we randomly assigned one author to each tuple in the database. The authors receive ``blocks'' of consecutive tuples, with each block of the size varying between $10$ and $40$ to simulate different quantities of ``work'' performed by an author. 
 Every time a tuple was used in a provenance polynomial, we assigned one citation to the author corresponding to the tuple.  The same author also receives the three different credits given to the tuple at the end of the distribution process using the three DS.
+
+
 
 The three radar plots in the upper row presents 20 authors are sorted based on the normalized number of received citations, together with the corresponding normalized quantities of credits assigned using the 3 different strategies.
 The ones in the bottom row present the authors ordered based on the quantity of credit assigned by the DS based on how-provenance.
