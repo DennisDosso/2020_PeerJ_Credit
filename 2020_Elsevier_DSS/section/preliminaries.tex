@@ -183,8 +183,8 @@ The $+$ operator represents the fact that the two monomials describe alternative
 This simple example gives the basic idea behind how-provenance and how it allows us to track the operations that produced an output tuple. 
 
 % talking a little bit about coefficients and exponents
-Provenance polynomials may also have monomials whose exponents and/or coefficients are greater than one, for example, $3f_1 \cdot c2f_1 \cdot c_1 + f_1 \cdot c2f_2^3 \cdot c_2^3$. This is a polynomial of a tuple produced by a query where the result of the join between the tuples $f_1$, $c2f_1$, and $c_1$ is produced three times and then merged (e.g. as the result of a projection), and the tuples $c2f_2$ and $c_2$ are used three times in the operation described by the second monomial (e.g., with nested queries). 
-\scream{Why would the join tuple be produced 3 times?  Perhaps as a result of a union? Projection doesn't make sense}
+Provenance polynomials may also have monomials whose exponents and/or coefficients are greater than one, for example, $3f_1 \cdot c2f_1 \cdot c_1 + f_1 \cdot c2f_2^3 \cdot c_2^3$. This is a polynomial of a tuple produced by a query where the result of the join between the tuples $f_1$, $c2f_1$, and $c_1$ is produced three times and then merged (e.g. as the result of a union), and the tuples $c2f_2$ and $c_2$ are used three times in the operation described by the second monomial (e.g., with nested queries). 
+% \scream{Why would the join tuple be produced 3 times?  Perhaps as a result of a union? Projection doesn't make sense}
 
 %MORE FORMALISM
 %Now we formally introduce the mathematical framework behind how-provenance~\citep{howProvenanceGreen}.
