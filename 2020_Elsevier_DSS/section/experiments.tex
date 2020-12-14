@@ -20,9 +20,9 @@ The fourth set of experiments shows how the DSs compare to traditional citations
 %When a paper uses data from GtoPdb, it can cite the full database, a webpage of interest, or a subset of data extracted with a query. 
 
 Examples of real queries are drawn
-from papers published in the British Journal of Pharmacology (BJP).~\footnote{\url{https://bpspubs.onlinelibrary.wiley.com}}  Each time a paper in this journal cites a webpage from GtoPdb, it reports the URL of the page. From this URL, the query used to obtain the webpage data can be determined. 
+from papers published in the British Journal of Pharmacology (BJP)~\footnote{\url{https://bpspubs.onlinelibrary.wiley.com}}.  Each time a paper in this journal cites a webpage from GtoPdb, it reports the URL of the page. From this URL, the query used to obtain the webpage data can be determined. 
 We considered all $889$ papers in BJCP citing the IUPHAR/BPS Guide to pharmacology \citep{iuphar2018} as of October 2020, and extracted all webpage URLs to GtoPdb contained within the paper\footnote{The IUPHAR/BPS Guide is a journal that describes the structure and evolution of GtoPdb. At the time of writing, it had received more than $1200$ citations on Google Scholar.}.
-\scream{Revised, check that it is correct.}
+%\scream{Revised, check that it is correct.  - yes}
 
 %\eat{
 There are eight target family types presented on the GtoPdb website: \emph{GPCR}, \emph{Ion channels}, \emph{NHRs}, \emph{Kinases}, \emph{Catalytic receptors}, \emph{Transporters}, \emph{Enzymes} and \emph{Other protein targets}.  
@@ -42,8 +42,7 @@ It can be seen that the result of  credit distribution over \texttt{family} is t
 
 The reason why credit distribution is the same for all three strategies is that the queries are all simple SPJ queries, which use each table only once and do joins on key attributes. 
 Under these conditions, each tuple of the output presents: (i) a how-provenance that is a single monomial with coefficient $1$ and exponent $1$ in each variable; (ii) a why-provenance with only one witness; and (iii) a lineage that coincides with the witness in the basis.
-Hence, for these queries, the three DSs behave in the same way:
-Credit is uniformly distributed among the tuples present in each provenance. 
+Hence, for these queries, the three DSs behave in the same way: credit is uniformly distributed among the tuples present in each provenance. 
 
 To illustrate this, consider one of the queries in Figure \ref{figure:family_structure} which is used to build the output webpage:
 
@@ -187,21 +186,21 @@ $
 $ }\\
 \hspace{0.5in} 
 {\footnotesize{\bf Credit distribution:}\\ $f_1 = \frac{59}{315}, f_5 = \frac{1}{18}, c2f_1 = \frac{2}{21}, c2f_2 = \frac{2}{15}, 
-c2f_{17}=\frac{2}{9} , c_1 = \frac{2}{21}, c_2 = \frac{2}{15}, c_{17} = \frac{1}{6} 
+c2f_{17}=\frac{2}{9} , c_1 = \frac{2}{21}, c_2 = \frac{2}{15}, c_{18} = \frac{1}{6} 
 $
 }
 \\
 \\
 {\footnotesize{\bf Why-provenance:}
 $
-\{ \{f_1, c2f_1, c_1\}, \{f_1, c2f_2, cf_2\}, \{ f_5, c2f_{17}, c_{18}\} \}
+\{ \{f_1, c2f_1, c_1\}, \{f_1, c2f_2, c_2\}, \{ f_5, c2f_{17}, c_{18}\} \}
 $ 
 }
 \\
 {\footnotesize{\bf Credit distribution:}\\
 $
-f_1 = \frac{59}{315}, f_5 = \frac{1}{18}, c2f_1 = \frac{2}{21}, c2f_2 = \frac{2}{15}, 
-c2f_{17}=\frac{2}{9} , c_1 = \frac{2}{21}, c_2 = \frac{2}{15}, c_{17} = \frac{1}{6} 
+f_1 = \frac{2}{9}, f_5 = \frac{1}{9}, c2f_1 = \frac{1}{9}, c2f_2 = \frac{1}{9}, 
+c2f_{17}=\frac{1}{9} , c_1 = \frac{1}{9}, c_2 = \frac{1}{9}, c_{18} = \frac{1}{9} 
 $
 }
 \\
@@ -214,14 +213,14 @@ $}
 {\footnotesize{\bf Credit distribution:}\\
 $
 f_1 = \frac{1}{8}, f_5 = \frac{1}{8}, c2f_1 = \frac{1}{8}, c2f_2 = \frac{1}{8}, 
-c2f_{17}=\frac{1}{8} , c_1 = \frac{1}{8}, c_2 = \frac{1}{8}, c_{17} = \frac{1}{8} 
+c2f_{17}=\frac{1}{8} , c_1 = \frac{1}{8}, c_2 = \frac{1}{8}, c_{18} = \frac{1}{8} 
 $}
- \caption{Sample synthetic provenance polynomial (how-provenance) and corresponding why-provenance and lineage expressions with credit distributions}
+ \caption{Sample synthetic provenance polynomial (how-provenance) and corresponding why-provenance and lineage expressions with deriving credit distributions.}
  \label{fig:syntheticDistributions}
  \end{figure}
 
 \begin{figure}[tb]
-  \includegraphics[width=1\textwidth]{figures/synthetic_polynomials}
+  \includegraphics[width=1\textwidth]{figures/experiments/synthetic_comparison}
   \caption{Comparison of three DS on the same table \texttt{family} after the distribution computed using 10K synthetic and randomly generated provenance polynomials. The tuples in the blue rectangles are used as example in the discussion connected to Figure \ref{fig:comparison}.}
   \label{figure:comparison_on_synthetic_polynomials_2}
 \end{figure}
@@ -277,30 +276,37 @@ c2f_{17}=\frac{1}{8} , c_1 = \frac{1}{8}, c_2 = \frac{1}{8}, c_{17} = \frac{1}{8
 
 
 
-As an example of how the distribution strategies behave with these synthetic queries, consider tuple $f_5$ in Figure \ref{figure:comparison_on_synthetic_polynomials_2}.
+As an example of how the distribution strategies behave with these synthetic queries, consider tuple $f_5$ in Figure \ref{fig:syntheticDistributions}.
 This tuple receives the highest quantity of credit using lineage-based distribution, and less credit using why- and how-provenance because more information is available about the role of the tuple in the overall computation. 
-Generally speaking, the more complex the distribution (the most complex being how-provenance), the more credit is given to tuples which are more frequently used or which have a higher impact in producing the output tuple. 
+Generally speaking, the more complex the distribution (the most complex being how-provenance), the more credit is given to tuples which are more frequently used, and thus have a higher impact in producing the output tuple. 
 
 Although synthetic, these provenance polynomials represent realistic queries.  The polynomials can be obtained by any nested query with join and union operations that use the same tuple multiple times (in which case the exponents are bigger than $1$), and the same combination of operations more than once (in which case the coefficients of monomials are bigger than $1$). 
 
 \paragraph{Results} The results of credit distribution on the \texttt{family} table using 10K randomly generated synthetic provenance polynomials are shown in
 Figure \ref{figure:comparison_on_synthetic_polynomials_2}. 
-We set the maximum value in the heat maps to the highest value reached by a tuple in all three distributions (i.e., $8.33$). 
-As can be seen, the three strategies generate significantly different credit distributions indicated by the varying hues.  
+We set the maximum value in the heat maps to the highest value reached by a tuple in all three distributions (i.e., $9.4$). 
 
-Lineage-based DS gives the least credit to tuples in the \texttt{family} table, indicated by an overall lighter hue. This is because the DS equally distributes credit to all tuples appearing in the lineage. Since these queries also use two other tables, credit is distributed to tuples in those tables.
+As can be seen, the three strategies generate significantly different credit distributions indicated by the varying hues. 
+We note that, however, there is a consistency in how credit is distributed between the tuples, i.e. tuples that are highly rewarded by one strategy are also highly rewarded by the others, and vice-versa. This shows that the three DS consistently reward certain tuples more than others. 
 
-Moving to %the heat-map reporting the distribution performed by the DS based on 
-why-provenance-based DS, we see that more credit is given to tuples in the \texttt{family} table than either of the other two strategies, indicated by the overall darker hue. This is because the DS considers the different ways that a tuple is used, e.g. in joins with other tuples. If the same tuple is present in more than one witness, it will draw more credit and take it from  other tuples in the witness basis. In this case, tuples in \texttt{family} drew more credit, taking it from tuples in the other two tables, due to the role that \texttt{family}  tuples played in the queries that were executed.
+In particular, lineage-based DS gives the least credit to tuples in the \texttt{family} table, indicated by an overall lighter hue. This is because the DS equally distributes credit to all tuples appearing in the lineage. Since these queries also use two other tables, credit is distributed to tuples in those tables.
 
-\scream{Dennis, rewrote, please check for accuracy.}
+Moving to why-provenance based DS, we see that more credit is given to tuples in the \texttt{family} table than with the previous strategy. This is because the DS considers the different ways that a tuple is used, e.g. in joins with other tuples. If the same tuple is present in more than one witness, it will draw more credit and take it from  other tuples in the witness basis. In this case, tuples in \texttt{family} drew more credit, taking it from tuples in the other two tables, due to the role that \texttt{family}  tuples played in the queries that were executed.
+
+%\scream{Dennis, rewrote, please check for accuracy.}
 Finally, consider the how-provenance-based DS heat-map. %  in Figure \ref{fig:comparison}. 
-As with why-provenance, more credit is typically given to tuples in \texttt{family} compared to lineage-based DS since it recognizes the role of these tuples in the queries, and the overall hue is deeper.  However, the distribution does not reward all tuples in the same way, since it uses all information contained in the provenance polynomials.  Referring to the ten tuples within each large blue rectangle (each small rectangle within the large blue rectangle is a tuple), we will number them from 1 (top) to ten (bottom).  Note that tuples 2, 7, 8, and 9 are awarded less credit than in either the lineage- or why-provenance strategies, whereas tuples 1 and 3 receives more credit than either of the other two strategies. 
+As with why-provenance, more credit is typically given to tuples in \texttt{family} compared to lineage-based DS since it recognizes the role of these tuples in the queries, and the overall hue is deeper.  
+The two distributions appear similar, although, to a closer inspection, it is possible to note some smaller differences between the two distributions. 
+This is because this DS also considers the frequency by which tuples are used, not only the ways in which they are used. Therefore, although the overall distribution is similar, there are small differences due to the presence of exponents and coefficients in the provenance polynomials, influencing the distribution of credit. 
+
+To better show this difference, let us consider the ten tuples within each large blue rectangle (each small rectangle within the large blue rectangle is a tuple). We will number them from 1 (top) to ten (bottom), and we use them in the discussion in the next section.  
+
 \eat{
+ Note that tuples 2, 7, 8, and 9 are awarded less credit than in either the lineage- or why-provenance strategies, whereas tuples 1 and 3 receives more credit than either of the other two strategies. 
+ 
 However, the distribution does not reward tuple 2 in the same way. Also tuples 7, 8, and 9 that appear to be rewarded heavily in the why-provenance-based DS here are contain lower quantities of credit. Vice-versa, tuple 3 is much higher in credit with respect to what happens with the why-provenance-based DS.
 This is due to the fact that this DS is even more sophisticated, since it uses all the information contained in the provenance polynomials. 
 In this case, a tuple as 3 is able to attract even more credit than before. However, other tuples, such as 2, 7, 8, and 9 receive now less credit, since they role appears to be less determinant once the full information from the polynomials is taken into considerations. }
-This shows in more detail that the DS based on how-provenance is more nuanced in terms of credit distribution than the other strategies. 
 \eat{even more sophisticated, and can be taken into consideration when a user wants to distribute credit with a higher level of sensibility.}
 %\textbf{ $\leftarrow$  Gianmaria: This is not clear and I suggest a rewriting of this paragraph.}
 
@@ -310,24 +316,39 @@ This shows in more detail that the DS based on how-provenance is more nuanced in
 Since credit accrues over time, we simulate the passage of time by varying the number of queries executed, and look at the ``snapshots" of credit for each of the strategies using synthetic queries.  The results are shown in Figure \ref{fig:comparison}.
 
 \begin{figure}[t]
-  \includegraphics[width=\textwidth]{figures/comparison_2}
+  \includegraphics[width=\textwidth]{figures/experiments/comparison}
   \caption{Comparison of the distribution of credit performed by the three DSs on a subset of 10 tuples taken from the \texttt{family} table, simulating the passing of time. The number at the top of each group of heat-maps represents the number of queries.}
   \label{fig:comparison}
 \end{figure}
 
-\scream{Dennis:  What is the "rank" of tuple about, and why do we need to bring it up? I've taken it out, see if this is still correct.}
+%\scream{Dennis:  What is the "rank" of tuple about, and why do we need to bring it up? I've taken it out, see if this is still correct.}
 
 In this figure, four groups of heat-maps are shown. Each group represents a ``snapshot'' taken %during an incremental accumulation of credit on the database 
-after 1K, 2K, 5K and 10K queries have been executed.  The ten tuples in each heat-map are from the \texttt{family} table, and are the ones highlighted previously in the blue boxes of Figure \ref{figure:comparison_on_synthetic_polynomials_2}.  
+after 1K, 2K, 5K and 10K provenance polynomials have been considered for credit distribution.  
+The ten tuples in each heat-map are from the \texttt{family} table, and are the ones highlighted previously in the blue boxes of Figure \ref{figure:comparison_on_synthetic_polynomials_2}.  
+
 \eat{The heat-maps maps are over the ten tuples from the GtoPdb \texttt{family} table after an incremental distribution of credit (the tuples of ranks ranging from 79 to 89). These are the same tuples highlighted in the blue boxes in Figure \ref{figure:comparison_on_synthetic_polynomials_2}. 
 Figure \ref{figure:comparison_on_synthetic_polynomials_2} represents the end of the process.  }
 \eat{
 In this way, we simulate the passing of time on a database where credit distribution is performed. Each group of heat-maps can be thought of as a snapshot of that set of tuples at a certain moment. }
-The queries used are the same as the experiment reported in the previous section. The range of credit in each map goes from 0 (no credit) to 6 (the maximum quantity of credit reached on a tuple at the ``snapshot'' with 10K queries).
 
 
-Focusing on the 1K and 2K groups, we see that credit distribution by the three DS are very similar. Still, there are small differences, in particular in tuple 5.
-\scream{Dennis: need to say more about tuple 5. Why not also 7 and 10? The interesting one to me is tuple 9, whose credit appears to decrease.}
+The queries used are the same as the experiment reported in the previous section. The range of credit in each map goes from 0 (no credit) to 8 (the maximum quantity of credit reached on one of the tuples of the considered window at the ``snapshot'' with 10K queries). The color hue of the legend, as can be seen, still ranges from $0$ to $9.5$.
+
+
+Focusing on the 1K and 2K groups, we see that credit distribution by the three DS are very similar. Still, there are small differences.
+We note that, in the 1K group, tuple 4 is the one with the highest value of credit with all 3 strategies. Moving to 2K group, it is still the one with the highest value of credit, although it presents the highest value with the why-provenance DS. The other two strategies rewarded it less. 
+Also, why-provenance and how-provenance rewarded more tuples 2 and 3 than the strategy based on lineage. 
+Tuple 5 appears to be more rewarded by why-provenance, and less by how-provenance and even less by lineage. 
+This shows, even with these lower values of polynomials, that the strategies may differ and reward certain tuples more than others, and vice versa. 
+We see the tendency of the lineage DS to reward the tuples in this table less than the other strategies, since it does not take into consideration their importance. 
+Instead, the DS based on why-provenance rewards more tuples like 4 and 5 (values 2 in both cases). 
+The same can be said of the strategy based on how-provenance. However, in this case, tuples 4 and 5 are rewarded a little less (with credit values of 1.9 and 1.5 respectively). This is due to the fact that how-provenance contains more information. Thus, this DS rewarded more other tuples in the other used tables. Viceversa, tuples 2 and 3 are rewarded more by how-provenance DS (values 1.5 and 1.6) that the why-provenance DS (value 1.3 in both cases), due to the fact that their roles in the polynomials are more important.  
+%\scream{Dennis: need to say more about tuple 5. Why not also 7 and 10? The interesting one to me is tuple 9, whose credit appears to decrease.}
+
+Moving to the 5K group, we see how credit was accumulated on the tuples, showing how the passage of time  
+
+
 
 
 The first interesting differences come after 5K queries. In particular, note how tuple 7 receives very little credit in the lineage-based DS, more in the why-provenance-based DS, and the most credit in the how-provenance-based DS. This is because tuple 7 appears in a relatively few lineages, but its role is critical to these queries; thus, why- and how-provenance-based strategies reward it more.
