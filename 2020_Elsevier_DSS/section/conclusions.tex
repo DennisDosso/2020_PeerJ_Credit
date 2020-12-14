@@ -1,32 +1,41 @@
 \section{Conclusions}
 \label{section:conclusions}
 
-This paper expanded on our previous work on data credit and data credit distribution in \cite{dosso2020data} by defining two new distribution strategies, based on why- and how-provenance. 
-The first distribution is based on the concept of witness, and it can give more credit to tuples that appear in more than one witness. 
-In other words, tuples that are more important to the query and are used in different ways are also rewarded more by the strategy.
-The second DS, based on how-provenance, considers the frequency in which a tuple or a combination of tuples is used in the query through the information contained in the provenance polynomial. In this case, the distribution is even more sensitive than the first one to the role and importance of tuples.
+This paper 
+%expanded on our previous work on data credit and data credit distribution in \cite{dosso2020data} by 
+defines two new distribution strategies based on why- and how-provenance, and compares them against the lineage-based distribution strategy defined in \cite{dosso2020data}. 
+The first DS, based on why-provenance, uses the concept of a witness, and gives more credit to tuples that appear in more than one witness. 
+In this way, tuples that are more important to the query and are used in different ways are rewarded more. % by the strategy.
+The second DS, based on how-provenance, considers the frequency with which a tuple or combination of tuples is used in the query through the information contained in a provenance polynomial. In this case, the distribution is even more sensitive than the first to the role and importance of tuples.
 
-To show the differences between the three DS (also considering the one based on lineage, defined in our previous work), we performed different experiments on GtoPdb, a curated scientific relational database, with the use of both real and synthetic queries. 
-In the first set of experiments, we used SPJ queries extracted by data citations present in papers published in the British Journal of Pharmacology. 
-Employing these queries, we were able to distribute the credit to the tuples in different tables of the database, highlighting the tuples used more than others. 
-We showed that with these queries, the three strategies produce the same distribution. These are SPJ queries that do not present self-joins, and therefore the formulas at the base of the DS have the same output.
+To show the differences between the three DSs, we performed extensive experiments based on GtoPdb, a curated scientific relational database, using both real and synthetic queries. 
+In the first set of experiments, we used select-project-join (SPJ) queries extracted from citations to webpages in GtoPdb found in papers published in the British Journal of Pharmacology. 
+Using these ``real" queries, we distributed credit to tuples in different tables of the database, highlighting tuples that were more frequently used. 
+We showed that, with these queries, the three strategies produce the same distribution. This is because the SPJ queries were fairly simple, and did not use self-joins. Therefore the formulas underlying the different DSs had the same output.
 
-In the second set of experiments, we synthetically produced more complex provenance polynomials, corresponding to more complex synthetic queries, that present exponents and coefficients different than $1$.
-In this way, we showed that, even though all three DS can highlight all the tuples used by the queries in the database, the three have different behaviors. 
-While the DS based on lineage rewards all the tuples used by a query in equal measure, the strategy based on why-provenance tends to reward the tuples more critical to the query. 
-In particular, why-provenance can consider the different ways in which one tuple is used in a query.  
-How-provenance is even more sensitive to the tuples' role: it can also consider the frequency by which a tuple or a set of tuples is used in the case of more complex queries. Depending on the goal of a user, one provenance may be preferred to another. 
+In the second set of experiments, we synthetically produced more complex provenance polynomials, corresponding to more complex synthetic queries, that resulted in exponents and coefficients in the provenance polynomials that were greater than (or equal to) $1$.
+These experiments highlighted the differences between the three DSs.
+\eat{
+In this way, we showed that, even though all three DS can highlight all the tuples used by the queries in the database, the three have different behaviors. }
+While the DS based on lineage rewards all the tuples used by a query equally, the strategy based on why-provenance gives more credit to  tuples that are more critical to the query. 
+In particular, why-provenance consider the different ways in which a tuple is used in a query.  
+How-provenance is even more sensitive to the tuple's role: it also considers the frequency with which a tuple or a set of tuples is used. %in the case of more complex queries. Depending on the goal of a user, one provenance may be preferred to another. 
 
-We also showed how the differences between the DS become more and more evident with the passing of time, i.e. when more and more polynomials are processed by the system.
+In the third set of experiments, we showed how the differences between the DS are compounded over time, i.e. when more and more queries are processed by the system.
 
-In the third set of experiments we compared the citations to the authors to the credit brought to them. We showed how, both in the real-world and synthetic scenarios the credit rewards more the authors that have a higher impact, i.e. the authors connected to the data that produce the highest quantities of credit, and not necessarily the data with the highest citation count. 
+In the fourth set of experiments we compared traditional citations to authors to the credit accrued to them via the DSs. We showed how, both in the real-world and synthetic scenarios, credit rewards authors 
+%that have a higher impact, i.e. the authors 
+who contribute/curate data with the highest quantities of credit, and not necessarily the data with the highest citation count. 
+\scream{I don't really understand this point.}
 In this sense, credit appears to be an useful new measure to discover data and their corresponding curators that have a high impact in the research world, even when they are cited few times or do not appear at all in the data that are cited (i.e. the case of data used to build the output of a query but that is not visualized in the output itself).
 
-In future work, we plan to explore the different potential applications of credit on relational databases.
-One example is the so-called \emph{data pricing}. Data pricing consists of giving a price to a query submitted by a user who wants to buy the produced information. Currently, a commonly used strategy to face data pricing is based on query rewriting. A database stores a set of views correlated with their price. When a new query arrives, the system tries to rewrite it using the stored views and obtain a query price. This process is computationally expensive.
-We plan to distribute credit through carefully planned and representative queries and use it as information to define a new, faster, and potentially more flexible pricing function.
+In future work, we plan to explore different applications of credit over relational databases.
+One example is \emph{data pricing}, which gives a price to a query submitted by a user who wants to buy the produced information. Currently, a commonly strategy used for data pricing is based on query rewriting:  A database stores a set of views with their price. When a new query arrives, the system rewrites it using the stored views to obtain a query price, a process that can be computationally expensive.
+We plan to distribute credit through carefully planned and representative queries, and use credit information to define a new, faster, and potentially more flexible pricing function.
 
-Another application is \emph{data reduction}~\cite{milo2019getting}, concerned with reducing the vast mole of data that is produced in the evolving world of research and information technology. Data reduction deals with different aspects of dealing with huge amounts of data, such as finding reduced and relevant data streams from the multiple gigabytes of data produced by big data systems every second or dealing with the curse of dimensionality which requires unbounded computational resources to uncover actionable knowledge patters~\citep{ur2016big}.
+Another application is \emph{data reduction}~\cite{milo2019getting}, which addresses the problem of reducing the vast -- and rapidly expanding -- amount of data that is being produced. % in the evolving world of research and information technology. 
+Ideas that are being explored include %Data reduction deals with different aspects of dealing with huge amounts of data, such as 
+finding reduced and relevant data streams from the multi-gigabytes of data produced by big data systems every second,  and dealing with the curse of dimensionality which requires unbounded computational resources to uncover actionable knowledge patterns~\citep{ur2016big}. \scream{I'm not sure what the previous sentence means!}
 
-Data credit can also help to find ``hotspots'' and ``coldspots''. A hotspot is data in a database (a tuple or a single attribute, for example) that presents a high quantity of credit and is therefore valuable for the set of queries that distributed that credit. 
-On the other hand, a coldspot is data that present low quantities of credit and can be considered useless or less relevant and can therefore be removed or moved in another cheaper and less efficient memory location. 
+Data credit can also address this problem, by helping find ``hotspots'' and ``coldspots'' of data. A hotspot is data in a database (e.g. a tuple) with a high quantity of credit, which is therefore valuable for the set of queries that execute frequently over the data and distribute the credit. 
+On the other hand, a coldspot is data with a low quantity of credit, which is therefore  considered less  important and could be deleted or moved to cheaper and/or less efficient memory. 
