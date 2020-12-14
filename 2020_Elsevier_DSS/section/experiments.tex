@@ -346,27 +346,21 @@ Instead, the DS based on why-provenance rewards more tuples like 4 and 5 (values
 The same can be said of the strategy based on how-provenance. However, in this case, tuples 4 and 5 are rewarded a little less (with credit values of 1.9 and 1.5 respectively). This is due to the fact that how-provenance contains more information. Thus, this DS rewarded more other tuples in the other used tables. Viceversa, tuples 2 and 3 are rewarded more by how-provenance DS (values 1.5 and 1.6) that the why-provenance DS (value 1.3 in both cases), due to the fact that their roles in the polynomials are more important.  
 %\scream{Dennis: need to say more about tuple 5. Why not also 7 and 10? The interesting one to me is tuple 9, whose credit appears to decrease.}
 
-Moving to the 5K group, we see how credit was accumulated on the tuples, showing how the passage of time  
+Moving to the 5K group, we see how credit was accumulated on the tuples. Now tuple $2$ is the one with the biggest quantity of credit in this window. This shows how credit is able to track how the importance of tuples changes over time. 
+In this group we see of it is more evident the difference between the distribution based on lineage and the other two strategies. The why-provenance and how-provenance based DSs appear to work similarly, that is to give similar values of credit to the same tuples. 
+We can still see differences, for example on tuples like 8 and 6, that are more rewarded by the DS based on lineage.
+
+Similar observations can be seen for the 10K group. We see how tuple 2 is still highly rewarded by all three provenances. In the case of lineage, however, it is at the same level with tuples 3, 4, and 8, while the other two strategies reward it the most. 
+Once again we see the DSs based on why- and how-provenance operate similar distributions (we still note differences of few decimals between the values assigned to the tuples). However, it is still possible to see how tuples like $9$ are more rewarded by one DS, in this case the how-provenance one, than the other. 
+This shows how the last two DS operate in a similar way. The differences between the credit assigned to the same tuple is of few decimals between the two strategies in most of the cases. However, there are certain situations when the role of a tuple is particularly critical in a query. This information is captured by the provenance polynomial, and this is why in certain cases the differences in the credit assigned to one tuple is notably different between the two strategies.  
 
 
-
-
-The first interesting differences come after 5K queries. In particular, note how tuple 7 receives very little credit in the lineage-based DS, more in the why-provenance-based DS, and the most credit in the how-provenance-based DS. This is because tuple 7 appears in a relatively few lineages, but its role is critical to these queries; thus, why- and how-provenance-based strategies reward it more.
-On the other hand, tuple 5 is highly rewarded by the lineage-based and why-provenance-based DSs, and less by how-provenance. Although tuple 5 appears in many queries and is used in different combinations, its exponents in the provenance polynomials is low, therefore giving it less credit with how-provenance than with why-provenance.
-\scream{Dennis:  What does "tuple 7 appears in a relatively few lineages" mean?  Do you mean it appears in relatively few results, but plays a crucial role?}
-
-\scream{Dennis: I don't understand this paragraph at all.  I am stopping here in this subsection until you clean this up a bit, it's very confusing. }
-It is also interesting to note how other tuples like tuple 2 now surpass certain tuples, like tuple 1 that up to 2K queries presented the highest values of credit. This shows how credit can keep track of the ``hotspots'' in a database over time. The presence of new queries and new credit distributions can change the hotspots in a table, showing how the research community's interests may change during time. 
-
-Finally, the largest differences are shown in the 10K group. In this case, we see a situation similar to the one with 5K queries. Like 8 or 10, specific tuples receive more credit with why-provenance and how-provenance, rather than with lineage. This is still due to the critical role of the tuple in the queries where it appears. 
-
-From this progression, given the particular synthetic provenance polynomials that were presented, we can see the differences between the three distributions. These differences become more evident with time, i.e., the more credit is distributed to the tuples. 
-
-%Therefore, although all the three considered DS considered here are effective in distributing credit, they actually behave differently. 
-The DS based on lineage is sufficient when a user only wants to highlight the tuples of the database used by a query (and not only visualized in the output). However, it equally distributes the credit to the tuples of the lineage, therefore not considering the information on the tuples' role in the production of the output. 
+To sum up, the DS based on lineage is sufficient when a user only wants to highlight the tuples of the database used by a query. This strategy equally distributes the credit to the tuples of the lineages. The resulting distribution rewards more the tuples that are used by more queries, but does not reward how the tuples are used in the same query.  
 
 For this reason, a user may want (depending on the nature of the queries) to use DS based on why-provenance and how-provenance. %These two DS are sensitive than the DS based on lineage (and the DS based on how-provenance is more sensible than the one based on why-provenance). 
-Using the why-provenance and how-provenance DS, it is possible to change the distribution of credit to the tuple, rewarding more the tuples that have a more critical role in generating the output. Therefore, these two DS can be preferred when the user aims to find ``hotspots'' in the database based on the tuples' role. 
+Using the why-provenance and how-provenance DS, it is possible to change the distribution of credit to the tuple, rewarding more the tuples that have a more critical role in generating the output. The distribution based on how-provenance is most of the times similar to the one based on why-provenance. 
+However, in certain instances, it differ from the other one due to the specific role of a tuple, an information that is present in the provenance polynomial but lost in the witness basis. 
+These two DSs can be preferred when the user aims to find ``hotspots'' in the database based on the tuples' role, and the DS based on how-provenance can be chosen when the user wants the higher sensibility to the role of a tuple. 
 
 %In particular, the DS based on why-provenance rewards more the tuples that are used in different ways by queries (i.e. are members of more witnesses). The DS based on how-provenance also takes into consideration how many times a tuple is used, adding even more sensibility to the distribution. 
 %One may choose one other the other depending what are the aspects he wants to highlight in the data.
@@ -382,28 +376,34 @@ Using the why-provenance and how-provenance DS, it is possible to change the dis
   \label{figure:2_radars}
 \end{figure}
 
-\scream{What is the set of authors, just ones on papers in BPC or are they the data curators?  Check if what I say below is correct!}
+%\scream{What is the set of authors, just ones on papers in BPC or are they the data curators?  Check if what I say below is correct!}
 
-In the last set of experiments, we compare credit generated by traditional citations and the proposed credit distribution strategies to see the difference in reward for authors, including data curators.  
-The set of authors used in the experiments are \scream{??} those appearing on the paper traditionally cited for GtoPdb, as well as data creators and curators in the \texttt{contributor} table in GtoPdb responsible for producing the data used in the queries.  An author receives credit via a traditional citation when the traditional GtoPdb paper is cited; they receive credit via a DS when data which they created or curated receives credit.
-We perform the comparison using both real-world and synthetic queries.
+In the last set of experiments, we compare traditional citations to the proposed credit distribution strategies to see the difference in reward for authors, including data curators.  
+
+Each target family page in GtoPdb has a list of curators, that represents all the people who worked on the page and that can be considered as co-authors of that page. It is possible to obtain the list of one page authors using the last query shown in Figure \ref{figure:family_structure}. As set of authors, we consider all the curators of one target family in GtoPdb. 
+Each time data are cited, we assign one citation to each author associated to that data. Each time some data, e.g. a tuple, receives credit, we equally divide and transitively assign that quantity of credit to the authors of that data.
+
+%The set of authors used in the experiments are \scream{??} those appearing on the paper traditionally cited for GtoPdb, as well as data creators and curators in the \texttt{contributor} table in GtoPdb responsible for producing the data used in the queries.  An author receives credit via a traditional citation when the traditional GtoPdb paper is cited; they receive credit via a DS when data which they created or curated receives credit.
+%We perform the comparison using both real-world and synthetic queries.
 
 \paragraph{Results: Real-world queries}
-As described in Section \ref{sec:real_world_queries}, the real-world queries are taken from papers published in the BJCP which reference webpages in GtoPdb.
-Since for these queries there is no difference in the distribution of credit between the three DS, only one value for credit is given.
+As described in Section \ref{sec:real_world_queries}, we consider real-world queries, taken from papers published in the BJCP which reference webpages in GtoPdb.
+Since for these queries there is no difference in the distribution of credit between the three DS, only one value for credit is given in Figure \ref{figure:2_radars}. As we said, each time a webpage is cited, the authors of that webpage receive one citation, and also receive a quantity of credit that is equal to the credit assigned to the data and generated from the citation, equally divided among them. 
 
 The results are shown in the radar plots of Figure \ref{figure:2_radars}, in which each number on the outer circle (e.g. 475, 1774 and 3665) represents an author (id) and the blue (pink) line represents the normalized value of credit generated by citations (credit), respectively. The first radar plot,
-Figure \ref{figure:2_radars}.a, orders the top 20 authors based on citations in a clockwise direction, whereas Figure \ref{figure:2_radars}.b, orders the authors with the highest value of credit who do not also have the highest number of citations. \scream{what does that mean?  and it seems that there is not a large overlap in the authors in fig. a and b}
+Figure \ref{figure:2_radars}.a, shows the top 20 authors, ordered in a clockwise direction based on citations, whereas Figure \ref{figure:2_radars}.b, orders the authors with the highest value of credit. 
+%\scream{what does that mean?  and it seems that there is not a large overlap in the authors in fig. a and b}
+As we see from Figure \ref{figure:2_radars}.a, the top 20 authors that present the highest values of citations do not also have the highest values of credit. Vice-versa, as seen in Figure \ref{figure:2_radars}.b, the authors with the highest values of credit do not necessarily also have the highest values of citations, i.e. the two sets of authors are not equal (although there is partial overlapping between the two, e.g. authors 1774, 475, 4012, etc.). 
 
-\eat{The results are shown in the radar plots of Figure \ref{figure:2_radars}.
-Figure \ref{figure:2_radars}.a reports the top 20 author (we identify the authors with their ID instead of their name), ordered based on the normalized value of citations distributed by the queries taken from the papers published in BJP as described in Section \ref{sec:real_world_queries}, together with their normalized value of credit. 
-An author transitively receives credit from the data s/he created or curated. The credit assigned to data is then split equally to the authors of those tuples. 
-As shown in Section \ref{sec:real_world_queries}, there is no difference for these queries in the distribution of credit between the three DS. Thus these values are equal for the three distributions.  }
+From this figure we understand that it is not the case that authors with the higher number of citations also present the highest values of credit. This is due to the fact that certain citations are more ``valuable'' in terms of credit, i.e. an author receive more credit from his/her citations, even if fewer, than other authors. This, in turns, happens because certain citations generate more credit than others. 
+So, for example, author 536 presents the highest value of credit, although he is not even in the top 20 authors in terms of citations. This means that he receives much more credit from his relatively few citations than author 475. 
 
-The second radar plot, Figure \ref{figure:2_radars}.b, orders authors based on the quantity of credit. 
-\scream{Shoudl discuss that this is not necessarily the same set of authors?}
-As can be seen, the quantity of credit and the number of citations differ significantly:  An author with a high number of citations may have a low credit value (e.g. 475). Similarly, an author with a high credit value may have a low number of citations.  \scream{I didn't see any to point to in the figure... and I didn't understand the next few sentences, please reword.} 
-This means that there are citations that are more ``valuable'' for an author regarding credit. This is because the quantity of credit assigned by these citations is very high, i.e., the impact of those cited data is high. Authors that are cited less than others can have, nonetheless, a high impact on the research community and thus receive a higher quantity of credit.
+Given how we prepared our experiments, the citations whose query produce more tuples, are also the ones that generate more credit, since we assumed that each output tuple carries credit $1$. Thus, the authors of the data returned by these queries are the ones that will receive more credit from these citations. Also, the authors that collaborated with fewer people will also receive a biggest share from the equal subdivision of credit. 
+
+This shows how credit distribution actually rewards differently authors than traditional citations. An author that curated larger quantities of cited data, and together with fewer co-authors, will receive bigger quantities of credit. Thus, credit can reward him for his more relevant ``contribution'' to the database. 
+
+In other settings, where the quantity of credit can be computed considering different criteria, such as the impact of the cited data in the citing paper, credit distribution can help to identify with even deeper precision the data and the authors that contributed more to the scientific impact in the context defined by the considered citations.
+
 
 
 
@@ -425,6 +425,7 @@ This means that there are citations that are more ``valuable'' for an author reg
 
 \paragraph{Results: Synthetic queries}
 We produced $100$, $1K$, and $10K$ synthetic polynomials and distributed credit through them to data. 
+
 \scream{I don't understand the rest of this paragraph.  ARe you saying you can't figure out the creators/curators of the data?  But you were able to do that in earlier experiments, so why not now?  I'm missing something in the setup.}
 Since these polynomials correspond to queries whose authors are not easily identifiable, we created $20$ ``synthetic'' authors, and we randomly assigned one author to each tuple in the database. The authors receive ``blocks'' of consecutive tuples, with each block of the size varying between $10$ and $40$ to simulate different quantities of ``work'' performed by an author. 
 Every time an author appears as curator of one or more tuples used in a query, we assigned one citation to that author.  
