@@ -24,9 +24,8 @@ How-provenance is even more sensitive to the tuple's role: it also considers the
 In the third set of experiments, we showed how the differences between the DS are compounded over time, i.e. when more and more queries are processed by the system.
 
 In the fourth set of experiments we compared traditional citations to authors to the credit accrued to them via the DSs. We showed how, both in the real-world and synthetic scenarios, credit rewards authors 
-%that have a higher impact, i.e. the authors 
-who contribute/curate data with the highest quantities of credit, and not necessarily the data with the highest citation count. 
-\scream{I don't really understand this point.}
+who contribute/curate data that have the highest impact, and therefore receives the biggest quantity of credit, and not necessarily the data with the highest citation count. 
+%\scream{I don't really understand this point.}
 In this sense, credit appears to be an useful new measure to discover data and their corresponding curators that have a high impact in the research world, even when they are cited few times or do not appear at all in the data that are cited (i.e. the case of data used to build the output of a query but that is not visualized in the output itself).
 
 In future work, we plan to explore different applications of credit over relational databases.
@@ -34,8 +33,8 @@ One example is \emph{data pricing}, which gives a price to a query submitted by 
 We plan to distribute credit through carefully planned and representative queries, and use credit information to define a new, faster, and potentially more flexible pricing function.
 
 Another application is \emph{data reduction}~\cite{milo2019getting}, which addresses the problem of reducing the vast -- and rapidly expanding -- amount of data that is being produced. % in the evolving world of research and information technology. 
-Ideas that are being explored include %Data reduction deals with different aspects of dealing with huge amounts of data, such as 
-finding reduced and relevant data streams from the multi-gigabytes of data produced by big data systems every second,  and dealing with the curse of dimensionality which requires unbounded computational resources to uncover actionable knowledge patterns~\citep{ur2016big}. \scream{I'm not sure what the previous sentence means!}
+%Ideas that are being explored include %Data reduction deals with different aspects of dealing with huge amounts of data, such as 
+%finding relevant data from the multi-gigabytes streams of data produced by big data systems every second,  and dealing with the curse of dimensionality which requires unbounded computational resources to uncover actionable knowledge patterns~\citep{ur2016big}. \scream{I'm not sure what the previous sentence means!}
 
 Data credit can also address this problem, by helping find ``hotspots'' and ``coldspots'' of data. A hotspot is data in a database (e.g. a tuple) with a high quantity of credit, which is therefore valuable for the set of queries that execute frequently over the data and distribute the credit. 
 On the other hand, a coldspot is data with a low quantity of credit, which is therefore  considered less  important and could be deleted or moved to cheaper and/or less efficient memory. 

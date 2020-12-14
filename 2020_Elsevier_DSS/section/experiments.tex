@@ -164,6 +164,7 @@ If the interest is also to reward more the tuples that are fundamental to the ou
 
 
 \subsection{Synthetic queries}
+\label{sec:synth_queries}
 \eat{
 let us consider the case reported in Figure \ref{figure:comparison_on_synthetic_polynomials_2}. 
 The figure reports a distribution of credit performed on the table \texttt{family} through the generation of 10K \emph{synthetic} polynomials. 
@@ -402,7 +403,10 @@ Given how we prepared our experiments, the citations whose query produce more tu
 
 This shows how credit distribution actually rewards differently authors than traditional citations. An author that curated larger quantities of cited data, and together with fewer co-authors, will receive bigger quantities of credit. Thus, credit can reward him for his more relevant ``contribution'' to the database. 
 
-In other settings, where the quantity of credit can be computed considering different criteria, such as the impact of the cited data in the citing paper, credit distribution can help to identify with even deeper precision the data and the authors that contributed more to the scientific impact in the context defined by the considered citations.
+%In other settings, where the quantity of credit can be computed considering different criteria, such as the impact of the cited data in the citing paper, credit distribution can help to identify with even deeper precision the data and the authors that contributed more to the scientific impact in the context defined by the considered citations.
+
+In more complex and sophisticated scenarios, where different strategies may be implemented to decide the generated quantity of credit to be distributed, new factors beyond the only ``quantity'' of curated data can be factored in in rewarding data curators.
+The result will be a distribution of credit that represents even better the actual work and worth of data curators and their impact in the scientific community.
 
 
 
@@ -419,36 +423,32 @@ In other settings, where the quantity of credit can be computed considering diff
   \includegraphics[width=1\textwidth]{figures/fixed_radars}
   \caption{
   Radars presenting the 20 synthetic authors with corresponding citation and quantities of credit distributed through the 3 DS (all values normalized between 0 and 1) through different numbers of polynomials (respectively, 100, 1K and 10K). 
-  The order is the descending one of the citations of the authors with 100 polynomials. }
+  The order is the one defined by figure 1, i.e. descending order of citations  obtained from 100 polynomials. }
   \label{figure:3_radars}
 \end{figure}
 
 \paragraph{Results: Synthetic queries}
-We produced $100$, $1K$, and $10K$ synthetic polynomials and distributed credit through them to data. 
-
-\scream{I don't understand the rest of this paragraph.  ARe you saying you can't figure out the creators/curators of the data?  But you were able to do that in earlier experiments, so why not now?  I'm missing something in the setup.}
-Since these polynomials correspond to queries whose authors are not easily identifiable, we created $20$ ``synthetic'' authors, and we randomly assigned one author to each tuple in the database. The authors receive ``blocks'' of consecutive tuples, with each block of the size varying between $10$ and $40$ to simulate different quantities of ``work'' performed by an author. 
-Every time an author appears as curator of one or more tuples used in a query, we assigned one citation to that author.  
+We produced $100$, $1K$, and $10K$ synthetic polynomials, as described in Section \ref{sec:synth_queries}, and distributed credit through them to data. 
+Since these polynomials are composed by tuples randomly selected from three tables, they usually correspond to very large set of authors that in reality did not collaborate. 
+%\scream{I don't understand the rest of this paragraph.  ARe you saying you can't figure out the creators/curators of the data?  But you were able to do that in earlier experiments, so why not now?  I'm missing something in the setup.}
+To simplify the assignment of data curators to the hypothetical queries generating these polynomials, we created $20$ ``synthetic'' authors, and we randomly assigned one author to each tuple in the database. The authors receive ``blocks'' of consecutive tuples, with each block of a size varying between $10$ and $40$ to simulate different quantities of ``work'' performed by an author. 
+Every time an author appears as curator of one or more tuples used in a polynomial, we assigned him one citation.  
 He also receives three kinds of credit, the ones assigned to his tuples through the three different DSs.
 
-Figure \ref{figure:3_radars} reports the three radar plots that are a consequence of the distribution of credit and citations performed and described above with the different quantities of polynomials. 
-Figure \ref{figure:3_radars}.a reports the radar plot obtained with 100 polynomials, showing the normalized values of the citation and types of credit assigned to each author. 
-As we see, given the synthetic nature of these queries, the correlation between the number of citations and the quantity of credit assigned to the authors appears to be a much stronger with respect to the case with the real-world queries (the linear correlation between the citation number and all three types of credit is always above 0.95 with p values in the order of 1e-11).
+Figure \ref{figure:3_radars} reports the three radar plots that are a consequence of the distribution of credit and citations performed and described above. 
+Figure \ref{figure:3_radars}.a reports the values obtained with 100 polynomials, showing the normalized values of the citation and types of credit assigned to each author. 
+As we see, given the synthetic nature of these queries, the correlation between the number of citations and the quantity of credit assigned to the authors appears to be a much stronger with respect to the case with the real-world queries of Figure.\ref{figure:2_radars} (the linear correlation between the citation number and all three types of credit is always above 0.95 with p values in the order of 1e-11).
 Nonetheless, it is still possible to observe how credit does not always exactly follow the citations. 
 The credit distributed via lineage is the one that follows closer the number of citations (a linear correlation of 0.98, p value of 6.15e-16), while the other types of credit behave slightly differently (a linear correlation of around 0.95 in both cases).  
 
-Similar observations can be made for Figure \ref{figure:3_radars}.b and \ref{figure:3_radars}.c, where we kept the order of authors as found in Figure \ref{figure:3_radars}.a.
+Similar observations can be made for Figure \ref{figure:3_radars}.b and \ref{figure:3_radars}.c, where we kept the order of authors of Figure \ref{figure:3_radars}.a.
 
 What appears from these figures is that, in certain cases, authors that do not have the highest values of citations receive more credit than others, as for example author 11 in Figure \ref{figure:3_radars}.a, or author 19 in Figures \ref{figure:3_radars}.b and \ref{figure:3_radars}.c, with credit distributed with how-provenance-based DS.
 
 This once again shows how credit allows us to gain a different perspective on the role of data and authors by going beyond the limitations of traditional citations.  
 
-It is worth pointing out that, when scaling up to $1K$ and $10K$ polynomials, the distributions performed via why-provenance and how-provenance become almost equivalent. We can note that, although not exactly overlapping, the values of credit assigned to the authors by those DS become quite similar with these higher quantities of polynomials, suggesting a sort of equivalence between the two DSs in this case, at least in the task of rewarding authors (the linear correlation for the values of Figure \ref{figure:3_radars}.c is more than 0.99 with a p-value of 1.32e-32). 
+It is worth pointing out that, when scaling up to $1K$ and $10K$ polynomials, the distributions performed via why-provenance and how-provenance become almost equivalent. We can note that, although not exactly overlapping, the values of credit assigned to the authors by those DS become quite similar with these higher quantities of polynomials, suggesting a sort of equivalence between the two DSs in this case, at least in the task of rewarding authors (the linear correlation for the values of Figure \ref{figure:3_radars}.c is more than 0.99 with a p-value of 1.32e-32). This is consistent to what we already pointed out in Figure \ref{figure:comparison_on_synthetic_polynomials_2}.
 
-Since in these experiments we assumed that each output tuple carries credit 1, the queries that return outputs with more tuples also generate more credit.
-In Figures \ref{figure:2_radars} and \ref{figure:3_radars} the authors that curated bigger bulks of data also receive higher quantities of credit.
-In more complex and sophisticated scenarios, where different strategies may be implemented to decide the generated quantity of credit to be distributed, new factors beyond the only ``quantity'' of curated data can be factored in in rewarding data curators.
-The result will be a distribution of credit that represents even better the actual work and worth of data curators.
 
 
 \subsection{Execution time}
@@ -475,8 +475,8 @@ The result will be a distribution of credit that represents even better the actu
   \label{table:times}
 \end{table}
 
-\scream{Where is this table?  Table 5 does not show times, and I can't find one that does.}
-Table \ref{table:difference_result} shows the time required to calculate the credit distribution for the three strategies. As can be seen, the execution time grows linearly with the number of polynomials that are submitted to the system. With a high number of polynomials (1M), the time required by the DS based on lineage and why-provenance is lower than the time needed for the DS based on how-provenance. This is due to the more significant number of operations required to calculate the how-provenance DS  and distribute the portions of credit to be assigned to the different tuples. 
+%\scream{Where is this table?  Table 5 does not show times, and I can't find one that does.}
+Table \ref{table:times} shows the time required to calculate the credit distribution for the three strategies. As can be seen, the execution time grows linearly with the number of polynomials that are submitted to the system. With a high number of polynomials (1M), the time required by the DS based on lineage and why-provenance is lower than the time needed for the DS based on how-provenance. This is due to the more significant number of operations required to calculate the how-provenance DS  and distribute the portions of credit to be assigned to the different tuples. 
 We note that, since we created these polynomials on-the-fly, these values do not include the time required to compute the provenances.
 Therefore, limited to the time required to distribute credit, the three DS are equivalent in terms of performances. The first differences can be seen only with high number of polynomials, when lineage and why-provenance may be preferred if there are no requirements to assign credit with the strategy implemented by the how-provenance-based DS.
 

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.10.23)  14 DEC 2020 16:36
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.10.23)  14 DEC 2020 17:13
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -276,29 +276,19 @@ File: ./figures/overview.pdf Graphic file (type pdf)
 <use ./figures/overview.pdf>
 Package pdftex.def Info: ./figures/overview.pdf  used on input line 61.
 (pdftex.def)             Requested size: 331.50238pt x 198.09941pt.
-<./figures/2_radars.pdf, id=24, 872.25874pt x 379.4175pt>
-File: ./figures/2_radars.pdf Graphic file (type pdf)
-<use ./figures/2_radars.pdf>
-Package pdftex.def Info: ./figures/2_radars.pdf  used on input line 67.
-(pdftex.def)             Requested size: 872.2566pt x 379.41656pt.
-
-Overfull \hbox (482.2566pt too wide) in paragraph at lines 67--68
-[][] 
- []
-
-[4 <./figures/overview.pdf>] [5 <./figures/2_radars.pdf>] [6]
-Overfull \hbox (1.32664pt too wide) in paragraph at lines 100--103
+[4 <./figures/overview.pdf>] [5]
+Overfull \hbox (1.32664pt too wide) in paragraph at lines 97--100
 []\OT1/cmr/m/n/12 For eval-u-a-tion, we use a well-known cu-rated database, the IUPHAR/BPS[]
  []
 
-[7]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 112.
+[6]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 109.
  (/usr/local/texlive/2019/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 112.
-) (./section/related.tex [8] [9]
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 109.
+) (./section/related.tex [7] [8]
 Underfull \hbox (badness 10000) in paragraph at lines 31--31
 [][]$\OT1/cmtt/m/n/10 https : / / medicine . missouri . edu / centers-[]institutes-[]labs /
  []
@@ -308,69 +298,69 @@ Overfull \hbox (4.46951pt too wide) in paragraph at lines 44--46
 \OT1/cmr/m/n/12 pers'' can be cited, be-ing tra-di-tional pa-pers that de-scribe a database [[]]. 
  []
 
-[10] [11] [12]
+[9] [10] [11]
 Overfull \hbox (8.93452pt too wide) in paragraph at lines 112--113
 \OT1/cmr/m/it/12 eage \OT1/cmr/m/n/12 [[]], \OT1/cmr/m/it/12 why-provenance \OT1/cmr/m/n/12 [[]], \OT1/cmr/m/it/12 how-provenance \OT1/cmr/m/n/12 [[]] and \OT1/cmr/m/it/12 where-provenance \OT1/cmr/m/n/12 [[]]. 
  []
 
-[13]) (./section/use_case.tex
-<figures/iuphar_schema.pdf, id=121, 1071.00125pt x 737.75626pt>
+[12]) (./section/use_case.tex
+<figures/iuphar_schema.pdf, id=97, 1071.00125pt x 737.75626pt>
 File: figures/iuphar_schema.pdf Graphic file (type pdf)
 <use figures/iuphar_schema.pdf>
 Package pdftex.def Info: figures/iuphar_schema.pdf  used on input line 6.
 (pdftex.def)             Requested size: 350.99762pt x 241.78299pt.
- [14 <./figures/iuphar_schema.pdf>]
-<figures/family_structure.pdf, id=143, 1182.4175pt x 735.74875pt>
+ [13 <./figures/iuphar_schema.pdf>]
+<figures/family_structure.pdf, id=120, 1182.4175pt x 735.74875pt>
 File: figures/family_structure.pdf Graphic file (type pdf)
 <use figures/family_structure.pdf>
 Package pdftex.def Info: figures/family_structure.pdf  used on input line 23.
 (pdftex.def)             Requested size: 390.0pt x 242.67435pt.
- [15]
+ [14]
 Overfull \hbox (22.65503pt too wide) in paragraph at lines 44--50
 \OT1/cmr/m/n/12 GtoPdb il-lus-trates three ta-bles: \OT1/cmtt/m/n/12 family\OT1/cmr/m/n/12 , \OT1/cmtt/m/n/12 contributor \OT1/cmr/m/n/12 and \OT1/cmtt/m/n/12 contributor2family\OT1/cmr/m/n/12 .
  []
 
-[16 <./figures/family_structure.pdf>]
+[15 <./figures/family_structure.pdf>]
 
 LaTeX Warning: No positions in optional float specifier.
                Default added (so using `tbp') on input line 51.
 
-) (./section/preliminaries.tex [17] [18]
+) (./section/preliminaries.tex [16] [17]
 
 LaTeX Warning: No positions in optional float specifier.
                Default added (so using `tbp') on input line 160.
 
-[19]
+[18]
 Overfull \hbox (5.08757pt too wide) in paragraph at lines 186--188
 []\OT1/cmr/m/n/12 Provenance poly-no-mi-als may also have mono-mi-als whose ex-po-nents and/or
  []
 
-) (./section/methods.tex [20] [21]
+) (./section/methods.tex [19] [20]
 Overfull \hbox (4.66534pt too wide) in paragraph at lines 92--94
 []\OT1/cmr/m/n/12 The dis-tri-bu-tion strat-egy based on why-provenance first equally dis-tributes
  []
 
-[22]
+[21]
 
 LaTeX Warning: No positions in optional float specifier.
                Default added (so using `tbp') on input line 127.
 
-<figures/why_distribution.pdf, id=215, 553.06625pt x 368.37625pt>
+<figures/why_distribution.pdf, id=192, 553.06625pt x 368.37625pt>
 File: figures/why_distribution.pdf Graphic file (type pdf)
 <use figures/why_distribution.pdf>
 Package pdftex.def Info: figures/why_distribution.pdf  used on input line 129.
 (pdftex.def)             Requested size: 175.49881pt x 116.89351pt.
-[23 <./figures/why_distribution.pdf>]
+[22 <./figures/why_distribution.pdf>]
 
 LaTeX Warning: No positions in optional float specifier.
                Default added (so using `tbp') on input line 154.
 
-<figures/how_example.pdf, id=320, 540.0175pt x 329.23pt>
+<figures/how_example.pdf, id=296, 540.0175pt x 329.23pt>
 File: figures/how_example.pdf Graphic file (type pdf)
 <use figures/how_example.pdf>
 Package pdftex.def Info: figures/how_example.pdf  used on input line 156.
 (pdftex.def)             Requested size: 155.99762pt x 95.1025pt.
-[24 <./figures/how_example.pdf>]
+[23 <./figures/how_example.pdf>]
 Overfull \hbox (7.74675pt too wide) in paragraph at lines 219--219
  []\OT1/cmtt/m/n/10 FROM family AS f JOIN contributor2family AS c2f ON f.id = c2f.family_id[] 
  []
@@ -383,90 +373,83 @@ LaTeX Warning: No positions in optional float specifier.
 LaTeX Warning: No positions in optional float specifier.
                Default added (so using `tbp') on input line 248.
 
-<figures/how_distribution.pdf, id=446, 1666.225pt x 397.485pt>
+<figures/how_distribution.pdf, id=422, 1666.225pt x 397.485pt>
 File: figures/how_distribution.pdf Graphic file (type pdf)
 <use figures/how_distribution.pdf>
 Package pdftex.def Info: figures/how_distribution.pdf  used on input line 249.
 (pdftex.def)             Requested size: 390.0pt x 93.03294pt.
-) [25] (./section/experiments.tex
-<figures/paper_based.pdf, id=451, 1797.71625pt x 1403.2425pt>
+) [24] (./section/experiments.tex
+<figures/paper_based.pdf, id=427, 1797.71625pt x 1403.2425pt>
 File: figures/paper_based.pdf Graphic file (type pdf)
 <use figures/paper_based.pdf>
 Package pdftex.def Info: figures/paper_based.pdf  used on input line 12.
 (pdftex.def)             Requested size: 390.0pt x 304.41054pt.
- [26 <./figures/how_distribution.pdf>] [27 <./figures/paper_based.pdf>]
+ [25 <./figures/how_distribution.pdf>] [26 <./figures/paper_based.pdf>]
 Underfull \hbox (badness 1917) in paragraph at lines 35--35
 \OT1/cmr/m/n/10 are avail-able here: $\OT1/cmtt/m/n/10 https : / / bitbucket . org / dennis _ dosso / credit _ distribution _
  []
 
-[28] Excluding 'comment' comment.
-Underfull \hbox (badness 10000) in paragraph at lines 183--218
+[27] Excluding 'comment' comment.
+Underfull \hbox (badness 10000) in paragraph at lines 184--219
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 183--218
+Underfull \hbox (badness 10000) in paragraph at lines 184--219
 
  []
 
-<figures/experiments/synthetic_comparison.pdf, id=614, 1799.72375pt x 1381.16pt>
+<figures/experiments/synthetic_comparison.pdf, id=591, 1799.72375pt x 1381.16pt>
 File: figures/experiments/synthetic_comparison.pdf Graphic file (type pdf)
 <use figures/experiments/synthetic_comparison.pdf>
-Package pdftex.def Info: figures/experiments/synthetic_comparison.pdf  used on input line 223.
+Package pdftex.def Info: figures/experiments/synthetic_comparison.pdf  used on input line 224.
 (pdftex.def)             Requested size: 390.0pt x 299.28291pt.
-[29]
-Overfull \hbox (14.06108pt too wide) in paragraph at lines 283--284
+[28]
+Overfull \hbox (14.06108pt too wide) in paragraph at lines 284--285
 []\OT1/cmr/m/n/12 Although syn-thetic, these prove-nance poly-no-mi-als rep-re-sent re-al-is-tic queries.
  []
 
-[30 <./figures/experiments/synthetic_comparison.pdf>] [31]
-<figures/experiments/comparison.pdf, id=647, 2123.935pt x 1755.55875pt>
+[29 <./figures/experiments/synthetic_comparison.pdf>] [30]
+<figures/experiments/comparison.pdf, id=623, 2123.935pt x 1755.55875pt>
 File: figures/experiments/comparison.pdf Graphic file (type pdf)
 <use figures/experiments/comparison.pdf>
-Package pdftex.def Info: figures/experiments/comparison.pdf  used on input line 319.
+Package pdftex.def Info: figures/experiments/comparison.pdf  used on input line 320.
 (pdftex.def)             Requested size: 390.0pt x 322.33562pt.
- [32 <./figures/experiments/comparison.pdf>] [33]
+ [31 <./figures/experiments/comparison.pdf>] [32]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 372.
+               Default added (so using `tbp') on input line 373.
 
-<figures/2_radars.pdf, id=694, 872.25874pt x 379.4175pt>
+<figures/2_radars.pdf, id=670, 872.25874pt x 379.4175pt>
 File: figures/2_radars.pdf Graphic file (type pdf)
 <use figures/2_radars.pdf>
-Package pdftex.def Info: figures/2_radars.pdf  used on input line 374.
+Package pdftex.def Info: figures/2_radars.pdf  used on input line 375.
 (pdftex.def)             Requested size: 390.0pt x 169.64209pt.
-[34] [35 <./figures/2_radars.pdf>]
-<figures/fixed_radars.pdf, id=720, 1292.83pt x 406.51875pt>
+[33] [34 <./figures/2_radars.pdf>]
+<figures/fixed_radars.pdf, id=697, 1292.83pt x 406.51875pt>
 File: figures/fixed_radars.pdf Graphic file (type pdf)
 <use figures/fixed_radars.pdf>
-Package pdftex.def Info: figures/fixed_radars.pdf  used on input line 419.
+Package pdftex.def Info: figures/fixed_radars.pdf  used on input line 423.
 (pdftex.def)             Requested size: 390.0pt x 122.63268pt.
-
-I don't understand the rest of this paragraph. ARe you saying you can't figure out the creators/curators of the data? But you were able to do that in earlier experiments, so why not now? I'm missing something in the setup.
-[36] [37 <./figures/fixed_radars.pdf>]
-Where is this table? Table 5 does not show times, and I can't find one that does.
-[38]) (./section/more_experiments.tex) (./section/conclusions.tex [39]
-I don't really understand this point.
-I'm not sure what the previous sentence means!
-[40]) (/Users/dennisdosso/Dropbox/paper di Dennis/IN CORSO/2020_DSS_Credit/2020_Elsevier_DSS/.texpadtmp/credit_distribution.bbl
+ [35] [36 <./figures/fixed_radars.pdf>] [37]) (./section/more_experiments.tex) (./section/conclusions.tex [38]) (/Users/dennisdosso/Dropbox/paper di Dennis/IN CORSO/2020_DSS_Credit/2020_Elsevier_DSS/.texpadtmp/credit_distribution.bbl [39]
 Underfull \hbox (badness 1062) in paragraph at lines 30--33
 []\OT1/cmr/m/n/12 Baggerly, K. (2010).  Dis-close all data in pub-li-ca-tions.  \OT1/cmr/m/it/12 Na-ture\OT1/cmr/m/n/12 ,
  []
 
-[41] [42] [43] [44] [45] [46]) [47] (/Users/dennisdosso/Dropbox/paper di Dennis/IN CORSO/2020_DSS_Credit/2020_Elsevier_DSS/.texpadtmp/credit_distribution.aux) ) 
+[40] [41] [42] [43] [44]) [45] (/Users/dennisdosso/Dropbox/paper di Dennis/IN CORSO/2020_DSS_Credit/2020_Elsevier_DSS/.texpadtmp/credit_distribution.aux) ) 
 Here is how much of TeX's memory you used:
- 3711 strings out of 492616
- 52964 string characters out of 6129480
- 120463 words of memory out of 5000000
- 7512 multiletter control sequences out of 15000+600000
+ 3705 strings out of 492616
+ 52797 string characters out of 6129480
+ 120438 words of memory out of 5000000
+ 7506 multiletter control sequences out of 15000+600000
  13608 words of font info for 54 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  41i,15n,30p,1070b,383s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmti7.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on "/Users/dennisdosso/Dropbox/paper di Dennis/IN CORSO/2020_DSS_Credit/2020_Elsevier_DSS/.texpadtmp/credit_distribution.pdf" (47 pages, 2268693 bytes).
+Output written on "/Users/dennisdosso/Dropbox/paper di Dennis/IN CORSO/2020_DSS_Credit/2020_Elsevier_DSS/.texpadtmp/credit_distribution.pdf" (45 pages, 2145231 bytes).
 PDF statistics:
- 849 PDF objects out of 1000 (max. 8388607)
- 645 compressed objects within 7 object streams
+ 823 PDF objects out of 1000 (max. 8388607)
+ 626 compressed objects within 7 object streams
  0 named destinations out of 1000 (max. 500000)
- 61 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 56 words of extra memory for PDF output out of 10000 (max. 10000000)
 
