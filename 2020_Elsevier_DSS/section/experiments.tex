@@ -420,18 +420,25 @@ Figure \ref{figure:2_radars}.a, shows the top 20 authors, ordered in a clockwise
 As we see from Figure \ref{figure:2_radars}.a, the top 20 authors in terms of citations do not have the highest values of credit. Similarly, Figure \ref{figure:2_radars}.b shows that the authors with the highest values of credit do not necessarily have the largest number of citations.
 From this it can be seen that the two sets of ``top authors'' using these two metrics are not the same, although there is partial overlap (for example, authors 1774, 475, and 4012). 
 
-\scream{I don't understand what you are trying to say here.}
-From this figure we can see that there is a significance difference between citations and credit:  Authors with the higher number of citations may not receive the highest value of credit. This is due to the fact that certain citations are more ``valuable'' in terms of credit, i.e. an author receive more credit from his/her citations, even if fewer, than other authors. This, in turns, happens because certain citations generate more credit than others. 
-So, for example, author 536 presents the highest value of credit, although he is not even in the top 20 authors in terms of citations. This means that he receives much more credit from his relatively few citations than author 475. 
+\scream{I don't understand what you are trying to say here.  Rewrote, putting old in eat in case I am wrong.}
+From this figure we can see that there is a significance difference between citations and credit:  Authors with the highest number of citations may not receive the highest value of credit. Conversely, authors with the highest value of credit may not have the highest number of citations. \eat{This is due to the fact that certain citations are more ``valuable'' in terms of credit, i.e. an author receive more credit from his/her citations, even if fewer, than other authors. This, in turns, happens because certain citations generate more credit than others. 
+So, for example, author 536 presents the highest value of credit, although he is not even in the top 20 authors in terms of citations. This means that he receives much more credit from his relatively few citations than author 475. }
+For example, author 536 has the highest value of credit, but is not even in the top 20 authors in terms of citations. This means that he receives much more credit from his relatively few citations than author 475, who receives the most citations.
+That is, the data underlying certain webpages is more ``valuable'' in terms of credit than a citation to the webpage.  
 
-Given how we prepared our experiments, the citations whose query produce more tuples, are also the ones that generate more credit, since we assumed that each output tuple carries credit $1$. Thus, the authors of the data returned by these queries are the ones that will receive more credit from these citations. Also, the authors that collaborated with fewer people will also receive a biggest share from the equal subdivision of credit. 
+\scream{I also didn't quite understand this, reworded.}
+\eat{Given how we prepared our experiments, the citations whose query produce more tuples, are also the ones that generate more credit, since we assumed that each output tuple carries credit $1$. Thus, the authors of the data returned by these queries are the ones that will receive more credit from these citations. Also, the authors that collaborated with fewer people will also receive a biggest share from the equal subdivision of credit. }
+Part of this is due to the experimental setup:  Each output tuple carries a credit $1$, and there can be many tuples used to generate a webpage.  Thus a webpage that is created from more tuples will have a higher credit value than one created from fewer tuples. Furthermore, authors (curators/contributors) who collaborated with fewer people will receive a biggest share from the equally divided credit.  However, all authors will receive a citation of one.
 
-This shows how credit distribution actually rewards differently authors than traditional citations. An author that curated larger quantities of cited data, and together with fewer co-authors, will receive bigger quantities of credit. Thus, credit can reward him for his more relevant ``contribution'' to the database. 
+Credit distribution therefore rewards authors differently than traditional citations: An author who has curated larger quantities of cited data, and collaborated with fewer co-authors, will receive larger quantities of credit. Thus, credit can reward them for their larger ``contribution'' to the database. 
 
 %In other settings, where the quantity of credit can be computed considering different criteria, such as the impact of the cited data in the citing paper, credit distribution can help to identify with even deeper precision the data and the authors that contributed more to the scientific impact in the context defined by the considered citations.
 
+\scream{Perhaps omit this paragraph? I reworded a bit, but it is mysterious what other strategies you are talking about.  Is this more more "future work"?}
+\eat{
 In more complex and sophisticated scenarios, where different strategies may be implemented to decide the generated quantity of credit to be distributed, new factors beyond the only ``quantity'' of curated data can be factored in in rewarding data curators.
-The result will be a distribution of credit that represents even better the actual work and worth of data curators and their impact in the scientific community.
+The result will be a distribution of credit that represents even better the actual work and worth of data curators and their impact in the scientific community.}
+Other, more sophisticated, strategies could also be used to decide how credit is distributed between the authors, beyond the uniform distribution used here.
 
 
 
