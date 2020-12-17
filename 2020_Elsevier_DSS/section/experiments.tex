@@ -25,10 +25,6 @@ with a 2.4 GHz processor Intel Core i5 quad-core and 8 GB of memory at 2133 MHz.
 Examples of real queries are drawn
 from papers published in the British Journal of Pharmacology (BJP)~\footnote{\url{https://bpspubs.onlinelibrary.wiley.com}}.  Each time a paper in this journal cites a webpage from GtoPdb, it reports the URL of the page. From this URL, the query used to obtain the webpage data can be determined. 
 We considered all $889$ papers in BJCP citing the IUPHAR/BPS Guide to pharmacology \citep{iuphar2018} as of October 2020, and extracted all webpage URLs to GtoPdb contained within the paper\footnote{The IUPHAR/BPS Guide is a journal that describes the structure and evolution of GtoPdb. At the time of writing, it had received more than $1200$ citations on Google Scholar.}.
-%\scream{Revised, check that it is correct.  - yes}
-
-
-\scream{Only introduce detail if you use it later... why do people need to know the names of the families, or how many there are?  I've "eaten" it again, but if you insist you can pull it out again.}
 
 \eat{
 There are eight target family webpages linked from the GtoPdb website: \emph{GPCR}, \emph{Ion channels}, \emph{NHRs}, \emph{Kinases}, \emph{Catalytic receptors}, \emph{Transporters}, \emph{Enzymes} and \emph{Other protein targets}.}
@@ -327,22 +323,15 @@ Since credit accrues over time, we simulate the passage of time by varying the n
   \label{fig:comparison}
 \end{figure}
 
-%\scream{Dennis:  What is the "rank" of tuple about, and why do we need to bring it up? I've taken it out, see if this is still correct.}
-
 In this figure, four groups of heat-maps are shown. Each group represents a ``snapshot'' taken %during an incremental accumulation of credit on the database 
 after 1K, 2K, 5K and 10K provenance polynomials have been considered for credit distribution.  
 The ten tuples in each heat-map  %from the \texttt{family} table, and
 are those  highlighted in the blue boxes of Figure \ref{figure:comparison_on_synthetic_polynomials_2} from the \texttt{family} table.  
 
-\eat{The heat-maps maps are over the ten tuples from the GtoPdb \texttt{family} table after an incremental distribution of credit (the tuples of ranks ranging from 79 to 89). These are the same tuples highlighted in the blue boxes in Figure \ref{figure:comparison_on_synthetic_polynomials_2}. 
-Figure \ref{figure:comparison_on_synthetic_polynomials_2} represents the end of the process.  }
-\eat{
-In this way, we simulate the passing of time on a database where credit distribution is performed. Each group of heat-maps can be thought of as a snapshot of that set of tuples at a certain moment. }
-
 
 The queries used are the same as the experiment reported in the previous section. The range of credit in each map goes from 0 (no credit) to 8 (the maximum quantity of credit reached on one of the tuples of the considered window at the ``snapshot'' with 10K queries). The color hue of the legend, as can be seen, still ranges from $0$ to $9.5$.
 
-\scream{I feel that this section is going into too much detail.  We should just get the big idea across.  I have "eaten" most of this text and tried to pull out the highlights. Don't bring up things unless you can explain them, or are trying to make a point.  The other problem is we can't really say why tuples wax and wane in overall credit -- it depends on the queries, which we don't go into (or want to go into).}
+%\scream{I feel that this section is going into too much detail.  We should just get the big idea across.  I have "eaten" most of this text and tried to pull out the highlights. Don't bring up things unless you can explain them, or are trying to make a point.  The other problem is we can't really say why tuples wax and wane in overall credit -- it depends on the queries, which we don't go into (or want to go into).}
 
 By the end of 1K queries, credit differentials between tuples as well as between strategies can be seen.  For example, tuple 4 has the highest value of credit overall, with the highest value coming from the why-provenance DS.   This trend continues to the end of 2k queries.
 %, at which point tuple 5 also gains in credit. 
@@ -350,7 +339,7 @@ By the end of 5k queries, tuple 2 emerges with the highest value of credit for w
 
 While the relative value of credit``positions" of tuples within a DS strategy depends on the exactly what queries are being executed, the important thing to notice is the difference between the DSs over time:  Overall, lineage gives far less credit to tuples in the \texttt{family} table than the other two strategies since credit is  shared with tuples in other tables.
 However, the why- and how-provenance-based strategies recognize the more important role being played by the \texttt{Family} tuples than those in the other tables.
-The differences between the why- and how-provenance-based DSs are also relatively minor (about plus or minus 0.2 out of 9.5) in most cases. However, there are certain situations when the role of a tuple is particularly critical in a query, and in this case the difference in the value of credit assigned is notably higher for how-provenance. 
+The differences between the why- and how-provenance-based DSs are also relatively minor (about plus or minus 0.2 out of 9.5) in most cases. However, there are certain situations when the role of a tuple is particularly critical in a query, and in this case the difference in the value of credit assigned is notably higher for how-provenance (this can be seen in Figure \ref{fig:comparison} for tuple 9 in the 10k group). 
 
 
 \eat{
@@ -377,9 +366,9 @@ This shows how the last two DS operate in a similar way. The differences between
 }
 
 
-To sum up, the DS based on lineage is sufficient to highlight which tuples in the database are used by a query,and distributes credit equally to these tuples. The resulting distribution rewards tuples that are used by more queries, but does not reward how many times tuples are used in the same query.  
+To sum up, the DS based on lineage is sufficient to highlight which tuples in the database are used by a query, and distributes credit equally to these tuples. The resulting distribution rewards tuples that are used by more queries, but does not reward how many times tuples are used in the same query.  
 
-However, a DS based on why- or how-provenance may be better if the queries are complex, since they reward tuples more that have a critical role in generating the output. %These two DS are sensitive than the DS based on lineage (and the DS based on how-provenance is more sensible than the one based on why-provenance). 
+However, a DS based on why- or how-provenance may be better if the queries are complex, since they reward more tuples that have a critical role in generating the output. %These two DS are sensitive than the DS based on lineage (and the DS based on how-provenance is more sensible than the one based on why-provenance). 
 \eat{Using the why-provenance and how-provenance DS, it is possible to change the distribution of credit to the tuple, rewarding more the tuples that have a more critical role in generating the output. The distribution based on how-provenance is most of the times similar to the one based on why-provenance. 
 However, in certain instances, it differ from the other one due to the specific role of a tuple, an information that is present in the provenance polynomial but lost in the witness basis. }
 In particular, these two DSs may be useful for finding ``hotspots'' in the database based on the role of tuples, with the how-provenance-based DS being preferable if a higher sensitivity to the role of a tuple in queries is required. 
@@ -402,15 +391,10 @@ In particular, these two DSs may be useful for finding ``hotspots'' in the datab
 
 In the last set of experiments, we compare traditional citations to the proposed credit distribution strategies to see the difference in reward for authors, including data curators.  
 
-Each target family page in GtoPdb has a list of curators, representing the people who worked on the page and who can be considered as co-authors of the page. This list can be obtained using the last query shown in Figure \ref{figure:family_structure}. 
-\eat{As set of authors, we consider all the curators of one target family in GtoPdb. }
-\scream{This is confusing because you switch between "pages" and "data".  I've rewritten, but it may be wrong.}
-Each time a target family page is cited, we assign one {\em citation} to each author associated with the page.  The authors also receive {\em credit} in the amount assigned to the data returned by the query used to construct the webpage, equally divided between the authors of the webpage.
+Each target family page in GtoPdb has a list of curators, representing the people who are co-creators and curators of the data composing the page. This list can be obtained using the last query shown in Figure \ref{figure:family_structure}. 
+%\scream{This is confusing because you switch between "pages" and "data".  I've rewritten, but it may be wrong.}
+Each time a target family page is cited, we assign one {\em citation} to each author associated with the page.  The authors also receive {\em credit} in the amount assigned to the data used by the query to construct the webpage, equally divided between the authors of the webpage.
 
-\eat{Each time data is cited, we assign one citation to each author associated with the page. Each time some data, e.g. a tuple, receives credit, we equally divide and transitively assign that quantity of credit to the authors of that data.}
-
-%The set of authors used in the experiments are \scream{??} those appearing on the paper traditionally cited for GtoPdb, as well as data creators and curators in the \texttt{contributor} table in GtoPdb responsible for producing the data used in the queries.  An author receives credit via a traditional citation when the traditional GtoPdb paper is cited; they receive credit via a DS when data which they created or curated receives credit.
-%We perform the comparison using both real-world and synthetic queries.
 
 \paragraph{Results: Real-world queries}
 As described in Section \ref{sec:real_world_queries}, we consider real-world queries, taken from papers published in the BJP which reference webpages in GtoPdb.
@@ -421,32 +405,23 @@ The results are shown in the radar plots of Figure \ref{figure:2_radars}, in whi
 Figure \ref{figure:2_radars}.a, shows the top 20 authors in terms of {\em citations}, ordered in a clockwise direction, whereas Figure \ref{figure:2_radars}.b orders the authors based on {\em credit}. 
 Comparing the author ids used in the outer circles of these two plots, it can immediately be seen that the ``top authors'' are very different using these two metrics, although there is some overlap (for example, authors 1774, 475, and 4012). 
 
-\scream{I don't understand what you are trying to say here.  Rewrote, putting old in eat in case I am wrong.}
+%\scream{I don't understand what you are trying to say here.  Rewrote, putting old in eat in case I am wrong.}
 Diving a bit deeper to focus on the red and blue areas in each of the plots reveals that there is a significance difference between citations and credit:
 The top 20 authors in terms of citations do not have the high values of credit (Figure \ref{figure:2_radars}.a).  Converseley, the authors with the highest values of credit do not necessarily have a large number of citations (Figure \ref{figure:2_radars}.b).
 \eat{This is due to the fact that certain citations are more ``valuable'' in terms of credit, i.e. an author receive more credit from his/her citations, even if fewer, than other authors. This, in turns, happens because certain citations generate more credit than others. 
 So, for example, author 536 presents the highest value of credit, although he is not even in the top 20 authors in terms of citations. This means that he receives much more credit from his relatively few citations than author 475. }
-For example, author 536 has the highest value of credit, but is not even in the top 20 authors in terms of citations. This means that they receive much more credit from their relatively few citations than author 475, who receives the largest number of citations.
+For example, author 536 has the highest value of credit, but is not even in the top 20 authors in terms of citations. This means that the authors like 536, 822, and 3342 in Figure \ref{figure:2_radars}.b receive much more credit from their relatively few citations than authors like 475, who receives the largest number of citations.
 That is, the data underlying certain webpages is more ``valuable'' in terms of credit than a citation to the webpage.  
 
-\scream{I also didn't quite understand this, reworded.}
 \eat{Given how we prepared our experiments, the citations whose query produce more tuples, are also the ones that generate more credit, since we assumed that each output tuple carries credit $1$. Thus, the authors of the data returned by these queries are the ones that will receive more credit from these citations. Also, the authors that collaborated with fewer people will also receive a biggest share from the equal subdivision of credit. }
+
 The reason for the difference between citation and credit is partly due to the experimental setup:  Each output tuple carries a credit of $1$, and there can be many tuples used to generate a webpage.  Thus a webpage that is created from more tuples will have a higher credit value than one created from fewer tuples. Furthermore, authors who collaborated with fewer people will receive a biggest share from the equally divided credit.  However, all authors will receive a citation of one.
 
 Credit distribution therefore rewards authors differently than traditional citations: An author who has curated larger quantities of cited data and collaborated with fewer co-authors, will receive larger quantities of credit. Thus, credit rewards them for their larger contribution to the database. 
 
 %In other settings, where the quantity of credit can be computed considering different criteria, such as the impact of the cited data in the citing paper, credit distribution can help to identify with even deeper precision the data and the authors that contributed more to the scientific impact in the context defined by the considered citations.
 
-\scream{I "ate" the final paragraph. I didn't understand what other strategies you are talking about and thought it was more more in keeping with "future work"?}
-\eat{
-In more complex and sophisticated scenarios, where different strategies may be implemented to decide the generated quantity of credit to be distributed, new factors beyond the only ``quantity'' of curated data can be factored in in rewarding data curators.
-The result will be a distribution of credit that represents even better the actual work and worth of data curators and their impact in the scientific community.}
-\eat{
-\screa{I reworded to this.}
-Other, more sophisticated, strategies could also be used to decide how credit is distributed between the authors, beyond the uniform distribution used here.}
-
-
-
+%\scream{I "ate" the final paragraph. I didn't understand what other strategies you are talking about and thought it was more more in keeping with "future work"?}
 
 %\begin{figure}[t]
 %\centering

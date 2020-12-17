@@ -1,4 +1,4 @@
-\section{Conclusions}
+\section{Conclusions and Future Work}
 \label{section:conclusions}
 
 This paper 
@@ -28,7 +28,18 @@ who contribute/curate data that have the highest impact, and therefore receives 
 %\scream{I don't really understand this point.}
 In this sense, credit appears to be an useful new measure to discover data and their corresponding curators that have a high impact in the research world, even when they are cited few times or do not appear at all in the data that are cited (i.e. the case of data used to build the output of a query but that is not visualized in the output itself).
 
-In future work, we plan to explore different applications of credit over relational databases.
+ 
+\eat{
+In more complex and sophisticated scenarios, where different strategies may be implemented to decide the generated quantity of credit to be distributed, new factors beyond the only ``quantity'' of curated data can be factored in in rewarding data curators.
+The result will be a distribution of credit that represents even better the actual work and worth of data curators and their impact in the scientific community.}
+\eat{
+\screams{I reworded to this.}
+Other, more sophisticated, strategies could also be used to decide how credit is distributed between the authors, beyond the uniform distribution used here.}
+
+In future work, we plan to explore different strategies to generate and distribute credit. In this paper we assumed that each output tuple carries credit $1$. In more sophisticated scenarios we can employ different strategies to compute credit, that reflect the importance of cited data.
+Also, other, and more sophisticated strategies could also be used to decide how credit is distributed between the authors, beyond the uniform distribution used here, in a way to reflect the work performed by them on the cited data.
+
+We will also explore new applications for credit over relational databases.
 One example is \emph{data pricing}, which gives a price to a query submitted by a user who wants to buy the produced information. Currently, a commonly strategy used for data pricing is based on query rewriting:  A database stores a set of views with their price. When a new query arrives, the system rewrites it using the stored views to obtain a query price, a process that can be computationally expensive.
 We plan to distribute credit through carefully planned and representative queries, and use credit information to define a new, faster, and potentially more flexible pricing function.
 
