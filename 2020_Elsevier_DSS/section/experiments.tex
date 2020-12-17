@@ -5,6 +5,9 @@ The second set uses synthetically produced provenance polynomials, corresponding
 The third set of experiments considers the accrual of credit over time by the three strategies, again using synthetic queries.
 The fourth set of experiments shows how the DSs compare to traditional citations in giving credit to data curators using both real and synthetic queries. We close by discussing the relative execution times of the three strategies.
 
+All experiments were carried out on a MacBook Pro %13-inch, 2019 
+with a 2.4 GHz processor Intel Core i5 quad-core and 8 GB of memory at 2133 MHz.  Code was written in Java, supported by a PostgreSQL database.
+
 \subsection{Real-world queries}
 \label{sec:real_world_queries}
 
@@ -339,15 +342,15 @@ In this way, we simulate the passing of time on a database where credit distribu
 
 The queries used are the same as the experiment reported in the previous section. The range of credit in each map goes from 0 (no credit) to 8 (the maximum quantity of credit reached on one of the tuples of the considered window at the ``snapshot'' with 10K queries). The color hue of the legend, as can be seen, still ranges from $0$ to $9.5$.
 
-\scream{I feel that this section is going into too much detail.  We should just get the big idea across.  I "eaten" most of this text and tried to pull out the highlights. The other problem is we can't really say why tuples wax and wane in overall credit -- it depends on the queries, which we don't go into (or want to go into).}
+\scream{I feel that this section is going into too much detail.  We should just get the big idea across.  I have "eaten" most of this text and tried to pull out the highlights. Don't bring up things unless you can explain them, or are trying to make a point.  The other problem is we can't really say why tuples wax and wane in overall credit -- it depends on the queries, which we don't go into (or want to go into).}
 
-By the end of 1K queries, credit differentials between tuples as well as between strategies can be seen.  For example, tuple 4 has the highest value of credit overall, with the highest value coming from the why-provenance DS.   This trend continues to the end of 2k queries, at which point tuple 5 also gains in credit. 
+By the end of 1K queries, credit differentials between tuples as well as between strategies can be seen.  For example, tuple 4 has the highest value of credit overall, with the highest value coming from the why-provenance DS.   This trend continues to the end of 2k queries.
+%, at which point tuple 5 also gains in credit. 
 By the end of 5k queries, tuple 2 emerges with the highest value of credit for why- and how-provenance, a position which is strengthened by the end of 10k queries. This is because tuple 2 is used several times within queries being executed, which is rewarded strongly by why- and how-provenance but not taken into account in lineage.
 
 While the relative value of credit``positions" of tuples within a DS strategy depends on the exactly what queries are being executed, the important thing to notice is the difference between the DSs over time:  Overall, lineage gives far less credit to tuples in the \texttt{family} table than the other two strategies since credit is  shared with tuples in other tables.
 However, the why- and how-provenance-based strategies recognize the more important role being played by the \texttt{Family} tuples than those in the other tables.
 The differences between the why- and how-provenance-based DSs are also relatively minor (about plus or minus 0.2 out of 9.5) in most cases. However, there are certain situations when the role of a tuple is particularly critical in a query, and in this case the difference in the value of credit assigned is notably higher for how-provenance. 
-\scream{Higher for how-provenance?}
 
 
 \eat{
@@ -399,7 +402,7 @@ In particular, these two DSs may be useful for finding ``hotspots'' in the datab
 
 In the last set of experiments, we compare traditional citations to the proposed credit distribution strategies to see the difference in reward for authors, including data curators.  
 
-Each target family page in GtoPdb has a list of curators, representing the people who worked on the page and who can be considered as co-authors of the page. The list of co-authors of a page can be obtained using the last query shown in Figure \ref{figure:family_structure}. 
+Each target family page in GtoPdb has a list of curators, representing the people who worked on the page and who can be considered as co-authors of the page. This list can be obtained using the last query shown in Figure \ref{figure:family_structure}. 
 \eat{As set of authors, we consider all the curators of one target family in GtoPdb. }
 \scream{This is confusing because you switch between "pages" and "data".  I've rewritten, but it may be wrong.}
 Each time a target family page is cited, we assign one {\em citation} to each author associated with the page.  The authors also receive {\em credit} in the amount assigned to the data returned by the query used to construct the webpage, equally divided between the authors of the webpage.
@@ -414,31 +417,33 @@ As described in Section \ref{sec:real_world_queries}, we consider real-world que
 Since for these queries there is no difference in the distribution of credit between the three DS, only one value for credit is used.
 %given in Figure \ref{figure:2_radars}. \eat{As we said, each time a webpage is cited, the authors of that webpage receive one citation, and also receive a quantity of credit that is equal to the credit assigned to the data and generated from the citation, equally divided among them.} 
 
-The results are shown in the radar plots of Figure \ref{figure:2_radars}, in which each number on the outer circle (e.g. 475, 1774 and 3665) represents an author (id) and the blue (pink) line represents the normalized value of credit generated by citations (credit), respectively. The first radar plot,
-Figure \ref{figure:2_radars}.a, shows the top 20 authors, ordered in a clockwise direction based on citations, whereas Figure \ref{figure:2_radars}.b orders the authors ordered by credit. 
-%\scream{what does that mean?  and it seems that there is not a large overlap in the authors in fig. a and b}
-As we see from Figure \ref{figure:2_radars}.a, the top 20 authors in terms of citations do not have the highest values of credit. Similarly, Figure \ref{figure:2_radars}.b shows that the authors with the highest values of credit do not necessarily have the largest number of citations.
-From this it can be seen that the two sets of ``top authors'' using these two metrics are not the same, although there is partial overlap (for example, authors 1774, 475, and 4012). 
+The results are shown in the radar plots of Figure \ref{figure:2_radars}, in which each number on the outer circle (e.g. 475, 1774 and 3665) represents an author (id) and the blue (red) line represents the normalized value of credit generated by citations (credit), respectively. The first radar plot,
+Figure \ref{figure:2_radars}.a, shows the top 20 authors in terms of {\em citations}, ordered in a clockwise direction, whereas Figure \ref{figure:2_radars}.b orders the authors based on {\em credit}. 
+Comparing the author ids used in the outer circles of these two plots, it can immediately be seen that the ``top authors'' are very different using these two metrics, although there is some overlap (for example, authors 1774, 475, and 4012). 
 
 \scream{I don't understand what you are trying to say here.  Rewrote, putting old in eat in case I am wrong.}
-From this figure we can see that there is a significance difference between citations and credit:  Authors with the highest number of citations may not receive the highest value of credit. Conversely, authors with the highest value of credit may not have the highest number of citations. \eat{This is due to the fact that certain citations are more ``valuable'' in terms of credit, i.e. an author receive more credit from his/her citations, even if fewer, than other authors. This, in turns, happens because certain citations generate more credit than others. 
+Diving a bit deeper to focus on the red and blue areas in each of the plots reveals that there is a significance difference between citations and credit:
+The top 20 authors in terms of citations do not have the high values of credit (Figure \ref{figure:2_radars}.a).  Converseley, the authors with the highest values of credit do not necessarily have a large number of citations (Figure \ref{figure:2_radars}.b).
+\eat{This is due to the fact that certain citations are more ``valuable'' in terms of credit, i.e. an author receive more credit from his/her citations, even if fewer, than other authors. This, in turns, happens because certain citations generate more credit than others. 
 So, for example, author 536 presents the highest value of credit, although he is not even in the top 20 authors in terms of citations. This means that he receives much more credit from his relatively few citations than author 475. }
-For example, author 536 has the highest value of credit, but is not even in the top 20 authors in terms of citations. This means that he receives much more credit from his relatively few citations than author 475, who receives the most citations.
+For example, author 536 has the highest value of credit, but is not even in the top 20 authors in terms of citations. This means that they receive much more credit from their relatively few citations than author 475, who receives the largest number of citations.
 That is, the data underlying certain webpages is more ``valuable'' in terms of credit than a citation to the webpage.  
 
 \scream{I also didn't quite understand this, reworded.}
 \eat{Given how we prepared our experiments, the citations whose query produce more tuples, are also the ones that generate more credit, since we assumed that each output tuple carries credit $1$. Thus, the authors of the data returned by these queries are the ones that will receive more credit from these citations. Also, the authors that collaborated with fewer people will also receive a biggest share from the equal subdivision of credit. }
-Part of this is due to the experimental setup:  Each output tuple carries a credit $1$, and there can be many tuples used to generate a webpage.  Thus a webpage that is created from more tuples will have a higher credit value than one created from fewer tuples. Furthermore, authors (curators/contributors) who collaborated with fewer people will receive a biggest share from the equally divided credit.  However, all authors will receive a citation of one.
+The reason for the difference between citation and credit is partly due to the experimental setup:  Each output tuple carries a credit of $1$, and there can be many tuples used to generate a webpage.  Thus a webpage that is created from more tuples will have a higher credit value than one created from fewer tuples. Furthermore, authors who collaborated with fewer people will receive a biggest share from the equally divided credit.  However, all authors will receive a citation of one.
 
-Credit distribution therefore rewards authors differently than traditional citations: An author who has curated larger quantities of cited data, and collaborated with fewer co-authors, will receive larger quantities of credit. Thus, credit can reward them for their larger ``contribution'' to the database. 
+Credit distribution therefore rewards authors differently than traditional citations: An author who has curated larger quantities of cited data and collaborated with fewer co-authors, will receive larger quantities of credit. Thus, credit rewards them for their larger contribution to the database. 
 
 %In other settings, where the quantity of credit can be computed considering different criteria, such as the impact of the cited data in the citing paper, credit distribution can help to identify with even deeper precision the data and the authors that contributed more to the scientific impact in the context defined by the considered citations.
 
-\scream{Perhaps omit this paragraph? I reworded a bit, but it is mysterious what other strategies you are talking about.  Is this more more "future work"?}
+\scream{I "ate" the final paragraph. I didn't understand what other strategies you are talking about and thought it was more more in keeping with "future work"?}
 \eat{
 In more complex and sophisticated scenarios, where different strategies may be implemented to decide the generated quantity of credit to be distributed, new factors beyond the only ``quantity'' of curated data can be factored in in rewarding data curators.
 The result will be a distribution of credit that represents even better the actual work and worth of data curators and their impact in the scientific community.}
-Other, more sophisticated, strategies could also be used to decide how credit is distributed between the authors, beyond the uniform distribution used here.
+\eat{
+\screa{I reworded to this.}
+Other, more sophisticated, strategies could also be used to decide how credit is distributed between the authors, beyond the uniform distribution used here.}
 
 
 
@@ -460,30 +465,27 @@ Other, more sophisticated, strategies could also be used to decide how credit is
 \end{figure}
 
 \paragraph{Results: Synthetic queries}
-We produced $100$, $1K$, and $10K$ synthetic polynomials, as described in Section \ref{sec:synth_queries}, and distributed credit through them to data. 
-Since these polynomials are composed by tuples randomly selected from three tables, they usually correspond to very large set of authors that in reality did not collaborate. 
-%\scream{I don't understand the rest of this paragraph.  ARe you saying you can't figure out the creators/curators of the data?  But you were able to do that in earlier experiments, so why not now?  I'm missing something in the setup.}
-To simplify the assignment of data curators to the hypothetical queries generating these polynomials, we created $20$ ``synthetic'' authors, and we randomly assigned one author to each tuple in the database. The authors receive ``blocks'' of consecutive tuples, with each block of a size varying between $10$ and $40$ to simulate different quantities of ``work'' performed by an author. 
-Every time an author appears as curator of one or more tuples used in a polynomial, we assigned him one citation.  
-He also receives three kinds of credit, the ones assigned to his tuples through the three different DSs.
+We produced $100$, $1K$, and $10K$ batches of synthetic polynomials, as described in Section \ref{sec:synth_queries}, and distributed credit through them to data. 
+Since these polynomials are created by randomly selecting tuples from three tables, they usually correspond to a large set of authors who in reality did not collaborate. To make the size of the author set more realistic, we therefore created $20$ synthetic authors, and randomly assigned one author to blocks of consecutive tuples in the database, with the size of each block varying between $10$ and $40$, to simulate different quantities of work performed by an author. 
+Every time an author appears as curator of one or more tuples used in a polynomial, we assign them one citation.  
+They also receive three kinds of credit, each one using a different DS.
 
-Figure \ref{figure:3_radars} reports the three radar plots that are a consequence of the distribution of credit and citations performed and described above. 
-Figure \ref{figure:3_radars}.a reports the values obtained with 100 polynomials, showing the normalized values of the citation and types of credit assigned to each author. 
-As we see, given the synthetic nature of these queries, the correlation between the number of citations and the quantity of credit assigned to the authors appears to be a much stronger with respect to the case with the real-world queries of Figure.\ref{figure:2_radars} (the linear correlation between the citation number and all three types of credit is always above 0.95 with p values in the order of 1e-11).
-Nonetheless, it is still possible to observe how credit does not always exactly follow the citations. 
-The credit distributed via lineage is the one that follows closer the number of citations (a linear correlation of 0.98, p value of 6.15e-16), while the other types of credit behave slightly differently (a linear correlation of around 0.95 in both cases).  
+Figure \ref{figure:3_radars} shows three radar plots, one for each batch of synthetic polynomials.  Each plot shows the top 20 authors in terms of citations (hence the authors and clockwise ordering is the same in each of the plots), and additionally shows the the normalized values of citation (blue line), lineage-based credit (yellow line), why-provenance-based credit (green line) and how-provenance-based (red line). 
+As we see, given the synthetic nature of the queries, the correlation between the number of citations and the quantity of credit assigned to the authors appears to be a much stronger than with the real-world queries of Figure.\ref{figure:2_radars}. In fact, for Figure \ref{figure:3_radars}.a  the linear correlation between the citation number and all three types of credit is always above 0.95 with p values in the order of 1e-11.
+\eat{Nonetheless, it can still be seen that credit does not always follow the citation count. }
+The credit distributed via lineage is closest to  the number of citations (a linear correlation of 0.98, p value of 6.15e-16 in Figure \ref{figure:3_radars}.a), while the other two types of credit behave slightly differently (a linear correlation of around 0.95 in both cases in Figure \ref{figure:3_radars}.a).  
+Similar observations can be made for Figure \ref{figure:3_radars}.b and \ref{figure:3_radars}.c.
 
-Similar observations can be made for Figure \ref{figure:3_radars}.b and \ref{figure:3_radars}.c, where we kept the order of authors of Figure \ref{figure:3_radars}.a.
+What these figures show is that, in certain cases, authors who do not have a large number of citations receive more credit than others, as for example author 11 in Figure \ref{figure:3_radars}.a or author 19 in Figures \ref{figure:3_radars}.b and \ref{figure:3_radars}.c, especially when credit is distributed using how-provenance.
+This again shows how credit gives a different perspective on the role of data and authors by going beyond the limitations of traditional citations.  
 
-What appears from these figures is that, in certain cases, authors that do not have the highest values of citations receive more credit than others, as for example author 11 in Figure \ref{figure:3_radars}.a, or author 19 in Figures \ref{figure:3_radars}.b and \ref{figure:3_radars}.c, with credit distributed with how-provenance-based DS.
-
-This once again shows how credit allows us to gain a different perspective on the role of data and authors by going beyond the limitations of traditional citations.  
-
-It is worth pointing out that, when scaling up to $1K$ and $10K$ polynomials, the distributions performed via why-provenance and how-provenance become almost equivalent. We can note that, although not exactly overlapping, the values of credit assigned to the authors by those DS become quite similar with these higher quantities of polynomials, suggesting a sort of equivalence between the two DSs in this case, at least in the task of rewarding authors (the linear correlation for the values of Figure \ref{figure:3_radars}.c is more than 0.99 with a p-value of 1.32e-32). This is consistent to what we already pointed out in Figure \ref{figure:comparison_on_synthetic_polynomials_2}.
+It is worth noting that, when scaling up to $1K$ and $10K$ polynomials, the credit distributions via why-provenance and how-provenance become almost identical  
+\eat{We note that, although not exactly overlapping, the values of credit assigned to the authors by those DS become quite similar with these higher quantities of polynomials, suggesting a sort of equivalence between the two DSs in this case, at least in the task of rewarding authors} (the linear correlation for the values of Figure \ref{figure:3_radars}.c is more than 0.99 with a p-value of 1.32e-32). This is consistent with what we observed for Figure \ref{figure:comparison_on_synthetic_polynomials_2}.
 
 
 
 \subsection{Execution time}
+The last experiment compared the time required to calculate the credit distribution for the three strategies. The results are shown in Table \ref{table:times}.  
 
 \begin{table}[hbt]
 \centering
@@ -507,14 +509,17 @@ It is worth pointing out that, when scaling up to $1K$ and $10K$ polynomials, th
   \label{table:times}
 \end{table}
 
-%\scream{Where is this table?  Table 5 does not show times, and I can't find one that does.}
-Table \ref{table:times} shows the time required to calculate the credit distribution for the three strategies. As can be seen, the execution time grows linearly with the number of polynomials that are submitted to the system. With a high number of polynomials (1M), the time required by the DS based on lineage and why-provenance is lower than the time needed for the DS based on how-provenance. This is due to the more significant number of operations required to calculate the how-provenance DS  and distribute the portions of credit to be assigned to the different tuples. 
+\scream{Perhaps you should plot these using lines?  It is not easy to see that it grows linearly.  Also, why is linage almost always slower than the why- and how-provenance?  How was the experiment performed?}
+As can be seen, the execution time grows linearly with the number of polynomials that are submitted to the system. When there are a large number of polynomials (1M), the time required by the DS based on lineage and why-provenance is slightly less than the time needed for the DS based on how-provenance. This is due to the increased complexity of the how-provenance calculation.  \scream{How significant is the difference?}
 We note that, since we created these polynomials on-the-fly, these values do not include the time required to compute the provenances.
-Therefore, limited to the time required to distribute credit, the three DS are equivalent in terms of performances. The first differences can be seen only with high number of polynomials, when lineage and why-provenance may be preferred if there are no requirements to assign credit with the strategy implemented by the how-provenance-based DS.
+Therefore, just taking into account the time required to distribute credit, the three DS are roughly the same in terms of performance. 
+\scream{This seems a bit of a contraction to the previous claim of "increased complexity".}
+Only when there are a large number of complex polynomials do lineage and why-provenance  become preferable to how-provenance in terms of execution time, but coming at the cost of a less equitable credit distribution strategy.
 
+\eat{
 All the experiments were carried out on a MacBook Pro %13-inch, 2019 
 with a 2.4 GHz processor Intel Core i5 quad-core and 8 GB of memory at 2133 MHz.  Code was written in Java, supported by a PostgreSQL database. 
-
+}
 
 %\subsection{Discussion}
 %
