@@ -50,9 +50,11 @@ At present, the most common practices to cite databases include:
      Every single Webpage is unequivocally identifiable and can be individually cited. 
 \end{enumerate}
 
+\eat{
 \textcolor{red}{Despite all the research efforts dedicated to the study and promotion of data citation, none of the largest citation-based systems, such as Elsevier Scopus, Web of Science, Microsoft Academia, or Google Scholar, consider scientific datasets as citable objects in academic work. 
 Clarivate Analytics Data Citation Index (DCI) \citep{force2016research} is an exception, since its infrastructure tracks data usage in scientific domains and provides the technical means to connect datasets and repositories to scientific papers. However, DCI considers only citations to (previously registered and approved) databases as a whole and does not count citations to database portions such as views, tables, or tuples.}
 \scream{GMS: I'd remove (eat env.) this part about citation-based indexes because we are not proposing any solution for that problem.}
+}
 
 %Scholix
 %Publishers, data centers, and indexing services have started to create bidirectional links between research data and scholarly literature. Such links, however, usually stem from agreements implemented by two organizations. They, therefore, lack a universally accepted industrial standard, and each agreement differs from the other~\citep{burton2017scholix}. 
@@ -75,7 +77,11 @@ In the paper two considerations are made: (i) research objects such as data and 
 This is even more true for data, where different groups of people work on the same database.
 
 In \citep{transitiveCreditKatz2014} credit is defined as a ``quantity'' that describes the importance of a research entity, such as papers, software, or data, mentioned in a citation. 
-We add that the concept of credit can be built on top of the existing infrastructure handling traditional and data citations.
+It also proposed the idea of a \emph{distribution} of credit from research entities, such as papers or data, to other research entities through citations. 
+This can be done by exploiting the structure of the \emph{citation graph}, a directed graph whose nodes are publications and edges are citations.
+This graph is the model at the core of systems such as Google Scholar and the Web of Science.
+We add to this that the concept of credit can be built on top of the existing infrastructure handling traditional and data citations.
+
 \citet{transitiveCreditKatz2014} further explores the idea of a \emph{distribution} of credit from research entities (i.e., papers and data) to other research entities through citations that connect them. 
 Thanks to traditional citations and now also to data citations, this distribution is finally possible, at least between papers and data. 
 Some problems related to traditional citations can thus be solved by citations:

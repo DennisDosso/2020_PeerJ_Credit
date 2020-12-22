@@ -150,18 +150,17 @@ Dubernet, M.~L., Antony, B.~K., Ba, Y.~A., et~al. (2016).
 \newblock {\em Journal of Physics B: Atomic, Molecular and Optical Physics},
   49(7):074003.
 
+\bibitem[{ESIP Data Preservation and Stewardship Committee (EDPSC)},
+  2019]{esip2019}
+{ESIP Data Preservation and Stewardship Committee (EDPSC)} (2019).
+\newblock Data citation guidelines for earth science data, version 2.
+\newblock Version 2, Earth Science Information Partners.
+
 \bibitem[Fang, 2018]{creditFang18}
 Fang, H. (2018).
 \newblock A discussion of citations from the perspective of the contribution of
   the cited paper to the citing paper.
 \newblock {\em {JASIST}}, 69(12):1513--1520.
-
-\bibitem[Force et~al., 2016]{force2016research}
-Force, M., Robinson, N., Matthews, M., Auld, D., and Boletta, M. (2016).
-\newblock Research data in journals and repositories in the web of science:
-  Developments and recommendations.
-\newblock {\em Bulletin of IEEE Technical Committee on Digital Libraries,
-  Special Issue on Data Citation}, 12(1):27--30.
 
 \bibitem[Garfield, 1999]{garfield1999journal}
 Garfield, E. (1999).
@@ -218,11 +217,6 @@ Katz, D. (2014).
   concerns stemming from citation and attribution of digital products.
 \newblock {\em Journal of Open Research Software}, 2(1).
 
-\bibitem[Katz et~al., 2020]{katz2020SoftwareandData}
-Katz, D.~S., Hong, N., Clark, T., Fenner, M., and Martone, M. (2020).
-\newblock Software and data citation.
-\newblock {\em Computing in Science \& Engineering}, 22 (2):4--7.
-
 \bibitem[Kosten, 2016]{Kosten16}
 Kosten, J. (2016).
 \newblock A classification of the use of research indicators.
@@ -264,6 +258,11 @@ Nosek, B.~A., Alter, G., Banks, G.~C., Borsboom, D., Bowman, S.~D., Breckler,
   T. (2015).
 \newblock Promoting an open research culture.
 \newblock {\em Science}, 348(6242):1422--1425.
+
+\bibitem[Parsons et~al., 2019]{parsons2019history}
+Parsons, M.~A., Duerr, R.~E., and Jones, M.~B. (2019).
+\newblock The history and future of data citation in practice.
+\newblock {\em Data Science Journal}, 18(1).
 
 \bibitem[Peters et~al., 2016]{Peters2016}
 Peters, I., Kraker, P., Lex, E., Gumpenberger, C., and Gorraiz, J. (2016).

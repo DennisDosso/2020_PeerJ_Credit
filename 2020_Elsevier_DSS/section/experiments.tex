@@ -14,7 +14,7 @@ with a 2.4 GHz processor Intel Core i5 quad-core and 8 GB of memory at 2133 MHz.
 
 \begin{figure}[t]
   \includegraphics[width=1\textwidth]{figures/paper_based}
-  \caption{Comparison of three DS on the same table \texttt{family} using the distribution given by the queries retrieved from papers.}
+  \caption{Comparison of three DS on the same table \texttt{family} using the distribution given by the queries retrieved from papers. Each cell is a tuple.}
   \label{figure:comparison_on_papers}
 \end{figure}
 
@@ -39,7 +39,7 @@ Without loss of generality, we give each tuple in the output of a query a credit
 
 \paragraph{Results} Figure \ref{figure:comparison_on_papers} shows the heat-maps obtained by the distribution of credit according to the three different DS on one of the tables in the underlying database, \texttt{family}, 
 %describes the characteristics and necessary information of the receptor families and, as can be seen in Figure \ref{figure:family_structure}, it 
-which is often joined with other tables in the database to build the webpages. \textcolor{green}{Each cell in a heat-map represents a tuple of the \texttt{family} table and the color indicates the amount of credit attributed to such tuple.}
+which is often joined with other tables in the database to build the webpages. \textcolor{correction}{Each cell in a heat-map represents a tuple of the \texttt{family} table and the color indicates the amount of credit attributed to such tuple.}
 It can be seen that the result of  credit distribution over \texttt{family} is the same for all three strategies. The same result is also obtained with the other tables of the database used by the queries shown in Figure \ref{figure:family_structure}. 
 
 The reason why credit distribution is the same for all three strategies is that the queries are all simple SPJ queries, which use each table only once and do joins on key attributes. 
@@ -294,9 +294,11 @@ However, there is a certain amount of consistency between them in that tuples wh
 
 Note that lineage-based DS gives the least credit to tuples in the \texttt{family} table, indicated by an overall lighter hue. This is because the DS  distributes credit equally to all tuples appearing in the lineage. Since these queries also use two other tables, credit is distributed to tuples in those tables.
 
-Moving to why-provenance-based DS, we see that more credit is given to tuples in the \texttt{family} table than with the previous strategy. This is because the DS considers the different ways that a tuple is used, e.g. in joins with other tuples. If the same tuple is present in more than one witness, it will draw more credit and take it from  other tuples in the witness basis. In this case, tuples in \texttt{family} drew more credit, taking it from tuples in the other two tables, due to the role that \texttt{family}  tuples played in the queries that were executed. \scream{GMS: It could be interesting (and simple to do) to report a number to quantify the amount of credit distributed by the three strategies, so that we can say that how-provenance distributes, say, 20\% more credit than lineage or so. The number could be the sum of each tuple credit or its average. Make sense? Not sure if this is just useless info.} 
+Moving to why-provenance-based DS, we see that more credit is given to tuples in the \texttt{family} table than with the previous strategy. This is because the DS considers the different ways that a tuple is used, e.g. in joins with other tuples. If the same tuple is present in more than one witness, it will draw more credit and take it from  other tuples in the witness basis. In this case, tuples in \texttt{family} drew more credit, taking it from tuples in the other two tables, due to the role that \texttt{family}  tuples played in the queries that were executed. 
+\textcolor{correction}{We note that the lineage-based DS gives an average credit of 2.79 to each tuple in the table, while the DS based on why-provenance assigns 4.18. Moreover, lineage distributed a total of circa 2200 units of credit to the table, while the other DS assigned more than 3300 units. That is, the DS based on why-provenance assigns on average $50\%$ more credit to the \texttt{family} table than the strategy based on lineage.}
+%\scream{GMS: It could be interesting (and simple to do) to report a number to quantify the amount of credit distributed by the three strategies, so that we can say that how-provenance distributes, say, 20\% more credit than lineage or so. The number could be the sum of each tuple credit or its average. Make sense? Not sure if this is just useless info.} 
 
-%\scream{Dennis, rewrote, please check for accuracy.}
+
 Finally, consider the how-provenance-based DS heat-map. %  in Figure \ref{fig:comparison}. 
 As with why-provenance, more credit is typically given to tuples in \texttt{family} compared to lineage-based DS since it recognizes the role of these tuples in the queries, and the overall hue is deeper.  
 The two distributions appear similar, although on closer inspection, slight differences between the two distributions can be seen. 
@@ -334,7 +336,9 @@ The queries used are the same as the experiment of the previous section. The ran
 
 %\scream{I feel that this section is going into too much detail.  We should just get the big idea across.  I have "eaten" most of this text and tried to pull out the highlights. Don't bring up things unless you can explain them, or are trying to make a point.  The other problem is we can't really say why tuples wax and wane in overall credit -- it depends on the queries, which we don't go into (or want to go into).}
 
-By the end of 1K queries, credit differentials between tuples as well as between strategies can be seen.  For example, tuple 4 has the highest value of credit overall, with the highest value coming from the why-provenance DS. \scream{GMS: to me tuple 4 has the highest credit for the Why-P, whereas tuple 3 has the highest for the How-P.}  This trend continues to the end of 2k queries.
+By the end of 1K queries, credit differentials between tuples as well as between strategies can be seen.  For example, \textcolor{correction}{tuple 4 is usually the one rewarded the most by all three strategies. However, it receives the highest quantity of credit from the why-provenance-based strategy. Tuple 3 is the one that receives the highest value of credit overall with how-provenance.}
+%\scream{GMS: to me tuple 4 has the highest credit for the Why-P, whereas tuple 3 has the highest for the How-P.}  
+This trend continues to the end of 2k queries.
 %, at which point tuple 5 also gains in credit. 
 By the end of 5k queries, tuple 2 emerges with the highest value of credit for why- and how-provenance, a position which is strengthened by the end of 10k queries. This is because tuple 2 is used several times within queries being executed, which is rewarded strongly by why- and how-provenance but not taken into account in lineage.
 
@@ -387,14 +391,12 @@ In particular, these two DSs may be useful for finding ``hotspots'' in the datab
   \label{figure:2_radars}
 \end{figure}
 
-%\scream{What is the set of authors, just ones on papers in BPC or are they the data curators?  Check if what I say below is correct!}
+In the last set of experiments, we compare traditional citations to the proposed credit distribution strategies to see the difference in reward for data authors and curators.  
+\textcolor{correction}{By using both real-world and synthetic queries, we distribute credit to the authors responsible for the data being cited using the different strategies. This shows that credit is able to reward also authors of data that is cited fewer times, but with a higher impact on the submitted queries.} 
+%\scream{Reprise from the intro exactly what this is doing and why.}
 
-In the last set of experiments, we compare traditional citations to the proposed credit distribution strategies to see the difference in reward for authors, including data curators.  
-
-\scream{Reprise from the intro exactly what this is doing and why.}
-
-Each target family page in GtoPdb has a list of curators, representing the people who are co-creators and curators of the data comprising the page. This list can be obtained using the last query shown in Figure \ref{figure:family_structure}. 
-%\scream{This is confusing because you switch between "pages" and "data".  I've rewritten, but it may be wrong.}
+\textcolor{correction}{To do so, we need to identify a set of authors and queries that cite data curated by them.}  
+Considering GtoPdb, each target family page has a list of curators, representing the people who are co-creators and curators of the data comprising the page. This list can be obtained using the last query shown in Figure \ref{figure:family_structure}. 
 Each time a target family page is cited, we assign one {\em citation} to each author associated with the page.  The authors also receive {\em credit} in the amount assigned to the data used by the query to construct the webpage, equally divided between the authors of the webpage.
 
 
