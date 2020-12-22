@@ -5,7 +5,7 @@ In this section, we present the three types of provenance used in this paper:  l
 \subsection{Lineage}
 Lineage was first introduced by \citet{lineageCui}. Given a database instance $I$ and query $Q$, lineage associates with each tuple $o \in Q(I)$ the set of tuples in the input
 %That is, the lineage of a tuple is the set of tuples 
-that helped ``produce'' it~\citep{CheneyProvSurvey}.
+that contributed to its ``production''~\citep{CheneyProvSurvey}.
 As an example, consider the following SQL query \texttt{Q1}, applied to the database described in Table \ref{table:running_example}, that asks for the names of families curated by researchers based in the United Kingdom (UK):
 
 \vspace{2mm}
@@ -24,7 +24,7 @@ As an example, consider the following SQL query \texttt{Q1}, applied to the data
 
 \begin{table}[hbt]
 \centering
-  \begin{tabular}{|l|c|}
+  \begin{tabular}{|l||c|}
   \hline
     id & name\\
     \hline
@@ -41,7 +41,7 @@ As an example, consider the following SQL query \texttt{Q1}, applied to the data
   \label{table:result}
 \end{table}
 
-Table \ref{table:result} shows the query result, which consists of two tuples. We add an extra  attribute \texttt{id} so that we can easily refer to each result tuple.  
+Table \ref{table:result} shows the query result set, which consists of two tuples. We add an extra  attribute \texttt{id} so that we can easily refer to each result tuple.  
 The lineage for tuple $o_1$ is the set $\{f_1, c2f_1, c_1, c2f_2, c_2\}$, since the tuple $f_1$ was joined with $c2f_1$ and then with $c_1$, and was also joined with $c2f_2$ and $c_2$. No other tuple is used in the database to produce $o_1$.
 For tuple $o_2$ the lineage is $\{ f_4, c2f_4, c_1\}$.
 Lineage is defined for each tuple of the output, and can differ between tuples.

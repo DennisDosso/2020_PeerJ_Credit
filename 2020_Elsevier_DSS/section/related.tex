@@ -1,14 +1,15 @@
 \section{Background}
 \label{sec:related}
 
-\paragraph{Data in Research} As described by Jim Gray in his last talk~\citep{hey2009jim}, the world of research is rapidly transitioning towards the \emph{fourth paradigm of science}, that is, data-intensive scientific discovery, where data are important for scientific advances as well as for traditional publications~\citep{Bechhofer2013linkisnotenough}.
+\paragraph{Data in Research} %As described by Jim Gray in his last talk~\citep{hey2009jim}, 
+The world of research is rapidly transitioning towards the \emph{fourth paradigm of science}~\citep{hey2009jim}, that is, data-intensive scientific discovery, where data are important for scientific advances as well as for traditional publications~\citep{Bechhofer2013linkisnotenough}.
 
 The scientific community is promoting an \emph{open research culture}~\citep{nosek2015promoting}, founded on methods and tools to share, discover, and access experimental data. 
 The community has identified the FAIR principles (Findable, Accessible, Interoperable, and Reusable)~\citep{fair2016Wilikinson}, that should be enforced by every database. 
 In particular, data should be accessible from the articles, journals, and papers that cite or use them~\citep{cousijn2019bringing}.
 Aspects such as the need for the \emph{reproducibility} of experiments through the used data; the \emph{availability} of scientific data; the \emph{connections} between data and the scientific results are all needed aspects for the fourth paradigm, and are all relevant to the domain of \emph{data citation}~\citep{honor2016data}.
 
-\paragraph{Data Citation: Principles and Motivations} Data Citation principles were first described in detail in \citep{CODATA2013}, and later summarized and endorsed by the Joint Declaration of Data Citation Principles (JDDCP)~\citep{martone2014joint}. 
+\paragraph{Data Citation: Principles and Motivations} Data Citation principles were proposed in \citep{CODATA2013}, and later summarized and endorsed by the Joint Declaration of Data Citation Principles (JDDCP)~\citep{martone2014joint}. 
 The principles are divided into two groups~ \citep{Silvello18jasist}. The first one contains principles concerning the role of data citation in scholarly and research activities such as the (i) \emph{importance} of data (why data citation is important and why data should be considered as first-class citizens); (ii) \emph{credit} and \emph{attribution} to the creators and curators of the data; (iii)\emph{evidence}; (iv) \emph{verifiability}; and \emph{interoperability}, with these last three requiring data citation methods to be flexible enough to operate through different communities. 
 The second group defines the main guidelines to establish a data citation systems, and contains principles such as the (i) \emph{unique identification} of the data being cited; (ii) \emph{(open) access} to data; (iii) guarantee of \emph{persistence} and \emph{availability} of citations even after the lifespan of the cited entity; the (iv) \emph{specificity} of a citation, i.e. it must lead to the data set originally cited.
 
@@ -49,8 +50,9 @@ At present, the most common practices to cite databases include:
      Every single Webpage is unequivocally identifiable and can be individually cited. 
 \end{enumerate}
 
-Despite all the research efforts dedicated to the study and promotion of data citation, none of the largest citation-based systems, such as Elsevier Scopus, Web of Science, Microsoft Academia, or Google Scholar, consider scientific datasets as citable objects in academic work. 
-Clarivate Analytics Data Citation Index (DCI) \citep{force2016research} is an exception, since its infrastructure tracks data usage in scientific domains and provides the technical means to connect datasets and repositories to scientific papers. However, DCI considers only citations to (previously registered and approved) databases as a whole and does not count citations to database portions such as views, tables, or tuples.
+\textcolor{red}{Despite all the research efforts dedicated to the study and promotion of data citation, none of the largest citation-based systems, such as Elsevier Scopus, Web of Science, Microsoft Academia, or Google Scholar, consider scientific datasets as citable objects in academic work. 
+Clarivate Analytics Data Citation Index (DCI) \citep{force2016research} is an exception, since its infrastructure tracks data usage in scientific domains and provides the technical means to connect datasets and repositories to scientific papers. However, DCI considers only citations to (previously registered and approved) databases as a whole and does not count citations to database portions such as views, tables, or tuples.}
+\scream{GMS: I'd remove (eat env.) this part about citation-based indexes because we are not proposing any solution for that problem.}
 
 %Scholix
 %Publishers, data centers, and indexing services have started to create bidirectional links between research data and scholarly literature. Such links, however, usually stem from agreements implemented by two organizations. They, therefore, lack a universally accepted industrial standard, and each agreement differs from the other~\citep{burton2017scholix}. 
@@ -114,13 +116,13 @@ In this paper, we focus on provenance for database management systems (DBMS). Fo
 Let us start with the first three provenances. Given a database instance $I$, a query $Q$, and the result $Q(D)$, consider one tuple $t$ of the output. 
 Its provenance is information about its generation through the tuples of the input that are used by $Q$. Different types of provenance convey different levels of information. Since these three provenances are computed for each tuple of the output, they are also referred to as \emph{tuple-based}.
 
-Lineage is somehow the simplest among the forms of provenance. It has been defined in different ways~\citep{CheneyProvSurvey}, but it can be thought of as the set of all the tuples that are used in some way by the query to produce the output tuple, the ones that are somehow \emph{relevant} to its generation. 
+Lineage is the simplest among the forms of provenance. It has been defined in different ways~\citep{CheneyProvSurvey}, but it can be thought of as the set of all the tuples that are used in some way by the query to produce the output tuple, the ones that are somehow \emph{relevant} to its generation. 
 
 The definition of why-provenance is based on the notion of \emph{witness set}. A witness is a set of relevant tuples that guarantees the existence of $t$ in $Q(D)$. The lineage is therefore an example of a witness. The why-provenance of a tuple $t$ is a peculiar set of witnesses  -- described in \citep{WhyProvBuneman} -- that are computed from the query, called \emph{witness basis}. 
 A witness basis may be composed of more than one witness. 
 Therefore, the why-provenance contains more information than the lineage, since it describes \emph{alternative} ways in which the same output may be generated. 
 
-The how-provenance takes the form of a polynomial, called \emph{provenance polynomial}, where the variables are taken from the set of identifiers of the tuples (provided that each tuple in $I$ has an identifier) and the coefficients are taken from $\mathbb{N}$. 
+The how-provenance takes the form of a polynomial, called \emph{provenance polynomial}, where the variables are taken from the set of identifiers of the tuples (provided that each tuple in $I$ has an identifier) and the coefficients are drew from $\mathbb{N}$. 
 This provenance also contains information on \emph{how} the input tuples are used. For example, when two tuples are combined by a join, they are also combined in the polynomial by the $\cdot$ operator. When two or more tuples become equivalent due to a union or a projection, the corresponding monomials are combined by the $+$ operator.
 
 It has been shown in \citep{CheneyProvSurvey} that the how-provenance is the more general and informative of the three, containing the other two.

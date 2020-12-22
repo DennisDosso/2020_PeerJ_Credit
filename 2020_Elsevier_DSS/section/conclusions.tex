@@ -4,16 +4,16 @@
 This paper 
 %expanded on our previous work on data credit and data credit distribution in \cite{dosso2020data} by 
 defines two new distribution strategies based on why- and how-provenance, and compares them against the lineage-based distribution strategy defined in \cite{dosso2020data}. 
-The first DS, based on why-provenance, uses the concept of a witness, and gives more credit to tuples that appear in more than one witness. 
+The first, why-provenance-based DS, uses the concept of a witness, and gives more credit to tuples that appear in more than one witness. 
 In this way, tuples that are more important to the query and are used in different ways are rewarded more. % by the strategy.
-The second DS, based on how-provenance, considers the frequency with which a tuple or combination of tuples is used in the query through the information contained in a provenance polynomial. In this case, the distribution is even more sensitive than the first to the role and importance of tuples.
+The second, how-provenance-based DS, considers the frequency with which a tuple or combination of tuples is used in the query through the information contained in a provenance polynomial. In this case, the how-provenance-based DS is more sensitive than the why-provenance-based DS to the role and importance of tuples.
 
 To show the differences between the three DSs, we performed extensive experiments based on GtoPdb, a curated scientific relational database, using both real and synthetic queries. 
 In the first set of experiments, we used select-project-join (SPJ) queries extracted from citations to webpages in GtoPdb found in papers published in the British Journal of Pharmacology. 
 Using these ``real" queries, we distributed credit to tuples in different tables of the database, highlighting tuples that were more frequently used. 
 We showed that, with these queries, the three strategies produce the same distribution. This is because the SPJ queries were fairly simple, and did not use self-joins. Therefore the formulas underlying the different DSs had the same output.
 
-In the second set of experiments, we synthetically produced more complex provenance polynomials, corresponding to more complex synthetic queries, that resulted in exponents and coefficients in the provenance polynomials that were greater than (or equal to) $1$.
+In the second set of experiments, we synthetically produced more complex provenance polynomials, corresponding to more complex queries, that resulted in exponents and coefficients in the provenance polynomials that were greater than (or equal to) $1$.
 These experiments highlighted the differences between the three DSs.
 \eat{
 In this way, we showed that, even though all three DS can highlight all the tuples used by the queries in the database, the three have different behaviors. }
@@ -23,8 +23,8 @@ How-provenance is even more sensitive to the tuple's role: it also considers the
 
 In the third set of experiments, we showed how the differences between the DS are compounded over time, i.e. when more and more queries are processed by the system.
 
-In the fourth set of experiments we compared traditional citations to authors to the credit accrued to them via the DSs. We showed how, both in the real-world and synthetic scenarios, credit rewards authors 
-who contribute/curate data that have the highest impact, and therefore receives the biggest quantity of credit, and not necessarily the data with the highest citation count. 
+In the fourth set of experiments we compared traditional citations to authors to the credit accrued to them via the DSs. We showed how, in both real-world and synthetic scenarios, credit rewards authors 
+who contribute/curate data that has the highest impact, and therefore receives the biggest quantity of credit, and not necessarily the data with the highest citation count. 
 %\scream{I don't really understand this point.}
 In this sense, credit appears to be an useful new measure to discover data and their corresponding curators that have a high impact in the research world, even when they are cited few times or do not appear at all in the data that are cited (i.e. the case of data used to build the output of a query but that is not visualized in the output itself).
 
