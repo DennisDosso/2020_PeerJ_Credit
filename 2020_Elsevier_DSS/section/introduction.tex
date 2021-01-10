@@ -4,18 +4,20 @@ Citations are an essential component of scientific research, enabling research p
 They form a basis on which to give credit to authors, papers, and venues~\citep{ZouP16, cousijn2019bringing, cronin1984}.
 Citations are used, among other things, to decide on tenure, promotion, hiring, and funding of grants for researchers~\citep{meho2007impact, Cronin01, Hartley17, Kosten16}.
 
-Nowadays, science and research are increasingly digital. There are numerous curated databases that are at the core of scientific research efforts~\citep{bunemann2016citation}.
+Science and research are increasingly digital, and there are numerous curated databases that are at the core of scientific research efforts~\citep{bunemann2016citation}.
 It is therefore generally accepted that data must be cited and citable~\citep{LawrenceEtAl2011,CallaghanDPTCKABBLLMHSWW12}, and that data citations should contribute to the scientific reputation of researchers, scientists, data curators, and creators~\citep{AltmanEtAl2015,Spengler2012}.
 It is also accepted that data citations should be counted alongside of traditional citations, and contribute to bibliometrics indicators~\citep{Belter2014,Peters2016}.
 
-\textcolor{correction}{Many initiatives are carried out at different levels to make data citation a reality. 
-Scientific publishers, such as Elsevier, Springer, and Nature  have been defining data policies and author guidelines to include data citations in the reference lists of published papers~\cite{cousijn2019bringing}. 
-The European Commission has introduced the Open Research Data Pilot (ODP), whose aim is to improve and maximize the access and re-use of research data, together with an increase to the credit given to data creators and curators~\cite{Silvello18jasist}. Initiatives such as FORCE11 and ESIP (Earth Science Information partners) have collaborated on software citation principles and guidelines~\cite{esip2019}. Other examples are the National Science Foundation (NSF), and the National Institute of Health (NIH) in the US~\cite{Silvello18jasist}}
+\textcolor{correction}{Many initiatives, at different levels, have been promoted to make data citation a reality. 
+Scientific publishers, such as Elsevier, Springer and Nature, have been defining data policies and author guidelines to include data citations in the reference lists of published papers~\cite{cousijn2019bringing}. 
+The European Commission has introduced the Open Research Data Pilot (ODP), whose aim is to improve and maximize the access and re-use of research data, together with an increase to the credit given to data creators and curators~\cite{Silvello18jasist}. Initiatives such as FORCE11 and ESIP (Earth Science Information Partners) have collaborated on data and software citation principles and guidelines~\cite{esip2019}. Other examples are the National Science Foundation (NSF), and the National Institute of Health (NIH) in the US~\cite{Silvello18jasist}.}
 
-\textcolor{correction}{In the last years we also saw activity to promote and specify guidelines for data citations. Among these activities, we can cite the example of the Research Data Alliance (RDA), that produced a recommendation on citing specific subsets of dynamic data~\cite{rauber2015data}. This approach is used to ite specific subsets of very dynamic data by assigning and maintaining a PID (Persistent IDentifier) for a specific, time-stamped query of a data set. The repository continues to resolve the query PID and maintains or migrates the technology necessary to resolve the query within the data set. This approach is getting broader adoption. However, while this approach provides reference and access to a precise subset of data, it does necessarily address specific credit concerns for that subset, such as when different authors contribute to a larger collection~\cite{parsons2019history}.} 
+\textcolor{correction}{Moreover, there are  activities to  promote and specify guidelines for data citations. A significant activity getting a broad adoption, is the Research Data Alliance (RDA), that produced a recommendation on citing specific subsets of dynamic data~\cite{rauber2015data}. %This approach is used to cite specific subsets of dynamic data by assigning and maintaining a PID (Persistent IDentifier) for a specific, time-stamped query of a data set. The repository continues to resolve the query PID and maintains or migrates the technology necessary to resolve the query within the data set. This approach is getting broader adoption.
+
+While this approach provides reference and access to a precise subset of data, it does  not address specific credit concerns for that subset, such as when different authors contribute to a larger collection~\cite{parsons2019history}.} 
 % todo aggiungi qui elementi riguardanti il data citation, mostrando che funziona
 
-A central problem in data citation is how to attribute credit to data creators and curators~\cite{buneman2019summ}. 
+A central problem in the data citation process is how to attribute credit to data creators and curators~\cite{buneman2019summ}. 
 How to handle and count the credit generated by data citation, and how it contributes to traditional and new bibliometrics, are long-standing research issues~\citep{garfield1999journal,Borgman2016}.
 However, even when correctly applied, data citations and the bibliometric computed using them do not always correctly or completely reward the creators of data used in a database.
 Data, in fact, is often cited at the ``database level'' or the ``webpage level''. 
@@ -45,9 +47,9 @@ The DCD problem differs from the traditional citation setting since
 %\scream{Is the next list different from the one we have in Informetrics?}
 :
 \begin{enumerate}
-    \item \textcolor{correction}{Traditionally, when a paper $p_1$ cites another paper $p_2$, a $+1$ ``credit'' is given to $p_2$, and to all its authors. It does not matter why or how paper $p_1$ cites paper $p_2$\footnote{Note that there is vast research on this topic and many alternative proposals, but none of them currently work at a large scale.}, the result is always $+1$ to the citation count of $p_2$ and of its authors. A different credit distribution strategy can assign a quantity of credit to $p_2$, and its authors, that is \emph{proportional} to the role played by $p_2$ in $p_1$. Hence, we can weigh the importance of the cited entities and assign credit according to their role.}
+    \item \textcolor{correction}{When a paper $p_1$ cites another paper $p_2$, a $+1$ citation ``credit'' is given to $p_2$, and to all its authors. It does not matter why or how paper $p_1$ cites paper $p_2$, \footnote{Note that there is vast research on this topic and many alternative proposals, but none of them currently work at a large scale.} the result is always $+1$ to the citation count of $p_2$ and of its authors. A different credit distribution strategy can assign a quantity of credit to $p_2$, and its authors, that is \emph{proportional} to the role played by $p_2$ in $p_1$. Hence, we can weight the importance of the cited entities and assign credit according to their role.}
     \item \textcolor{correction}{Traditional citations are \emph{atomic}: a citation from $p_1$ to $p_2$ can never be broken into pieces and assigned in part to $p_2$ and in part to other papers or data that contributed to $p_2$. 
-	Differently, with data credit, we are using a \emph{non-atomic} real value, which can be divided and distributed to multiple components of a database.} 
+	In contrast, with data credit, we use a \emph{non-atomic} real value, which can be divided and distributed to multiple components of a database.} 
 	\item Credit can be \emph{transitive}, that is, it can be propagated through one cited entity to other entities cited by it that contributed to its content. Citations, traditionally, are not. 
 \end{enumerate}
 
@@ -66,7 +68,7 @@ relational databases (RDBs) since they are widely used \footnote{The ``relationa
 market alone has revenue upwards of \$50B''~\citep{AbadiEtAl2020}. } and are the main focus of current work in data citation methods~\citep{buneman2010rule,bunemann2016citation,ProllR13}.  
 RDBs are also frequently a test-bed for new methods that can be adapted to other databases, e.g., graphs or document databases.
 The ``portions" of data in an RDB that can be credited can be defined at different levels of granularity, in particular: (i) the whole database, (ii)  tables, (iii) tuples, and (iv) attributes. 
-\textcolor{correction}{The clear distinction between the levels of granularity in a relational database allows us to clearly define the DCD problem at one specific level of granularity. In this paper, we focus on DCD at the tuple level.}
+\textcolor{correction}{The ability to specify different levels of granularity in a relational database allows us to define the DCD problem at a particular level of granularity. In this paper, we focus on DCD at the tuple level.}
 
 %\scream{GMS: and this is useful because $\ldots$}
 
@@ -116,8 +118,7 @@ Real queries used in papers can therefore be seen as data citations which, in tu
 We perform four sets of experiments. In the first one, real queries are extracted from papers published in the British Journal of Pharmacology (BJP), that represent data citations to GtoPdb, and are used to distribute credit in the database using the three different provenance-based DSs. 
 %We show how, given the peculiar nature of the queries, the three distributions do not present particular differences in this context and why this is the reason. 
 In the second and third experiment we analyse the behaviour of the different DS when complex citation queries are employed.
-\textcolor{correction}{In the fourth set of experiments we use both real and synthetic queries to assess the differences between traditional citations and credit in rewarding data curators.}
-%\scream{Need to talk about the last experiments comparing citation to credit....}
+\textcolor{correction}{In the fourth set of experiments we use both real and synthetic queries to assess the difference between traditional citation and the notion of credit distribution in terms of rewarding those responsible for the data, e.g. data curators.}
 
 \paragraph{\textbf{Contributions}} 
 Contributions of this work include:
