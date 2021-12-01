@@ -148,7 +148,25 @@ How-provenance conveys more information than why-provenance since it not only ca
 
 The how-provenance-based DS therefore first distributes the credit to the monomials of the polynomial accordingly to the weight represented by their coefficients, then to the tuples of each monomial accordingly to the weights represented by their exponents. 
 
-To define the DS more formally, we introduce some notation and illustrate it using the provenance polynomial $\mathcal{H}$ shown in Figure \ref{figure:how_example}. 
+To define the DS more formally, we introduce some notation and illustrate it using the provenance polynomial $\mathcal{H}$ shown in Figure \ref{figure:how_example}. This notation is also reported for easy reference in Table \ref{tab:notation}.
+
+\begin{table}[]
+    \centering
+    \caption{\rone{Notations used in Definition \ref{def:how_distribution}.}}
+    \begin{tabular}{c|c}
+    \hline
+         $\mathcal{H}$ & provenance polynomial  \\
+         $M_i$ & a monomial in $\mathcal{H}$ \\
+         $t_j$ & a tuple in $M_i$ \\
+         $c(\mathcal{H})$ & sum of $\mathcal{H}$'s coefficients \\
+         $e(M_i)$ & sum of $M_i$'s exponents \\
+         $mc(M_i)$ & $M_i$'s coefficient \\
+         $te(t_j, M_i)$ & exponent of $t_j$ in $M_i$ \\
+         $\gamma(t_j, \mathcal{H})$ & set of monomials in $\mathcal{H}$ containing $t_j$ \\
+    \hline
+    \end{tabular}
+    \label{tab:notation}
+\end{table}
 
 
 \begin{figure}[]
@@ -159,8 +177,11 @@ To define the DS more formally, we introduce some notation and illustrate it usi
 \end{figure}
 
 %In this figure we show the notation that we use to refer to different information taken from the provenance polynomial. 
-We call $c$ the function that, given a polynomial, returns the sum of the coefficients of the polynomial; thus $c(\mathcal{H})=\;3+1=4$. We use the same name for the function that, given a monomial, returns the sum of its exponents; thus $c(M_2)=1+3+3=7$. 
-$mc$ is the function that takes as input a monomial and returns its coefficient. $e$ is a function that takes as input a tuple and a monomial, and returns the exponent of the tuple in the monomial, if present; thus $e(c_2, M_2)=3$. $\gamma$ takes as input a tuple and the whole polynomial, and returns a set containing the monomials containing that tuple, if present in the polynomial; thus $\gamma(f_1, \mathcal{H})=\;\{M_1, M_2\}$. 
+We call $c$ the function that, given a polynomial, returns the sum of the coefficients of the polynomial; thus $c(\mathcal{H})=\;3+1=4$. 
+\rone{We call $e$ the function that, given a monomial, returns the sum of its exponents, thus $c(M_2)=1+3+3=7$}
+$mc$ is the function that takes as input a monomial and returns its coefficient. 
+\rone{$te$ is a function that takes as input a tuple and a monomial, and returns the exponent of the tuple in the monomial, if present; thus $te(c_2, M_2)=3$}. 
+Finally, $\gamma$ takes as input a tuple and the whole polynomial, and returns a set containing the monomials containing that tuple, if present in the polynomial; thus $\gamma(f_1, \mathcal{H})=\;\{M_1, M_2\}$. 
 
 \eat{
 %\scream{This needs to be simplified.  Get rid of the mathematical notation and just give an English definition.}
