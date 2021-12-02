@@ -200,7 +200,7 @@ More formally, consider the provenance polynomial $\mathcal{H} = H(Q, I, o)$ of 
     Let $I$ be a database instance, $Q$ a query over $I$, $o \in Q(I)$ an output tuple, $\mathcal{H}$ be the provenance polynomial for $o$, and $k_o$ the credit given to $o$.
     The credit given to tuple $t$ in $I$ is:
     \[
-    f_{I, Q}(t, k_o) = \frac{k_o}{c(\mathcal{H})} \sum_{M \in \gamma(t, \mathcal{H})} mc(M) \frac{e(t, M)}{c(M)}
+    f_{I, Q}(t, k_o) = \frac{k_o}{c(\mathcal{H})} \sum_{M \in \gamma(t, \mathcal{H})} mc(M) \frac{\rone{te(t, M)}}{\rone{e(M)}}
     \]
 \end{definition}
 
@@ -220,7 +220,8 @@ More formally, consider the provenance polynomial $\mathcal{H} = H(Q, I, o)$ of 
 
 Going back to the example of Table \ref{table:result_how_prov}, consider $o_1$ with provenance polynomial $f_1 c2f_1 c_1 + f_1 c2f_2 c_2$. The how-provenance-based DS firstly divides the credit between the two monomials. Since the coefficients of each monomial are $1$, the credit is split in half. If they were, for example, $1$ and $2$ respectively, $1/3$ of the credit would go to the first monomial, and $2/3$ to the second.  
 Since in our example each variable has exponent $1$, the credit is further divided equally among the three variables. Thus, at the end of the computation, $f_1$ receives $1/3$, and the other tuples receive $1/6$.
-If, for example, the first monomial was $f_1^2 c2f_1 c_1$, then the portion of credit of this monomial would be divided in this way: $1/2$ to $f_1$ and $1/4$ to each of the other two tuples. 
+\rone{Consider instead the example where the polynomial is $f_1 c2f_1 c_1 + f_1 c2f_2 c_2$. The first monomial receives $1/2$ of the credit, then $f_1$ receives $1/4$ of credit, and the other two tuples receive $1/8$.}
+%If, for example, the first monomial was $f_1^2 c2f_1 c_1$, then the portion of credit of this monomial would be divided in this way: $1/2$ to $f_1$ and $1/4$ to each of the other two tuples. 
 
 
 In this specific example, the how-provenance-based DS has the same outcome as the one based on why-provenance. %Consequently, one may ask if there is a significant difference between the two strategies. 

@@ -1,6 +1,7 @@
 \section{Data Provenances}
 \label{section:preliminaries}
-In this section, we present the three types of provenance used in this paper:  lineage, why-provenance, and how-provenance.
+In this section, we present the three types of provenance used in this paper:  lineage, why-provenance, and how-provenance. 
+\rtwo{We also discuss of Causality and Responsibility that, even though are not forms of data provenance \emph{per se}, they are still used as basis to define a DS}. 
 
 \subsection{Lineage}
 Lineage was first introduced by \citet{lineageCui}. Given a database instance $I$ and query $Q$, lineage associates with each tuple $o \in Q(I)$ the set of tuples in the input
@@ -185,6 +186,10 @@ This simple example gives the basic idea behind how-provenance and how it allows
 % talking a little bit about coefficients and exponents
 Provenance polynomials may also have monomials whose exponents and/or coefficients are greater than one, for example, $3f_1 \cdot c2f_1 \cdot c_1 + f_1 \cdot c2f_2^3 \cdot c_2^3$. This is a polynomial of a tuple produced by a query where the result of the join between the tuples $f_1$, $c2f_1$, and $c_1$ is produced three times and then merged (e.g. as the result of a union), and the tuples $c2f_2$ and $c_2$ are used three times in the operation described by the second monomial (e.g., with nested queries). 
 % \scream{Why would the join tuple be produced 3 times?  Perhaps as a result of a union? Projection doesn't make sense}
+
+
+\subsection{Causality and Responsibility}
+The concept of Causality was first defined in 
 
 %MORE FORMALISM
 %Now we formally introduce the mathematical framework behind how-provenance~\citep{howProvenanceGreen}.

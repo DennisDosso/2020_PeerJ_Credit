@@ -178,7 +178,9 @@ To simulate synthetic queries,
 %highlight the differences between the three DS, 
 we randomly generated provenance polynomials in which the coefficients and exponents could be greater than $1$.
 %that might be the how-provenance of randomly generated synthetic queries, 
-The queries involve three GtoPdb tables: \texttt{family}, \texttt{contributor2family}, and \texttt{contributor}. An example can be found in Figure~\ref{fig:syntheticDistributions}, which shows a sample synthetic provenance polynomial (the how-provenance) and the corresponding why-provenance and lineage expressions.  The resulting credit distribution for each DS is shown after the provenance expression. 
+The queries involve three GtoPdb tables: \texttt{family}, \texttt{contributor2family}, and \texttt{contributor}. 
+\rone{The polynomials were generated as follows (in particular, every time we write ``randomly'', we mean using a uniform distribution): first, the number of monomials composing the polynomial is decided choosing randomly a number between 1 and 6.  Then, we randomly choose a tuple from the tables \texttt{family}, one from the table \texttt{contributor2family} and one from table \texttt{contributor}, that are used as the monomial's variables. Again, randomly, we choose a coefficient for this monomial (between 1 and 3) and an exponent for each tuple (between 1 and 4). For the next monomial, then, we decide if we want to keep the same tuple from the table family as first tuple of the new monomial. To do so, we generate a random number between 0 and 1. If the number is above $0.2$, we change the family tuple.}
+An example can be found in Figure~\ref{fig:syntheticDistributions}, which shows a sample synthetic provenance polynomial (the how-provenance) and the corresponding why-provenance and lineage expressions.  The resulting credit distribution for each DS is shown after the provenance expression. 
 
 
 
