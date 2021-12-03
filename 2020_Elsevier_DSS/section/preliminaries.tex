@@ -187,9 +187,72 @@ This simple example gives the basic idea behind how-provenance and how it allows
 Provenance polynomials may also have monomials whose exponents and/or coefficients are greater than one, for example, $3f_1 \cdot c2f_1 \cdot c_1 + f_1 \cdot c2f_2^3 \cdot c_2^3$. This is a polynomial of a tuple produced by a query where the result of the join between the tuples $f_1$, $c2f_1$, and $c_1$ is produced three times and then merged (e.g. as the result of a union), and the tuples $c2f_2$ and $c_2$ are used three times in the operation described by the second monomial (e.g., with nested queries). 
 % \scream{Why would the join tuple be produced 3 times?  Perhaps as a result of a union? Projection doesn't make sense}
 
+\rtwo{\subsection{Causality and Responsibility}}
+\label{sec:responsibility}
 
-\subsection{Causality and Responsibility}
-The concept of Causality was first defined in 
+A formal study of causality was initiated in \cite{Halpern2013Causality,ChocklerH04} and later expanded by \citet{MeliouGMS11} to define the causes of answers and non-answers to queries. Causality is, more precisely, related to the provenance of a query result such as why-provenance. Causality adds information to the one already provided by the provenance.
+
+In the following we define causality and responsibility as done in \cite{MeliouGMS11}. Differently from \cite{MeliouGMS11}, we only focus on answers of a query, and not non answers, since they are not relevant in the context of this paper.
+Let $R_1, \dots, R_k$ be the relation names of a standard relational schema, $D$ be a database instance and $q$ a conjunctive query. We also call $D^n \subseteq D$ the set of \emph{endogenous tuples}, i.e. the tuples being actually considered to be possible causes of a query output; while $D^x = D - D^n$ is the set of \emph{exogenous tuples}, the tuples being considered external, unconcerned factors, thus deemed not to be possible causes. 
+This distinction between endogenous and exogenous tuple is application dependent, and it can be done by the user at query time. 
+One example is with probabilistic databases with uncertain tuples, where erroneous data may be contained. By considering these uncertain tuples as part of the exogenous tuples dataset, we are factoring them out of the computation of causality. 
+
+Then, given a tuple $\bar{a}$ with the same arity as the query's answer, we write $D \vDash q(\bar{a})$ when $\bar{a}$ is an answer to $q$ on $D$, and write $D \nvDash q(\bar{a})$ when $\bar{a}$ is a non-answer to $q$ on $D$.
+Causality is defined as follows:
+
+\begin{definition}{Causality \cite{MeliouGMS11} }\\
+	Let $t \in D^n$ be an endogenous tuple, and $\bar{a}$ a possible answer for $q$. Then:
+	\begin{enumerate}
+		\item $t$ is called a \emph{counterfactual cause} for $\bar{a}$ in $D$ if $D \vDash q(\bar{a})$ and $D - \{t\} \nvDash q(\bar{a})$
+		\item $t \in D$ is called an \emph{actual cause} for $\bar{a}$ if there exists a set $\Gamma \subseteq D^n$, called \emph{contingency} for $t$, such that $t$ is a counterfactual cause for $\bar{a}$ in $D - \Gamma$.
+	\end{enumerate}
+\end{definition}
+
+$t$ is a \emph{counterfactual cause} if, by removing it from the database, we remove $\bar{a}$ from the answer. Therefore, it can be fought as a tuple of the lineage which is fundamental for the presence of $\bar{a}$ in the answer.
+Vice-versa, $t$ is an actual cause if it is possible to find a contingency set of tuples such that, if that set is removed, only then $t$ becomes fundamental. In other words, when $t$ is an actual cause, even if it was removed from the database, $\bar{a}$ would still be present in the result set thanks to the contingency set. 
+Checking the causality degree of tuples is NP-complete in general~\cite{EiterL02}, but \citet{MeliouGMS11} proved that the causality of conjunctive queries may be determined in PTIME.
+
+
+The notion of \emph{responsibility} was first defined in \cite{ChocklerH04}, and it measure the degree of causality as a function of the size of the smallest contingency set. It allows to rank the tuples in a lineage based on their degree of causality in generating the output. 
+
+\begin{definition}{Responsibility \cite{MeliouGMS11}}
+	Let $\bar{a}$ be an answer to a query $q$, and let $t$ be a cause. The \emph{responsibility} of $t$ for the answer $\bar{a}$ is:
+	\[
+		\rho_t = \frac{1}{1 + min_\Gamma|\Gamma|}
+	\]
+	where $\Gamma$ ranges over all contingency sets for $t$.
+\end{definition}
+
+As can be seen, a counterfactual cause will have the maximum responsibility of $1$, while the bigger the minimum contingency of an actual cause, the smaller its responsibility since more tuples can still guarantee the presence of the answer $\bar{a}$.
+
+While in general computing the responsibility is hard~\cite{ChocklerH04}, \citet{MeliouGMS11} showed that for each query without self-joins the responsibility is either computed in PTIME in the size of the database or checking if it has a responsibility below a given value is NP-hard. 
+
+\begin{table}[]
+\centering
+  \begin{tabular}{|l|c|}
+  \hline
+    id & name\\
+    \hline
+    $o_1$ &  Dopamine Receptors\\
+    $o_2$ & YANK Family\\
+    \hline
+  \end{tabular}
+  \begin{tabular}{c}
+  	responsibility   \\
+  	$f_1: 1, c2f_1: 0.5, c2f_2: 0.5, c_1: 0.5, c_2: 0.5$ \\
+  	$f_4: 1, c2f_4: 1, c_1: 1$ \\
+  \end{tabular}
+    \caption{Result of the example SQL query \texttt{Q1} with the corresponding responsibilities of the lineage tuples.}
+  \label{table:result_responsibility}
+\end{table} 
+
+As an example, consider Table \ref{table:result_how_prov}, where we reported the tuples result of query \texttt{Q1} together with the tuples of their lineage accompanied with their responsibility values. 
+With output tuple $o_1$, the tuple $f_1$ of the lineage is a counterfactual cause, since its contingency set is empty (when removed from the database, $o_1$ disappears from the result set). Consequently, its responsibility is 1. On the other hand, the other tuples of the lineage are all actual causes. $c_1$, for example, has as minimal contingency set $\{c2f_2\}$, and thus its responsibility is $0.5$. 
+For the output tuple $o_2$, all the tuples of the lineage are counterfactual causes, and thus they all have responsibility 1.
+
+
+
+
 
 %MORE FORMALISM
 %Now we formally introduce the mathematical framework behind how-provenance~\citep{howProvenanceGreen}.

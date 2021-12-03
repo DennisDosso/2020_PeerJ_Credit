@@ -220,7 +220,7 @@ More formally, consider the provenance polynomial $\mathcal{H} = H(Q, I, o)$ of 
 
 Going back to the example of Table \ref{table:result_how_prov}, consider $o_1$ with provenance polynomial $f_1 c2f_1 c_1 + f_1 c2f_2 c_2$. The how-provenance-based DS firstly divides the credit between the two monomials. Since the coefficients of each monomial are $1$, the credit is split in half. If they were, for example, $1$ and $2$ respectively, $1/3$ of the credit would go to the first monomial, and $2/3$ to the second.  
 Since in our example each variable has exponent $1$, the credit is further divided equally among the three variables. Thus, at the end of the computation, $f_1$ receives $1/3$, and the other tuples receive $1/6$.
-\rone{Consider instead the example where the polynomial is $f_1 c2f_1 c_1 + f_1 c2f_2 c_2$. The first monomial receives $1/2$ of the credit, then $f_1$ receives $1/4$ of credit, and the other two tuples receive $1/8$.}
+\rone{Consider instead the example where the polynomial is $f_1^2 c2f_1 c_1 + f_1^2 c2f_2 c_2$ and let us focus on the first monomial. The monomial receives $1/2$ of the credit, then $f_1$ receives $1/4$ of this portion of credit, while the other two tuples receive $1/8$.}
 %If, for example, the first monomial was $f_1^2 c2f_1 c_1$, then the portion of credit of this monomial would be divided in this way: $1/2$ to $f_1$ and $1/4$ to each of the other two tuples. 
 
 
@@ -279,3 +279,43 @@ The DS based on the provenance polynomial gives credit $1/2$ to $f_1$, and $1/8$
 This is reasonable since \texttt{Q2} relies on $f_1$ even more than \texttt{Q1} does. 
 The distribution based on how-provenance can reward $f_1$ more, showing that how-provenance is even more sensitive to the tuples' role in a query than why-provenance. %In this case, the why-provenance is not sensible to this difference. 
 This is a direct consequence of the fact that, as proven in \citep{howProvenanceGreen}, how-provenance is more general than why-provenance and lineage, in the sense that it contains more information. 
+
+\rtwo{\subsection{Responsibility-based Distribution Strategy}}
+As we described in Section \ref{sec:responsibility}, causality and responsibility are not new forms of data provenance, but rather new information that is added to the already available lineage. It is possible in fact to compute the causality of all the tuples of a lineage, distinguishing them between actual causes and counterfactual causes. Successively, it is also possible to compute their responsibility, which, by itself, can be envisioned as a form of credit and assigned to the corresponding tuples. 
+
+One first option to define a distribution strategy using responsibility is to simply assign the responsibility as credit of the single tuple. Using the example of Table \ref{table:result_responsibility}, in the case of output tuple $o_1$, $f_1$ receives credit 1, the other tuples credit $0.5$. This strategy however both generates the credit and gives it to the tuples. We want a DS that is also a function of the input credit value $k$ in order to be comparable with the other strategies proposed so far.
+
+Therefore, we define a new DS based on responsibility that is a function of the quantity of credit $k_o$ that assigns to each tuple of the lineage a portion of this credit weighted by its normalized quantity of responsibility. Formally:
+\newline
+\begin{definition}{Responsibility-based Distribution Strategy}\\
+\label{def:resp_ds}
+Let $I$ be a database instance, $Q$ a query over $I$, $o \in Q(I)$ an output tuple, $\mathcal{L}$ the lineage of $o$, and $k_o$ the credit given to $o$. The credit given to tuple $t$ in $I$ is:
+\[
+	f_{I, Q}(t, k_o) = k_o \frac{\rho_t}{\sum_{t' \in \mathcal{L}} \rho_t'}
+\]
+\end{definition}
+
+
+\begin{figure}[]
+\centering
+  \includegraphics[width=.7\textwidth]{figures/resp_example}
+  \caption{Example of distribution of credit using responsibility and normalized responsibility and the responsibility-based DS, assuming $k_o = 1$.}
+  \label{fig:resp_example}
+\end{figure}
+
+Note that only the tuples that belong to the lineage will receive a quantity of credit $> 0$. The more important the tuple, i.e., the higher its responsibility, the bigger the quantity of credit received. 
+
+Figure \ref{fig:resp_example} shows the quantity of credit assigned to the tuples of the lineage of the output tuple $o_1$ of Table \ref{table:result_responsibility} when credit $=$ responsibility and when we use the responsibility-based DS. 
+with simple responsibility, we assign 1 to the only counterfactual tuple $f_1$, and $0.5$ to the other tuples. 
+Using the DS instead, and assuming that $k_{o_1} = 1$, $f_1$ receives credit $1/3$, while the others receive credit $1/6$. 
+As we see, the DS in this case returns the same distribution obtained with why-provenance, as shown in Figure \ref{figure:distributions_differences}.
+This is not always the case though, as we show in the example of Section \ref{sec:synth_queries}.
+
+
+
+
+
+
+
+
+
