@@ -1,12 +1,13 @@
 \section{Data Provenances}
 \label{section:preliminaries}
 In this section, we present the three types of provenance used in this paper:  lineage, why-provenance, and how-provenance. 
-\rtwo{We also discuss of Causality and Responsibility that, even though are not forms of data provenance \emph{per se}, they are still used as basis to define a DS}. 
+\rtwo{Also, we present the notions of Causality and Responsibility}. 
 
 \subsection{Lineage}
-Lineage was first introduced by \citet{lineageCui}. Given a database instance $I$ and query $Q$, lineage associates with each tuple $o \in Q(I)$ the set of tuples in the input
-%That is, the lineage of a tuple is the set of tuples 
-that contributed to its ``production''~\citep{CheneyProvSurvey}.
+Lineage was first introduced by \citet{lineageCui}. Here we follow its definition as given by \citet{CheneyProvSurvey}.
+\rone{Given a database instance $I$, the query $Q$, and the result $Q(D)$, consider on tuple $t$ in this output. 
+ Lineage is the simplest among the forms of provenance. It has been defined in different ways \cite{CheneyProvSurvey}, but it can be thought as the set of all the tuples are are used in some way by the query to produce the output tuple, i.e., the ones that are somehow \emph{relevant} to its generation.}
+
 As an example, consider the following SQL query \texttt{Q1}, applied to the database described in Table \ref{table:running_example}, that asks for the names of families curated by researchers based in the United Kingdom (UK):
 
 \vspace{2mm}
@@ -52,14 +53,14 @@ Why-Provenance was first defined in terms of a deterministic semistructured data
 While why-provenance can be defined in many ways, we refer to \citep{CheneyProvSurvey}, where it is expressed in terms of the relational model using the relational algebra.
 
 In particular, while lineage aims to find all and only the tuples in the input relevant to the production of an output tuple, why-provenance aims to find sub-instances of the input that ``witness'' a part of the output. 
-Given a tuple $t$ in the query's output, a \emph{witness} is any sub-instance of the database that produces $t$.
-In particular, the whole database and the lineage of $t$ are both witnesses of $t$.
-% \scream{the next sentence was unclear, I modified but you should check.}
+Given a tuple $t$ in the query's output, a \emph{witness} is any sub-instance of the database that produces $t$, i.e., a set that guarantees the existence of $t$ in $Q(D)$.
+In particular, the whole database and the lineage of $t$ are both examples of witnesses of $t$.
 Since the definition of witness allows for the presence of ``irrelevant'' tuples, the set of all witnesses is finite (since the database instance $I$ is finite), but it is potentially exponentially large~\citep{CheneyProvSurvey}.
 
 \citet{WhyProvBuneman} defined the why-provenance of an output tuple $t$ in the result $Q(I)$ as a special \emph{subset} of the set of witnesses called the \emph{witness basis}.
-The witnesses of the basis depend on $ Q $; thus, each basis's size is bounded by the size of $ Q $. The witnesses of the basis exclude tuples that are irrelevant to $t$ being produced by $Q$, and thus the basis tends to be very small compared to the set of all possible witnesses~\citep{CheneyProvSurvey}.
-The witnesses are also {\em minimal}, in the sense that if one tuple is removed from one of these witnesses, it cannot produce the output. % This is not true for the lineage. For example, it is sufficient to consider the lineage of $o_1$ in the example above, where the tuples $c2f_2$ and $c_2$ may be eliminated without affecting the output. 
+The witnesses of the basis depend on $Q$; thus, each basis's size is bounded by the size of $ Q $. The witnesses of the basis exclude tuples that are irrelevant to $t$ being produced by $Q$, and thus the basis tends to be very small compared to the set of all possible witnesses~\citep{CheneyProvSurvey}.
+%The witnesses are also {\em minimal}, in the sense that if one tuple is removed from one of these witnesses, it cannot produce the output. 
+% This is not true for the lineage. For example, it is sufficient to consider the lineage of $o_1$ in the example above, where the tuples $c2f_2$ and $c_2$ may be eliminated without affecting the output. 
 
 
 %FORMAL DEFINITION
@@ -131,7 +132,8 @@ One possibility is that $f_1$ is joined with $c2f_1$ and $c_1$ (the first witnes
 \label{section:how_provenance_tuples}
 
 While why-provenance describes the source tuples that witness an output tuple in the result of the query, it leaves out  information about how the source tuples are used.
-How-provenance was therefore defined in \citep{howProvenanceGreen} to capture this information using a \emph{semiring} algebraic structure, and is a form of provenance that takes the form of a \emph{polynomial}.
+How-provenance was therefore defined in \citep{howProvenanceGreen} to capture this information using a \emph{semiring} algebraic structure.
+It takes the form of a polynomial, called \emph{provenance polynomial}, where the variables are taken from the set $X$ of identifiers of the tuples (provided that each tuple in $I$ has an identifier) and the coefficients are drew from the set of natural numbers $\mathbb{N}$. \rtwo{This semiring therefore is commonly referred as $\mathbb{N}(X)$ in the literature.}
 % SOME FORMALISM
 %A semiring $K$ is a \emph{set} equipped with two operations, typically denoted with the symbols $+$ and $\cdot$, satisfying the following axioms ~\cite[pg. 26]{berstel1985theory}:
 %\begin{enumerate}
@@ -157,6 +159,7 @@ How-provenance was therefore defined in \citep{howProvenanceGreen} to capture th
 The key idea in \citet{howProvenanceGreen} is to use the two operators $+$ and $\cdot$ to represent two basic transformations that source tuples undergo as a result of applying a relational query to a database~\citep{CheneyProvSurvey}. 
 Two tuples may either be joined together, as an effect of a join (represented with the $\cdot$ operator) or merged via union or projection (represented with the $+$ operator).
 
+ 
 
 \begin{table}[]
 \centering
@@ -190,9 +193,9 @@ Provenance polynomials may also have monomials whose exponents and/or coefficien
 \rtwo{\subsection{Causality and Responsibility}}
 \label{sec:responsibility}
 
-A formal study of causality was initiated in \cite{Halpern2013Causality,ChocklerH04} and later expanded by \citet{MeliouGMS11} to define the causes of answers and non-answers to queries. Causality is, more precisely, related to the provenance of a query result such as why-provenance. Causality adds information to the one already provided by the provenance.
+A formal study of causality was initiated in \cite{Halpern2013Causality,ChocklerH04} and later expanded by \citet{MeliouGMS11} to define the causes of answers and non-answers to queries. Causality is, more precisely, related to the provenance of a query result such as lineage and adds information to the one already provided by the provenance.
 
-In the following we define causality and responsibility as done in \cite{MeliouGMS11}. Differently from \cite{MeliouGMS11}, we only focus on answers of a query, and not non answers, since they are not relevant in the context of this paper.
+In the following we define causality and responsibility as done in \cite{MeliouGMS11}. Differently from \cite{MeliouGMS11}, we only focus on answers of a query, and not on non-answers, since they are not relevant in the context of this paper.
 Let $R_1, \dots, R_k$ be the relation names of a standard relational schema, $D$ be a database instance and $q$ a conjunctive query. We also call $D^n \subseteq D$ the set of \emph{endogenous tuples}, i.e. the tuples being actually considered to be possible causes of a query output; while $D^x = D - D^n$ is the set of \emph{exogenous tuples}, the tuples being considered external, unconcerned factors, thus deemed not to be possible causes. 
 This distinction between endogenous and exogenous tuple is application dependent, and it can be done by the user at query time. 
 One example is with probabilistic databases with uncertain tuples, where erroneous data may be contained. By considering these uncertain tuples as part of the exogenous tuples dataset, we are factoring them out of the computation of causality. 

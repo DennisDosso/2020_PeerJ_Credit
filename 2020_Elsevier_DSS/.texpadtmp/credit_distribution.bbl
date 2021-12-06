@@ -51,6 +51,11 @@ Bertin-Mahieux, T., Ellis, D., Whitman, B., and Lamere, P. (2011).
 \newblock In {\em Proceedings of the 12th International Conference on Music
   Information Retrieval (ISMIR 2011)}, pages 591--596.
 
+\bibitem[Bonifati et~al., 2017]{BonifatiMT17}
+Bonifati, A., Martens, W., and Timm, T. (2017).
+\newblock An analytical study of large {SPARQL} query logs.
+\newblock {\em {PVLDB}}, 11(2):149--161.
+
 \bibitem[Borgman, 2016]{Borgman2016}
 Borgman, C.~L. (2016).
 \newblock {Data Citation as a Bibliometric Oxymoron}.
@@ -329,6 +334,13 @@ Spengler, S. (2012).
   editors, {\em {Report from Developing Data Attribution and Citation Practices
   and Standards: An International Symposium and Workshop}}, pages 177--178.
   National Academies Press: Washington DC.
+
+\bibitem[Vogelsgesang et~al., 2018]{Vogelsgesang2018get}
+Vogelsgesang, A., Haubenschild, M., Finis, J., Kemper, A., Leis, V.,
+  M{\"u}hlbauer, T., Neumann, T., and Then, M. (2018).
+\newblock Get real: How benchmarks fail to represent the real world.
+\newblock In {\em Proceedings of the Workshop on Testing Database Systems},
+  pages 1--6.
 
 \bibitem[Wilkinson et~al., 2016]{fair2016Wilikinson}
 Wilkinson, M.~D., Dumontier, M., Aalbersberg, I.~J., Appleton, G., Axton, M.,

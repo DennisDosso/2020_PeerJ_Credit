@@ -346,31 +346,39 @@ In this case, a tuple as 3 is able to attract even more credit than before. Howe
 \subsection{Credit accrual over time} 
 Since credit accrues over time, we simulate the passage of time by varying the number of queries executed, and look at the ``snapshots" of credit for each of the strategies using synthetic queries.  The results are shown in Figure \ref{fig:comparison}.
 
-\begin{figure}[t]
-  \includegraphics[width=\textwidth]{figures/experiments/comparison}
-  \caption{Comparison of the distribution of credit performed by the three DSs on a subset of 10 tuples taken from the \texttt{family} table, simulating the passing of time. The number at the top of each group of heat-maps represents the number of queries.}
+\begin{figure}[h!]
+\centering
+  \includegraphics[width=.75\textwidth]{figures/experiments/comparison}
+  \caption{Comparison of the distribution of credit performed by the four DSs on a subset of 10 tuples taken from the \texttt{family} table, simulating the passing of time. The number at the top of each group of heat-maps represents the number of polynomials whose credit has been distributed.}
   \label{fig:comparison}
 \end{figure}
 
 In this figure, four groups of heat-maps are shown. Each group represents a ``snapshot'' taken %during an incremental accumulation of credit on the database 
 after 1K, 2K, 5K and 10K provenance polynomials have been considered for credit distribution.  
 The ten tuples in each heat-map  %from the \texttt{family} table, and
-are those  highlighted in the light blue boxes of Figure \ref{figure:comparison_on_synthetic_polynomials_2} from the \texttt{family} table.  
+are those  highlighted in the \rone{yellow} boxes of Figure \ref{figure:comparison_on_synthetic_polynomials_2} from the \texttt{family} table.  
 
 
-The queries used are the same as the experiment of the previous section. The range of credit in each map goes from 0 (no credit) to 8 (the maximum quantity of credit reached on one of the tuples of the considered window at the ``snapshot'' with 10K queries). The color hue of the legend, as can be seen, still ranges from $0$ to $9.5$.
+The polynomials used are the same as the experiment of the previous section. The range of credit in each map goes from 0 (no credit) to $7$ (the maximum quantity of credit reached -- using how-provenance -- on one of the tuples of the considered window at the ``snapshot'' with 10K queries). The color hue of the legend, as can be seen, still ranges from $0$ to $7.5$.
 
 %\scream{I feel that this section is going into too much detail.  We should just get the big idea across.  I have "eaten" most of this text and tried to pull out the highlights. Don't bring up things unless you can explain them, or are trying to make a point.  The other problem is we can't really say why tuples wax and wane in overall credit -- it depends on the queries, which we don't go into (or want to go into).}
 
-By the end of 1K queries, credit differentials between tuples as well as between strategies can be seen.  For example, \textcolor{correction}{tuple 4 is usually rewarded the most credit by all three strategies. However, it receives the highest quantity of credit from the why-provenance-based strategy. Tuple 3 receives the highest quantity of credit overall with how-provenance.}
-%\scream{GMS: to me tuple 4 has the highest credit for the Why-P, whereas tuple 3 has the highest for the How-P.}  
+By the end of 1K queries, credit differentials between tuples as well as between strategies can be seen.  For example, tuple 3 is usually rewarded the most credit by all three strategies. However, it receives the highest quantity of credit from the why-provenance-based strategy. Tuple 3 receives the highest quantity of credit overall with how-provenance. 
+\rtwo{Moreover, it can be seen that tuples 1 and 7 increase their quantity of credit when how-provenance is exploited}.
+Moving to 2K queries, it is possible to see that tuple 3 and 7 are still the most rewarded by the strategies.
 This trend continues to the end of 2k queries.
-%, at which point tuple 5 also gains in credit. 
-By the end of 5k queries, tuple 2 emerges with the highest value of credit for why- and how-provenance, a position which is strengthened by the end of 10k queries. This is because tuple 2 is used several times within queries being executed, which is rewarded strongly by why- and how-provenance but not taken into account in lineage.
 
-While the relative value of credit``positions" of tuples within a DS strategy depends on what queries are being executed, the important thing to notice is the difference between the DSs over time:  Overall, lineage gives far less credit to tuples in the \texttt{family} table than the other two strategies since credit is  shared with tuples in other tables.
-However, the why- and how-provenance-based strategies recognize the more important role being played by the \texttt{Family} tuples than those in the other tables.
-The differences between the why- and how-provenance-based DSs are also relatively minor (about plus or minus 0.2 out of 9.5) in most cases. However, there are certain situations in which the role of a tuple is particularly critical in a query, and in this case the difference in the value of credit assigned is notably higher for how-provenance.  An example of this can be seen in tuple 9 of the 10k group of Figure \ref{fig:comparison}. 
+%, at which point tuple 5 also gains in credit. 
+By the end of 5k queries, tuple 7 emerges with the highest value of credit for why- and how-provenance, a position which is strengthened by the end of 10k queries. Moreover, with the passing of time, tuple 3 ceases to be one of the most rewarded ones and new tuples, such as 6 and 9, emerge as being particularly rewarded at 5K, while at 10K tuples 6 and 7 are the most rewarded from the distributions.
+This is because tuple 7 is used several times within queries being executed, which is rewarded strongly by why- and how-provenance.
+\rtwo{We also note that the responsibility-based distribution confirms its trend of being similar to why-provenance, although not completely identical. This is more evident at step10K, where tuple 7 is slightly less rewarded using responsibility ($6.12$) with respect to why-provenance (6.24). 
+This is due to the fact that, among the polynomials being used for the experiments, in some of them tuple 7 had a high responsibility but did not appear in al witnesses, thus changing slightly the distribution.}
+
+
+While the relative value of credit``positions" of tuples within a DS strategy depends on what queries are being executed, the important thing to notice is the difference between the DSs over time:  overall, lineage gives less credit to tuples in the \texttt{family} table than the other two strategies since credit is  shared with tuples in other tables.
+However, the why-, \rtwo{respnsibility-} and how-provenance-based strategies recognize the more important role being played by the \texttt{family} tuples than those in the other tables.
+The differences between why- and responsibility-based DS are, for the most times, negligible. 
+The differences between the why- and how-provenance-based DSs are also relatively minor (about plus or minus 0.2 out of 9.5) in most cases. However, there are certain situations in which the role of a tuple is particularly critical in a query, and in this case the difference in the value of credit assigned is notably higher for how-provenance, as we saw with tuple 7 in the example of Figure \ref{fig:comparison}. 
 
 
 \eat{
@@ -398,10 +406,10 @@ This shows how the last two DS operate in a similar way. The differences between
 
 
 To sum up, the DS based on lineage is sufficient to highlight which tuples in the database are used by a query, and distributes credit equally to these tuples. The resulting distribution rewards tuples that are used by more queries, but does not reward how many times tuples are used in the same query.  
-However, a DS based on why- or how-provenance may be better if the queries are complex, since they reward more tuples that have a critical role in generating the output. %These two DS are sensitive than the DS based on lineage (and the DS based on how-provenance is more sensible than the one based on why-provenance). 
+However, a DS based on why-, \rtwo{responsibility-} or how-provenance may be better if the queries are complex, since they reward more tuples that have a critical role in generating the output. %These two DS are sensitive than the DS based on lineage (and the DS based on how-provenance is more sensible than the one based on why-provenance). 
 \eat{Using the why-provenance and how-provenance DS, it is possible to change the distribution of credit to the tuple, rewarding more the tuples that have a more critical role in generating the output. The distribution based on how-provenance is most of the times similar to the one based on why-provenance. 
 However, in certain instances, it differ from the other one due to the specific role of a tuple, an information that is present in the provenance polynomial but lost in the witness basis. }
-In particular, these two DSs may be useful for finding ``hotspots'' in the database based on the role of tuples, with the how-provenance-based DS being preferable if a higher sensitivity to the role of a tuple in queries is required. 
+In particular, these \rtwo{three} DSs may be useful for finding ``hotspots'' in the database based on the role of tuples, with the how-provenance-based DS being preferable if a higher sensitivity to the role of a tuple in queries is required. 
 
 %In particular, the DS based on why-provenance rewards more the tuples that are used in different ways by queries (i.e. are members of more witnesses). The DS based on how-provenance also takes into consideration how many times a tuple is used, adding even more sensibility to the distribution. 
 %One may choose one other the other depending what are the aspects he wants to highlight in the data.
@@ -428,7 +436,7 @@ Each time a target family page is cited, we assign one {\em citation} to each au
 
 \paragraph{Results: Real-world queries}
 As described in Section \ref{sec:real_world_queries}, we consider real-world queries taken from papers published in the BJP which reference webpages in GtoPdb.
-Since for these queries there is no difference in the distribution of credit between the three DS, only one value for credit is used.
+Since for these queries there is no difference in the distribution of credit between the DSs, only one value for credit is used.
 %given in Figure \ref{figure:2_radars}. \eat{As we said, each time a webpage is cited, the authors of that webpage receive one citation, and also receive a quantity of credit that is equal to the credit assigned to the data and generated from the citation, equally divided among them.} 
 
 The results are shown in the radar plots of Figure \ref{figure:2_radars}, in which each number on the outer circle (e.g. 475, 1774 and 3665) represents an author (id) and the blue (red) line represents the normalized value of credit generated by citations (credit), respectively. The first radar plot,
@@ -464,27 +472,29 @@ Credit distribution therefore rewards authors differently than traditional citat
 \centering
   \includegraphics[width=1\textwidth]{figures/fixed_radars}
   \caption{
-  Radars presenting the 20 synthetic authors with corresponding citation and quantities of credit distributed through the 3 DS (all values normalized between 0 and 1) through different numbers of polynomials (respectively, 100, 1K and 10K). 
-  The order is the one defined by figure 1, i.e. descending order of citations  obtained from 100 polynomials. }
+  Radars presenting the 20 synthetic authors with corresponding citation and quantities of credit distributed through the 4 DSs (all values normalized between 0 and 1) through different numbers of polynomials (respectively, 100, 1K and 10K). 
+  The order is the one defined by figure a, i.e. descending order of citations  obtained from 100 polynomials. }
   \label{figure:3_radars}
 \end{figure}
 
 \paragraph{Results: Synthetic queries}
-We produced $100$, $1K$, and $10K$ batches of synthetic polynomials, as described in Section \ref{sec:synth_queries}, and distributed credit through them to data. 
+We used the same synthetic polynomials described in Section \ref{sec:synth_queries}, and we distributed credit with the first $100$, $1K$, and $10K$ of them.
 Since these polynomials are created by randomly selecting tuples from three tables, they usually correspond to a large set of authors who in reality did not collaborate. To make the size of the author set more realistic, we therefore created $20$ synthetic authors, and randomly assigned one author to blocks of consecutive tuples in the database, with the size of each block varying between $10$ and $40$, to simulate different quantities of work performed by an author. 
 Every time an author appears as curator of one or more tuples used in a polynomial, we assign them one citation.  
-They also receive three kinds of credit, each one using a different DS.
+They also receive four kinds of credit, each one using a different DS.
 
-Figure \ref{figure:3_radars} shows three radar plots, one for each batch of synthetic polynomials.  Each plot shows the top 20 authors in terms of citations (hence the authors and clockwise ordering is the same in each of the plots), and additionally shows the the normalized values of citation (blue line), lineage-based credit (yellow line), why-provenance-based credit (green line) and how-provenance-based (red line). 
-As can be seen, given the synthetic nature of the queries, the correlation between the number of citations and the quantity of credit assigned to the authors appears to be a much stronger than with the real-world queries of Figure~\ref{figure:2_radars}. In fact, for Figure \ref{figure:3_radars}.a  the linear correlation between the citation number and all three types of credit is always above 0.95 with p values in the order of 1e-11.
+Figure \ref{figure:3_radars} shows three radar plots, one for each batch of synthetic polynomials.  Each plot shows the top 20 authors in terms of citations (hence the authors and clockwise ordering is the same in each of the plots), and additionally shows the the normalized values of citation (blue line), lineage-based credit (yellow line), why-provenance-based credit (green line), how-provenance-based  credit (red line), \rtwo{and responsibility-based credit (violet line)}. 
+As can be seen, given the synthetic nature of the queries, the correlation between the number of citations and the quantity of credit assigned to the authors appears to be a much stronger than with the real-world queries of Figure~\ref{figure:2_radars}. In fact, for Figure \ref{figure:3_radars}.a  the linear correlation between the citation number and all four types of credit is always above 0.94 with p values in the order of 3e-8.
 \eat{Nonetheless, it can still be seen that credit does not always follow the citation count. }
-The credit distributed via lineage is closest to  the number of citations (a linear correlation of 0.98, p value of 6.15e-16 in Figure \ref{figure:3_radars}.a), while the other two types of credit behave slightly differently (a linear correlation of around 0.95 in both cases in Figure \ref{figure:3_radars}.a).  
+The credit distributed via lineage is closest to  the number of citations (a linear correlation of 0.99, p value of 2e-16 in Figure \ref{figure:3_radars}.a), while the other three types of credit behave slightly differently (a linear correlation of around 0.95 in all other three cases in Figure \ref{figure:3_radars}.a).  
 Similar observations can be made for Figure \ref{figure:3_radars}.b and \ref{figure:3_radars}.c.
 
-What these figures show is that, in certain cases, authors who do not have a large number of citations receive more credit than others, as for example author 11 in Figure \ref{figure:3_radars}.a or author 19 in Figures \ref{figure:3_radars}.b and \ref{figure:3_radars}.c, especially when credit is distributed using how-provenance.
+What these figures show is that, in certain cases, authors who do not have a large number of citations receive more credit than others, as for example authors 17 and 10 in Figure \ref{figure:3_radars}.a, 
+%or author 19 in Figures \ref{figure:3_radars}.b and \ref{figure:3_radars}.c, 
+and especially when credit is distributed using how-provenance.
 This again shows how credit gives a different perspective on the role of data and authors by going beyond the limitations of traditional citations.  
 
-It is worth noting that, when scaling up to $1K$ and $10K$ polynomials, the credit distributions via why-provenance and how-provenance become almost identical  
+It is worth noting that, when scaling up to $1K$ and $10K$ polynomials, the credit distributions  become almost identical  
 \eat{We note that, although not exactly overlapping, the values of credit assigned to the authors by those DS become quite similar with these higher quantities of polynomials, suggesting a sort of equivalence between the two DSs in this case, at least in the task of rewarding authors} (the linear correlation for the values of Figure \ref{figure:3_radars}.c is more than 0.99 with a p-value of 1.32e-32). This is consistent with what we observed in Figure \ref{figure:comparison_on_synthetic_polynomials_2}.
 
 

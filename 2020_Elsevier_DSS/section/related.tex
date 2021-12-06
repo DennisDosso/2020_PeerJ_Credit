@@ -124,15 +124,18 @@ In this paper, we focus on provenance for database management systems (DBMS). Fo
 Let us start with the first three provenances. Given a database instance $I$, a query $Q$, and the result $Q(D)$, consider one tuple $t$ of the output. 
 Its provenance is information about its generation through the tuples of the input that are used by $Q$. Different types of provenance convey different levels of information. Since these three provenances are computed for each tuple of the output, they are also referred to as \emph{tuple-based}.
 
-Lineage is the simplest among the forms of provenance. It has been defined in different ways~\citep{CheneyProvSurvey}, but it can be thought of as the set of all the tuples that are used in some way by the query to produce the output tuple, the ones that are somehow \emph{relevant} to its generation. 
-
-The definition of why-provenance is based on the notion of \emph{witness set}. A witness is a set of relevant tuples that guarantees the existence of $t$ in $Q(D)$. The lineage is therefore an example of a witness. The why-provenance of a tuple $t$ is a peculiar set of witnesses  -- described in \citep{WhyProvBuneman} -- that are computed from the query, called \emph{witness basis}. 
-A witness basis may be composed of more than one witness. 
-Therefore, the why-provenance contains more information than the lineage, since it describes \emph{alternative} ways in which the same output may be generated. 
-
-The how-provenance takes the form of a polynomial, called \emph{provenance polynomial}, where the variables are taken from the set of identifiers of the tuples (provided that each tuple in $I$ has an identifier) and the coefficients are drew from $\mathbb{N}$. 
-This provenance also contains information on \emph{how} the input tuples are used. For example, when two tuples are combined by a join, they are also combined in the polynomial by the $\cdot$ operator. When two or more tuples become equivalent due to a union or a projection, the corresponding monomials are combined by the $+$ operator.
-
-It has been shown in \citep{CheneyProvSurvey} that the how-provenance is the more general and informative of the three, containing the other two.
+%Lineage is the simplest among the forms of provenance. It has been defined in different ways~\citep{CheneyProvSurvey}, but it can be thought of as the set of all the tuples that are used in some way by the query to produce the output tuple, the ones that are somehow \emph{relevant} to its generation. 
+%
+%The definition of why-provenance is based on the notion of \emph{witness set}. A witness is a set of relevant tuples that guarantees the existence of $t$ in $Q(D)$. The lineage is therefore an example of a witness. The why-provenance of a tuple $t$ is a peculiar set of witnesses  -- described in \citep{WhyProvBuneman} -- that are computed from the query, called \emph{witness basis}. 
+%A witness basis may be composed of more than one witness. 
+%Therefore, the why-provenance contains more information than the lineage, since it describes \emph{alternative} ways in which the same output may be generated. 
+%
+%The how-provenance takes the form of a polynomial, called \emph{provenance polynomial}, where the variables are taken from the set of identifiers of the tuples (provided that each tuple in $I$ has an identifier) and the coefficients are drew from $\mathbb{N}$. 
+%This provenance also contains information on \emph{how} the input tuples are used. For example, when two tuples are combined by a join, they are also combined in the polynomial by the $\cdot$ operator. When two or more tuples become equivalent due to a union or a projection, the corresponding monomials are combined by the $+$ operator.
+%
+%It has been shown in \citep{CheneyProvSurvey} that the how-provenance is the more general and informative of the three, containing the other two.
 
 Where-provenance, differently from the other three, is \emph{attribute-based}, so we do not take it into account in this work since we consider the tuple as the finest citable unit. 
+
+\rtwo{Also, here we consider the notions of causality and responsibility, as discussed in 
+\cite{MeliouGMS11}. Causality is an enrichment of lineage, and is the attribution of a certain degree of importance to the tuples based on their role in the generation of the output. Responsibility is a value given to the tuples of the lineage to rank them based on their degree of causality (the more important the role of a tuple in generating the output, the higher its responsibility)}.
