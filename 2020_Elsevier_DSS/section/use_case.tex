@@ -11,12 +11,12 @@
 As use case we refer to the IUPHAR/BPS Guide to Pharmacology \citep{iuphar2018} or  GtoPdb\footnote{\url{https://www.guidetopharmacology.org/}}.
 GtoPdb is a well-known and well structured scientific relational database that contains expertly curated information about diseases, drugs in clinical use, their cellular targets, and the mechanisms of action on the human body. 
 It is curated and maintained by the GtoPdb Committee, and by 96 subcommittees, comprising 512 scientists collaborating with in-house curators who draw the information contained in the database from high-quality pharmacological and medicinal chemistry literature.
-Roughly 1000 researchers from all over the world have contributed to the database, and the curators wanted to give recognition to these contributors.  This led to some early work on data citation~\citep{buneman2006cite}.  
+Roughly $1000$ researchers from all over the world have contributed to the database, and the curators wanted to give recognition to these contributors.  This led to some early work on data citation~\citep{buneman2006cite}.  
 
 GtoPdb is relational, but its logical structure is hierarchical as shown in Figure \ref{figure:iuphar_schema}.  The information contained in the database is also organized into webpages focused on specific diseases, targets or ligands, and families % (i.e., groups) of them 
 for easier access by users. 
 As depicted in Figure \ref{figure:iuphar_schema}, the database can be thought of as a tree where the root is the database; the first level consists of all targets, ligands, and diseases; and the lower levels consists of specific targets, ligands and diseases. 
-In this paper, we focus on targets; thus at the third level in the figure we show examples of family types, at the fourth level we show specific families of targets (a finer level of granularity), and finally, at the last level, the single targets (also known as receptors). 
+In this paper, we focus on targets; thus the figure at the third level shows examples of family types, at the fourth level of specific families of targets (a finer level of granularity), and finally, at the last level, the single targets (also known as receptors). 
 
 \begin{figure}[t]
 \centering

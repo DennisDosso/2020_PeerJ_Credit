@@ -1,6 +1,6 @@
 \section{Credit Distribution and Distribution Strategies}
 \label{section:distribution_strategies}
-We now give formal definitions of data credit and Data Credit Distribution (DCD), and present three different Distribution Strategies (DSs) based on the forms of provenance discussed earlier:  Lineage-based DS, Why-Provenance-based DS, and How-Provenance-based DS.  We also show how these strategies distribute credit in the IUPHAR example discussed earlier.
+We now give formal definitions of data credit and Data Credit Distribution (DCD), and present three different Distribution Strategies (DSs) based on the forms of provenance discussed earlier:  Lineage-based DS, Why-Provenance-based DS, How-Provenance-based DS, \rtwo{and responsibility-based DS}.  We also show how these strategies distribute credit in the IUPHAR example discussed earlier.
 
 
 \subsection{Data Credit and Data Credit Distribution}
@@ -13,8 +13,8 @@ Every recipient in a database is annotated with a quantity of credit as a proxy 
 and a query $Q$ producing a result set $Q(I)$.  
 DCD consists of defining a function, i.e., a \emph{distribution strategy} (DS), to split credit into portions to be assigned to the tuples in $I$.}
 
-Given a \emph{distribution strategy} (DS),  \emph{Data Credit Distribution} (DCD) takes a database instance $I$, quantity of credit $k$, %(here, without loss of generality, deemed to be given), 
-and query $Q$ over $I$, and splits $k$ among the recipients of credit in $I$.
+Given a \emph{distribution strategy} (DS),  \emph{Data Credit Distribution} (DCD) takes a database instance $I$, a quantity of credit $k$, %(here, without loss of generality, deemed to be given), 
+and query $Q$ over $I$, and it splits $k$ among the recipients of credit in $I$.
 
 \eat{
 In the following, we use the notation in \citet{CheneyProvSurvey}: a \emph{tuple location} is defined as a tuple in a relation in $I$, tagged with its name. It is indicated with $(R, t)$, where $R$ is the relation in the database, and $t$ is the tuple in $R$. With reference to the running example, \texttt{(family, $\langle f_1$, Dopamine Receptors, gpcr$\rangle$)} is the tuple location of the first tuple in the \texttt{family} relation.  The set of all the tuple locations in $I$ is called \emph{TupleLoc}.
@@ -69,7 +69,7 @@ In the lineage-based distribution strategy, each tuple in the output of a query 
 %The DS is defined 
 defines how to distribute credit $k_o$ for one tuple of the output. Therefore, to perform credit distribution for the set of output tuples (i.e. the result of a query), it is first necessary to divide the quantity of credit $k$ associated with the query among tuples in the output, and then compute the credit distribution for each tuple.
 For simplicity, in this paper we assume that each output tuple carries a credit of 1 ($k_o=1$). }
-Note that lineage-based DS distributes credit only to input tuples that have a role in creating $o$ by the query $Q$, and that each receives an equal share of credit via $o$. Thus, the more tuples in a lineage set, the less credit each tuple receives. 
+Note that lineage-based DS distributes credit only to input tuples that have a role in creating $o$ by the query $Q$, and that each receives an equal share of credit. Thus, the more tuples in a lineage set, the less credit each tuple receives. 
 
 
 As an example, consider the output tuples of Table \ref{table:result}, and assume that each output tuple has credit $k_o = 1$.
@@ -86,7 +86,7 @@ One could therefore argue that it would be more fair for $f_1$ to receive more c
 
 This highlights one limitation of the lineage-based DS: while able to find all and only the relevant tuples of the output, it does not distinguish the \emph{importance} of tuples in the query computations. 
 %This information could be incorporated in the definition of a DS to distribute credit based on the actual role that tuples play in the computation. 
-We therefore present two other, more sophisticated, forms of distribution strategies based on why- and how-provenance.
+We therefore present three other, more sophisticated, forms of distribution strategies based on why-provenance, how-provenance, \rtwo{and responsibility}.
 
 \subsection{A Why-Provenance-Based Distribution Strategy}
 The distribution strategy based on why-provenance first equally distributes the credit $k_o$ among the witnesses of the witness basis for $o$, and then equally divides the credit of a witness among the tuples in the witness. 
@@ -148,7 +148,7 @@ This example illustrates that why-provenance can better reward input tuples depe
 
 The how-provenance-based DS first distributes the credit to the monomials of the polynomial accordingly to the weight represented by their coefficients, then to the tuples of each monomial accordingly to the weights represented by their exponents. 
 
-To define the DS more formally, we introduce some notation and illustrate it using the provenance polynomial $\mathcal{H}$ shown in Figure \ref{figure:how_example}. This notation is also reported for easy reference in Table \ref{tab:notation}.
+To define the DS more formally, we introduce some notation and illustrate it using the provenance polynomial $\mathcal{H}$ shown in Figure \ref{figure:how_example}. This notation is also reported for an easy reference in Table \ref{tab:notation}.
 
 \begin{table}[]
     \centering
@@ -178,10 +178,10 @@ To define the DS more formally, we introduce some notation and illustrate it usi
 
 %In this figure we show the notation that we use to refer to different information taken from the provenance polynomial. 
 We call $c$ the function that, given a polynomial, returns the sum of its coefficients; thus $c(\mathcal{H})=\;3+1=4$. 
-\rone{We call $e$ the function that, given a monomial, returns the sum of its exponents, thus $c(M_2)=1+3+3=7$.}
+\rone{We call $e$ the function that, given a monomial, returns the sum of its exponents, thus $e(M_2)=1+3+3=7$.}
 $mc$ is the function that takes as input a monomial and returns its coefficient; thus $mc(M_1) = 3$. 
 \rone{$te$ is a function that takes as input a tuple and a monomial, and returns the exponent of the tuple in the monomial, if present; thus $te(c_2, M_2)=3$}. 
-Finally, $\gamma$ takes as input a tuple and the whole polynomial, and returns a set of monomials containing that tuple, if present in the polynomial; thus $\gamma(f_1, \mathcal{H})=\;\{M_1, M_2\}$. 
+Finally, $\gamma$ takes as input a tuple and the whole polynomial, and returns a set of monomials containing that tuple, if present in the polynomial; thus $\gamma(f_1, \mathcal{H})=\;\{M_1, M_2\}$, $\gamma(c_2, \mathcal{H})=\;\{M_2\}$. 
 
 \eat{
 %\scream{This needs to be simplified.  Get rid of the mathematical notation and just give an English definition.}
@@ -220,7 +220,8 @@ More formally, consider the provenance polynomial $\mathcal{H} = H(Q, I, o)$ of 
 
 Going back to the example of Table \ref{table:result_how_prov}, consider $o_1$ with provenance polynomial $f_1 c2f_1 c_1 + f_1 c2f_2 c_2$. The how-provenance-based DS firstly divides the credit between the two monomials. Since the coefficients of each monomial are $1$, the credit is split in half. If they were, for example, $1$ and $2$ respectively, $1/3$ of the credit would go to the first monomial, and $2/3$ to the second.  
 Since in our example each variable has exponent $1$, the credit is further divided equally among the three variables. Thus, at the end of the computation, $f_1$ receives $1/3$, and the other tuples receive $1/6$.
-\rone{Consider instead the example where the polynomial is $f_1^2 c2f_1 c_1 + f_1^2 c2f_2 c_2$ and let us focus on the first monomial. It receives $1/2$ of the total credit, then $f_1$ receives a portion of credit equal to $1/4$, while the other two tuples receive $1/8$.}
+
+\rone{Consider instead the example where the polynomial is $f_1^2 c2f_1 c_1 + f_1^2 c2f_2 c_2$, $k_0 = 1$, and let us focus on the first monomial. It receives $1/2$ of credit, then $f_1$ receives $1/4$ of credit due to its exponent, while the other two tuples receive $1/8$.}
 %If, for example, the first monomial was $f_1^2 c2f_1 c_1$, then the portion of credit of this monomial would be divided in this way: $1/2$ to $f_1$ and $1/4$ to each of the other two tuples. 
 
 
@@ -282,13 +283,14 @@ This is a direct consequence of the fact that, as proven in \citep{howProvenance
 
 \rtwo{\subsection{Responsibility-based Distribution Strategy}}
 As we described in Section \ref{sec:responsibility}, causality and responsibility are not new forms of data provenance, but rather new information that is added to the already available lineage. 
-Given the lineage of an output tuple $o$, it is first possible to distinguish the type of causality of each of its tuples, distinguishing between counterfactual and actual causes.
-Successively, it is possible to compute their responsibility, which, by itself, can be envisioned as a form of credit and assigned to the corresponding tuples. 
+Given the lineage of an output tuple $o$, it is first possible to compute the type of causality of each of its tuples, distinguishing between counterfactual and actual causes, by testing what happens by removing single tuples and contingency sets of other tuples of the lineage.
+Successively, it is possible to compute their responsibility through the minimal contingency sets found in this way. 
 
-One first option to define a distribution strategy using responsibility is to simply assign the responsibility as credit of the single tuple. Using the example of Table \ref{table:result_responsibility}, in the case of output tuple $o_1$, $f_1$ receives credit 1, the other tuples credit $0.5$. This strategy both generates the credit and gives it to the tuples. 
+One first option to define a distribution strategy using responsibility is to simply assign the responsibility of a tuple as its credit. In this way, responsibility is both a way to compute credit and to distribute it.
+Using the example of Table \ref{table:result_responsibility}, in the case of output tuple $o_1$, $f_1$ receives credit 1, the other tuples credit $0.5$. 
 
 However, we want a DS that is also a function of the input credit value $k$ in order to be comparable with the other three strategies proposed so far.
-Therefore, we define a new DS based on responsibility that is a function of the quantity of credit $k_o$ that assigns to each tuple of the lineage a portion of this credit weighted by its normalized quantity of responsibility.
+We define a new DS based on responsibility that is a function of the quantity of credit $k_o$ that assigns to each tuple of the lineage a portion of this credit weighted by its normalized quantity of responsibility.
 This function will give a bigger portion of credit to tuples that are higher in the responsibility ranking.
 Formally:
 \newline
@@ -298,6 +300,7 @@ Let $I$ be a database instance, $Q$ a query over $I$, $o \in Q(I)$ an output tup
 \[
 	f_{I, Q}(t, k_o) = k_o \frac{\rho_t}{\sum_{t' \in L} \rho_{t'}}
 \]
+where $\rho_j$ is the responsibility of tuple $j$ as in Definition \ref{def:responsibility}.
 \end{definition}
 
 
@@ -311,8 +314,7 @@ Let $I$ be a database instance, $Q$ a query over $I$, $o \in Q(I)$ an output tup
 Note that only the tuples that belong to the lineage will receive a quantity of credit $> 0$. The more important the tuple, i.e., the higher its responsibility, the bigger the quantity of credit received. 
 
 Figure \ref{fig:resp_example} shows the responsibility and the credit assigned to the tuples of the lineage of the output tuple $o_1$ of Table \ref{table:result_responsibility}. 
-The only counterfactual tuple $f_1$ has responsibility $1$ while the other have responsibility $0.5$, as already discusses. 
-Using the DS instead, and assuming that $k_{o_1} = 1$, $f_1$ receives credit $1/3$, while the others receive credit $1/6$. 
+Assuming that $k_{o_1} = 1$, $f_1$ receives credit $1/3$, while the others receive credit $1/6$. 
 As we see, the DS in this case returns the same distribution obtained with why-provenance that was shown in Figure \ref{figure:distributions_differences}.
 This is not always the case though, as we show in the example of Section \ref{sec:synth_queries}.
 
