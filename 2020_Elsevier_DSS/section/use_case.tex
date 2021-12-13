@@ -8,9 +8,8 @@
   \label{figure:iuphar_schema}
 \end{figure}
 
-As use case we refer to the IUPHAR/BPS Guide to Pharmacology \citep{iuphar2018} or  GtoPdb\footnote{\url{https://www.guidetopharmacology.org/}}.
-GtoPdb is a well-known and well structured scientific relational database that contains expertly curated information about diseases, drugs in clinical use, their cellular targets, and the mechanisms of action on the human body. 
-It is curated and maintained by the GtoPdb Committee, and by 96 subcommittees, comprising 512 scientists collaborating with in-house curators who draw the information contained in the database from high-quality pharmacological and medicinal chemistry literature.
+The IUPHAR/BPS Guide to Pharmacology \citep{iuphar2018}  (GtoPdb\footnote{\url{https://www.guidetopharmacology.org/}}) is a well-known and well structured scientific relational database that contains expertly curated information about diseases, drugs in clinical use, their cellular targets, and the mechanisms of action on the human body. 
+It is curated and maintained by the GtoPdb Committee and 96 subcommittees, comprising 512 scientists collaborating with in-house curators who draw the information contained in the database from high-quality pharmacological and medicinal chemistry literature.
 Roughly $1000$ researchers from all over the world have contributed to the database, and the curators wanted to give recognition to these contributors.  This led to some early work on data citation~\citep{buneman2006cite}.  
 
 GtoPdb is relational, but its logical structure is hierarchical as shown in Figure \ref{figure:iuphar_schema}.  The information contained in the database is also organized into webpages focused on specific diseases, targets or ligands, and families % (i.e., groups) of them 
@@ -41,12 +40,12 @@ Thus, citations to specific families are \emph{de-facto} ``hidden'' to citation 
 In certain ``lucky'' cases, as with papers available in PDF and published in the British Journal of Clinical Pharmacology~\footnote{\url{https://bpspubs.onlinelibrary.wiley.com/journal/13652125}} (BJCP), when a  family, ligand, receptor name, etc. are used, they have a hyperlink pointing to the corresponding webpage in GtoPdb. Therefore, the citations to the families can be detected and counted using the URLs reported in the papers.
 However, these citations to GtoPdb webpages are not counted as such by citation systems, so they are not converted into credit for curators and collaborators. 
 
-For our running example, consider Table \ref{table:running_example}. This simplified version of GtoPdb illustrates three tables: \texttt{family}, \texttt{contributor} and \texttt{contributor2family}.
+For our running example, consider Table \ref{table:running_example}. This simplified version of GtoPdb contains three tables: \texttt{family}, \texttt{contributor} and \texttt{contributor2family}.
 % \scream{You have an id column which is "separate" from the other attributes in table.  Are these introduced as provenance tokens, or are they real attributes?  Later you speak about introducing an id in the query result, is this the same?}
 The first table, \texttt{family}, has tuples representing families with three attributes: the id of the family, its name, and type. 
-Table \texttt{contributor} consists of people who have helped generate the data of the database.
+Table \texttt{contributor} contains people who have helped generate the data in the database.
 The third table, \texttt{contributor2family}, serves as a link between the families and the people who contributed to them.
-For instance, ``John Smith'' ($\mathtt{c_1}$) contributed to ``Dopamine Receptors'' ($\mathtt{f_1}$) as well as to the ``YANK Family'' ($\mathtt{f_4}$). We use this example throughout the rest of the paper. In particular, we are using the \texttt{id} attribute of the tables as \emph{provenance token} of its corresponding tuples, that is, as a symbol that serves to identify a tuple when talking about provenance.
+For instance, ``John Smith'' ($\mathtt{c_1}$) contributed to ``Dopamine Receptors'' ($\mathtt{f_1}$) as well as to the ``YANK Family'' ($\mathtt{f_4}$). Throughout the rest of the paper, we will use the \texttt{id} attribute of these tables as the \emph{provenance token} of its corresponding tuples, that is, as a symbol that serves to identify a tuple when talking about provenance.
 
 \begin{table*}[]
 \centering
