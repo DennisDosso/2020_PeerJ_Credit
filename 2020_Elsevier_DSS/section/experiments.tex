@@ -65,7 +65,7 @@ To illustrate this, consider one of the queries in Figure \ref{figure:family_str
 \texttt{Q3} returned $10$ tuples from the version of GtoPdb used. 
 The first tuple, \texttt{<Bertil B., Fredholm>}, has  $c_{939} \cdot c2f_{496}$ as its provenance polynomial.
 $c_{939}$ represents the provenance token of a tuple in \texttt{contributor}, and $c2f_{496}$ the provenance token of a tuple in table \texttt{contributor2family}. 
-The why-provenance of this tuple is $\{\{c_{939}, cf_{496} \}\}$, its lineage is $\{c_{939}, c2f_{496} \}$, \rtwo{both these tuples are counterfactual causes and have responsibility one.}
+The why-provenance of this tuple is $\{\{c_{939}, cf_{496} \}\}$, its lineage is $\{c_{939}, c2f_{496} \}$, \rtwo{both these tuples are counterfactual causes and have a responsibility of one.}
 Therefore, the credit assigned to these tuples is $1/2$ using all four DS.
 This happens for all the tuples in the output of each query of GtoPdb, thus making the distributions equivalent over all outputs.
 
@@ -177,10 +177,10 @@ An example of a synthetic polynomial that will be used throughout this subsectio
 
 To see what happens with more complex queries, 
 %highlight the differences between the three DS, 
-\rone{we generated a bunch of provenance polynomials in which the coefficients and exponents could be greater than one and we randomly picked them from a uniform distribution.}
+\rone{we synthetically generated provenance polynomials in which the coefficients and exponents could be greater than one, and picked them at random from a uniform distribution.}
 %that might be the how-provenance of randomly generated synthetic queries, 
 The queries involve three GtoPdb tables: \texttt{family}, \texttt{contributor2family}, and \texttt{contributor}. 
-\rone{The polynomials were generated as follows: first, the number of monomials is decided by  randomly choosing a number between one and six.  Then, we randomly choose a tuple from the  \texttt{family} table, one from the \texttt{contributor2family} table and one from the \texttt{contributor} table; they are the variables of the monomial. We then choose a coefficient for the monomial (between one and three) and an exponent for each tuple (between one and four). For the next monomial, then, we decide if we want to keep the same tuple from the table family as first tuple of the new monomial. To do so, we generate a random float number between zero and one. If the number is above $0.2$, we change the family tuple.}
+\rone{The polynomials were generated as follows: first, the number of monomials was decided by  randomly choosing a number between one and six.  Then, we randomly chose a tuple from the  \texttt{family} table, one from the \texttt{contributor2family} table and one from the \texttt{contributor} table; these are the variables of the monomial. We then chose a coefficient for the monomial (between one and three) and an exponent for each tuple (between one and four). For the next monomial, we decided if we wanted to keep the same tuple from the table family as first tuple of the new monomial. To do so, we generated a random float number between zero and one. If the number was above $0.2$, we changed the family tuple.}
 
 An example can be found in Figure~\ref{fig:syntheticDistributions}, which shows a sample synthetic provenance polynomial (the how-provenance), the corresponding why-provenance, lineage, \rtwo{and the causality of the tuples of the lineage, together with their responsibility}.  The resulting credit distribution for each DS is also shown. 
 
@@ -302,11 +302,11 @@ c2f_{17}=\frac{1}{8} , c_1 = \frac{1}{8}, c_2 = \frac{1}{8}, c_{17} = \frac{1}{8
 
 
 As an example of how the distribution strategies behave with these synthetic queries, consider tuple $f_5$ in Figure \ref{fig:syntheticDistributions}.
-\rtwo{  This tuple receives the highest quantity of credit using responsibility-based distribution and less credit using, in order, lineage, why- and how-provenance. This fact happens because more information is available about the role of the tuple in the overall computation.
+\rtwo{  This tuple receives the highest quantity of credit using responsibility-based distribution and less credit using, in order, lineage, why- and how-provenance. This happens because more information is available about the role of the tuple in the overall computation.
 Generally speaking, the more complex the distribution (e.g., the how-provenance), the more credit is given to tuples that are more frequently used, thus having a higher impact in producing the output tuple. 
 Responsibility creates a ranking among lineage's tuples describing the importance of their role in generating the output. As such, the responsibility-based DS gives more credit to $f_1, f_5, c2f_17$ and $c_18$ due to their higher responsibility values. ``Importance'' is connected to their corresponding minimal contingency sets. For example, $f_1$ has a minimal contingency set (one of the many) $\{f_5\}$, with cardinality 1. On the other hand, $c_1$ has, as minimal contingency set (one of the many) $\{f_5, c_2\}$, with cardinality two. This means that $c_1$ is the ``least important'' amongst the tuples with minimal contingency sets of lower cardinality, and this is reflected in the different quantities of credit being distributed.} 
 
-Despite being synthetic, these provenance polynomials may actually be obtained from queries.  The polynomials can be obtained by any nested query with join and union operations that use the same tuple multiple times (in which case the exponents are larger than one), and the same combination of operations more than once (in which case the coefficients of monomials are larger than one). 
+Despite being synthetic, these provenance polynomials are realistic:  they can be obtained by any nested query with join and union operations that use the same tuple multiple times (in which case the exponents are larger than one), and the same combination of operations more than once (in which case the coefficients of monomials are larger than one). 
 
 \paragraph{Results} The results of credit distribution on the \texttt{family} table using 10K randomly generated synthetic provenance polynomials are shown in
 Figure \ref{figure:comparison_on_synthetic_polynomials_2}. 
