@@ -115,7 +115,7 @@ One may argue that this DS is too simplistic, since lineage
 does not convey any information about the role or importance of input tuples in the query.
 Therefore, one may desire to give more credit to the tuples that are more {\em important} to the production of the output, i.e. those tuples that, if removed, would prevent the output tuple from appearing in the final result, or those tuples used more than once  by the query. 
 
-Therefore, in this paper, we expand the ideas in \citep{dosso2020data} by proposing new DSs based on three other forms of data provenance: why-provenance~\citep{WhyProvBuneman}, how-provenance~\citep{howProvenanceGreen}, and \rtwo{responsibility~\cite{MeliouGMS11}.} 
+Therefore, in this paper, we expand the ideas in \citep{dosso2020data} by proposing new DSs based on three other forms of data provenance: why-provenance~\citep{WhyProvBuneman}, how-provenance~\citep{howProvenanceGreen}, and \rtwo{responsibility~\cite{MeliouGMS11}.\footnote{A discussion of basing a DS on the recently proposed notion of Shapley value\cite{LivshitsBKS20,DFKM22} can be found in Section~\ref{subsec: DSs}.} }
 \rone{We show how these DS differ from each other as well as the one based on lineage,} and discuss why one may be preferred to another depending on the application and its goals. 
 In particular, we show that why-provenance-,  how-provenance- and \rtwo{responsibility}- based DSs are more sensitive than one based on lineage to the {\em role} of a tuple in a query, i.e. how many times the tuple is used and how it is used. We also show that
 why-provenance- and \rtwo{responsibility}-based DSs give more credit to tuples that are essential to the production of the result set, whereas the how-provenance-based DS also takes into consideration the different ways in which a tuple is used. \rone{The newly defined DS strategies exploit the additional information provided by these forms of provenance to weight the contribution of the tuples on the basis of their role in producing the output.  }
@@ -138,7 +138,7 @@ In the fourth set of experiments we use both real and synthetic queries to asses
 \end{itemize}
 
 \paragraph{\textbf{Outline}} The rest of the paper is organized as follows:
-Section \ref{sec:related} presents the background and related work. Section \ref{section:use_case} describes the GtoPdb use case. Section \ref{section:preliminaries} briefly presents the forms of provenance used in the paper.  Section \ref{section:distribution_strategies} describes the credit distribution problem and the proposed distribution strategies.  In Section \ref{sec:experiments} we present the experimental evaluation. Finally, Section \ref{section:conclusions} draws some conclusions and outlines future work.
+Section \ref{sec:related} presents background material and related work.   Section \ref{section:use_case} describes the GtoPdb use case. Section \ref{section:preliminaries} briefly presents the forms of provenance used in the paper.  Section \ref{section:distribution_strategies} describes the credit distribution problem and the proposed distribution strategies.  In Section \ref{sec:experiments} we present the experimental evaluation. Finally, Section \ref{section:conclusions} draws some conclusions and outlines future work.
 
 %############
 

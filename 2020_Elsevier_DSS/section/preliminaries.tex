@@ -189,9 +189,9 @@ Tuple $o_2$ was produced by a join of the input tuples $f_4, c2f_4$, and $c_1$. 
 The case of $o_1$ is slightly more complex, as already discussed.
 It can be obtained by the joins of two different sets of tuples, so there are two monomials combined by $+$ representing these alternative derivations. Each monomial corresponds, in a way, to the witnesses of the why-provenance of $o_1$.
 %The $+$ operator represents the fact that the two monomials describe alternative derivations. 
-\scream{Is the reset of this paragraph (in particular the next sentence) necessary or can it be deleted? -- Reviewer 2 seemed to want us to work with set semantics and ditch polynomials. This paragraph should help them clarify the fact that polynomials are actually important and make a difference. }
-The output tuple is the result of a merge of two distinct tuples after the projection on the attribute \texttt{name}. This merge is due to the fact that the result of a relational algebra expression is always a {\em set} of tuples, which corresponds to the presence of the \texttt{DISTINCT} operator in an SQL query. 
-This simple example gives the basic idea behind how-provenance and how it allows us to track the operations that produced an output tuple. 
+\scream{Is the reset of this paragraph (in particular the next sentence) necessary or can it be deleted? -- Reviewer 2 seemed to want us to work with set semantics and ditch polynomials. This paragraph should help them clarify the fact that polynomials are actually important and make a difference.-- DD: paragraph commented}
+% The output tuple is the result of a merge of two distinct tuples after the projection on the attribute \texttt{name}. This merge is due to the fact that the result of a relational algebra expression is always a {\em set} of tuples, which corresponds to the presence of the \texttt{DISTINCT} operator in an SQL query. 
+% This simple example gives the basic idea behind how-provenance and how it allows us to track the operations that produced an output tuple. 
 
 % talking a little bit about coefficients and exponents
 Provenance polynomials may also have monomials whose exponents and/or coefficients are greater than one, for example, $3f_1 \cdot c2f_1 \cdot c_1 + f_1 \cdot c2f_2^3 \cdot c_2^3$. This is a polynomial of a tuple produced by a query where the result of the join between the tuples $f_1$, $c2f_1$, and $c_1$ is produced three times and then merged (e.g. as the result of a union), and the tuples $c2f_2$ and $c_2$ are used three times in the operation described by the second monomial (e.g., with nested queries). 
@@ -206,10 +206,10 @@ In the following, we refer to the definition of causality and responsibility pro
 In particular, we only focus on answers to a query since non-answers are not relevant in our context.
 
 % paragraph added to make the subsection less formality heavy
-\rtwo{
+
 There are two types of ``cause" tuples: counterfactual and actual. 
 Let $t$ be a tuple in the query's output $Q(I)$, and $t'$ a tuple in its lineage. We call $t'$ a \emph{counterfactual cause} if, by removing $t'$ from $I$, $t$ is also removed from the output (i.e., $t'$ is essential for the generation of $t$). 
-We call $t'$ an \emph{actual cause} if there is a set of tuples $\Gamma \subseteq I$ called a \emph{contingency set}, such that $t'$ is a counterfactual cause in $I - \Gamma$. In other words, $t'$ is an actual cause if, even when removed from $I$, there is another set of tuples of the lineage that guarantees the presence of $t$. }
+We call $t'$ an \emph{actual cause} if there is a set of tuples $\Gamma \subseteq I$ called a \emph{contingency set}, such that $t'$ is a counterfactual cause in $I - \Gamma$. In other words, $t'$ is an actual cause if, even when removed from $I$, there is another set of tuples of the lineage that guarantees the presence of $t$.
 
 \eat{
 Let 

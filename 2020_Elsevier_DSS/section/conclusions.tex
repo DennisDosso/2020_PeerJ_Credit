@@ -3,11 +3,11 @@
 
 This paper 
 %expanded on our previous work on data credit and data credit distribution in \cite{dosso2020data} by 
-defines three new distribution strategies based on why-provenance, how-provenance, and responsibility, and it compares them against the lineage-based distribution strategy defined in \cite{dosso2020data}. 
+defines three new distribution strategies based on why-provenance, how-provenance, and responsibility, and compares them against the lineage-based distribution strategy defined in \cite{dosso2020data}. 
 The first, why-provenance-based DS, uses the concept of a witness, and gives more credit to tuples that appear in more than one witness. 
 In this way, tuples that are more important to the query and are used in different ways are rewarded more. % by the strategy.
 The second, how-provenance-based DS, considers the frequency with which a tuple or combination of tuples is used in the query through the information contained in a provenance polynomial. In this case, the how-provenance-based DS is more sensitive than the why-provenance-based DS to the role and importance of tuples.
-The third one exploits the notion of responsibility, a real value ranking the tuples of the lineage based on their degree of causality in generating the output. The responsibility-based DS showed to behave similarly to the why-provenance based one.
+The third DS exploits the notion of responsibility, a real value which ranks the lineage tuples based on their degree of causality in generating the output. The responsibility-based DS was shown to behave similarly to the why-provenance based DS.
 
 To show the differences between the four DSs, we performed extensive experiments based on GtoPdb, a curated scientific relational database, using both real and synthetic queries. 
 In the first set of experiments, we used select-project-join (SPJ) queries extracted from citations to webpages in GtoPdb found in papers published in the British Journal of Pharmacology. 
@@ -38,16 +38,15 @@ The result will be a distribution of credit that represents even better the actu
 Other, more sophisticated, strategies could also be used to decide how credit is distributed between the authors, beyond the uniform distribution used here.}
 
 In future work, we plan to explore different strategies to generate and distribute credit. In this paper we assumed that each output tuple carries credit $1$. In more sophisticated scenarios we can employ different strategies to compute credit, that reflect the importance of cited data.
-Also, other, and more sophisticated strategies could also be used to decide how credit is distributed between the authors, beyond the uniform distribution used here, in a way to reflect the work performed by them on the cited data.
+Other, more sophisticated, strategies could also be used to decide how credit is distributed between the authors, beyond the uniform distribution used here, in a way to reflect the work performed by them on the cited data.  \rone{We also plan to explore a DS based on Shapley values~\cite{LivshitsBKS20}, exploiting the practical implementation recently suggested in~\cite{DFKM22}.}
 
-We will also explore new applications for credit over relational databases.
-One example is \emph{data pricing}, which gives a price to a query submitted by a user who wants to buy the produced information. Currently, a commonly strategy used for data pricing is based on query rewriting:  A database stores a set of views with their price. When a new query arrives, the system rewrites it using the stored views to obtain a query price, a process that can be computationally expensive.
+There are also a number of other intriguing applications for credit over relational databases.
+One such application is \emph{data pricing}, which gives a price to a query submitted by a user who wants to buy the produced information. Currently, a common strategy used for data pricing is based on query rewriting:  A database stores a set of views with their price. When a new query arrives, the system rewrites it using the stored views to obtain a query price, a process that can be computationally expensive.
 We plan to distribute credit through carefully planned and representative queries, and use credit information to define a new, faster, and potentially more flexible pricing function.
 
 Another application is \emph{data reduction}~\cite{milo2019getting}, which addresses the problem of reducing the vast -- and rapidly expanding -- amount of data that is being produced. % in the evolving world of research and information technology. 
 %Ideas that are being explored include %Data reduction deals with different aspects of dealing with huge amounts of data, such as 
 %finding relevant data from the multi-gigabytes streams of data produced by big data systems every second,  and dealing with the curse of dimensionality which requires unbounded computational resources to uncover actionable knowledge patterns~\citep{ur2016big}. \scream{I'm not sure what the previous sentence means!}
-
-Data credit can also address this problem, by helping find ``hotspots'' and ``coldspots'' of data. A hotspot is data in a database (e.g. a tuple) with a high quantity of credit, which is therefore valuable for the set of queries that execute frequently over the data and distribute the credit. 
-On the other hand, a coldspot is data with a low quantity of credit, which is therefore  considered less  important and could be deleted or moved to cheaper and/or less efficient memory. 
+Data credit can help address this problem by identifying ``hotspots'' and ``coldspots'' of data. A hotspot is data in a database (e.g. a tuple) with a high quantity of credit, which is therefore valuable for the set of queries that execute frequently over the data and distribute the credit. 
+A coldspot is data with a low quantity of credit which can therefore be considered as less  important, and could be deleted, summarized, or moved to cheaper and/or less efficient memory. 
 
