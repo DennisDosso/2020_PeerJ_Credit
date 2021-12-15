@@ -10,8 +10,10 @@ In particular, data should be accessible from the articles, journals, and papers
 Aspects such as the need for the \emph{reproducibility} of experiments through the used data; the \emph{availability} of scientific data; the \emph{connections} between data and the scientific results are all needed aspects for the fourth paradigm, and are all relevant to the domain of \emph{data citation}~\citep{honor2016data}.
 
 \paragraph{Data Citation: Principles and Motivations} Data Citation principles were proposed in \citep{CODATA2013}, and later summarized and endorsed by the Joint Declaration of Data Citation Principles (JDDCP)~\citep{martone2014joint}. 
-The principles are divided into two groups~ \citep{Silvello18jasist}. The first one contains principles concerning the role of data citation in scholarly and research activities such as the (i) \emph{importance} of data (why data citation is important and why data should be considered as first-class citizens); (ii) \emph{credit} and \emph{attribution} to the creators and curators of the data; (iii)\emph{evidence}; (iv) \emph{verifiability}; and \emph{interoperability}, with these last three requiring data citation methods to be flexible enough to operate through different communities. 
+The principles are divided into two groups~ \citep{Silvello18jasist}. The first group contains principles concerning the role of data citation in scholarly and research activities such as the (i) \emph{importance} of data (why data citation is important and why data should be considered as first-class citizens); (ii) \emph{credit} and \emph{attribution} to the creators and curators of the data; (iii)\emph{evidence}; (iv) \emph{verifiability}; and \emph{interoperability}, with these last three requiring data citation methods to be flexible enough to operate through different communities. 
 The second group defines the main guidelines to establish a data citation systems, and contains principles such as the (i) \emph{unique identification} of the data being cited; (ii) \emph{(open) access} to data; (iii) guarantee of \emph{persistence} and \emph{availability} of citations even after the lifespan of the cited entity; the (iv) \emph{specificity} of a citation, i.e. it must lead to the data set originally cited.
+
+\scream{SBD: Is the next paragraph necessary?  Could we just say "The main motivations for data citation are outlined in~\citep{Silvello18jasist}."}
 
 It is possible to outline six main motivations for data citation~\citep{Silvello18jasist}:
 \begin{itemize}
@@ -24,20 +26,20 @@ It is possible to outline six main motivations for data citation~\citep{Silvello
 \end{itemize}
 
 \subsection{Data Citation in Relational Databases}
-In this paper, we develop our methods and experiments on relational databases. RDBs have been the main target of data citation methods since the surge of the data-centric research paradigm. 
-The RDA ``Working Group on Data Citation: Making Dynamic Data Citable''\footnote{\url{https://www.rd-alliance.org/groups/data-citation-wg.html}}~\citep{RauberEtAl2016} has been working in the last years on large, dynamic, and changing datasets. The working group has finished the development of its guidelines and has now moved on into an adoption phase. 
-The datasets considered by the Working Group are often relational.
+%In this paper, we develop our methods and experiments on relational databases. 
+Relational databases have been the target of data citation methods since the surge of the data-centric research paradigm. 
+The RDA ``Working Group on Data Citation: Making Dynamic Data Citable''\footnote{\url{https://www.rd-alliance.org/groups/data-citation-wg.html}}~\citep{RauberEtAl2016} has developed guidelines for citing large, dynamic, and changing datasets which have now moved on into adoption phase. The datasets considered by the Working Group are often relational.
 
 In one of its most recent sessions~\citep{rauber2015data}, the Working Group (WG) on Data Citation reported that there are various implementations of its guidelines for Data Citation on MySQL/Postgres relational databases. 
 Some of these databases are: DEXHELPP\footnote{\url{http://www.dexhelpp.at/}} (Social Security Records); NERC (ARGO Global Array); EODC (Earth Observation Data Centre)~\citep{gosswein2019data}; LNEC (River dam monitoring); MDS (Million Song Database)~\citep{bertin2011million}; CBMI\footnote{\url{https://medicine.missouri.edu/centers-institutes-labs/center-for-biomedical-informatics}} (Center for Biomedical Informatics); VMC (Vermont Monitoring Cooperative); CCA\footnote{\url{https://ccca.ac.at/startseite}} (Climate Change Center Austria); VAMDC (Virtual Atomic and Molecular Data Center)~\citep{Dubernet_2016, ZwolfEtAl2016}.
 
 More examples of work on data citation in relational databases are~\citep{bunemann2016citation, WuSIGMOD18, AlawiniDHW17,davidson2017model}. 
-The website \texttt{\url{https://fairsharing.org/}} keeps a long updated list of curated and scientific databases (many of which are relational or graph-based) following FAIR guidelines. These databases are citable since they are compliant with the most recent guidelines, and they are in the vast majority of cases accessible via dynamically created Webpages. 
+The website \texttt{\url{https://fairsharing.org/}} keeps an updated list of curated and scientific databases (many of which are relational or graph-based) following FAIR guidelines. These databases are citable since they are compliant with the most recent guidelines, and they are in the vast majority of cases accessible via dynamically created Webpages. 
 In all these databases it is, therefore, possible to implement DCD on top of the existing infrastructures for citing data.
 
-Data citation techniques are primarily applied to relational databases because of their diffusion and also because the portions of data that are to be cited are easily identified: the whole database, a relation, a tuple, or even an attribute. 
+Data citation techniques are primarily applied to relational databases because of their pervasiveness as well as the ``identifiability" of the portions of data that are to be cited: the whole database, a relation, a tuple, or even an attribute. 
 Many papers \citep{buneman2006cite, bunemann2016citation, AlawiniDHW17} consider more complex citable units, recognizing that often the \emph{views} of a database are the ones to be cited. Generally, a \emph{view} is a query on the database.
-To this end, \citep{WuSIGMOD18} suggested decomposing the database in a set of views, where each view is associated with its citation. 
+To this end, \citep{WuSIGMOD18} suggested decomposing the database into a set of views, where each view is associated with its citation. 
 
 
 At present, the most common practices to cite databases include:
@@ -72,7 +74,7 @@ Data credit is related to data citation: they both aim to recognize the work of 
 Data credit can therefore also be seen as a by-product of data citation, since credit attribution is impossible without the presence of data citations.
 
 \citet{transitiveCreditKatz2014} suggests the need for a \emph{modified citation system} that includes the idea of \emph{transient} and \emph{fractional credit}, to be used by developers of research products as software and data.
-In the paper two considerations are made: (i) research objects such as data and software are currently not formally rewarded or recognized by the community; 
+Two considerations are made: (i) research objects such as data and software are currently not formally rewarded or recognized by the community; 
 (ii) even in traditional papers, the contribution of each author to the work is hard to understand, unless explicitly specified in the paper. 
 This is even more true for data, where different groups of people work on the same database.
 
