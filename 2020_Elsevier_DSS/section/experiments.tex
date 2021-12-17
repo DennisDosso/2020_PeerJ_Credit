@@ -38,14 +38,14 @@ Note that the queries are fairly simple SQL queries, and fall into a class calle
 A total of more than $12K$ different queries were built in this way.
 Without loss of generality, we give each tuple in the output of a query a credit of $1$.
 
-\paragraph{Results} Figure \ref{figure:comparison_on_papers} shows the heat-maps obtained by the distribution of credit according to the \rtwo{four} different DS on one of the tables in the underlying database, \texttt{family}, 
+\paragraph{Results} Figure \ref{figure:comparison_on_papers} shows the heat-maps obtained by the distribution of credit according to the \rtwo{five} DS on one of the tables in the underlying database, \texttt{family}, 
 %describes the characteristics and necessary information of the receptor families and, as can be seen in Figure \ref{figure:family_structure}, it 
 which is often joined with other tables in the database to build the webpages. Each cell in a heat-map represents a tuple of the \texttt{family} table and the color indicates the amount of credit attributed to such tuple.
-It can be seen that the result of  credit distribution over \texttt{family} is the same for all \rtwo{four} strategies. The same result is also obtained with the other tables of the database used by the queries shown in Figure \ref{figure:family_structure}. 
+It can be seen that the result of  credit distribution over \texttt{family} is the same for all \rtwo{five} strategies. The same result is also obtained with the other tables of the database used by the queries shown in Figure \ref{figure:family_structure}. 
 
 The reason why credit distribution is the same for all \rtwo{four} strategies is that the queries are all simple SPJ queries, which use each table only once and do joins on key attributes. 
-Under these conditions, each tuple of the output presents: (i) a how-provenance that is a single monomial with coefficient one and exponent one in each variable; (ii) a why-provenance with only one witness; (iii) a lineage that is the same of the witness in the basis, \rtwo{and (iv) all tuples are counterfactual causes when considering responsibility}.
-Hence, for these queries, the \rtwo{four} DSs behave in the same way: credit is uniformly distributed among the tuples present in each form of provenance. 
+Under these conditions, each tuple of the output presents: (i) a how-provenance that is a single monomial with coefficient one and exponent one in each variable; (ii) a why-provenance with only one witness; (iii) a lineage that is the same of the witness in the basis, \rtwo{(iv) all tuples are counterfactual causes when considering responsibility, and (v) they all have the same importance in the production of the output tuples according to their Shapley value}.
+Hence, for these queries, the \rtwo{five} DSs behave in the same way: credit is uniformly distributed among the tuples of the lineage. 
 
 To illustrate this, consider one of the queries in Figure \ref{figure:family_structure} which is used to build the output webpage:
 
@@ -66,7 +66,7 @@ To illustrate this, consider one of the queries in Figure \ref{figure:family_str
 The first tuple, \texttt{<Bertil B., Fredholm>}, has  $c_{939} \cdot c2f_{496}$ as its provenance polynomial.
 $c_{939}$ represents the provenance token of a tuple in \texttt{contributor}, and $c2f_{496}$ the provenance token of a tuple in table \texttt{contributor2family}. 
 The why-provenance of this tuple is $\{\{c_{939}, cf_{496} \}\}$, its lineage is $\{c_{939}, c2f_{496} \}$, \rtwo{both these tuples are counterfactual causes and have a responsibility of one.}
-Therefore, the credit assigned to these tuples is $1/2$ using all four DS.
+Therefore, the credit assigned to these tuples is $1/2$ using all five DS.
 This happens for all the tuples in the output of each query of GtoPdb, thus making the distributions equivalent over all outputs.
 
 However, this is not the case with more complex queries. As we showed in the previous section, when two or more tuples are merged as a result of a projection or union, the credit distributions will differ between the strategies. %These are represented as multiple witnesses and multiple monomials. 
@@ -182,7 +182,7 @@ To see what happens with more complex queries,
 The queries involve three GtoPdb tables: \texttt{family}, \texttt{contributor2family}, and \texttt{contributor}. 
 \rone{The polynomials were generated as follows: first, the number of monomials was decided by  randomly choosing a number between one and six.  Then, we randomly chose a tuple from the  \texttt{family} table, one from the \texttt{contributor2family} table and one from the \texttt{contributor} table; these are the variables of the monomial. We then chose a coefficient for the monomial (between one and three) and an exponent for each tuple (between one and four). For the next monomial, we decided if we wanted to keep the same tuple from the table family as first tuple of the new monomial. To do so, we generated a random float number between zero and one. If the number was above $0.2$, we changed the family tuple.}
 
-An example can be found in Figure~\ref{fig:syntheticDistributions}, which shows a sample synthetic provenance polynomial (the how-provenance), the corresponding why-provenance, lineage, \rtwo{and the causality of the tuples of the lineage, together with their responsibility}.  The resulting credit distribution for each DS is also shown. 
+An example can be found in Figure~\ref{fig:syntheticDistributions}, which shows a sample synthetic provenance polynomial (the how-provenance), the corresponding why-provenance, lineage, \rtwo{the causality of the tuples of the lineage, together with their responsibility, and, finally, the Shapley values of the lineage tuples}.  The resulting credit distribution for each DS is also shown \rtwo{(except for the Shapley values, that coincide with the distribution of credit)}. 
 
 
 
@@ -249,7 +249,7 @@ c2f_{17}=\frac{1}{8} , c_1 = 0.091\bar{6}, c_2 = 0.091\bar{6}, c_{18} = \frac{1}
 $
 }
 
-\caption{Sample synthetic provenance polynomial (how-provenance) and corresponding why-provenance, lineage, responsibility, and Shapley values, together with the corresponding credit distributions. In the case of the Shapley value, the value and the distribution of credit are the same.}
+\caption{Sample synthetic provenance polynomial (how-provenance) and corresponding why-provenance, lineage, responsibility, and Shapley values, together with the corresponding credit distributions. In the case of the Shapley value, the value is equivalent to the quantity of credit being distributed (assuming that the input credit is equal to $1$.}
  \label{fig:syntheticDistributions}
  \end{figure}
 
@@ -311,9 +311,13 @@ c2f_{17}=\frac{1}{8} , c_1 = \frac{1}{8}, c_2 = \frac{1}{8}, c_{17} = \frac{1}{8
 
 
 As an example of how the distribution strategies behave with these synthetic queries, consider tuple $f_5$ in Figure \ref{fig:syntheticDistributions}.
-\rtwo{  This tuple receives the highest quantity of credit using responsibility-based distribution and less credit using, in order, lineage, why- and how-provenance. This happens because more information is available about the role of the tuple in the overall computation.
-Generally speaking, the more complex the distribution (e.g., the how-provenance), the more credit is given to tuples that are more frequently used, thus having a higher impact in producing the output tuple. 
+\rtwo{  This tuple receives the highest quantity of credit using responsibility-based distribution and less credit using, in order, lineage, the Shapley value, why- and how-provenance.
+On the other hand, tuple $f_1$ is rewarded more by the Shapley value, then, in order, by why-provenance, how-provenance, responsibility, and finally lineage. 
+This difference is explained considering the different role of the tuples in the generation of the output and the characteristics of the distributions.
+Generally speaking, the more complex the distribution (e.g., the how-provenance), the more credit is given to tuples that are more frequently used or more critical in the production of the output. Depending on the situation, i.e. on the syntax of the query, the distributions may differ among them. 
 Responsibility creates a ranking among lineage's tuples describing the importance of their role in generating the output. As such, the responsibility-based DS gives more credit to $f_1, f_5, c2f_17$ and $c_18$ due to their higher responsibility values. ``Importance'' is connected to their corresponding minimal contingency sets. For example, $f_1$ has a minimal contingency set (one of the many) $\{f_5\}$, with cardinality 1. On the other hand, $c_1$ has, as minimal contingency set (one of the many) $\{f_5, c_2\}$, with cardinality two. This means that $c_1$ is the ``least important'' amongst the tuples with minimal contingency sets of lower cardinality, and this is reflected in the different quantities of credit being distributed.} 
+
+\rtwo{The Shapley value behaves similarly, but it rewards the most tuple $f_1$, then come in the ranking tuples $f_5$, $c2f_17$ and $c_18$, and the other tuples of the lineage with the lowest value. Although both Responsibility and the Shapley value create a ranking of the tuples based on their role in the generation of the output, the corresponding functions behave differently due to the syntax of the query, highlighting different aspects of the term ``important''.}
 
 Despite being synthetic, these provenance polynomials are realistic:  they can be obtained by any nested query with join and union operations that use the same tuple multiple times (in which case the exponents are larger than one), and the same combination of operations more than once (in which case the coefficients of monomials are larger than one). 
 
@@ -321,25 +325,49 @@ Despite being synthetic, these provenance polynomials are realistic:  they can b
 Figure \ref{figure:comparison_on_synthetic_polynomials_2}. 
 We set the maximum value in the heat maps to the highest value reached by a tuple in all \rtwo{five} distributions (i.e., $7.7$, with the Shapley value-based DS). 
 
-As can be seen, the four strategies generate different credit distributions, indicated by the varying hues. 
-However, there is a certain amount of consistency between them in that tuples which are highly rewarded by one strategy are also highly rewarded by the others. This shows that the four DSs consistently reward certain tuples more than others. 
+\scream{DD: is the table described in this paragraph below helpful? If not, please delete.}
+\rtwo{As can be seen, the five strategies generate different credit distributions, indicated by the varying hues. We reported in Table \ref{table:in_detail} the values of credit assigned to the first five tuples of the table to show how these values actually differ between the five strategies. As can be seen, the strategies in these cases all behave differently. It is not even possible to identify a strategy that consistently rewards tuples more than the others, since this changes depending on the cases, reflecting the syntaxes of the polynomials being used.}
+
+\begin{table}[]
+\center
+  \caption{\rtwo{Quantities of credit given using the 5 DSs on the first five tuples of table \texttt{family} (tuples ordered by the \texttt{family_id} attribute of the table).}}
+  \begin{tabular}{|l|l|l|l|l|}
+  \hline
+ lineage & why & how & responsibility & Shapley \\
+   \hline
+ 3.3603537 & 3.416667 & 3.5928571 & 3.3611114 & 3.425758 \\
+ 4.4893217 & 5.111111 & 4.8620114 & 5.1752524 & 5.788059 \\
+ 3.1333337 & 3.7888894 & 2.9106944 & 3.5000005 & 4.200001 \\
+ 2.7972224 & 3.1111116 & 3.5601408 & 3.0055559 & 3.3305562 \\
+ 3.4670746 & 3.8944445 & 3.7216337 & 3.8992426 & 4.31758 \\
+ \hline
+  \end{tabular}
+  \label{table:in_detail}
+\end{table}
+
+
+However, there is a certain amount of consistency between the strategies in that tuples which are highly rewarded by one strategy are also highly rewarded by the others. This shows that the four DSs consistently reward certain tuples more than others. 
 
 Note that lineage-based DS gives the least credit to tuples in the \texttt{family} table, indicated by an overall lighter hue. This is because the DS  distributes credit equally to all tuples appearing in the lineage. Since these queries also use two other tables, credit is distributed to tuples in those tables.
 
 Moving to why-provenance-based DS, we see that more credit is given to tuples in the \texttt{family} table than with the previous strategy. This is because the DS considers the different ways that a tuple is used, e.g. in joins with other tuples. If the same tuple is present in more than one witness, it will draw more credit and take it from  other tuples in the witness basis. In this case, tuples in \texttt{family} drew more credit, taking it from tuples in the other two tables, due to the role that \texttt{family}  tuples played in the queries that were executed. 
-\rtwo{We also notice that the responsibility-based distribution strategy has a distribution that is quite similar to the one provided by why-provenance. It is often the case, for example when the witnesses of the why provenance share one common tuple, that the two distributions behave similarly.} %As a consequence, the synthetic polynomials are at times such that the two distributions behave in the same way, or very similarly.} 
 
-We note that the lineage-based DS gives an average credit of $3.92$ to each tuple in the table, while the DS based on why-provenance assigns $4.18$, how-provenance $4.18$, \rtwo{and the one based on responsibility $4.13$}. 
-Moreover, lineage distributed a total of about $3121$ units of credit to the \texttt{family} table, why-provenance $3333$, how-provenance $3331$, while \rtwo{responsibility assigned $3290$}. 
-%That is, the DS based on why-provenance assigns on average $50\%$ more credit to the \texttt{family} table than the strategy based on lineage.
-%\scream{GMS: It could be interesting (and simple to do) to report a number to quantify the amount of credit distributed by the three strategies, so that we can say that how-provenance distributes, say, 20\% more credit than lineage or so. The number could be the sum of each tuple credit or its average. Make sense? Not sure if this is just useless info.} 
-
-Finally, consider the how-provenance-based DS heat-map. %  in Figure \ref{fig:comparison}. 
+Consider the how-provenance-based DS heat-map. %  in Figure \ref{fig:comparison}. 
 As with why-provenance, more credit is typically given to tuples in \texttt{family} compared to lineage-based DS, since it recognizes the role of these tuples in the queries, and the overall hue is deeper.  
 The two distributions appear similar, although on closer inspection, slight differences can be seen. 
 This is because how-provenance also considers the frequency with which tuples are used, not only the ways in which they are used. Therefore, although the overall distribution is similar, there are small differences due to the presence of exponents and coefficients in the provenance polynomials, influencing the distribution of credit. 
 
-To better understand this difference, in the next subsection we consider the accrual of credit over time.  In doing so, we will focus on the ten tuples shown within the large yellow rectangles in Figure \ref{fig:comparison}.  Each small rectangle within a large blue rectangle is a tuple, and we number them from $1$ (top) to $10$ (bottom). 
+\rtwo{The responsibility-based distribution strategy has a distribution that is also quite similar to the one provided by why-provenance (which is also visible from Table \ref{table:in_detail}, where the values of the two distributions are different but very close). It is often the case, for example when the witnesses of the why provenance share one common tuple, that the two distributions behave similarly.} %As a consequence, the synthetic polynomials are at times such that the two distributions behave in the same way, or very similarly.} 
+
+\rtwo{Finally, the heat-map reporting the distribution produced by the Shapley value is the one that, at a closer inspection, shows the biggest differences. Although the tuples that receive the biggest quantities of credit are the same, the hue of this tuple is different. The Shapley value in certain circumstances differs greatly from the other DSs, thus showing its ability to weight differently the roles of the tuples.}
+
+We note that the lineage-based DS gives an average credit of $3.92$ to each tuple in the table, while the DS based on why-provenance assigns $4.19$, how-provenance $4.18$, \rtwo{the one based on responsibility $4.13$, and the one based on the Shapley value $4.40$}. 
+Moreover, lineage distributed a total of about $3121$ units of credit to the \texttt{family} table, why-provenance $3333$, how-provenance $3331$, while \rtwo{responsibility assigned $3290$, and the Shapley value $3505$. Thus, the Shapley value is the method that accumulates the highest quantity of credit in this table.} 
+%That is, the DS based on why-provenance assigns on average $50\%$ more credit to the \texttt{family} table than the strategy based on lineage.
+%\scream{GMS: It could be interesting (and simple to do) to report a number to quantify the amount of credit distributed by the three strategies, so that we can say that how-provenance distributes, say, 20\% more credit than lineage or so. The number could be the sum of each tuple credit or its average. Make sense? Not sure if this is just useless info.} 
+
+
+To better understand the differences between DSs, in the next subsection we consider the accrual of credit over time.  In doing so, we will focus on the ten tuples shown within the large yellow rectangles in Figure \ref{fig:comparison}.  Each small rectangle within a large yellow rectangle is a tuple, and we number them from $1$ (top) to $10$ (bottom). 
 \rone{These ten tuples were cherry-picked because they allow us to see the evolution of the distribution of credit through time. There are other tuple sets that could have been selected driving us to the same considerations.}
 
 \eat{
@@ -369,25 +397,25 @@ The ten tuples in each heat-map  %from the \texttt{family} table, and
 are those  highlighted in the \rone{yellow} boxes of Figure \ref{figure:comparison_on_synthetic_polynomials_2} from the \texttt{family} table.  
 
 
-The polynomials used are the same as the experiment of the previous section. The range of credit in each map goes from 0 (no credit) to $7$ (the maximum quantity of credit reached -- using how-provenance -- on one of the tuples of the considered window at the ``snapshot'' with 10K queries). The color hue of the legend, as can be seen, still ranges from $0$ to $7.5$.
+The polynomials used are the same as the experiment of the previous section. The range of credit in each map goes from 0 (no credit) to $7$ (the maximum quantity of credit reached -- using how-provenance -- on one of the tuples of the considered window at the ``snapshot'' with 10K queries). The color hue of the legend, as can be seen, still ranges from $0$ to $7.7$.
 
 %\scream{I feel that this section is going into too much detail.  We should just get the big idea across.  I have "eaten" most of this text and tried to pull out the highlights. Don't bring up things unless you can explain them, or are trying to make a point.  The other problem is we can't really say why tuples wax and wane in overall credit -- it depends on the queries, which we don't go into (or want to go into).}
 
-By the end of 1K queries, credit differentials between tuples as well as between strategies can be seen.  For example, tuple 3 is usually rewarded the most credit by all four strategies. However, it receives the highest quantity of credit from the why-provenance- and responsibility-based strategy ($1.33$).
-\rtwo{Moreover, it can be seen that tuples 1 and 7 receive a higher quantity of credit when how-provenance is adopted, showing how this form of provenance behaves differently from the others in this context}.
-Moving to 2K queries, it is possible to see that tuple 3 and 7 are still the most rewarded by the strategies.
-This trend continues to the end of 2K queries.
+By the end of 1K queries, credit differentials between tuples as well as between strategies can be seen.  For example, tuple 3 is usually rewarded the most credit by all five strategies. 
+\rtwo{Moreover, it can be seen that tuples $1$ receives a higher quantity of credit when how-provenance is adopted, showing how this form of provenance behaves differently from the others in this context}.
+Moving to $2K$ queries, it is possible to see that tuple $3$ and $7$ are still the most rewarded by the strategies.
 
-By the end of 5K queries, tuple 7 emerges with the highest value of credit with all four DSs, a position which is strengthened with 10K queries. Moreover, with the passing of time, tuple 3 ceases to be one of the most rewarded ones and new tuples, such as 6 and 9, emerge as being particularly rewarded at 5K, while at 10K tuples 6 and 7 are the most rewarded from the distributions.
-This is because tuple 7 is used several times within queries being executed, which is rewarded strongly by why- and how-provenance.
+By the end of 5K queries, tuple $7$ emerges with the highest value of credit with all five DSs, a position which is strengthened with 10K queries. Moreover, with the passing of time, tuple $3$ ceases to be one of the most rewarded ones and new tuples, such as $6$ and $9$, emerge as being particularly rewarded at 5K, while at 10K tuples $6$ and $7$ are the most rewarded from the distributions.
+This is because tuple $7$ is used several times within queries being executed, which is rewarded strongly by why- and how-provenance.
 \rtwo{We also note that the responsibility-based distribution confirms its trend of being similar to why-provenance, although not identical. This is more evident at step 10K, where tuple 7 is slightly less rewarded using responsibility ($6.12$) with respect to why-provenance ($6.24$). 
-This is due to the fact that tuple 7 had, among some of the polynomials being used for the experiments, a high responsibility but it did not appear in all witnesses. This changed slightly the distribution.}
+The responsibility that rewards the more tuple $7$ is the one based on how-provenance (credit $7.03$), followed by the Shapley value (credit $6.64$).
+This is due to the fact that tuple $7$ had, among some of the polynomials being used for the experiments, a high responsibility but it did not appear in all witnesses. This changed slightly the distribution.}
 
 
-While the relative value of credit ``positions" of tuples within a DS strategy depends on what queries are being executed, the important thing to notice is the difference between the DSs over time:  overall, lineage gives less credit to tuples in the \texttt{family} table than the other two strategies since credit is  shared with tuples in other tables.
-However, the why-, \rtwo{responsibility-} and how-provenance-based strategies recognize the more important role being played by the \texttt{family} tuples than those in the other tables.
+While the relative value of credit ``positions" of tuples within a DS strategy depends on what queries are being executed, the important thing to notice is the difference between the DSs over time:  overall, lineage gives less credit to tuples in the \texttt{family} table than the other strategies since credit is shared with tuples in other tables.
+The other strategies recognize the more important role being played by the \texttt{family} tuples than those in the other tables.
 \rtwo{The differences between why- and responsibility-based DS are, for the most times, negligible.} 
-The differences between the why- and how-provenance-based DSs are also relatively minor in most cases. However, there are certain situations in which the role of a tuple is particularly critical in a query, and in this case the difference in the value of credit assigned is notably higher for how-provenance, as we saw with tuple 7 in the example of Figure \ref{fig:comparison}. 
+The differences between the why- and how-provenance-based DSs are also relatively minor in most cases. However, there are certain situations in which the role of a tuple is particularly critical in a query, and in this case the difference in the value of credit assigned is notably higher for how-provenance \rtwo{and the Shapley value}, as we saw with tuple 7 in the example of Figure \ref{fig:comparison}. 
 
 
 \eat{
@@ -415,10 +443,10 @@ This shows how the last two DS operate in a similar way. The differences between
 
 
 To sum up, the DS based on lineage is sufficient to highlight which tuples in the database are used by a query, and distributes credit equally to these tuples. The resulting distribution rewards tuples that are used by more queries, but does not reward how many times tuples are used in the same query.  
-However, a DS based on why-, \rtwo{responsibility-} or how-provenance may be better if the queries are complex, since they reward more tuples that have a critical role in generating the output. %These two DS are sensitive than the DS based on lineage (and the DS based on how-provenance is more sensible than the one based on why-provenance). 
+However, a DS based on why-provenance, \rtwo{responsibility, Shapley value} or how-provenance may be better if the queries are complex, since they reward more tuples that have a critical role in generating the output. %These two DS are sensitive than the DS based on lineage (and the DS based on how-provenance is more sensible than the one based on why-provenance). 
 \eat{Using the why-provenance and how-provenance DS, it is possible to change the distribution of credit to the tuple, rewarding more the tuples that have a more critical role in generating the output. The distribution based on how-provenance is most of the times similar to the one based on why-provenance. 
 However, in certain instances, it differ from the other one due to the specific role of a tuple, an information that is present in the provenance polynomial but lost in the witness basis. }
-In particular, these \rtwo{three} DSs may be useful for finding ``hotspots'' in the database based on the role of tuples, with the how-provenance-based DS being preferable if a higher sensitivity to the role of a tuple in queries is required. 
+In particular, these \rtwo{four} DSs may be useful for finding ``hotspots'' in the database based on the role of tuples, with the how-provenance-based and Shapley value-based DSs being preferable if a higher sensitivity to the role of a tuple in queries is required. 
 
 %In particular, the DS based on why-provenance rewards more the tuples that are used in different ways by queries (i.e. are members of more witnesses). The DS based on how-provenance also takes into consideration how many times a tuple is used, adding even more sensibility to the distribution. 
 %One may choose one other the other depending what are the aspects he wants to highlight in the data.
