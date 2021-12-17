@@ -113,10 +113,12 @@ One may argue that this DS is too simplistic, since lineage
 does not convey any information about the role or importance of input tuples in the query.
 Therefore, one may desire to give more credit to the tuples that are more {\em important} to the production of the output, i.e. those tuples that, if removed, would prevent the output tuple from appearing in the final result, or those tuples used more than once  by the query. 
 
-Therefore, in this paper, we expand the ideas in \citep{dosso2020data} by proposing new DSs based on three other forms of data provenance: why-provenance~\citep{WhyProvBuneman}, how-provenance~\citep{howProvenanceGreen}, and \rtwo{responsibility~\cite{MeliouGMS11}.\footnote{A discussion of basing a DS on the recently proposed notion of Shapley value\cite{LivshitsBKS20,DFKM22} can be found in Section~\ref{subsec: DSs}.} }
+Therefore, in this paper, we expand the ideas in \citep{dosso2020data} by proposing new DSs based on two other forms of data provenance: why-provenance~\citep{WhyProvBuneman} and how-provenance~\citep{howProvenanceGreen}.
+\rtwo{Also, we propose other two DS based on the concepts of responsibility~\cite{MeliouGMS11}, and the Shapley value\cite{LivshitsBKS20,DFKM22}}.
 \rone{We show how these DS differ from each other as well as the one based on lineage,} and discuss why one may be preferred to another depending on the application and its goals. 
-In particular, we show that why-provenance-,  how-provenance- and \rtwo{responsibility}- based DSs are more sensitive than one based on lineage to the {\em role} of a tuple in a query, i.e. how many times the tuple is used and how it is used. We also show that
-why-provenance- and \rtwo{responsibility}-based DSs give more credit to tuples that are essential to the production of the result set, whereas the how-provenance-based DS also takes into consideration the different ways in which a tuple is used. \rone{The newly defined DS strategies exploit the additional information provided by these forms of provenance to weight the contribution of the tuples on the basis of their role in producing the output.  }
+In particular, we show that the new proposed DSs are more sensitive than the one based on lineage to the {\em role} of a tuple in a query, i.e. how many times the tuple is used and how it is used. 
+We also show that the DSs based on why-provenance and \rtwo{responsibility} give more credit to tuples that are essential to the production of the result set, whereas the how-provenance-based DS takes into consideration the different ways in which a tuple is used.
+\rtwo{Finally, the DS based on the Shapley value sees the process of distribution as a competitive game where tuples that contribute more to the generation of the output are correspondingly rewarded more}. 
 
 The evaluation is based on a well-known curated database, the IUPHAR/BPS\footnote{International Union of Basic and Clinical Pharmacology/British Pharmacology Society} Guide to Pharmacology~\citep{iuphar2018}, also known as GtoPdb\footnote{\url{https://www.guidetopharmacology.org/}}, which contains expertly curated information about diseases, drugs, cellular drug targets, and their mechanisms of action.
 We chose GtoPdb for two main reasons: (i) it is a widely-used and valuable curated relational database, (ii) many papers in the literature use, and cite, its data (i.e., families, ligands, and receptors). 
@@ -130,8 +132,8 @@ In the fourth set of experiments we use both real and synthetic queries to asses
 \textbf{Contributions}
  of this work include:
 \begin{itemize}
-    \item \rone{Three new Distribution Strategies based on why-provenance, how-provenance, \rtwo{and responsibility}.}
-    \item An in-depth analysis of the effects of credit distribution on real-world curated data and of the differences between the three proposed Distribution Strategies.
+    \item \rone{Four new Distribution Strategies based on why-provenance, how-provenance, \rtwo{responsibility and the Shapley value}.}
+    \item An in-depth analysis of the effects of credit distribution on real-world curated data and of the differences between the five proposed Distribution Strategies.
     \item A comparison between the behavior of traditional citations and data credit in rewarding data curators.
 \end{itemize}
 

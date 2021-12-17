@@ -1,6 +1,6 @@
 \section{Credit Distribution and Distribution Strategies}
 \label{section:distribution_strategies}
-We now give formal definitions of data credit and Data Credit Distribution (DCD), and present three different Distribution Strategies (DSs) based on the forms of provenance discussed earlier:  Lineage-based DS, Why-Provenance-based DS, How-Provenance-based DS, \rtwo{and responsibility-based DS}.  We also show how these strategies distribute credit in the IUPHAR example discussed earlier.
+We now give formal definitions of data credit and Data Credit Distribution (DCD), and present three different Distribution Strategies (DSs) based on the forms of provenance discussed earlier:  Lineage-based DS, Why-Provenance-based DS, How-Provenance-based DS, \rtwo{ responsibility-based DS, and the Shapley value-based DS}.  We also show how these strategies distribute credit in the IUPHAR example discussed earlier.
 
 
 \subsection{Data Credit and Data Credit Distribution}
@@ -20,7 +20,7 @@ and query $Q$ over $I$, and it splits $k$ among the recipients of credit in $I$.
 In the following, we use the notation in \citet{CheneyProvSurvey}: a \emph{tuple location} is defined as a tuple in a relation in $I$, tagged with its name. It is indicated with $(R, t)$, where $R$ is the relation in the database, and $t$ is the tuple in $R$. With reference to the running example, \texttt{(family, $\langle f_1$, Dopamine Receptors, gpcr$\rangle$)} is the tuple location of the first tuple in the \texttt{family} relation.  The set of all the tuple locations in $I$ is called \emph{TupleLoc}.
 The following is the definition of DCD at \emph{tuple level}. We refer to the level of tuple because the credit is annotated to tuples.}
 
-In the following, we use the notation in \citet{CheneyProvSurvey}: Given an instance $I$, a \emph{tuple location} $(R, t)$ is a tuple $t$ in  relation $R$. With reference to the running example, \texttt{(family, $\langle f_1$, Dopamine Receptors, gpcr$\rangle$)} is the tuple location of the first tuple in the \texttt{family} relation.  The set of all tuple locations in $I$ is called \emph{TupleLoc}.  We use this to formally define DCD at the \emph{tuple level}.
+In the following, we use the notation in \citet{CheneyProvSurvey}: Given a database instance $I$, a \emph{tuple location} $(R, t)$ is a tuple $t$ in  relation $R$. With reference to the running example, \texttt{(family, $\langle f_1$, Dopamine Receptors, gpcr$\rangle$)} is the tuple location of the first tuple in the \texttt{family} relation.  The set of all tuple locations in $I$ is called \emph{TupleLoc}.  We use this to formally define DCD at the \emph{tuple level}.
 
 
 \begin{definition}
@@ -86,7 +86,7 @@ One could therefore argue that it would be more fair for $f_1$ to receive more c
 
 This highlights one limitation of the lineage-based DS: while able to find all and only the relevant tuples of the output, it does not distinguish the \emph{importance} of tuples in the query computations. 
 %This information could be incorporated in the definition of a DS to distribute credit based on the actual role that tuples play in the computation. 
-We therefore present three other, more sophisticated, forms of distribution strategies based on why-provenance, how-provenance, \rtwo{and responsibility}.
+We therefore present four other, more sophisticated, forms of distribution strategies based on why-provenance, how-provenance, \rtwo{ responsibility, and Shapley value}.
 
 \subsection{A Why-Provenance-Based Distribution Strategy}
 The distribution strategy based on why-provenance first equally distributes the credit $k_o$ among the witnesses of the witness basis for $o$, and then equally divides the credit of a witness among the tuples in the witness. 
@@ -149,24 +149,6 @@ This example illustrates that why-provenance can better reward input tuples depe
 The how-provenance-based DS first distributes the credit to the monomials of the polynomial accordingly to the weight represented by their coefficients, then to the tuples of each monomial accordingly to the weights represented by their exponents. 
 
 To define the DS more formally, we introduce some notation and illustrate it using the provenance polynomial $\mathcal{H}$ shown in Figure \ref{figure:how_example}. This notation is also shown  in Table \ref{tab:notation} for easy reference.
-\todo[size=\footnotesize]{GMS: move notation table at the beginning and cover all the notation of the section.}
-\begin{table}[]
-    \centering
-%    \caption{\rone{Notation used in Definition \ref{def:how_distribution}.}}
-    \begin{tabular}{c|c}
-    \hline
-         $\mathcal{H}$ & provenance polynomial  \\
-         $M_i$ & a monomial in $\mathcal{H}$ \\
-         $t_j$ & a tuple in $M_i$ \\
-         $c(\mathcal{H})$ & sum of $\mathcal{H}$'s coefficients \\
-         $e(M_i)$ & sum of $M_i$'s exponents \\
-         $mc(M_i)$ & $M_i$'s coefficient \\
-         $te(t_j, M_i)$ & exponent of $t_j$ in $M_i$ \\
-         $\gamma(t_j, \mathcal{H})$ & set of monomials in $\mathcal{H}$ containing $t_j$ \\
-    \hline
-    \end{tabular}
-   \caption{\rone{Notation used in Definition \ref{def:how_distribution}.}}    \label{tab:notation}
-\end{table}
 
 
 \begin{figure}[]

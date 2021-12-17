@@ -123,7 +123,7 @@ In this paper, we focus on provenance for database management systems (DBMS). Fo
 
 \citet{CheneyProvSurvey} presents four main types of data citation for DBMS: \emph{lineage}~\citep{lineageCui}, \emph{why-provenance}~\citep{WhyProvBuneman}, \emph{how-provenance}~\citep{howProvenanceGreen} and \emph{where-provenance}~\citep{WhyProvBuneman}.
 
-Let us start with the first three provenances. Given a database instance $I$, a query $Q$, and the result $Q(D)$, consider one tuple $t$ of the output. 
+Let us start with the first three provenances. Given a database instance $I$, a query $Q$, and the result $Q(I)$, consider one tuple $t$ of the output. 
 Its provenance is information about its generation through the tuples of the input that are used by $Q$. Different types of provenance convey different levels of information. Since these three provenances are computed for each tuple of the output, they are also referred to as \emph{tuple-based}.
 
 %Lineage is the simplest among the forms of provenance. It has been defined in different ways~\citep{CheneyProvSurvey}, but it can be thought of as the set of all the tuples that are used in some way by the query to produce the output tuple, the ones that are somehow \emph{relevant} to its generation. 
@@ -139,5 +139,17 @@ Its provenance is information about its generation through the tuples of the inp
 
 Where-provenance, differently from the other three, is \emph{attribute-based}, so we do not take it into account in this work since we consider the tuple as the finest citable unit. 
 
+\subsection{Causality and Responsibility}
 \rtwo{We also consider the notions of causality and responsibility, as defined in 
 \cite{MeliouGMS11}. Causality is an enrichment of lineage, and it is the attribution of a certain degree of importance to the tuples of the lineage based on their role in the generation of the output. Responsibility is a value given to the tuples of the lineage to rank them based on their degree of causality (the more important the role of a tuple in generating the output, the higher its responsibility)}.
+
+\rtwo{While computing responsibility for general queries is hard~\cite{ChocklerH04}, \citet{MeliouGMS11} proved a dichotomy result for conjunctive queries: for each query without self-joins, either its responsibility can be computed in PTIME in the size of the database or checking if it has a responsibility below a given value is NP-hard.}
+
+\subsection{Shapley value}
+\rtwo{The Shapley value is named after Lloyd Shapley, who introduced it for the first time in his 1952 work~\cite{Shapley1954}. He considered a \emph{cooperative fame} played by a set $A$ of players, defined by a \emph{wealth function} $v$ that assigns to each coalition set $B \subseteq A$ the wealth $v(B)$.
+The question behind the Shapley Value is how to quantify the contribution of each player to the overall wealth. 
+Informally, the Shapley value is defined as follows~\cite{LivshitsBKS20}: assume that we select players randomly one by one and without replacement, starting with the empty set. Every time a player $a$ is selected, its addition to the coalition $B$ produces a change in the wealth of the coalition from $v(B)$ to $v(B \cup \{a\})$. The Shapley value of $a$ is the expectation of change that $a$ causes in this probabilistic process.}
+
+\rtwo{The Shapley value can be used in different research areas beyond cooperative games, such as economics, law, environmental science, and network analysis, and it has strong theoretical justifications. However, its use in databases as a metric for quantifying the influence of a tuple on the output of a query (thereby presenting an alternative to responsibility)  has only recently been proposed~\cite{LivshitsBKS20}. 
+The initial theoretical analysis in \cite{LivshitsBKS20} showed mainly lower bounds on the complexity of the problem, and did not suggest a feasible implementation.
+However, very recently, an efficient implementation for Boolean queries (queries that output true or false, or $1$ or $0$) has been provided~\cite{DFKM22}, both in terms of an exact computations (which in practice works well for most queries) and in inexact one (which is extremely fast and provides the same ranking of tuples as the exact computation, but not necessarily the same values).}

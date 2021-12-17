@@ -1,7 +1,37 @@
 \section{Data Provenances}
 \label{section:preliminaries}
+
+\begin{table}[]
+    \centering
+%    \caption{\rone{Notation used in Definition \ref{def:how_distribution}.}}
+    \begin{tabular}{c|c}
+    \hline
+    	 $I$ & database instance \\
+    	 $L$ & lineage set of an output tuple \\
+    	 $\Gamma$ & contingency set \\
+    	 $\rho_t$ & responsibility of tuple $t$ \\
+    	 $Q$ & a query \\
+    	 $I^n$ & set of endogenous tuples \\
+    	 $I^x$ & set of exogenous tuples \\
+    	 $\mathcal{W}$ & witness basis \\
+    	 $W$ & a witness set \\
+    	 $\gamma(\mathcal{W}, t)$ & set of witnesses in $\mathcal{W}$ containing $t$ \\
+         $\mathcal{H}$ & provenance polynomial  \\
+         $M_i$ & a monomial in $\mathcal{H}$ \\
+         $t_j$ & a tuple in $M_i$ \\
+         $c(\mathcal{H})$ & sum of $\mathcal{H}$'s coefficients \\
+         $e(M_i)$ & sum of $M_i$'s exponents \\
+         $mc(M_i)$ & $M_i$'s coefficient \\
+         $te(t_j, M_i)$ & exponent of $t_j$ in $M_i$ \\
+         $\gamma(t_j, \mathcal{H})$ & set of monomials in $\mathcal{H}$ containing $t_j$ \\
+    \hline
+    \end{tabular}
+   \caption{\rone{Notations used in this paper.}}    \label{tab:notation}
+\end{table}
+
+
 We now describe the three types of provenance used in this paper --  lineage, why-provenance, and how-provenance -- as well as
-\rtwo{the notion of Causality and Responsibility}. 
+\rtwo{the notion of Causality and Responsibility, and the Shapley value function}. 
 
 \subsection{Lineage}
 \rone{Lineage is the simplest form of provenance. It was first introduced by \citet{lineageCui}, and can be thought of as the set of all tuples that
@@ -54,7 +84,7 @@ Lineage is defined for each tuple of the output, and can differ between tuples.
 Why-Provenance was first defined in terms of a deterministic semistructured data model and query language \citep{WhyProvBuneman}.  We use here its definition in terms of the relational model~\citep{CheneyProvSurvey}.
 
 While lineage aims to find all and only the tuples in the input relevant to the production of an output tuple, why-provenance aims to find sub-instances of the input that ``witness'' a part of the output. 
-Given a tuple $t$ in the query's output $Q(D)$, a \emph{witness} is any sub-instance of the database that produces $t$, i.e., a set that guarantees the existence of $t$ in $Q(D)$.
+Given a tuple $t$ in the query's output $Q(I)$, a \emph{witness} is any sub-instance of the database that produces $t$, i.e., a set that guarantees the existence of $t$ in $Q(I)$.
 In particular, the whole database and the lineage of $t$ are both examples of witnesses of $t$.
 Since the definition of witness allows for the presence of ``irrelevant'' tuples, the set of all witnesses is finite (since the database instance $I$ is finite), but it is potentially exponentially large~\citep{CheneyProvSurvey}.
 
@@ -207,8 +237,8 @@ In particular, we only focus on answers to a query since non-answers are not rel
 % paragraph added to make the subsection less formality heavy
 
 There are two types of ``cause" tuples: counterfactual and actual. 
-Let $t$ be a tuple in the query's output $Q(I)$, and $t'$ a tuple in its lineage. We call $t'$ a \emph{counterfactual cause} if, by removing $t'$ from $I$, $t$ is also removed from the output (i.e., $t'$ is essential for the generation of $t$). 
-We call $t'$ an \emph{actual cause} if there is a set of tuples $\Gamma \subseteq I$ called a \emph{contingency set}, such that $t'$ is a counterfactual cause in $I - \Gamma$. In other words, $t'$ is an actual cause if, even when removed from $I$, there is another set of tuples of the lineage that guarantees the presence of $t$.
+Let $o$ be a tuple in the result of query $q$ on the database instance $I$, and $t$ a tuple in its lineage. We call $t$ a \emph{counterfactual cause} if, by removing $t$ from $I$, $o$ is also removed from the output (i.e., $t$ is essential for the generation of $t$). 
+We call $t$ an \emph{actual cause} if there is a set of tuples $\Gamma \subseteq I$ called a \emph{contingency set}, such that $t$ is a counterfactual cause in $I - \Gamma$. In other words, $t$ is an actual cause if, even when removed from $I$, there is another set of tuples of the lineage that guarantees the presence of $o$.
 
 \eat{
 Let 
@@ -238,21 +268,21 @@ Causality is defined as follows:
 $t$ is a \emph{counterfactual cause} if, by removing it from the database, we remove $\bar{a}$ from the answer. Therefore, it can be thought as a tuple of the lineage which is fundamental for the presence of $\bar{a}$ in the answer.
 Vice-versa, $t$ is an actual cause if it is possible to find a contingency set of tuples such that, if that set is removed, only then $t$ becomes counterfactual. In other words, when $t$ is an actual cause, even if it was removed from the database, $\bar{a}$ would still be present in the result set thanks to the contingency set. }
 
-Computing the causality of tuples is NP-complete for general queries~\cite{EiterL02}, but for conjunctive queries can be computed in PTIME~\citet{MeliouGMS11}. 
+Computing the causality of tuples is NP-complete for general queries~\cite{EiterL02}, but for conjunctive queries can be computed in PTIME, as showed by ~\citet{MeliouGMS11}. 
 
 
 The notion of \emph{responsibility}  measures the degree of causality as a function of the size of the smallest contingency set~\cite{ChocklerH04}. This  allows us to rank lineage tuples based on their degree of causality in generating the output. 
 
 \begin{definition}{Responsibility \cite{MeliouGMS11}}\\
 \label{def:responsibility}
-	Let $\bar{a}$ be an answer to a query $q$, and let $t$ be a cause. The \emph{responsibility} of $t$ for the answer $\bar{a}$ is:
+	Let $o$ be an output tuple in the result of query $Q$ on $I$, and let $t$ be a cause for $o$. The \emph{responsibility} of $t$ for the answer $o$ is:
 	\[
 		\rho_t = \frac{1}{1 + min_\Gamma|\Gamma|}
 	\]
 	where $\Gamma$ ranges over all contingency sets for $t$.
 \end{definition}
 
-Note that a counterfactual cause will have the maximum responsibility of $1$, and that the larger the minimum contingency of an actual cause is, the smaller its responsibility will be since there are alternatives to  guarantee the presence of the answer $\bar{a}$.
+Note that a counterfactual cause will have the maximum responsibility of $1$, and that the larger the minimum contingency of an actual cause is, the smaller its responsibility will be since there are alternatives to  guarantee the presence of the answer $o$.
 
 
 \begin{table}[]
@@ -279,32 +309,27 @@ As an example, consider Table \ref{table:result_how_prov}, where we reported the
 Focusing on $o_1$: the lineage tuple $f_1$ is a counterfactual cause, since its contingency set is empty (when removed from the database, $o_1$ disappears from the result set). Consequently, its responsibility is 1. All the other tuples of the lineage are actual causes. $c_1$, for example, has as minimal contingency set $\{c2f_2\}$ , thus its responsibility is $0.5$. 
 For the output tuple $o_2$, all the tuples of the lineage are counterfactual causes, thus their responsibility is 1.
 
-While computing responsibility for general queries is hard~\cite{ChocklerH04}, \citet{MeliouGMS11} proved a dichotomy result for conjunctive queries: for each query without self-joins, either its responsibility can be computed in PTIME in the size of the database or checking if it has a responsibility below a given value is NP-hard.
-
-\rtwo{\subsection{Shapley Value}}
+\rtwo{\subsection{Shapley value}}
 \label{sec:shapley_value}
 
-The Shapley value is named after Lloyd Shapley, who introduced it for the first time in his 1952 work~\cite{Shapley1954}. He considered a \emph{cooperative fame} played by a set $A$ of players, defined by a \emph{wealth function} $v$ that assigns to each coalition set $B \subseteq A$ the wealth $v(B)$.
-The question behind the Shapley Value is how to quantify the contribution of each player to the overall wealth. 
-Informally, the Shapley value is defined as follows~\cite{LivshitsBKS20}: assume that we select players randomly one by one and without replacement, starting with the empty set. Every time a player $a$ is selected, its addition to the coalition $B$ produces a change in the wealth of the coalition from $v(B)$ to $v(B \cup \{a\})$. The Shapley value of $a$ is the expectation of change that $a$ causes in this probabilistic process.
-
-The Shapley value can be used in different research areas beyond cooperative games, such as economics, law, environmental science, and network analysis. Here, as recently done by \citet{LivshitsBKS20}, we use it as a way of quantifying the contribution of input facts (tuples) to query answers. 
-As defined in \cite{Deutch2021Shapley}, in the context of relational databases, given a query $q(\bar{x})$, a database $D$, an input fact $f \in D$ (here seen as a player) and a tuple $\bar{t}$ of same arity as $\bar{x}$, the Shapley value of $f$ in $D$ intuitively represents the contribution of $f$ to the presence (or absence) of $\bar{t}$ in the query result.
+To use the Shapley in the context of conjunctive queries for relational databases, we use the definitions provided in \cite{DFKM22}:  given a query $q(\bar{x})$, a database $D$, an input fact $f \in D$ (here seen as a player) and a tuple $\bar{t}$ of same arity as $\bar{x}$, the Shapley value of $f$ in $D$ intuitively represents the contribution of $f$ to the presence (or absence) of $\bar{t}$ in the query result.
 Formally, the Shapley value is defined as follows:
 
 \begin{definition}{Shapley value \cite{Deutch2021Shapley}}\\
-	Let the database D be partitioned into two sets of facts: a set $D^x$ of  exogenous facts, and a set $D^n$ of endogenous facts. Let q be a Boolean query and $f \in D^n$ be an endogenous fact. The Shapley value of $f$ in $D$ for query $q$ is defined as:
+	Let the database instance $I$ be partitioned into two sets of facts: a set $I^x$ of  exogenous facts, and a set $I^n$ of endogenous facts. Let $Q$ be a Boolean query and $f \in I^n$ be an endogenous fact. The Shapley value of $f$ in $I$ for query $Q$ is defined as:
 	\begin{multline*}
-		Shapley(q, D^n, D^x, f) = \\ \sum_{B \subseteq D^n\backslash \{ f \}}\frac{|B|!(|D^n| - |B| - 1)!}{|D^n|!}  \left(q(D^x \cup B \cup \{ f\} ) - q(D^x \cup B)\right)
+		Shapley(Q, I^n, I^x, f) = \\ \sum_{B \subseteq I^n\backslash \{ f \}}\frac{|B|!(|I^n| - |B| - 1)!}{|I^n|!}  \left(Q(I^x \cup B \cup \{ f\} ) - Q(I^x \cup B)\right)
 	\end{multline*}
 \end{definition}
 
-The sum is performed on all possible coalitions of fact $B$ that do not contain the player $f$. Thus, the value $\left(q(D^x \cup B \cup \{ f\} ) - q(D_x \cup B)\right)$ is the wealth brought by $f$ when added to $B$. As we see, the Boolean query is used as wealth function $v$, thus this value will be 1 only when the set $D^x \cup B \cup \{ f\}$ makes the query true, and the set $D_x \cup B$ still makes it false, i.e., when the addition of the fact $f$ is determinant to make the Boolean query true. 
-The value $|B|!(|D^n| - |B| - 1)!$ is the number of all the possible permutations over $D^n$ where the facts in $B$ come first, then $f$ is added, and then all the remaining facts. Thus, the value $\frac{|B|!(|D^n| - |B| - 1)!}{|D^n|!}$ can be thought as a weight for the wealth brought by the addition of $f$ to the coalition $B$. 
+The set $I^n$ of endogenous facts can be thought as the set of tuples being taken into consideration, while $I^x$ is the set of ignored tuples. The choice on $I^n$ is usually application-dependent.
 
-To extend this definition to non-Boolean queries, we use the same straightforward approach used in \citet{Deutch2021Shapley}: the Shapley value of the fact $f$ for the answer $\bar{t}$ to $q(\bar{x})$ is the value $Shapley(q[\bar{x} / \bar{t}], D^n, D^x, f)$, where $q[\bar{x} / \bar{t}]$ is the Boolean query defined by $q[\bar{x} / \bar{t}](D) = 1$ if and only if $\bar{t}$ is in the output of $q(\bar{x})$ on $D$, and $0$ otherwise.
+The sum in the definition of the Shapley value is performed on all possible coalitions of fact $B$ that do not contain the player $f$. Thus, the value $\left(Q(I^x \cup B \cup \{ f\} ) - Q(I_x \cup B)\right)$ is the wealth brought by $f$ when added to $B$. As we see, the Boolean query is used as wealth function $v$: its value is $1$ only when the set $I^x \cup B \cup \{ f\}$ makes the query true, and the set $I_x \cup B$ makes it false, i.e., when the addition of the fact $f$ is determinant to make the Boolean query true. 
+The value $|B|!(|I^n| - |B| - 1)!$ is the number of all the possible permutations over $I^n$ where the facts in $B$ come first, then $f$ is added, and then all the remaining facts. Thus, the value $\frac{|B|!(|I^n| - |B| - 1)!}{|I^n|!}$ can be thought as a weight for the wealth brought by the addition of $f$ to the coalition $B$. 
+
+To extend this definition to non-Boolean queries, we use the same straightforward approach used in \citet{DFKM22}: the Shapley value of the fact $f$ for the answer $\bar{t}$ to $Q(\bar{x})$ is the value $Shapley(Q[\bar{x} / \bar{t}], I^n, I^x, f)$, where $Q[\bar{x} / \bar{t}]$ is the Boolean query defined by $Q[\bar{x} / \bar{t}](I) = 1$ if and only if $\bar{t}$ is in the output of $Q(\bar{x})$ on $I$, and $0$ otherwise.
 \scream{DD: I added this paragraph down here hoping to make things clearer. If you think it fails to do so, feel free to delete it.}
-In other words, the definition of $Shapley(q, D^n, D^x, f)$ is extended to such queries $q(\bar{x})$ with free variables by considering the query $q[\bar{x} / \bar{t}]$ instead as value function. This query can be seen as a function that takes as input a set of facts and returns $1$ if this set is a witness for $\bar{t}$, and $0$ otherwise.
+In other words, the definition of $Shapley(Q, I^n, I^x, f)$ is extended to such queries $Q(\bar{x})$ with free variables by considering the Boolean query $Q[\bar{x} / \bar{t}]$ instead as value function. This query can be seen as a function that takes as input a set of facts and returns $1$ if this set is a witness for $\bar{t}$, and $0$ otherwise.
 
 \begin{table}[]
 \footnotesize
@@ -326,13 +351,15 @@ In other words, the definition of $Shapley(q, D^n, D^x, f)$ is extended to such 
   \label{table:result_shapley}
 \end{table} 
 
-As an example, consider table \ref{table:result_shapley}, that shows the Shapley values for the lineage's tuples of $o_1$ and $o_2$. In fact, it is only necessary to consider as endogenous tuples the ones of the lineage, since they are the only ones contributing to the generation of the output. In this case, to compute the Shapley value of an input tuple $f$ it is sufficient to compute and the values $\frac{|B|!(|D^n| - |B| - 1)!}{|D^n|!}$ for all the possible sets $B$ such that $B \cup \{f\}$ is a witness and $B$ alone instead is not. 
-Thus, suppose we want to compute the Shapley value of the tuple $f_1$. Let us call $\bar{Q}_{1, o_1}$ the Boolean query such that $\bar{Q}_{1, o_1}(D) = 1$ if and only if $o_1$ is in the output of \texttt{Q1}, and $L_{o_1}$ the lineage of $o_1$.
-The computation is the following:
+As an example, consider table \ref{table:result_shapley}, that shows the Shapley values for the lineage's tuples of $o_1$ and $o_2$, results of query \texttt{Q1}. 
+Since the tuples of the lineage are the only one with a role in creating the output tuples, when computing the Shapley value we can use it as the set of endogenous facts.
+We note moreover that, to compute the Shapley value of an input tuple $f$m it is sufficient to compute and sum the values $\frac{|B|!(|I^n| - |B| - 1)!}{|I^n|!}$ for all the possible sets $B$ such that $B \cup \{f\}$ is a witness and $B$ is not. 
+Thus, suppose we want to compute the Shapley value of the tuple $f_1$. Let us call $\bar{Q}_{1, o_1}$ the Boolean query such that $\bar{Q}_{1, o_1}(I) = 1$ if and only if $o_1$ is in the output of \texttt{Q1}, and $L_{o_1}$ the lineage of $o_1$.
+Then the Shapley value of $f_1$ is given by:
 
 \[
 \begin{array}{ll}
-	Shapley(\bar{Q}_{1, o_1}, L, D - L, f_1) & = \frac{2!2!}{5!} + \frac{2!2!}{5!} + \frac{3!}{5!} + \frac{3!}{5!}  + \frac{3!}{5!} + \frac{3!}{5!} + \frac{4!}{5!}\\
+	Shapley(\bar{Q}_{1, o_1}, L, I \backslash L, f_1) & = \frac{2!2!}{5!} + \frac{2!2!}{5!} + \frac{3!}{5!} + \frac{3!}{5!}  + \frac{3!}{5!} + \frac{3!}{5!} + \frac{4!}{5!}\\
 	& = \frac{7}{15}
 \end{array}
 \]
@@ -342,11 +369,12 @@ Where, for the first element of the sum the corresponding $B$ is $\{c2f_1, c_1\}
 Similarly, for tuple $c_1$ (and the other tuples of the lineage), the computation is:
 \[
 \begin{array}{ll}
-	Shapley(\bar{Q}_{1, o_1}, L, D - L, c_1) & = \frac{2!2!}{5!} + \frac{3!}{5!} + \frac{3!}{5!}\\
+	Shapley(\bar{Q}_{1, o_1}, L, I \backslash L, c_1) & = \frac{2!2!}{5!} + \frac{3!}{5!} + \frac{3!}{5!}\\
 	& = \frac{2}{15}
 \end{array}
 \]
 
+Similarly, it can be seen that for the tuples of $o_2$'s lineage the corresponding Shapley values are all equal to $1/3$, since they are all equally responsible for the generation of the output.
 As we can see, the sum of the Shapley values of all the tuples in an output tuple's lineage is always equal to 1 when using a Boolean query as wealth function. 
 
 
