@@ -15,7 +15,7 @@ The source code for the experiments is written in Java and supported by a Postgr
 
 \begin{figure}[t]
 \centering
-  \includegraphics[width=.9\textwidth]{figures/paper_based}
+  \includegraphics[width=\textwidth]{figures/paper_based}
   \caption{Comparison of four DS on the same table \texttt{family} using the distribution given by the queries retrieved from papers. Each cell is a tuple.}
   \label{figure:comparison_on_papers}
 \end{figure}
@@ -214,7 +214,7 @@ $
 \\
 {\footnotesize{\bf Lineage: }
 $
-\{f_1, f_5, c2f_1, c_1, c2f_1, c2f_2, c2f_{17}, c_1, c_2, c_{18} \}
+\{f_1, f_5, c2f_1, c2f_2, c2f_{17}, c_1, c_2, c_{18} \}
 $}
 \\
 {\footnotesize{\bf Credit distribution:}\\
@@ -226,7 +226,7 @@ $}
 \\
 {\footnotesize{\bf Causality:}
 counterfactual causes: $\emptyset$,\\
-actual causes: $\{f_1, f_5, c2f_1, c_1, c2f_1, c2f_2, c2f_{17}, c_1, c_2, c_{18} \}$ \\
+actual causes: $\{f_1, f_5, c2f_1, c2f_2, c2f_{17}, c_1, c_2, c_{18} \}$ \\
 \textbf{Responsibility:}\\ 
 $
 f_1 = \frac{1}{2}, f_5 = \frac{1}{2}, c2f_1 = \frac{1}{3}, c2f_2 = \frac{1}{3}, 
@@ -240,7 +240,16 @@ f_1 = \frac{3}{20}, f_5 = \frac{3}{20}, c2f_1 = \frac{1}{10}, c2f_2 = \frac{1}{1
 c2f_{17}=\frac{3}{20} , c_1 = \frac{1}{10}, c_2 = \frac{1}{10}, c_{18} = \frac{3}{20}  
 $
 }
- \caption{Sample synthetic provenance polynomial (how-provenance) and corresponding why-provenance, lineage, causality and  responsibility values, together with the corresponding credit distributions.}
+\\
+\\
+{\footnotesize{\bf Shapley value:}\\
+$
+f_1 = 0.258\bar{3}, f_5 = \frac{1}{8}, c2f_1 = 0.091\bar{6}, c2f_2 = 0.091\bar{6}, 
+c2f_{17}=\frac{1}{8} , c_1 = 0.091\bar{6}, c_2 = 0.091\bar{6}, c_{18} = \frac{1}{8}  
+$
+}
+
+\caption{Sample synthetic provenance polynomial (how-provenance) and corresponding why-provenance, lineage, responsibility, and Shapley values, together with the corresponding credit distributions. In the case of the Shapley value, the value and the distribution of credit are the same.}
  \label{fig:syntheticDistributions}
  \end{figure}
 
@@ -310,7 +319,7 @@ Despite being synthetic, these provenance polynomials are realistic:  they can b
 
 \paragraph{Results} The results of credit distribution on the \texttt{family} table using 10K randomly generated synthetic provenance polynomials are shown in
 Figure \ref{figure:comparison_on_synthetic_polynomials_2}. 
-We set the maximum value in the heat maps to the highest value reached by a tuple in all three distributions (i.e., $7.5$). 
+We set the maximum value in the heat maps to the highest value reached by a tuple in all \rtwo{five} distributions (i.e., $7.7$, with the Shapley value-based DS). 
 
 As can be seen, the four strategies generate different credit distributions, indicated by the varying hues. 
 However, there is a certain amount of consistency between them in that tuples which are highly rewarded by one strategy are also highly rewarded by the others. This shows that the four DSs consistently reward certain tuples more than others. 
@@ -349,8 +358,8 @@ Since credit accrues over time, we simulate the passage of time by varying the n
 
 \begin{figure}[h!]
 \centering
-  \includegraphics[width=.75\textwidth]{figures/experiments/comparison}
-  \caption{Comparison of the distribution of credit performed by the four DSs on a subset of 10 tuples taken from the \texttt{family} table, simulating the passing of time. The number at the top of each group of heat-maps represents the number of polynomials whose credit has been distributed.}
+  \includegraphics[width=.60\textwidth]{figures/experiments/comparison}
+  \caption{Comparison of the distribution of credit performed by the \rtwo{five} DSs on a subset of 10 tuples taken from the \texttt{family} table, simulating the passing of time. The number at the top of each group of heat-maps represents the number of polynomials whose credit has been distributed.}
   \label{fig:comparison}
 \end{figure}
 
@@ -470,7 +479,7 @@ Credit distribution therefore rewards authors differently than traditional citat
 
 \begin{figure}[t]
 \centering
-  \includegraphics[width=1\textwidth]{figures/fixed_radars}
+  \includegraphics[width=1\textwidth]{figures/radar}
   \caption{
   Radars presenting the 20 synthetic authors with corresponding citation and quantities of credit distributed through the 4 DSs (all values normalized between 0 and 1) through different numbers of polynomials (respectively, 100, 1K and 10K). 
   The order is the one defined by figure a, i.e. descending order of citations  obtained from 100 polynomials. }

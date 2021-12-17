@@ -324,6 +324,21 @@ Assuming that $k_{o_1} = 1$, $f_1$ receives credit $1/3$, while the others recei
 As we see, the DS in this case returns the same distribution as that obtained using why-provenance as shown in Figure \ref{figure:distributions_differences}.
 This is not always the case though, as we show in the example of Section \ref{sec:synth_queries}.
 
+\rtwo{\subsection{Shapley value-based Distribution Strategy}}
+
+Similarly to Responsibility, the Shapley value can be seen both as a method to generate and distribute credit. Moreover, it can be seen that, using the definition of Shapley value for Boolean queries given in Section \ref{sec:shapley_value}, the sum of the Shapley values of all the tuples of the lineage $L$ of an output tuple $o$ is $1$. Thus, the definition of a Shapley value-based distribution strategy is straightforward:
+
+\begin{definition}{Shapley Value-Based Distribution Strategy} \\
+	Let $I$ be a database instance, $Q$ a query over $I$, $o \in Q(I)$ an output tuple, $L$ the lineage of $o$ and $k_o$ the credit given to $o$. The credit given to tuple $t$ in $I$ is:
+	\[
+		f_{I, Q}(t, k_o) = k_o \cdot Shapley(\bar{Q}_o, L, I \backslash L, t)
+	\] 
+	Where $\bar{Q}_o$ is the Boolean query such that $\bar{Q}_o(I) = 1$ if and only if $o$ is in the output of $Q$ on $I$.
+\end{definition}
+
+As shown in Table \ref{table:result_shapley}, tuple $f_1$ in $o_1$'s lineage takes credit $7/15$ when $k_{o_1} = 1$, while the other tuples of the lineage take credit $2/15$. This DS still rewards $f_1$ more than the other tuples, since it is more important than the other tuples of the lineage. This DS thus behaves differently from all the other four previous strategies. In particular, $f_1$ is rewarded more with this DS than with the others.
+
+In the case of $o_2$ there is only one witness set, thus this DS behaves like all the others, distributing $1/3$ of credit to each tuple in the lineage. 
 
 
 

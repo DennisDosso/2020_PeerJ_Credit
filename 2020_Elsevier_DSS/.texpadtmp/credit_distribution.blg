@@ -4,45 +4,45 @@ The top-level auxiliary file: /Users/dennisdosso/Dropbox/paper di Dennis/IN CORS
 The style file: apalike.bst
 Database file #1: ../ultimateBibliographyBib.bib
 Warning--empty publisher in CODATA2013
-You've used 61 entries,
+You've used 64 entries,
             1935 wiz_defined-function locations,
-            865 strings with 17074 characters,
-and the built_in function-call counts, 29207 in all, are:
-= -- 2759
-> -- 1663
-< -- 36
-+ -- 625
-- -- 597
-* -- 2680
-:= -- 5109
-add.period$ -- 188
-call.type$ -- 61
-change.case$ -- 598
-chr.to.int$ -- 61
-cite$ -- 62
-duplicate$ -- 955
-empty$ -- 1768
-format.name$ -- 674
-if$ -- 5582
-int.to.chr$ -- 1
+            896 strings with 18211 characters,
+and the built_in function-call counts, 31245 in all, are:
+= -- 2951
+> -- 1776
+< -- 40
++ -- 664
+- -- 635
+* -- 2837
+:= -- 5430
+add.period$ -- 201
+call.type$ -- 64
+change.case$ -- 629
+chr.to.int$ -- 63
+cite$ -- 65
+duplicate$ -- 1046
+empty$ -- 1907
+format.name$ -- 715
+if$ -- 6021
+int.to.chr$ -- 2
 int.to.str$ -- 0
-missing$ -- 60
-newline$ -- 307
-num.names$ -- 187
-pop$ -- 526
+missing$ -- 64
+newline$ -- 323
+num.names$ -- 202
+pop$ -- 575
 preamble$ -- 1
-purify$ -- 600
+purify$ -- 631
 quote$ -- 0
-skip$ -- 730
+skip$ -- 797
 stack$ -- 0
-substring$ -- 1852
-swap$ -- 137
-text.length$ -- 11
+substring$ -- 1966
+swap$ -- 172
+text.length$ -- 15
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 362
+type$ -- 380
 warning$ -- 1
-while$ -- 221
+while$ -- 236
 width$ -- 0
-write$ -- 793
+write$ -- 836
 (There was 1 warning)

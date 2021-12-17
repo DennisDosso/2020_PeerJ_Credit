@@ -51,11 +51,6 @@ Bertin-Mahieux, T., Ellis, D., Whitman, B., and Lamere, P. (2011).
 \newblock In {\em Proceedings of the 12th International Conference on Music
   Information Retrieval (ISMIR 2011)}, pages 591--596.
 
-\bibitem[Bonifati et~al., 2017]{BonifatiMT17}
-Bonifati, A., Martens, W., and Timm, T. (2017).
-\newblock An analytical study of large {SPARQL} query logs.
-\newblock {\em {PVLDB}}, 11(2):149--161.
-
 \bibitem[Borgman, 2016]{Borgman2016}
 Borgman, C.~L. (2016).
 \newblock {Data Citation as a Bibliometric Oxymoron}.
@@ -149,6 +144,20 @@ Davidson, S.~B., Deutch, D., Milo, T., and Silvello, G. (2017).
 \newblock In {\em {CIDR} 2017, 8th Biennial Conference on Innovative Data
   Systems Research}. www.cidrdb.org.
 
+\bibitem[Deutch et~al., 2022a]{DFKM22}
+Deutch, D., Frost, N., Kimelfeld, B., and Monet, M. (2022a).
+\newblock {Computing the Shapley Value of Facts in Query Answering}.
+\newblock In Bonifati, A. and Abbadi, A.~E., editors, {\em {SIGMOD} '22:
+  International Conference on Management of Data, Philadelphia, June 12-17,
+  2022}. {ACM}.
+
+\bibitem[Deutch et~al., 2022b]{Deutch2021Shapley}
+Deutch, D., Frost, N., Kimelfeld, B., and Monet, M. (2022b).
+\newblock Computing the shapley value of facts in query answering.
+\newblock {\em the 2022 Special Interest Group on Management of Data conference
+  (SIGMOD)}.
+\newblock in print.
+
 \bibitem[Dosso and Silvello, 2020]{dosso2020data}
 Dosso, D. and Silvello, G. (2020).
 \newblock Data credit distribution: A new method to estimate databases impact.
@@ -164,12 +173,6 @@ Dubernet, M.~L., Antony, B.~K., Ba, Y.~A., et~al. (2016).
 Eiter, T. and Lukasiewicz, T. (2002).
 \newblock Complexity results for structure-based causality.
 \newblock {\em Artif. Intell.}, 142(1):53--89.
-
-\bibitem[{ESIP Data Preservation and Stewardship Committee (EDPSC)},
-  2019]{esip2019}
-{ESIP Data Preservation and Stewardship Committee (EDPSC)} (2019).
-\newblock Data citation guidelines for earth science data, version 2.
-\newblock Version 2, Earth Science Information Partners.
 
 \bibitem[Fang, 2018]{creditFang18}
 Fang, H. (2018).
@@ -225,6 +228,12 @@ Honor, L.~B., Haselgrove, C., Frazier, J.~A., and Kennedy, D.~N. (2016).
   identification and attribution.
 \newblock {\em Frontiers in neuroinformatics}, 10:34.
 
+\bibitem[Jain et~al., 2016]{Jain2016sqlshare}
+Jain, S., Moritz, D., Halperin, D., Howe, B., and Lazowska, E. (2016).
+\newblock Sqlshare: Results from a multi-year sql-as-a-service experiment.
+\newblock In {\em Proceedings of the 2016 International Conference on
+  Management of Data}, pages 281--293.
+
 \bibitem[Joshi{-}Tope et~al., 2005]{reactome2016}
 Joshi{-}Tope, G., Gillespie, M., Vastrik, I., D'Eustachio, P., Schmidt, E.,
   de~Bono, B., Jassal, B., Gopinath, G.~R., Wu, G.~R., Matthews, L., Lewis, S.,
@@ -248,6 +257,14 @@ Lawrence, B., Jones, C., Matthews, B., Pepler, S., and Callaghan, S. (2011).
 \newblock {Citation and Peer Review of Data: Moving Towards Formal Data
   Publication}.
 \newblock {\em {International Journal of Digital Curation}}, 6(2):4--37.
+
+\bibitem[Livshits et~al., 2020]{LivshitsBKS20}
+Livshits, E., Bertossi, L.~E., Kimelfeld, B., and Sebag, M. (2020).
+\newblock The shapley value of tuples in query answering.
+\newblock In Lutz, C. and Jung, J.~C., editors, {\em 23rd International
+  Conference on Database Theory, {ICDT} 2020, March 30-April 2, 2020,
+  Copenhagen, Denmark}, volume 155 of {\em LIPIcs}, pages 20:1--20:19. Schloss
+  Dagstuhl - Leibniz-Zentrum f{\"{u}}r Informatik.
 
 \bibitem[Martone, 2014]{martone2014joint}
 Martone, M. (2014).
@@ -286,11 +303,6 @@ Nosek, B.~A., Alter, G., Banks, G.~C., Borsboom, D., Bowman, S.~D., Breckler,
 \newblock Promoting an open research culture.
 \newblock {\em Science}, 348(6242):1422--1425.
 
-\bibitem[Parsons et~al., 2019]{parsons2019history}
-Parsons, M.~A., Duerr, R.~E., and Jones, M.~B. (2019).
-\newblock The history and future of data citation in practice.
-\newblock {\em Data Science Journal}, 18(1).
-
 \bibitem[Peters et~al., 2016]{Peters2016}
 Peters, I., Kraker, P., Lex, E., Gumpenberger, C., and Gorraiz, J. (2016).
 \newblock {Research data explored: An extended analysis of citations and
@@ -316,6 +328,18 @@ Rauber, A., Asmi, A., van Uytvanck, D., and Proell, S. (2015).
 \newblock Data citation of evolving data: Recommendations of the working group
   on data citation (wgdc).
 \newblock {\em Result of the RDA Data Citation WG}, 20.
+
+\bibitem[Remil et~al., 2021]{Remil2021makes}
+Remil, Y., Bendimerad, A., Mathonat, R., Chaleat, P., and Kaytoue, M. (2021).
+\newblock " what makes my queries slow?": Subgroup discovery for sql workload
+  analysis.
+\newblock {\em arXiv preprint arXiv:2108.03906}.
+
+\bibitem[Shapley, 1954]{Shapley1954}
+Shapley, L.~S. (1954).
+\newblock A value for n-person games.
+\newblock In Kuhn, H.~W. and Tucker, A.~W., editors, {\em Contributions to the
+  Theory of Games II}, pages 307--317. Princeton University Press, Princeton.
 
 \bibitem[Silvello, 2018]{Silvello18jasist}
 Silvello, G. (2018).
