@@ -521,13 +521,14 @@ Every time an author appears as curator of one or more tuples used in a polynomi
 They also receive four kinds of credit, each one using a different DS.
 
 Figure \ref{figure:3_radars} shows three radar plots, one for the results obtained with 100 polynomials, one with 1K polynomials, one with 10K polynomials.  
-Each plot shows the top 20 authors in terms of citations (hence the authors and clockwise ordering is the same in each of the plots), and additionally shows the the normalized values of citation (blue line), lineage-based credit (yellow line), why-provenance-based credit (green line), how-provenance-based  credit (red line), \rtwo{and responsibility-based credit (violet line)}. 
+Each plot shows the top 20 authors in terms of citations (hence the authors and clockwise ordering is the same in each of the plots), and additionally shows the the normalized values of citation (blue line), lineage-based credit (yellow line), why-provenance-based credit (green line), how-provenance-based  credit (red line), \rtwo{responsibility-based credit (violet line), and the Shapley value-based credit (brown line)}. 
+
 As can be seen, given the synthetic nature of the queries, the correlation between the number of citations and the quantity of credit assigned to the authors appears to be a much stronger than with the real-world queries of Figure~\ref{figure:2_radars}. In fact, for Figure \ref{figure:3_radars}.a  the linear correlation between the citation number and all four types of credit is always above 0.94 with p values in the order of 3e-8.
 \eat{Nonetheless, it can still be seen that credit does not always follow the citation count. }
-The credit distributed via lineage is closest to  the number of citations (a linear correlation of 0.99, p value of 2e-16 in Figure \ref{figure:3_radars}.a), while the other three types of credit behave slightly differently (a linear correlation of around 0.95 in all other three cases in Figure \ref{figure:3_radars}.a).  
+The credit distributed via lineage is closest to  the number of citations (a linear correlation of 0.99, p value of 2e-16 in Figure \ref{figure:3_radars}.a), while the other three types of credit behave slightly differently (a linear correlation of around 0.95 or above in all other four cases in Figure \ref{figure:3_radars}.a).  
 Similar observations can be made for Figure \ref{figure:3_radars}.b and \ref{figure:3_radars}.c.
 
-What these figures show is that, in certain cases, authors who do not have a large number of citations receive more credit than others, as for example authors 17 and 10 in Figure \ref{figure:3_radars}.a, 
+What these figures show is that, in certain cases, authors who do not have a large number of citations receive more credit than others, as for example authors 17, 18 and 10 in Figure \ref{figure:3_radars}.a, 
 %or author 19 in Figures \ref{figure:3_radars}.b and \ref{figure:3_radars}.c, 
 and especially when credit is distributed using how-provenance.
 This again shows how credit gives a different perspective on the role of data and authors by going beyond the limitations of traditional citations.  
