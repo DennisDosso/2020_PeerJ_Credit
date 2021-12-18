@@ -3,46 +3,47 @@ Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: /Users/dennisdosso/Dropbox/paper di Dennis/IN CORSO/2020_PeerJ_Credit/2020_Elsevier_DSS/.texpadtmp/credit_distribution.aux
 The style file: apalike.bst
 Database file #1: ../ultimateBibliographyBib.bib
+Warning--I didn't find a database entry for "Deutch2021Shapley"
 Warning--empty publisher in CODATA2013
-You've used 64 entries,
+You've used 63 entries,
             1935 wiz_defined-function locations,
-            896 strings with 18211 characters,
-and the built_in function-call counts, 31245 in all, are:
-= -- 2951
-> -- 1776
+            892 strings with 18006 characters,
+and the built_in function-call counts, 30869 in all, are:
+= -- 2916
+> -- 1753
 < -- 40
-+ -- 664
-- -- 635
-* -- 2837
-:= -- 5430
-add.period$ -- 201
-call.type$ -- 64
-change.case$ -- 629
++ -- 655
+- -- 627
+* -- 2806
+:= -- 5358
+add.period$ -- 197
+call.type$ -- 63
+change.case$ -- 620
 chr.to.int$ -- 63
-cite$ -- 65
-duplicate$ -- 1046
-empty$ -- 1907
-format.name$ -- 715
-if$ -- 6021
-int.to.chr$ -- 2
+cite$ -- 64
+duplicate$ -- 1033
+empty$ -- 1887
+format.name$ -- 706
+if$ -- 5952
+int.to.chr$ -- 1
 int.to.str$ -- 0
-missing$ -- 64
-newline$ -- 323
-num.names$ -- 202
-pop$ -- 575
+missing$ -- 63
+newline$ -- 317
+num.names$ -- 199
+pop$ -- 567
 preamble$ -- 1
-purify$ -- 631
+purify$ -- 622
 quote$ -- 0
-skip$ -- 797
+skip$ -- 788
 stack$ -- 0
-substring$ -- 1966
-swap$ -- 172
+substring$ -- 1954
+swap$ -- 171
 text.length$ -- 15
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 380
+type$ -- 374
 warning$ -- 1
-while$ -- 236
+while$ -- 234
 width$ -- 0
-write$ -- 836
-(There was 1 warning)
+write$ -- 822
+(There were 2 warnings)

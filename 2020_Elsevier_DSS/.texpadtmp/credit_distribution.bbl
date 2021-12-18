@@ -144,19 +144,12 @@ Davidson, S.~B., Deutch, D., Milo, T., and Silvello, G. (2017).
 \newblock In {\em {CIDR} 2017, 8th Biennial Conference on Innovative Data
   Systems Research}. www.cidrdb.org.
 
-\bibitem[Deutch et~al., 2022a]{DFKM22}
-Deutch, D., Frost, N., Kimelfeld, B., and Monet, M. (2022a).
+\bibitem[Deutch et~al., 2022]{DFKM22}
+Deutch, D., Frost, N., Kimelfeld, B., and Monet, M. (2022).
 \newblock {Computing the Shapley Value of Facts in Query Answering}.
 \newblock In Bonifati, A. and Abbadi, A.~E., editors, {\em {SIGMOD} '22:
   International Conference on Management of Data, Philadelphia, June 12-17,
   2022}. {ACM}.
-
-\bibitem[Deutch et~al., 2022b]{Deutch2021Shapley}
-Deutch, D., Frost, N., Kimelfeld, B., and Monet, M. (2022b).
-\newblock Computing the shapley value of facts in query answering.
-\newblock {\em the 2022 Special Interest Group on Management of Data conference
-  (SIGMOD)}.
-\newblock in print.
 
 \bibitem[Dosso and Silvello, 2020]{dosso2020data}
 Dosso, D. and Silvello, G. (2020).

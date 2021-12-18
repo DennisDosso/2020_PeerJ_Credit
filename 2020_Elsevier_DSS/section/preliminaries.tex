@@ -315,7 +315,7 @@ For the output tuple $o_2$, all the tuples of the lineage are counterfactual cau
 To use the Shapley in the context of conjunctive queries for relational databases, we use the definitions provided in \cite{DFKM22}:  given a query $q(\bar{x})$, a database $D$, an input fact $f \in D$ (here seen as a player) and a tuple $\bar{t}$ of same arity as $\bar{x}$, the Shapley value of $f$ in $D$ intuitively represents the contribution of $f$ to the presence (or absence) of $\bar{t}$ in the query result.
 Formally, the Shapley value is defined as follows:
 
-\begin{definition}{Shapley value \cite{Deutch2021Shapley}}\\
+\begin{definition}{Shapley value \cite{DFKM22}}\\
 	Let the database instance $I$ be partitioned into two sets of facts: a set $I^x$ of  exogenous facts, and a set $I^n$ of endogenous facts. Let $Q$ be a Boolean query and $f \in I^n$ be an endogenous fact. The Shapley value of $f$ in $I$ for query $Q$ is defined as:
 	\begin{multline*}
 		Shapley(Q, I^n, I^x, f) = \\ \sum_{B \subseteq I^n\backslash \{ f \}}\frac{|B|!(|I^n| - |B| - 1)!}{|I^n|!}  \left(Q(I^x \cup B \cup \{ f\} ) - Q(I^x \cup B)\right)
