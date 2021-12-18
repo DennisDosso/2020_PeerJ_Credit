@@ -3,13 +3,14 @@
 
 This paper 
 %expanded on our previous work on data credit and data credit distribution in \cite{dosso2020data} by 
-defines three new distribution strategies based on why-provenance, how-provenance, and responsibility, and compares them against the lineage-based distribution strategy defined in \cite{dosso2020data}. 
+defines four new distribution strategies based on why-provenance, how-provenance, responsibility, and the Shapley Value, and it compares them against the lineage-based distribution strategy defined in \cite{dosso2020data}. 
 The first, why-provenance-based DS, uses the concept of a witness, and gives more credit to tuples that appear in more than one witness. 
 In this way, tuples that are more important to the query and are used in different ways are rewarded more. % by the strategy.
 The second, how-provenance-based DS, considers the frequency with which a tuple or combination of tuples is used in the query through the information contained in a provenance polynomial. In this case, the how-provenance-based DS is more sensitive than the why-provenance-based DS to the role and importance of tuples.
-The third DS exploits the notion of responsibility, a real value which ranks the lineage tuples based on their degree of causality in generating the output. The responsibility-based DS was shown to behave similarly to the why-provenance based DS.
+\rtwo{The third DS exploits the notion of responsibility, a real value which ranks the lineage tuples based on their degree of causality in generating the output. The responsibility-based DS was shown to behave similarly to the why-provenance based DS.}
+\rtwo{The fourth DS uses the Shapley value function, used to rank the facts of the database, seen as players, in producing the required result. To do so, the wealth function in the Shapley value's definition was adapted for general free-variable queries on the database.}
 
-To show the differences between the four DSs, we performed extensive experiments based on GtoPdb, a curated scientific relational database, using both real and synthetic queries. 
+To show the differences between the five DSs, we performed extensive experiments based on GtoPdb, a curated scientific relational database, using both real and synthetic queries. 
 In the first set of experiments, we used select-project-join (SPJ) queries extracted from citations to webpages in GtoPdb found in papers published in the British Journal of Pharmacology. 
 Using these ``real" queries, we distributed credit to tuples in different tables of the database, highlighting tuples that were more frequently used. 
 We showed that, with these queries, the four strategies produce the same distribution. This is because the SPJ queries were fairly simple, and did not use self-joins. Therefore the formulas underlying the different DSs had the same output.
@@ -18,8 +19,9 @@ In the second set of experiments, we synthetically produced more complex provena
 These experiments highlighted the differences between the four DSs.
 \eat{
 In this way, we showed that, even though all three DS can highlight all the tuples used by the queries in the database, the three have different behaviors. }
-While the DS based on lineage rewards all the tuples used by a query equally, the strategies based on why-provenance and responsibility give more credit to  tuples that are more critical to the query. 
-In particular, why-provenance consider the different ways in which a tuple is used in a query, while responsibility considers the relative importance of a tuple in the generation of the output.  
+\rtwo{While the DS based on lineage rewards all the tuples used by a query equally, the strategies based on why-provenance and responsibility give more credit to  tuples that are more critical to the query.
+In particular, why-provenance considers the different ways in which a tuple is used in a query, while responsibility considers the relative importance of a tuple in the generation of the output.}  
+\rtwo{The DS based on the Shapley value similarly rewards the tuples based on their participation. The more impactful the role of a tuple, the higher its reward in credit. This distribution proved to be different from the previous two and to reward even more tuples that are used in more than one witness.}
 How-provenance is even more sensitive to the tuple's role: it also considers the frequency with which a tuple or a set of tuples is used. %in the case of more complex queries. Depending on the goal of a user, one provenance may be preferred to another. 
 
 In the third set of experiments, we showed how the differences between the DS are compounded over time, i.e. when more and more queries are processed by the system.
