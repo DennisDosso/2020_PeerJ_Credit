@@ -26,10 +26,12 @@ Altman, M., Borgman, C.~L., Crosas, M., and Martone, M. (2015).
 \newblock {\em {Bulletin of the Association for Information Science and
   Technology}}, 41(3):43--45.
 
-\bibitem[Baggerly, 2010]{baggerly2010disclose}
-Baggerly, K. (2010).
-\newblock Disclose all data in publications.
-\newblock {\em Nature}, 467(7314):401--401.
+\bibitem[Amsterdamer et~al., 2011]{AmsterdamerDT11}
+Amsterdamer, Y., Deutch, D., and Tannen, V. (2011).
+\newblock Provenance for aggregate queries.
+\newblock In Lenzerini, M. and Schwentick, T., editors, {\em Proceedings of the
+  30th {ACM} {SIGMOD-SIGACT-SIGART} Symposium on Principles of Database
+  Systems, {PODS} 2011}, pages 153--164. {ACM}.
 
 \bibitem[Bechhofer et~al., 2013]{Bechhofer2013linkisnotenough}
 Bechhofer, S., Buchan, I.~E., De~Roure, D., Missier, P., Ainsworth, J.~D.,
@@ -144,12 +146,9 @@ Davidson, S.~B., Deutch, D., Milo, T., and Silvello, G. (2017).
 \newblock In {\em {CIDR} 2017, 8th Biennial Conference on Innovative Data
   Systems Research}. www.cidrdb.org.
 
-\bibitem[Deutch et~al., 2022]{DFKM22}
-Deutch, D., Frost, N., Kimelfeld, B., and Monet, M. (2022).
-\newblock {Computing the Shapley Value of Facts in Query Answering}.
-\newblock In Bonifati, A. and Abbadi, A.~E., editors, {\em {SIGMOD} '22:
-  International Conference on Management of Data, Philadelphia, June 12-17,
-  2022}. {ACM}.
+\bibitem[Deutch et~al., 2021]{DFKM22}
+Deutch, D., Frost, N., Kimelfeld, B., and Monet, M. (2021).
+\newblock Computing the shapley value of facts in query answering.
 
 \bibitem[Dosso and Silvello, 2020]{dosso2020data}
 Dosso, D. and Silvello, G. (2020).
@@ -226,6 +225,12 @@ Jain, S., Moritz, D., Halperin, D., Howe, B., and Lazowska, E. (2016).
 \newblock Sqlshare: Results from a multi-year sql-as-a-service experiment.
 \newblock In {\em Proceedings of the 2016 International Conference on
   Management of Data}, pages 281--293.
+
+\bibitem[Jha and Suciu, 2013]{JhaS13}
+Jha, A.~K. and Suciu, D. (2013).
+\newblock Knowledge compilation meets database theory: Compiling queries to
+  decision diagrams.
+\newblock {\em Theory Comput. Syst.}, 52(3):403--440.
 
 \bibitem[Joshi{-}Tope et~al., 2005]{reactome2016}
 Joshi{-}Tope, G., Gillespie, M., Vastrik, I., D'Eustachio, P., Schmidt, E.,

@@ -249,7 +249,7 @@ c2f_{17}=\frac{1}{8} , c_1 = 0.091\bar{6}, c_2 = 0.091\bar{6}, c_{18} = \frac{1}
 $
 }}
 
-\caption{Sample synthetic provenance polynomial (how-provenance) and corresponding why-provenance, lineage, responsibility, and Shapley values, together with the corresponding credit distributions. In the case of the Shapley value, the value is equivalent to the quantity of credit being distributed (assuming that the input credit is equal to $1$.}
+\caption{\rtwo{Sample synthetic provenance polynomial (how-provenance) and corresponding why-provenance, lineage, responsibility, and Shapley values, together with the corresponding credit distributions. In the case of the Shapley value, the value is equivalent to the quantity of credit being distributed (assuming that the input credit is equal to $1$.}}
  \label{fig:syntheticDistributions}
  \end{figure}
 
@@ -345,11 +345,10 @@ We set the maximum value in the heat maps to the highest value reached by a tupl
 %   \label{table:in_detail}
 % \end{table}
 
-
 \begin{table}[]
-\small
 \center
   \caption{\rtwo{Results of the pairwise Kendall Tau test on all the DSs on the \texttt{family} table. The reported values are the correlation and p-value.}}
+  \scriptsize
   \begin{tabular}{|r|l|l|l|l|l|}
   \hline
  & lineage & why & how & resp. & Shapley \\
@@ -364,6 +363,7 @@ Shapley & 0.80 3.11e-254 & 0.91 0.0 & 0.74 2.36e-213 & 0.89 1.15e-306 & 1.0 0.0 
   \label{table:in_detail}
 \end{table}
 \normalsize
+
 
 There is a certain amount of consistency between the strategies in that tuples which are highly rewarded by one strategy are also highly rewarded by the others. This shows that the four DSs consistently reward certain tuples more than others. 
 
@@ -406,7 +406,7 @@ Since credit accrues over time, we simulate the passage of time by varying the n
 \begin{figure}[h!]
 \centering
   \includegraphics[width=.60\textwidth]{figures/experiments/comparison}
-  \caption{Comparison of the distribution of credit performed by the \rtwo{five} DSs on a subset of 10 tuples taken from the \texttt{family} table, simulating the passing of time. The number at the top of each group of heat-maps represents the number of polynomials whose credit has been distributed.}
+  \caption{\rtwo{Comparison of the distribution of credit performed by the \rtwo{five} DSs on a subset of 10 tuples taken from the \texttt{family} table, simulating the passing of time. The number at the top of each group of heat-maps represents the number of polynomials whose credit has been distributed.}}
   \label{fig:comparison}
 \end{figure}
 
@@ -528,8 +528,8 @@ Credit distribution therefore rewards authors differently than traditional citat
 \centering
   \includegraphics[width=1\textwidth]{figures/radar}
   \caption{
-  Radars presenting the 20 synthetic authors with corresponding citation and quantities of credit distributed through the 4 DSs (all values normalized between 0 and 1) through different numbers of polynomials (respectively, 100, 1K and 10K). 
-  The order is the one defined by figure a, i.e. descending order of citations  obtained from 100 polynomials. }
+\rtwo{  Radars presenting the 20 synthetic authors with corresponding citation and quantities of credit distributed through the 4 DSs (all values normalized between 0 and 1) through different numbers of polynomials (respectively, 100, 1K and 10K). 
+  The order is the one defined by figure a, i.e. descending order of citations  obtained from 100 polynomials.}}
   \label{figure:3_radars}
 \end{figure}
 
