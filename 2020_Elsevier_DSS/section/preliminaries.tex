@@ -327,8 +327,7 @@ The set $I^n$ of endogenous facts can be thought as the set of tuples being take
 The sum in the definition of the Shapley value is performed on all possible coalitions of fact $B$ that do not contain the player $f$. Thus, the value $\left(Q(I^x \cup B \cup \{ f\} ) - Q(I_x \cup B)\right)$ is the wealth brought by $f$ when added to $B$. As we see, the Boolean query is used as wealth function $v$: its value is $1$ only when the set $I^x \cup B \cup \{ f\}$ makes the query true, and the set $I_x \cup B$ makes it false, i.e., when the addition of the fact $f$ is determinant to make the Boolean query true. 
 The value $|B|!(|I^n| - |B| - 1)!$ is the number of all the possible permutations over $I^n$ where the facts in $B$ come first, then $f$ is added, and then all the remaining facts. Thus, the value $\frac{|B|!(|I^n| - |B| - 1)!}{|I^n|!}$ can be thought as a weight for the wealth brought by the addition of $f$ to the coalition $B$. 
 
-To extend this definition to non-Boolean queries, we use the same straightforward approach used in \citet{DFKM22}: the Shapley value of the fact $f$ for the answer $\bar{t}$ to $Q(\bar{x})$ is the value $Shapley(Q[\bar{x} / \bar{t}], I^n, I^x, f)$, where $Q[\bar{x} / \bar{t}]$ is the Boolean query defined by $Q[\bar{x} / \bar{t}](I) = 1$ if and only if $\bar{t}$ is in the output of $Q(\bar{x})$ on $I$, and $0$ otherwise.
-\scream{DD: I added this paragraph down here hoping to make things clearer. If you think it fails to do so, feel free to delete it.}
+To extend this definition to non-Boolean queries, we use the same straightforward approach used by \citet{DFKM22}: the Shapley value of the fact $f$ for the answer $\bar{t}$ to $Q(\bar{x})$ is the value $Shapley(Q[\bar{x} / \bar{t}], I^n, I^x, f)$, where $Q[\bar{x} / \bar{t}]$ is the Boolean query defined by $Q[\bar{x} / \bar{t}](I) = 1$ if and only if $\bar{t}$ is in the output of $Q(\bar{x})$ on $I$, and $0$ otherwise.
 In other words, the definition of $Shapley(Q, I^n, I^x, f)$ is extended to such queries $Q(\bar{x})$ with free variables by considering the Boolean query $Q[\bar{x} / \bar{t}]$ instead as value function. This query can be seen as a function that takes as input a set of facts and returns $1$ if this set is a witness for $\bar{t}$, and $0$ otherwise.
 
 \begin{table}[]
@@ -343,7 +342,7 @@ In other words, the definition of $Shapley(Q, I^n, I^x, f)$ is extended to such 
     \hline
   \end{tabular}
   \begin{tabular}{c}
-  	responsibility   \\
+  	Shepley value   \\
   	$f_1=\frac{7}{15}, c2f_1=\frac{2}{15}, c2f_2=\frac{2}{15}, c_1=\frac{2}{15}, c_2=\frac{2}{15}$ \\
   	$f_4=\frac{1}{3}, c2f_4=\frac{1}{3}, c_1=\frac{1}{3}$ \\
   \end{tabular}
@@ -353,7 +352,7 @@ In other words, the definition of $Shapley(Q, I^n, I^x, f)$ is extended to such 
 
 As an example, consider table \ref{table:result_shapley}, that shows the Shapley values for the lineage's tuples of $o_1$ and $o_2$, results of query \texttt{Q1}. 
 Since the tuples of the lineage are the only one with a role in creating the output tuples, when computing the Shapley value we can use it as the set of endogenous facts.
-We note moreover that, to compute the Shapley value of an input tuple $f$m it is sufficient to compute and sum the values $\frac{|B|!(|I^n| - |B| - 1)!}{|I^n|!}$ for all the possible sets $B$ such that $B \cup \{f\}$ is a witness and $B$ is not. 
+We note moreover that, to compute the Shapley value of an input tuple $f$ it is sufficient to compute and sum the values $\frac{|B|!(|I^n| - |B| - 1)!}{|I^n|!}$ for all the possible sets $B$ such that $B \cup \{f\}$ is a witness and $B$ is not. 
 Thus, suppose we want to compute the Shapley value of the tuple $f_1$. Let us call $\bar{Q}_{1, o_1}$ the Boolean query such that $\bar{Q}_{1, o_1}(I) = 1$ if and only if $o_1$ is in the output of \texttt{Q1}, and $L_{o_1}$ the lineage of $o_1$.
 Then the Shapley value of $f_1$ is given by:
 
@@ -364,7 +363,7 @@ Then the Shapley value of $f_1$ is given by:
 \end{array}
 \]
 
-Where, for the first element of the sum the corresponding $B$ is $\{c2f_1, c_1\}$, for the second element it is $\{c2f_2, c_2\}$, for the third it is $\{c2f_1, c2f_2, c_1\}$, for the fourth it is $\{c2f_1, c_1, c_2\}$, for the fifth it is $\{c2f_2, c_2, c_1\}$, for the sixth it is $\{c2f_1, c2f_2, c_2\}$, and for the seventh $\{c2f_1, c2f_2, c_1, c_2\}$. Every other possible coalition $B$ would make the factor equal to $0$.
+Where, for the first element of the sum the corresponding $B$ is $\{c2f_1, c_1\}$, for the second element it is $\{c2f_2, c_2\}$, for the third $\{c2f_1, c2f_2, c_1\}$, for the fourth  $\{c2f_1, c_1, c_2\}$, for the fifth  $\{c2f_2, c_2, c_1\}$, for the sixth  $\{c2f_1, c2f_2, c_2\}$, and for the seventh $\{c2f_1, c2f_2, c_1, c_2\}$. Every other possible coalition $B$ would make the factor equal to $0$.
 
 Similarly, for tuple $c_1$ (and the other tuples of the lineage), the computation is:
 \[

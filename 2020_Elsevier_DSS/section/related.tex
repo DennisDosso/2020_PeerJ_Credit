@@ -11,9 +11,13 @@ Aspects such as the need for the \emph{reproducibility} of experiments through t
 
 \paragraph{Data Citation: Principles and Motivations} Data Citation principles were proposed in \citep{CODATA2013}, and later summarized and endorsed by the Joint Declaration of Data Citation Principles (JDDCP)~\citep{martone2014joint}. 
 The principles are divided into two groups~ \citep{Silvello18jasist}. The first group contains principles concerning the role of data citation in scholarly and research activities such as the (i) \emph{importance} of data (why data citation is important and why data should be considered as first-class citizens); (ii) \emph{credit} and \emph{attribution} to the creators and curators of the data; (iii)\emph{evidence}; (iv) \emph{verifiability}; and \emph{interoperability}, with these last three requiring data citation methods to be flexible enough to operate through different communities. 
-The second group defines the main guidelines to establish a data citation systems, and contains principles such as the (i) \emph{unique identification} of the data being cited; (ii) \emph{(open) access} to data; (iii) guarantee of \emph{persistence} and \emph{availability} of citations even after the lifespan of the cited entity; the (iv) \emph{specificity} of a citation, i.e. it must lead to the data set originally cited.
+The second group defines the main guidelines to establish a data citation systems, and contains principles such as the (i) \emph{unique identification} of the data being cited; (ii) \emph{(open) access} to data; (iii) guarantee of \emph{persistence} and \emph{availability} of citations even after the lifespan of the cited entity; the (iv) \emph{specificity} of a citation, i.e. it must lead to the data set originally cited. 
 
+The main motivations for data citation are outlined in~\citep{Silvello18jasist} and range from data attribution and connection to data sharing, impact and reproducibility. 
+
+\eat{
 \scream{SBD: Is the next paragraph necessary?  Could we just say "The main motivations for data citation are outlined in~\citep{Silvello18jasist}."}
+\scream{GMS: yes. done}
 
 It is possible to outline six main motivations for data citation~\citep{Silvello18jasist}:
 \begin{itemize}
@@ -24,6 +28,7 @@ It is possible to outline six main motivations for data citation~\citep{Silvello
     \item \emph{Data Impact}: highlight the results obtained in writing papers using specific data, the frequency and modality data were used.
     \item \emph{Reproducibility}: data citation greatly impacts the reproducibility of science~\citep{baggerly2010disclose}. Many authoritative journals ask to share data and provide valid methodologies to reproduce experiments.
 \end{itemize}
+}
 
 \subsection{Data Citation in Relational Databases}
 %In this paper, we develop our methods and experiments on relational databases. 
@@ -146,10 +151,10 @@ Where-provenance, differently from the other three, is \emph{attribute-based}, s
 \rtwo{While computing responsibility for general queries is hard~\cite{ChocklerH04}, \citet{MeliouGMS11} proved a dichotomy result for conjunctive queries: for each query without self-joins, either its responsibility can be computed in PTIME in the size of the database or checking if it has a responsibility below a given value is NP-hard.}
 
 \subsection{Shapley value}
-\rtwo{The Shapley value is named after Lloyd Shapley, who introduced it for the first time in his 1952 work~\cite{Shapley1954}. He considered a \emph{cooperative fame} played by a set $A$ of players, defined by a \emph{wealth function} $v$ that assigns to each coalition set $B \subseteq A$ the wealth $v(B)$.
+\rtwo{The Shapley value is named after Lloyd Shapley, who introduced it for the first time in 1952~\cite{Shapley1954}. He considered a \emph{cooperative fame} played by a set $A$ of players, defined by a \emph{wealth function} $v$ that assigns to each coalition set $B \subseteq A$ the wealth $v(B)$.
 The question behind the Shapley Value is how to quantify the contribution of each player to the overall wealth. 
 Informally, the Shapley value is defined as follows~\cite{LivshitsBKS20}: assume that we select players randomly one by one and without replacement, starting with the empty set. Every time a player $a$ is selected, its addition to the coalition $B$ produces a change in the wealth of the coalition from $v(B)$ to $v(B \cup \{a\})$. The Shapley value of $a$ is the expectation of change that $a$ causes in this probabilistic process.}
 
-\rtwo{The Shapley value can be used in different research areas beyond cooperative games, such as economics, law, environmental science, and network analysis, and it has strong theoretical justifications. However, its use in databases as a metric for quantifying the influence of a tuple on the output of a query (thereby presenting an alternative to responsibility)  has only recently been proposed~\cite{LivshitsBKS20}. 
+\rtwo{The Shapley value can be used in different research areas beyond cooperative games, such as economics, law, environmental science, and network analysis, and it has strong theoretical justifications. However, its use in databases as a metric for quantifying the influence of a tuple on the output of a query (thereby presenting an alternative to responsibility)  has been considered only recently~\cite{LivshitsBKS20}. 
 The initial theoretical analysis in \cite{LivshitsBKS20} showed mainly lower bounds on the complexity of the problem, and did not suggest a feasible implementation.
-However, very recently, an efficient implementation for Boolean queries (queries that output true or false, or $1$ or $0$) has been provided~\cite{DFKM22}, both in terms of an exact computations (which in practice works well for most queries) and in inexact one (which is extremely fast and provides the same ranking of tuples as the exact computation, but not necessarily the same values).}
+However, very recently, an efficient implementation for Boolean queries has been provided~\cite{DFKM22}, both in terms of an exact computation (which in practice works well for most queries) and in inexact one (which is extremely fast and provides the same ranking of tuples as the exact computation, but not necessarily the same values).}
