@@ -119,7 +119,7 @@ Differently from \citet{zeng2020assigning}, we do not treat the credit computati
 \subsection{Data Provenance}
 \label{section:related_provenance}
 
-To distribute credit, we base our methods on \emph{data provenance}. 
+To distribute credit, we base two of our methods on \emph{data provenance}. 
 Data provenance is information that describes the origin and the process of creation of data. It can also be seen as metadata pertaining to the derivation history of the data. 
 It is particularly useful to help users to understand where data are coming from, and the process they went through. 
 Data citation and data provenance are closely linked~\citep{AlawiniDSTW17} since both are forms of annotations on data retrieved through queries. 
@@ -151,10 +151,10 @@ Where-provenance, differently from the other three, is \emph{attribute-based}, s
 \rtwo{While computing responsibility for general queries is hard~\cite{ChocklerH04}, \citet{MeliouGMS11} proved a dichotomy result for conjunctive queries: for each query without self-joins, either its responsibility can be computed in PTIME in the size of the database or checking if it has a responsibility below a given value is NP-hard.}
 
 \subsection{Shapley value}
-\rtwo{The Shapley value is named after Lloyd Shapley, who introduced it for the first time in 1952~\cite{Shapley1954}. He considered a \emph{cooperative fame} played by a set $A$ of players, defined by a \emph{wealth function} $v$ that assigns to each coalition set $B \subseteq A$ the wealth $v(B)$.
+\rtwo{The Shapley value was introduced in 1952~\cite{Shapley1954}, framed as a \emph{cooperative game} played by a set $A$ of players, and defined by a \emph{wealth function} $v$ that assigns to each coalition set $B \subseteq A$ the wealth $v(B)$.
 The question behind the Shapley Value is how to quantify the contribution of each player to the overall wealth. 
 Informally, the Shapley value is defined as follows~\cite{LivshitsBKS20}: assume that we select players randomly one by one and without replacement, starting with the empty set. Every time a player $a$ is selected, its addition to the coalition $B$ produces a change in the wealth of the coalition from $v(B)$ to $v(B \cup \{a\})$. The Shapley value of $a$ is the expectation of change that $a$ causes in this probabilistic process.}
 
-\rtwo{The Shapley value can be used in different research areas beyond cooperative games, such as economics, law, environmental science, and network analysis, and it has strong theoretical justifications. However, its use in databases as a metric for quantifying the influence of a tuple on the output of a query (thereby presenting an alternative to responsibility)  has been considered only recently~\cite{LivshitsBKS20}. 
+\rtwo{The Shapley value has been widely used, e.g. in economics, law, environmental science, and network analysis, and has strong theoretical justifications. However, its use in databases as a metric for quantifying the influence of a tuple on the output of a query (thereby presenting an alternative to responsibility)  has only recently been considered~\cite{LivshitsBKS20}. 
 The initial theoretical analysis in \cite{LivshitsBKS20} showed mainly lower bounds on the complexity of the problem, and did not suggest a feasible implementation.
 However, very recently, an efficient implementation for Boolean queries has been provided~\cite{DFKM22}, both in terms of an exact computation (which in practice works well for most queries) and in inexact one (which is extremely fast and provides the same ranking of tuples as the exact computation, but not necessarily the same values).}

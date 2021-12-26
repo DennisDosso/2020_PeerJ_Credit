@@ -114,13 +114,14 @@ does not convey any information about the role or importance of input tuples in 
 Therefore, one may desire to give more credit to the tuples that are more {\em important} to the production of the output, i.e. those tuples that, if removed, would prevent the output tuple from appearing in the final result, or those tuples used more than once  by the query. 
 
 Therefore, in this paper, we expand the ideas in \citep{dosso2020data} by proposing new DSs based on two other forms of data provenance: why-provenance~\citep{WhyProvBuneman} and how-provenance~\citep{howProvenanceGreen}.
-\rtwo{Also, we propose other two DS based on the concepts of responsibility~\cite{MeliouGMS11}, and the Shapley value~\cite{LivshitsBKS20,DFKM22}}.
+\rtwo{We also propose other two DS based on the concepts of responsibility~\cite{MeliouGMS11} and the Shapley value~\cite{LivshitsBKS20,DFKM22}}.
 \rone{We show how these DS differ from each other and to the one based on lineage,} and discuss why one may be preferred to another depending on the application and its goals. 
-In particular, we show that the new proposed DSs are more sensitive than the lineage-based one to the {\em role} of a tuple in a query, i.e. how many times the tuple is used and how it is used. 
+In particular, we show that the proposed new DSs are more sensitive than the lineage-based one to the {\em role} of a tuple in a query, i.e. how many times the tuple is used and how it is used. 
 We also show that the DSs based on why-provenance and \rtwo{responsibility} give more credit to tuples that are essential to the production of the result set, whereas the how-provenance-based DS takes into consideration the different ways in which a tuple is used.
-\rtwo{Finally, the DS based on the Shapley value sees the process of distribution as a competitive game where tuples that contribute more to the generation of the output are correspondingly rewarded more}. 
+\rtwo{Finally, the DS based on the Shapley value sees the process of distribution as a competitive game in which tuples that contribute more to the generation of the output are correspondingly rewarded more.}. 
+%\scream{Perhaps we could also say "Surprisingly, we also demonstrate that even the most complex DS, i.e.  the one based on Shapley, can be computed efficiently based on results in \cite{DFKM22}." Not sure if this should be "efficiently" or "quickly" as we are using it rather than proposing a new implementation. DD: not sure it needs to go here. In any case, it is said in the paper}
 
-The evaluation is based on a well-known curated database, the IUPHAR/BPS\footnote{International Union of Basic and Clinical Pharmacology/British Pharmacology Society} Guide to Pharmacology~\citep{iuphar2018}, also known as GtoPdb\footnote{\url{https://www.guidetopharmacology.org/}}, which contains expertly curated information about diseases, drugs, cellular drug targets, and their mechanisms of action.
+We use a well-known curated database called the IUPHAR/BPS\footnote{International Union of Basic and Clinical Pharmacology/British Pharmacology Society} Guide to Pharmacology~\citep{iuphar2018}, also known as GtoPdb\footnote{\url{https://www.guidetopharmacology.org/}}, to evaluate the DSs.  GtoPdb contains expertly curated information about diseases, drugs, cellular drug targets, and their mechanisms of action.
 We chose GtoPdb for two main reasons: (i) it is a widely-used and valuable curated relational database, (ii) many papers in the literature use, and cite, its data (i.e., families, ligands, and receptors). 
 Real queries used in papers can therefore be seen as data citations which, in turn, can be used to assign data credit.
 

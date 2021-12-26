@@ -1,4 +1,4 @@
-\section{Data Provenances}
+\section{Provenance, Responsibility, and Shapley}
 \label{section:preliminaries}
 
 \begin{table}[]
@@ -7,12 +7,11 @@
     \begin{tabular}{c|c}
     \hline
     	 $I$ & database instance \\
-    	 $L$ & lineage set of an output tuple \\
+    	 $L_t$ & lineage set of an output tuple $t$ \\
     	 $\Gamma$ & contingency set \\
     	 $\rho_t$ & responsibility of tuple $t$ \\
     	 $Q$ & a query \\
-    	 $I^n$ & set of endogenous tuples \\
-    	 $I^x$ & set of exogenous tuples \\
+    	 $\bar{Q}_{o}$ & Boolean query such that $\bar{Q}_{o}(I) = 1$ if $o$ is present in $Q(I)$ \\
     	 $\mathcal{W}$ & witness basis \\
     	 $W$ & a witness set \\
     	 $\gamma(\mathcal{W}, t)$ & set of witnesses in $\mathcal{W}$ containing $t$ \\
@@ -31,7 +30,7 @@
 
 
 We now describe the three types of provenance used in this paper --  lineage, why-provenance, and how-provenance -- as well as
-\rtwo{the notion of Causality and Responsibility, and the Shapley value function}. 
+\rtwo{the notion of causality and responsibility, and the Shapley value function}. 
 
 \subsection{Lineage}
 \rone{Lineage is the simplest form of provenance. It was first introduced by \citet{lineageCui}, and can be thought of as the set of all tuples that
@@ -309,11 +308,14 @@ As an example, consider Table \ref{table:result_how_prov}, where we reported the
 Focusing on $o_1$: the lineage tuple $f_1$ is a counterfactual cause, since its contingency set is empty (when removed from the database, $o_1$ disappears from the result set). Consequently, its responsibility is 1. All the other tuples of the lineage are actual causes. $c_1$, for example, has as minimal contingency set $\{c2f_2\}$ , thus its responsibility is $0.5$. 
 For the output tuple $o_2$, all the tuples of the lineage are counterfactual causes, thus their responsibility is 1.
 
+%%%%%%%%%%%%%%%%%%%%
+
 \rtwo{\subsection{Shapley value}}
 \label{sec:shapley_value}
 
-To use the Shapley in the context of conjunctive queries for relational databases, we use the definitions provided in \cite{DFKM22}:  given a query $q(\bar{x})$, a database $D$, an input fact $f \in D$ (here seen as a player) and a tuple $\bar{t}$ of same arity as $\bar{x}$, the Shapley value of $f$ in $D$ intuitively represents the contribution of $f$ to the presence (or absence) of $\bar{t}$ in the query result.
-Formally, the Shapley value is defined as follows:
+\eat{
+We use the definitions provided in \cite{DFKM22}:  
+given a query $q(\bar{x})$, a database $D$, an input fact $f \in D$ and a tuple $\bar{t}$ of same arity as $\bar{x}$, the Shapley value of $f$ in $D$ intuitively represents the contribution of $f$ to the presence (or absence) of $\bar{t}$ in the query result.
 
 \begin{definition}{Shapley value \cite{DFKM22}}\\
 	Let the database instance $I$ be partitioned into two sets of facts: a set $I^x$ of  exogenous facts, and a set $I^n$ of endogenous facts. Let $Q$ be a Boolean query and $f \in I^n$ be an endogenous fact. The Shapley value of $f$ in $I$ for query $Q$ is defined as:
@@ -321,14 +323,40 @@ Formally, the Shapley value is defined as follows:
 		Shapley(Q, I^n, I^x, f) = \\ \sum_{B \subseteq I^n\backslash \{ f \}}\frac{|B|!(|I^n| - |B| - 1)!}{|I^n|!}  \left(Q(I^x \cup B \cup \{ f\} ) - Q(I^x \cup B)\right)
 	\end{multline*}
 \end{definition}
+}
+We use the definitions provided in \cite{DFKM22}:  
+Let~$q$ be a Boolean query and~$f
+\in D$ be a fact, the Shapley value of $f$ in $D$ intuitively represents the contribution of $f$ to the query result.\footnote{We ignore the distinction between endogenous and exogenous facts, since in our setting they are all assumed to be endogenous. }
+The higher the value, the more $f$ helps in satisfying $q$.
+Formally, the Shapley value is defined as follows:
 
-The set $I^n$ of endogenous facts can be thought as the set of tuples being taken into consideration, while $I^x$ is the set of ignored tuples. The choice on $I^n$ is usually application-dependent.
+% \vspace{0.1in}
+\[
+Shapley(q,D,f)= 
+\sum_{E\subseteq D \setminus \{f\}} \frac{|E|!(|D|-|E|-1)!}{|D|!} \bigg(
+q(E\cup \{f\}) - q(E)\bigg)
+\]
+% \vspace{0.1in}
 
-The sum in the definition of the Shapley value is performed on all possible coalitions of fact $B$ that do not contain the player $f$. Thus, the value $\left(Q(I^x \cup B \cup \{ f\} ) - Q(I_x \cup B)\right)$ is the wealth brought by $f$ when added to $B$. As we see, the Boolean query is used as wealth function $v$: its value is $1$ only when the set $I^x \cup B \cup \{ f\}$ makes the query true, and the set $I_x \cup B$ makes it false, i.e., when the addition of the fact $f$ is determinant to make the Boolean query true. 
+\noindent
+The sum in this value is performed on all possible subsets of $D$ that do not contain $f$. The value $\left(q(E \cup \{ f\} ) - q(E)\right)$ is the ``wealth" brought by $f$ when added to $E$. 
+Thus, the Boolean query is used as a wealth function $v$: its value is $1$ only when the set $E \cup \{ f\}$ makes the query true, and the set $E$ makes it false, i.e., when the addition of the fact $f$ is determinant to making the Boolean query true. 
+The value $|E|!(|D| - |E| - 1)!$ is the number of all the possible permutations over $D$ where the facts in $E$ come first, then $f$ is added, and then all the remaining facts. Thus, the value $\frac{|E|!(|D| - |E| - 1)!}{|D|!}$ can be thought as a weight for the wealth brought by $f$ when added to $E$. 
+
+To extend this definition to non-Boolean queries, we adopt the approach in \citet{DFKM22}: the Shapley value of the fact $f$ for the answer $\bar{t}$ to $Q(\bar{x})$ is the value $Shapley(Q[\bar{x} / \bar{t}], D, f)$, where $Q[\bar{x} / \bar{t}]$ is the Boolean query defined by $Q[\bar{x} / \bar{t}](D) = 1$ if and only if $\bar{t}$ is in the output of $Q(\bar{x})$ on $D$, and $0$ otherwise.
+In other words, the definition of $Shapley(q, D, f)$ is extended to queries $Q(\bar{x})$ with free variables by considering the Boolean query $Q[\bar{x} / \bar{t}]$ as a value function. This query can be seen as a function that takes as input a set of facts and returns $1$ if this set is a witness for $\bar{t}$, and $0$ otherwise.
+
+
+%%%%%%%%%%%%%%%%%%%%
+\eat{The set $I^n$ of endogenous facts can be thought as the set of tuples being taken into consideration, while $I^x$ is the set of tuples that are ignored. The choice of $I^n$ is usually application-dependent. 
+
+The sum in the definition of the Shapley value is performed on all possible subsets of $E$ that do not contain $f$. Thus, the value $\left(Q(I^x \cup B \cup \{ f\} ) - Q(I_x \cup B)\right)$ is ``wealth" brought by $f$ when added to $B$. Thus, the Boolean query is used as wealth function $v$: its value is $1$ only when the set $I^x \cup B \cup \{ f\}$ makes the query true, and the set $I_x \cup B$ makes it false, i.e., when the addition of the fact $f$ is determinant to make the Boolean query true. 
 The value $|B|!(|I^n| - |B| - 1)!$ is the number of all the possible permutations over $I^n$ where the facts in $B$ come first, then $f$ is added, and then all the remaining facts. Thus, the value $\frac{|B|!(|I^n| - |B| - 1)!}{|I^n|!}$ can be thought as a weight for the wealth brought by the addition of $f$ to the coalition $B$. 
 
 To extend this definition to non-Boolean queries, we use the same straightforward approach used by \citet{DFKM22}: the Shapley value of the fact $f$ for the answer $\bar{t}$ to $Q(\bar{x})$ is the value $Shapley(Q[\bar{x} / \bar{t}], I^n, I^x, f)$, where $Q[\bar{x} / \bar{t}]$ is the Boolean query defined by $Q[\bar{x} / \bar{t}](I) = 1$ if and only if $\bar{t}$ is in the output of $Q(\bar{x})$ on $I$, and $0$ otherwise.
-In other words, the definition of $Shapley(Q, I^n, I^x, f)$ is extended to such queries $Q(\bar{x})$ with free variables by considering the Boolean query $Q[\bar{x} / \bar{t}]$ instead as value function. This query can be seen as a function that takes as input a set of facts and returns $1$ if this set is a witness for $\bar{t}$, and $0$ otherwise.
+In other words, the definition of $Shapley(Q, I^n, I^x, f)$ is extended to such queries $Q(\bar{x})$ with free variables by considering the Boolean query $Q[\bar{x} / \bar{t}]$ instead as value function. This query can be seen as a function that takes as input a set of facts and returns $1$ if this set is a witness for $\bar{t}$, and $0$ otherwise.}
+
+%%%%%%%%%%%%%%%%%%%%
 
 \begin{table}[]
 \footnotesize
@@ -342,7 +370,7 @@ In other words, the definition of $Shapley(Q, I^n, I^x, f)$ is extended to such 
     \hline
   \end{tabular}
   \begin{tabular}{c}
-  	Shepley value   \\
+  	Shapley value   \\
   	$f_1=\frac{7}{15}, c2f_1=\frac{2}{15}, c2f_2=\frac{2}{15}, c_1=\frac{2}{15}, c_2=\frac{2}{15}$ \\
   	$f_4=\frac{1}{3}, c2f_4=\frac{1}{3}, c_1=\frac{1}{3}$ \\
   \end{tabular}
@@ -350,31 +378,39 @@ In other words, the definition of $Shapley(Q, I^n, I^x, f)$ is extended to such 
   \label{table:result_shapley}
 \end{table} 
 
-As an example, consider table \ref{table:result_shapley}, that shows the Shapley values for the lineage's tuples of $o_1$ and $o_2$, results of query \texttt{Q1}. 
+As an example, consider Table \ref{table:result_shapley}, that shows the Shapley values for the lineage's tuples of $o_1$ and $o_2$, results of query \texttt{Q1}. 
+% \scream{I'm confused by the next part, is it necessary?  Why conflate with witnesses?}
+%%%%%%%%%%%%%%%%%%%%
+\eat{
 Since the tuples of the lineage are the only one with a role in creating the output tuples, when computing the Shapley value we can use it as the set of endogenous facts.
-We note moreover that, to compute the Shapley value of an input tuple $f$ it is sufficient to compute and sum the values $\frac{|B|!(|I^n| - |B| - 1)!}{|I^n|!}$ for all the possible sets $B$ such that $B \cup \{f\}$ is a witness and $B$ is not. 
-Thus, suppose we want to compute the Shapley value of the tuple $f_1$. Let us call $\bar{Q}_{1, o_1}$ the Boolean query such that $\bar{Q}_{1, o_1}(I) = 1$ if and only if $o_1$ is in the output of \texttt{Q1}, and $L_{o_1}$ the lineage of $o_1$.
-Then the Shapley value of $f_1$ is given by:
+We note that, to compute the Shapley value of an input tuple $f$ it is sufficient to compute and sum the values $\frac{|B|!(|I^n| - |B| - 1)!}{|I^n|!}$ for all the possible sets $B$ such that $B \cup \{f\}$ is a witness and $B$ is not. 
+Thus, suppose we want to compute the Shapley value of the tuple $f_1$. Let us call $\bar{Q}_{1, o_1}$ the Boolean query such that $\bar{Q}_{1, o_1}(I) = 1$ if and only if $o_1$ is in the output of \texttt{Q1}, and $L_{o_1}$ the lineage of $o_1$.}
+%%%%%%%%%%%%%%%%%%%%
+We note that, to compute the Shapley value of an input tuple $f$ it is sufficient to compute and sum the values $\frac{|E|!(|D| - |E| - 1)!}{|D|!}$ for all the possible sets $E$ such that $E \cup \{f\}$ is a witness and $E$ is not. 
+Thus, suppose we want to compute the Shapley value of the tuple $f_1$. Let us call $\bar{Q}_{1, o_1}$ the Boolean query such that $\bar{Q}_{1, o_1}(D) = 1$ if and only if $o_1$ is in the output of \texttt{Q1} on $D$, and $L_{o_1}$ is the lineage of $o_1$. 
+Then the Shapley value of $f_1$ with respect of $o_1$ is given by:
+% \scream{What is $L$?  do you mean $L_{o1}$? And my definition of Shapley only has three terms, I don't know what L and I/L correspond to (mine was D).}
 
 \[
 \begin{array}{ll}
-	Shapley(\bar{Q}_{1, o_1}, L, I \backslash L, f_1) & = \frac{2!2!}{5!} + \frac{2!2!}{5!} + \frac{3!}{5!} + \frac{3!}{5!}  + \frac{3!}{5!} + \frac{3!}{5!} + \frac{4!}{5!}\\
+	Shapley(\bar{Q}_{1, o_1}, L_{o_1}, f_1) & = \frac{2!2!}{5!} + \frac{2!2!}{5!} + \frac{3!}{5!} + \frac{3!}{5!}  + \frac{3!}{5!} + \frac{3!}{5!} + \frac{4!}{5!}\\
 	& = \frac{7}{15}
 \end{array}
 \]
 
-Where, for the first element of the sum the corresponding $B$ is $\{c2f_1, c_1\}$, for the second element it is $\{c2f_2, c_2\}$, for the third $\{c2f_1, c2f_2, c_1\}$, for the fourth  $\{c2f_1, c_1, c_2\}$, for the fifth  $\{c2f_2, c_2, c_1\}$, for the sixth  $\{c2f_1, c2f_2, c_2\}$, and for the seventh $\{c2f_1, c2f_2, c_1, c_2\}$. Every other possible coalition $B$ would make the factor equal to $0$.
+\noindent
+where for the first element of the sum the corresponding $E$ is $\{c2f_1, c_1\}$, for the second element it is $\{c2f_2, c_2\}$, for the third $\{c2f_1, c2f_2, c_1\}$, for the fourth  $\{c2f_1, c_1, c_2\}$, for the fifth  $\{c2f_2, c_2, c_1\}$, for the sixth  $\{c2f_1, c2f_2, c_2\}$, and for the seventh $\{c2f_1, c2f_2, c_1, c_2\}$. Every other possible subset $E$ would make the factor equal to $0$. Note that in this case we consider $D = L_{0_1}$ , the lineage of $o_1$, since these are the only facts in all the database that contribute to the generation of $o_1$.
 
 Similarly, for tuple $c_1$ (and the other tuples of the lineage), the computation is:
 \[
 \begin{array}{ll}
-	Shapley(\bar{Q}_{1, o_1}, L, I \backslash L, c_1) & = \frac{2!2!}{5!} + \frac{3!}{5!} + \frac{3!}{5!}\\
+	Shapley(\bar{Q}_{1, o_1}, L_{o_1}, c_1) & = \frac{2!2!}{5!} + \frac{3!}{5!} + \frac{3!}{5!}\\
 	& = \frac{2}{15}
 \end{array}
 \]
 
-Similarly, it can be seen that for the tuples of $o_2$'s lineage the corresponding Shapley values are all equal to $1/3$, since they are all equally responsible for the generation of the output.
-As we can see, the sum of the Shapley values of all the tuples in an output tuple's lineage is always equal to 1 when using a Boolean query as wealth function. 
+It can be seen that for all the tuples of $o_2$'s lineage the corresponding Shapley values are equal to $1/3$, since they are all equally responsible for the generation of the output.
+Thus the sum of the Shapley values of all the tuples in an output tuple's lineage is always equal to 1 when using a Boolean query as wealth function. 
 
 
 

@@ -43,8 +43,8 @@ Without loss of generality, we give each tuple in the output of a query a credit
 which is often joined with other tables in the database to build the webpages. Each cell in a heat-map represents a tuple of the \texttt{family} table and the color indicates the amount of credit attributed to such tuple.
 It can be seen that the result of  credit distribution over \texttt{family} is the same for all \rtwo{five} strategies. The same result is also obtained with the other tables of the database used by the queries shown in Figure \ref{figure:family_structure}. 
 
-The reason why credit distribution is the same for all \rtwo{four} strategies is that the queries are all simple SPJ queries, which use each table only once and do joins on key attributes. 
-Under these conditions, each tuple of the output presents: (i) a how-provenance that is a single monomial with coefficient one and exponent one in each variable; (ii) a why-provenance with only one witness; (iii) a lineage that is the same of the witness in the basis, \rtwo{(iv) all tuples are counterfactual causes when considering responsibility, and (v) they all have the same importance in the production of the output tuples according to their Shapley value}.
+The reason why credit distribution is the same for all \rtwo{five} strategies is that the queries are all simple SPJ queries, which use each table only once and do joins on key attributes. 
+Under these conditions, each tuple of the output presents: (i) a how-provenance that is a single monomial with coefficient one and exponent one in each variable; (ii) a why-provenance with only one witness; (iii) a lineage that is the same of the witness in the basis, \rtwo{(iv) all tuples are counterfactual causes when considering responsibility, and (v) all tuple have the same importance in the production of the output tuples according to their Shapley value}.
 Hence, for these queries, the \rtwo{five} DSs behave in the same way: credit is uniformly distributed among the tuples of the lineage. 
 
 To illustrate this, consider one of the queries in Figure \ref{figure:family_structure} which is used to build the output webpage:
@@ -182,9 +182,7 @@ To see what happens with more complex queries,
 The queries involve three GtoPdb tables: \texttt{family}, \texttt{contributor2family}, and \texttt{contributor}. 
 \rone{The polynomials were generated as follows: first, the number of monomials was decided by  randomly choosing a number between one and six.  Then, we randomly chose a tuple from the  \texttt{family} table, one from the \texttt{contributor2family} table and one from the \texttt{contributor} table; these are the variables of the monomial. We then chose a coefficient for the monomial (between one and three) and an exponent for each tuple (between one and four). For the next monomial, we decided if we wanted to keep the same tuple from the table family as first tuple of the new monomial. To do so, we generated a random float number between zero and one. If the number was above $0.2$, we changed the family tuple.}
 
-An example can be found in Figure~\ref{fig:syntheticDistributions}, which shows a sample synthetic provenance polynomial (the how-provenance), the corresponding why-provenance, lineage, \rtwo{the causality of the tuples of the lineage, together with their responsibility, and, finally, the Shapley values of the lineage tuples}.  The resulting credit distribution for each DS is also shown \rtwo{(except for the Shapley values, that coincide with the distribution of credit)}. 
-
-
+An example can be found in Figure~\ref{fig:syntheticDistributions}, which shows a sample synthetic provenance polynomial (the how-provenance), the corresponding why-provenance, lineage, \rtwo{the causality of the tuples of the lineage, together with their responsibility, and, finally, the Shapley values of the lineage tuples}.  The resulting credit distribution for each DS is also shown.
 
 \begin{figure}
 {\footnotesize{\bf How-provenance:}
@@ -249,7 +247,7 @@ c2f_{17}=\frac{1}{8} , c_1 = 0.091\bar{6}, c_2 = 0.091\bar{6}, c_{18} = \frac{1}
 $
 }}
 
-\caption{\rtwo{Sample synthetic provenance polynomial (how-provenance) and corresponding why-provenance, lineage, responsibility, and Shapley values, together with the corresponding credit distributions. In the case of the Shapley value, the value is equivalent to the quantity of credit being distributed (assuming that the input credit is equal to $1$.}}
+\caption{\rtwo{Sample synthetic provenance polynomial (how-provenance) and corresponding why-provenance, lineage, responsibility, and Shapley values, together with the corresponding credit distributions. The sum of Shapley values  is equivalent to the quantity of credit being distributed (assuming that the input credit is equal to $1$).}}
  \label{fig:syntheticDistributions}
  \end{figure}
 
@@ -317,7 +315,7 @@ This difference is explained considering the different role of the tuples in the
 Generally speaking, the more complex the distribution (e.g., the how-provenance), the more credit is given to tuples that are more frequently used or more critical in the production of the output. Depending on the situation, i.e. on the syntax of the query, the distributions may differ among them. 
 Responsibility creates a ranking among lineage's tuples describing the importance of their role in generating the output. As such, the responsibility-based DS gives more credit to $f_1, f_5, c2f_{17}$ and $c_{18}$ due to their higher responsibility values. ``Importance'' is connected to their corresponding minimal contingency sets. For example, $f_1$ has a minimal contingency set (one of the many) $\{f_5\}$, with cardinality 1. On the other hand, $c_1$ has, as minimal contingency set (one of the many) $\{f_5, c_2\}$, with cardinality two. This means that $c_1$ is the ``least important'' amongst the tuples with minimal contingency sets of lower cardinality, and this is reflected in the different quantities of credit being distributed.} 
 
-\rtwo{The Shapley value behaves similarly, but it rewards tuple $f_1$ the most and then $f_5$, $c2f_{17}$, $c_{18}$, and at the end all the other tuples of the lineage. Although both Responsibility and the Shapley value create a ranking of the tuples based on their role in the generation of the output, the corresponding functions behave differently due to the syntax of the query; for this reason each different distribution strategy highlight a slightly different aspect that can be considered as ``important'' when distributing the credit.}
+\rtwo{The Shapley value behaves similarly, but it rewards tuple $f_1$ the most and then $f_5$, $c2f_{17}$, $c_{18}$, and last all the other tuples of the lineage. Although both Responsibility and the Shapley value create a ranking of the tuples based on their role in the generation of the output, the corresponding functions behave differently due to the syntax of the query; for this reason each different distribution strategy highlights a slightly different aspect that can be considered as ``important'' when distributing the credit.}
 
 Despite being synthetic, these provenance polynomials are realistic:  they can be obtained by any nested query with join and union operations that use the same tuple multiple times (in which case the exponents are larger than one), and the same combination of operations more than once (in which case the coefficients of monomials are larger than one). 
 
@@ -347,25 +345,27 @@ We set the maximum value in the heat maps to the highest value reached by a tupl
 
 \begin{table}[]
 \center
-  \caption{\rtwo{Results of the pairwise Kendall Tau test on all the DSs on the \texttt{family} table. The reported values are the correlation and p-value.}}
-  \scriptsize
+  \caption{\rtwo{Results of the pairwise Kendall Tau confidence value on all the DSs on the \texttt{family} table (the p-vales are all below 0.05).}}
   \begin{tabular}{|r|l|l|l|l|l|}
   \hline
  & lineage & why & how & resp. & Shapley \\
   \hline
- lineage & 1.0 0.0 & 0.88 1.43e-303 & 0.72 4.56e-208 & 0.90 0.0 & 0.80 3.11e-254 \\
-why & 0.88 1.44e-303 & 1 0.0 & 0.75 5.67e-222 & 0.93 0.0 & 0.92 0.0 \\
- how & 0.73 4.56e-208 & 0.75 5.67e-222 & 1 0.0 & 0.74 7.06e-217 & 0.74 2.37e-213 \\
- resp. & 0.90 0.0 & 0.93 0.0 & 0.74 7.06e-217 & 1.0 0.0 & 0.89 1.15e-306 \\
-Shapley & 0.80 3.11e-254 & 0.91 0.0 & 0.74 2.36e-213 & 0.89 1.15e-306 & 1.0 0.0 \\
+ lineage & 1.0 & 0.88 & 0.73 & 0.91  & 0.81 \\
+why & 0.88 & 1.0 & 0.75 & 0.93 & 0.92 \\
+ how & 0.73 & 0.75 & 1.0 & 0.74 & 0.74  \\
+ resp. & 0.91 & 0.93 & 0.74 & 1.0 & 0.89 \\
+Shapley & 0.81 & 0.91 & 0.74 & 0.89 & 1.0 \\
  \hline
   \end{tabular}
-  \label{table:in_detail}
+  \label{table:kendall_tau}
 \end{table}
 \normalsize
 
 
 There is a certain amount of consistency between the strategies in that tuples which are highly rewarded by one strategy are also highly rewarded by the others. This shows that the four DSs consistently reward certain tuples more than others. 
+
+\rtwo{Table \ref{table:kendall_tau} reports the pairwise Kendall $\tau$ correlation values\footnote{The Kendall's $\tau$ coefficient is a statistic used to measure the ordinal association between two measured quantities~\cite{Kendall1938new}. Intuitively, it is high between two variables when observation have a similar rank.} for the five DSs computed on the \texttt{family} table. As we see, there are certain DS that are correlated to others, such as lineage with why-provenance, responsibility and lineage, or responsibility and why-provenance. 
+The others are mildly correlated, such as the Shapley valye with how-provenance, responsibility and how-provenance, or why-provenance and lineage with how-provenance. We see, therefore, that the DS based on how-provenance is the one that correlates the least with the other DSs.}
 
 Note that lineage-based DS gives the least credit to tuples in the \texttt{family} table, indicated by an overall lighter hue. This is because the DS  distributes credit equally to all tuples appearing in the lineage. Since these queries also use two other tables, credit is distributed to tuples in those tables.
 
@@ -376,9 +376,9 @@ As with why-provenance, more credit is typically given to tuples in \texttt{fami
 The two distributions appear similar, although on closer inspection, slight differences can be seen. 
 This is because how-provenance also considers the frequency with which tuples are used, not only the ways in which they are used. Therefore, although the overall distribution is similar, there are small differences due to the presence of exponents and coefficients in the provenance polynomials, influencing the distribution of credit. 
 
-\rtwo{The responsibility-based distribution strategy has a distribution that is also quite similar to the one provided by why-provenance (which is also visible from Table \ref{table:in_detail}, where the values of the two distributions are different but very close). It is often the case, for example when the witnesses of the why provenance share one common tuple, that the two distributions behave similarly.} %As a consequence, the synthetic polynomials are at times such that the two distributions behave in the same way, or very similarly.} 
+\rtwo{The responsibility-based distribution strategy has a distribution that is also quite similar to the one provided by why-provenance (which is also visible from Table \ref{table:kendall_tau}). It is often the case, for example when the witnesses of the why provenance share one common tuple, that the two distributions behave similarly.} %As a consequence, the synthetic polynomials are at times such that the two distributions behave in the same way, or very similarly.} 
 
-\rtwo{Finally, the heat-map reporting the distribution produced by the Shapley value is the one that, at a closer inspection, shows the biggest differences. Although the tuples that receive the biggest quantities of credit are the same, the hue of this tuple is different. The Shapley value in certain circumstances differs greatly from the other DSs, thus showing its ability to weight differently the roles of the tuples.}
+\rtwo{Finally, the heat-map reporting the distribution produced by the Shapley value is the one that, at a closer inspection, shows many differences. Although the tuples that receive the biggest quantities of credit are the same, the hue of this tuple is different. The Shapley value in certain circumstances differs greatly from the other DSs, thus showing its ability to weight differently the roles of the tuples.}
 
 We note that the lineage-based DS gives an average credit of $3.92$ to each tuple in the table, while the DS based on why-provenance assigns $4.19$, how-provenance $4.18$, \rtwo{the one based on responsibility $4.13$, and the one based on the Shapley value $4.40$}. 
 Moreover, lineage distributed a total of about $3121$ units of credit to the \texttt{family} table, why-provenance $3333$, how-provenance $3331$, while \rtwo{responsibility assigned $3290$, and the Shapley value $3505$. Thus, the Shapley value is the method that accumulates the highest quantity of credit in this table.} 
