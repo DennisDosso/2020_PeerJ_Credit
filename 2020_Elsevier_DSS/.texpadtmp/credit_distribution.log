@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.10.23)  1 MAR 2022 11:40
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.10.23)  1 MAR 2022 12:12
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -63,7 +63,7 @@ File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
 \@enLab=\toks16
 \@sep=\skip43
 \@@sep=\skip44
- (/Users/dennisdosso/Dropbox/paper di Dennis/IN CORSO/2020_PeerJ_Credit/2020_Elsevier_DSS/.texpadtmp/credit_distribution.spl) (/usr/local/texlive/2019/texmf-dist/tex/latex/natbib/natbib.sty
+ (/Users/dennisdosso/Desktop/temp/2021_Information_Science_Credit/2020_Elsevier_DSS/.texpadtmp/credit_distribution.spl) (/usr/local/texlive/2019/texmf-dist/tex/latex/natbib/natbib.sty
 Package: natbib 2010/09/13 8.31b (PWD, AO)
 \bibhang=\skip45
 \bibsep=\skip46
@@ -669,7 +669,7 @@ File: pgflibraryfadings.code.tex 2019/04/04 v3.1.2 (3.1.2)
 \c@@todonotes@numberoftodonotes=\count309
 )
 \c@definition=\count310
- (/Users/dennisdosso/Dropbox/paper di Dennis/IN CORSO/2020_PeerJ_Credit/2020_Elsevier_DSS/.texpadtmp/credit_distribution.aux)
+ (/Users/dennisdosso/Desktop/temp/2021_Information_Science_Credit/2020_Elsevier_DSS/.texpadtmp/credit_distribution.aux)
 \openout1 = `credit_distribution.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 78.
@@ -871,12 +871,12 @@ LaTeX Warning: No positions in optional float specifier.
 LaTeX Warning: No positions in optional float specifier.
                Default added (so using `tbp') on input line 1279.
 
-<figures/how_distribution.pdf, id=445, 1666.225pt x 397.485pt>
-File: figures/how_distribution.pdf Graphic file (type pdf)
-<use figures/how_distribution.pdf>
-Package pdftex.def Info: figures/how_distribution.pdf  used on input line 1280.
-(pdftex.def)             Requested size: 390.0pt x 93.03294pt.
-[27 <./figures/how_distribution.pdf>]
+<figures/new_comparison.pdf, id=445, 1135.24126pt x 397.485pt>
+File: figures/new_comparison.pdf Graphic file (type pdf)
+<use figures/new_comparison.pdf>
+Package pdftex.def Info: figures/new_comparison.pdf  used on input line 1280.
+(pdftex.def)             Requested size: 312.00119pt x 109.23895pt.
+[27 <./figures/new_comparison.pdf>]
 Underfull \hbox (badness 10000) in paragraph at lines 1304--1309
 
  []
@@ -885,13 +885,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 1304--1309
 LaTeX Warning: No positions in optional float specifier.
                Default added (so using `tbp') on input line 1319.
 
-<resp_example.pdf, id=584, 932.48375pt x 293.095pt>
+<resp_example.pdf, id=645, 932.48375pt x 293.095pt>
 File: resp_example.pdf Graphic file (type pdf)
 <use resp_example.pdf>
 Package pdftex.def Info: resp_example.pdf  used on input line 1321.
 (pdftex.def)             Requested size: 272.99881pt x 85.80484pt.
 [28] [29 <./resp_example.pdf>]
-<paper_based.pdf, id=656, 3015.265pt x 1396.21625pt>
+<paper_based.pdf, id=718, 3015.265pt x 1396.21625pt>
 File: paper_based.pdf Graphic file (type pdf)
 <use paper_based.pdf>
 Package pdftex.def Info: paper_based.pdf  used on input line 1369.
@@ -921,7 +921,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 1539--1600
 
  []
 
-<synthetic_comparison.pdf, id=680, 2983.145pt x 1382.16376pt>
+<synthetic_comparison.pdf, id=742, 2983.145pt x 1382.16376pt>
 File: synthetic_comparison.pdf Graphic file (type pdf)
 <use synthetic_comparison.pdf>
 Package pdftex.def Info: synthetic_comparison.pdf  used on input line 1606.
@@ -937,7 +937,7 @@ Overfull \hbox (12.34962pt too wide) in paragraph at lines 1725--1729
  []
 
 [36]
-<comparison.pdf, id=710, 1775.63374pt x 3429.81375pt>
+<comparison.pdf, id=772, 1775.63374pt x 3429.81375pt>
 File: comparison.pdf Graphic file (type pdf)
 <use comparison.pdf>
 Package pdftex.def Info: comparison.pdf  used on input line 1759.
@@ -955,13 +955,13 @@ LaTeX Warning: Text page 38 contains only floats.
 LaTeX Warning: No positions in optional float specifier.
                Default added (so using `tbp') on input line 1828.
 
-<2_radars.pdf, id=753, 872.25874pt x 379.4175pt>
+<2_radars.pdf, id=814, 872.25874pt x 379.4175pt>
 File: 2_radars.pdf Graphic file (type pdf)
 <use 2_radars.pdf>
 Package pdftex.def Info: 2_radars.pdf  used on input line 1830.
 (pdftex.def)             Requested size: 390.0pt x 169.64209pt.
 [40 <./2_radars.pdf>]
-<radar.pdf, id=776, 1316.92pt x 425.59pt>
+<radar.pdf, id=837, 1316.92pt x 425.59pt>
 File: radar.pdf Graphic file (type pdf)
 <use radar.pdf>
 Package pdftex.def Info: radar.pdf  used on input line 1880.
@@ -971,21 +971,21 @@ Overfull \hbox (13.47775pt too wide) in paragraph at lines 2071--2079
 []\OT1/cmr/m/n/12 This pa-per de-fines four new dis-tri-bu-tion strate-gies based on why-provenance,
  []
 
-[45] [46] (/Users/dennisdosso/Dropbox/paper di Dennis/IN CORSO/2020_PeerJ_Credit/2020_Elsevier_DSS/.texpadtmp/credit_distribution.bbl [47] [48] [49] [50] [51] [52] [53]) [54] (/Users/dennisdosso/Dropbox/paper di Dennis/IN CORSO/2020_PeerJ_Credit/2020_Elsevier_DSS/.texpadtmp/credit_distribution.aux) ) 
+[45] [46] (/Users/dennisdosso/Desktop/temp/2021_Information_Science_Credit/2020_Elsevier_DSS/.texpadtmp/credit_distribution.bbl [47] [48] [49] [50] [51] [52] [53]) [54] (/Users/dennisdosso/Desktop/temp/2021_Information_Science_Credit/2020_Elsevier_DSS/.texpadtmp/credit_distribution.aux) ) 
 Here is how much of TeX's memory you used:
  24389 strings out of 492616
- 471380 string characters out of 6129480
+ 471302 string characters out of 6129480
  482643 words of memory out of 5000000
  27944 multiletter control sequences out of 15000+600000
  542306 words of font info for 64 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  62i,14n,81p,1106b,396s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type
-1/public/amsfonts/cm/cmti7.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on "/Users/dennisdosso/Dropbox/paper di Dennis/IN CORSO/2020_PeerJ_Credit/2020_Elsevier_DSS/.texpadtmp/credit_distribution.pdf" (54 pages, 3169280 bytes).
+</usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmti7.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on /Users/dennisdosso/Desktop/temp/2021_Information_Science_Credit/2020_Elsevier_DSS/.texpadtmp/credit_distribution.pdf (54 pages, 3333900 bytes).
 PDF statistics:
- 919 PDF objects out of 1000 (max. 8388607)
- 670 compressed objects within 7 object streams
+ 981 PDF objects out of 1000 (max. 8388607)
+ 721 compressed objects within 8 object streams
  0 named destinations out of 1000 (max. 500000)
  169 words of extra memory for PDF output out of 10000 (max. 10000000)
 
