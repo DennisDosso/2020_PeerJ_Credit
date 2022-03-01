@@ -40,8 +40,11 @@
 \definecolor{correction}{RGB}{0,0,0}
 \definecolor{cut}{RGB}{255,131,0}
 
-\definecolor{reviewer1}{RGB}{184, 111, 60}
-\definecolor{reviewer2}{RGB}{160, 92, 123}
+\definecolor{reviewer1}{RGB}{0, 0, 0}
+\definecolor{reviewer2}{RGB}{0, 0, 0}
+
+% \definecolor{reviewer1}{RGB}{184, 111, 60}
+% \definecolor{reviewer2}{RGB}{160, 92, 123}
 
 \newcommand{\rone}[1]{\textcolor{reviewer1}{#1}}
 \newcommand{\rtwo}[1]{\textcolor{reviewer2}{#1}}
@@ -717,8 +720,8 @@ the notion of causality and responsibility, and the Shapley value function.
 \subsection{How-Provenance}
 \label{section:how_provenance_tuples}
 
-While why-provenance describes the source tuples that witness an output tuple in the result of the query, it leaves out  information about how the source tuples are used.
-How-provenance was therefore defined in \citep{howProvenanceGreen} to capture this information using a \emph{semiring} algebraic structure.
+% While why-provenance describes the source tuples that witness an output tuple in the result of the query, it leaves out  information about how the source tuples are used.
+How-provenance was defined in \citep{howProvenanceGreen} to capture this information about how the source tuples are used using a \emph{semiring} algebraic structure.
 It takes the form of a polynomial, called \emph{provenance polynomial}, where the variables are taken from the set $X$ of identifiers of the tuples (provided that each tuple in $I$ has an identifier) and the coefficients are drew from the set of natural numbers $\mathbb{N}$.\footnote{\rtwo{This semiring is commonly referred as $\mathbb{N}[X]$ in the literature.}}
 
 % SOME FORMALISM
@@ -790,7 +793,7 @@ The how-provenance of an output tuple is a function $\mathcal{H} = How(Q, I, o)$
 \]
 \end{definition}
 
-We remember that $\{u\}$ is a query expression describing a constant, singleton relation, not a relation value per se. These constants correspond to $K$-relations that assign $1$ to $u$ and $0$ to all other tuples.
+Here $\{u\}$ is a query expression describing a constant, singleton relation, not a relation value per se. These constants correspond to $K$-relations that assign $1$ to $u$ and $0$ to all other tuples.
 The summation in the projection case is finite since the support of a $K$-relation is assumed to be finite. 
 In the selection rule, $\theta$ is seen as a function $\theta: U$-Tuples $\mapsto \{0, 1\}$.
 
@@ -815,9 +818,23 @@ In the selection rule, $\theta$ is seen as a function $\theta: U$-Tuples $\mapst
   \label{table:result_how_prov}
 \end{table} 
 
+As an example, consider the following SQL query \texttt{Q1}, applied to the database described in Table \ref{table:running_example}, asking for the names of families curated by researchers based in the United Kingdom (UK):
 
+\vspace{2mm}
+{\footnotesize
+\begin{adjustwidth}{25pt}{0pt}
+\begin{verbatim}
+		Q1: SELECT DISTINCT f.name
+		FROM family AS f JOIN contributor2family AS c2f 
+		ON f.id = c2f.family_id
+		JOIN contributor AS c ON c2f.contributor_id = c.id
+		WHERE c.country = 'UK'
+\end{verbatim}	
+\end{adjustwidth}
+}
+\vspace{2mm}
 
-Table \ref{table:result_how_prov} shows the two output tuples of our running example annotated with their respective how-provenances. 
+Table \ref{table:result_how_prov} shows the two output tuples of query \texttt{Q1} annotated with their respective how-provenances. 
 Tuple $o_2$ was produced by a join of the input tuples $f_4, c2f_4$, and $c_1$. The three provenance tokens are therefore  ``multiplied'' together. 
 The case of $o_1$ is slightly more complex, as already discussed.
 It can be obtained by the joins of two different sets of tuples, so there are two monomials combined by $+$ representing these alternative derivations. Each monomial corresponds, in a way, to the witnesses of the why-provenance of $o_1$.
@@ -915,7 +932,7 @@ For the output tuple $o_2$, all the tuples of the lineage are counterfactual cau
 
 %%%%%%%%%%%%%%%%%%%%
 
-\rtwo{\subsection{Shapley value}}
+\subsection{Shapley value}
 \label{sec:shapley_value}
 
 \eat{
@@ -1235,7 +1252,7 @@ To define the DS more formally, we introduce some notation and illustrate it usi
 We call $c$ the function that, given a polynomial, returns the sum of its coefficients; thus $c(\mathcal{H})=\;3+1=4$. 
 \rone{We call $e$ the function that, given a monomial, returns the sum of its exponents, thus $e(M_2)=1+3+3=7$.}
 $mc$ is the function that takes as input a monomial and returns its coefficient; thus $mc(M_1) = 3$. 
-\rone{$te$ is a function that takes as input a tuple and a monomial, and returns the exponent of the tuple in the monomial, if present; thus $te(c_2, M_2)=3$}. 
+$te$ is a function that takes as input a tuple and a monomial, and returns the exponent of the tuple in the monomial, if present; thus $te(c_2, M_2)=3$. 
 Finally, $\gamma$ takes as input a tuple and the whole polynomial, and returns a set of monomials containing that tuple, if present in the polynomial; thus $\gamma(f_1, \mathcal{H})=\;\{M_1, M_2\}$, $\gamma(c_2, \mathcal{H})=\;\{M_2\}$. 
 
 \eat{
@@ -1305,14 +1322,14 @@ We therefore consider another query over GtoPdb, \texttt{Q2}, that asks for the 
   \hline
     id & name\\
     \hline
-    $oxs_1$ &  Dopamine Receptors\\
+    $oxs_1$ &  Dopamine Receptors \\
     \hline
   \end{tabular}
   \newline
 \vspace{2mm}
-  \begin{tabular}{c | c | c}
-  	lineage & why-provenance & how-provenance   \\
-  	$\{f_1, c2f_1, c_1, c2f_2, c_2\}$ & $\{\{f_1, c2f_1, c_1\}, \{f_1, c2f_2, c_2\}\}$ & $f_1^2 c2f_1 c_1 + f_1^2 c2f_2 c_2$\\
+  \begin{tabular}{c }
+  	 how-provenance   \\
+  	$f_1^2 c2f_1 c_1 + f_1^2 c2f_2 c_2$\\
   \end{tabular}
     \caption{Result of query \texttt{Q2} applied on the database of Table \ref{table:running_example} and its different provenances. The reported numbers are the credit distributed through the process.}
   \label{table:difference_result}
