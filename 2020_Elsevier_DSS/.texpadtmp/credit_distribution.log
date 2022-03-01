@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.10.23)  1 MAR 2022 12:35
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.10.23)  1 MAR 2022 12:12
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -63,7 +63,7 @@ File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
 \@enLab=\toks16
 \@sep=\skip43
 \@@sep=\skip44
- (/Users/dennisdosso/Dropbox/paper di Dennis/IN CORSO/2020_PeerJ_Credit_backup/2020_Elsevier_DSS/.texpadtmp/credit_distribution.spl) (/usr/local/texlive/2019/texmf-dist/tex/latex/natbib/natbib.sty
+ (/Users/dennisdosso/Desktop/temp/2021_Information_Science_Credit/2020_Elsevier_DSS/.texpadtmp/credit_distribution.spl) (/usr/local/texlive/2019/texmf-dist/tex/latex/natbib/natbib.sty
 Package: natbib 2010/09/13 8.31b (PWD, AO)
 \bibhang=\skip45
 \bibsep=\skip46
@@ -74,7 +74,7 @@ LaTeX Info: Redefining \cite on input line 694.
 \openout3 = `credit_distribution.spl'.
 
 \appnamewidth=\dimen109
-) (./format.tex (/usr/local/texlive/2019/texmf-dist/tex/latex/amsfonts/amssymb.sty
+) (/usr/local/texlive/2019/texmf-dist/tex/latex/amsfonts/amssymb.sty
 Package: amssymb 2013/01/14 v3.01 AMS font symbols
  (/usr/local/texlive/2019/texmf-dist/tex/latex/amsfonts/amsfonts.sty
 Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
@@ -669,21 +669,21 @@ File: pgflibraryfadings.code.tex 2019/04/04 v3.1.2 (3.1.2)
 \c@@todonotes@numberoftodonotes=\count309
 )
 \c@definition=\count310
-) (/Users/dennisdosso/Dropbox/paper di Dennis/IN CORSO/2020_PeerJ_Credit_backup/2020_Elsevier_DSS/.texpadtmp/credit_distribution.aux)
+ (/Users/dennisdosso/Desktop/temp/2021_Information_Science_Credit/2020_Elsevier_DSS/.texpadtmp/credit_distribution.aux)
 \openout1 = `credit_distribution.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 78.
+LaTeX Font Info:    ... okay on input line 78.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 78.
+LaTeX Font Info:    ... okay on input line 78.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 78.
+LaTeX Font Info:    ... okay on input line 78.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 78.
+LaTeX Font Info:    ... okay on input line 78.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 78.
+LaTeX Font Info:    ... okay on input line 78.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 78.
+LaTeX Font Info:    ... okay on input line 78.
  (/usr/local/texlive/2019/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count311
@@ -734,22 +734,21 @@ Package grfext Info: Graphics extension search list:
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 )) ABD: EveryShipout initializing macros
 
-Package todonotes Warning: The length marginparwidth is less than 2cm and will most likely cause issues with the appearance of inserted todonotes. The issue can be solved by adding a line like \setlength {\marginparwidth }{2cm} prior to loading the todonotes package. on input line 23.
+Package todonotes Warning: The length marginparwidth is less than 2cm and will most likely cause issues with the appearance of inserted todonotes. The issue can be solved by adding a line like \setlength {\marginparwidth }{2cm} prior to loading the todonotes package. on input line 78.
 
-(./title.tex) (./abstract.tex
-Overfull \hbox (6.88077pt too wide) in paragraph at lines 9--11
+
+Overfull \hbox (6.88077pt too wide) in paragraph at lines 128--130
 []\OT1/cmr/m/n/12 We adopt as use case the IUPHAR/BPS Guide to Phar-ma-col-ogy (GtoPdb),
  []
 
-)
-LaTeX Font Info:    Try loading font information for U+msa on input line 32.
- (/usr/local/texlive/2019/texmf-dist/tex/latex/amsfonts/umsa.fd
+LaTeX Font Info:    Try loading font information for U+msa on input line 157.
+(/usr/local/texlive/2019/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 32.
+LaTeX Font Info:    Try loading font information for U+msb on input line 157.
  (/usr/local/texlive/2019/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) (./section/introduction.tex
+)
 Overfull \hbox (2.61108pt too wide) has occurred while \output is active
 [] 
  []
@@ -760,234 +759,233 @@ Overfull \hbox (2.61108pt too wide) has occurred while \output is active
 {/usr/local/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2] [3]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 74.
+               Default added (so using `tbp') on input line 237.
 
-<./figures/overview.pdf, id=50, 1162.3425pt x 694.595pt>
-File: ./figures/overview.pdf Graphic file (type pdf)
-<use ./figures/overview.pdf>
-Package pdftex.def Info: ./figures/overview.pdf  used on input line 76.
+<overview.pdf, id=50, 1162.3425pt x 694.595pt>
+File: overview.pdf Graphic file (type pdf)
+<use overview.pdf>
+Package pdftex.def Info: overview.pdf  used on input line 239.
 (pdftex.def)             Requested size: 331.50238pt x 198.09941pt.
-[4 <./figures/overview.pdf>]
-Overfull \hbox (7.14587pt too wide) in paragraph at lines 113--120
-\OT1/cmr/m/n/12 based on an-other, more gen-eral, form of data prove-nance: how-provenance [[]].
- []
-
-[5]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 133.
+[4 <./overview.pdf>] [5]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 299.
  (/usr/local/texlive/2019/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 133.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 299.
 
-Overfull \hbox (25.94153pt too wide) in paragraph at lines 133--134
-[]\OT1/cmr/m/n/12 Four new Dis-tri-bu-tion Strate-gies based on why-provenance, how-provenance,
+Overfull \hbox (25.94153pt too wide) in paragraph at lines 299--300
+[][]\OT1/cmr/m/n/12 Four new Dis-tri-bu-tion Strate-gies based on why-provenance, how-provenance,
  []
 
-) (./section/related.tex [6] [7]
-Underfull \hbox (badness 10000) in paragraph at lines 39--39
+[6] [7]
+Underfull \hbox (badness 10000) in paragraph at lines 347--347
 [][]$\OT1/cmtt/m/n/10 https : / / medicine . missouri . edu / centers-[]institutes-[]labs /
  []
 
 [8] [9] [10]
-Overfull \hbox (8.93452pt too wide) in paragraph at lines 129--130
+Overfull \hbox (8.93452pt too wide) in paragraph at lines 437--438
 \OT1/cmr/m/it/12 eage \OT1/cmr/m/n/12 [[]], \OT1/cmr/m/it/12 why-provenance \OT1/cmr/m/n/12 [[]], \OT1/cmr/m/it/12 how-provenance \OT1/cmr/m/n/12 [[]] and \OT1/cmr/m/it/12 where-provenance \OT1/cmr/m/n/12 [[]]. 
  []
 
-[11]) (./section/use_case.tex
-<figures/iuphar_schema.pdf, id=121, 1071.00125pt x 737.75626pt>
-File: figures/iuphar_schema.pdf Graphic file (type pdf)
-<use figures/iuphar_schema.pdf>
-Package pdftex.def Info: figures/iuphar_schema.pdf  used on input line 6.
+[11]
+<iuphar_schema.pdf, id=121, 1071.00125pt x 737.75626pt>
+File: iuphar_schema.pdf Graphic file (type pdf)
+<use iuphar_schema.pdf>
+Package pdftex.def Info: iuphar_schema.pdf  used on input line 476.
 (pdftex.def)             Requested size: 350.99762pt x 241.78299pt.
  [12]
-<figures/family_structure.pdf, id=125, 1182.4175pt x 735.74875pt>
-File: figures/family_structure.pdf Graphic file (type pdf)
-<use figures/family_structure.pdf>
-Package pdftex.def Info: figures/family_structure.pdf  used on input line 22.
+<family_structure.pdf, id=125, 1182.4175pt x 735.74875pt>
+File: family_structure.pdf Graphic file (type pdf)
+<use family_structure.pdf>
+Package pdftex.def Info: family_structure.pdf  used on input line 492.
 (pdftex.def)             Requested size: 390.0pt x 242.67435pt.
- [13 <./figures/iuphar_schema.pdf>] [14 <./figures/family_structure.pdf>]
-Overfull \hbox (14.43011pt too wide) in paragraph at lines 43--49
+ [13 <./iuphar_schema.pdf>] [14 <./family_structure.pdf>]
+Overfull \hbox (14.43011pt too wide) in paragraph at lines 513--519
 \OT1/cmr/m/n/12 GtoPdb con-tains three ta-bles: \OT1/cmtt/m/n/12 family\OT1/cmr/m/n/12 , \OT1/cmtt/m/n/12 contributor \OT1/cmr/m/n/12 and \OT1/cmtt/m/n/12 contributor2family\OT1/cmr/m/n/12 .
  []
 
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 50.
+               Default added (so using `tbp') on input line 520.
 
-) (./section/preliminaries.tex [15]
+[15]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 4.
+               Default added (so using `tbp') on input line 562.
 
-[16]
+[16] [17]
 
-LaTeX Font Warning: Font shape `OT1/cmss/m/it' in size <12> not available
-(Font)              Font shape `OT1/cmss/m/sl' tried instead on input line 199.
-
-[17]
-Overfull \hbox (6.74332pt too wide) in paragraph at lines 212--214
-\OT1/cmr/m/n/12 us con-sider he al-ge-braic struc-ture $(\U/msb/m/n/12 N\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 TupleLoc\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 0\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 1\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 +\OML/cmm/m/it/12 ; \OMS/cmsy/m/n/12 ^^A\OT1/cmr/m/n/12 )$, where $\U/msb/m/n/12 N\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 TupleLoc\OT1/cmr/m/n/12 )$
- []
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `tbp') on input line 754.
 
 [18]
-
-LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 240.
-
-
-Overfull \hbox (5.08757pt too wide) in paragraph at lines 269--271
+Overfull \hbox (5.08757pt too wide) in paragraph at lines 783--785
 []\OT1/cmr/m/n/12 Provenance poly-no-mi-als may also have mono-mi-als whose ex-po-nents and/or
  []
 
 [19]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 331.
+               Default added (so using `tbp') on input line 845.
 
 [20]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 405.
+               Default added (so using `tbp') on input line 919.
 
-[21]) (./section/methods.tex [22]
+[21] [22] [23]
+Overfull \hbox (4.66534pt too wide) in paragraph at lines 1118--1120
+[]\OT1/cmr/m/n/12 The dis-tri-bu-tion strat-egy based on why-provenance first equally dis-tributes
+ []
+
+[24]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 154.
+               Default added (so using `tbp') on input line 1153.
 
-<figures/how_example.pdf, id=226, 540.0175pt x 329.23pt>
+<figures/why_distribution.pdf, id=231, 553.06625pt x 368.37625pt>
+File: figures/why_distribution.pdf Graphic file (type pdf)
+<use figures/why_distribution.pdf>
+Package pdftex.def Info: figures/why_distribution.pdf  used on input line 1155.
+(pdftex.def)             Requested size: 175.49881pt x 116.89351pt.
+
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `tbp') on input line 1180.
+
+<figures/how_example.pdf, id=232, 540.0175pt x 329.23pt>
 File: figures/how_example.pdf Graphic file (type pdf)
 <use figures/how_example.pdf>
-Package pdftex.def Info: figures/how_example.pdf  used on input line 156.
+Package pdftex.def Info: figures/how_example.pdf  used on input line 1182.
 (pdftex.def)             Requested size: 155.99762pt x 95.1025pt.
-[23] [24 <./figures/how_example.pdf>]
-Overfull \hbox (7.74675pt too wide) in paragraph at lines 224--224
+[25 <./figures/why_distribution.pdf>] [26 <./figures/how_example.pdf>]
+Overfull \hbox (7.74675pt too wide) in paragraph at lines 1250--1250
  []\OT1/cmtt/m/n/10 FROM family AS f JOIN contributor2family AS c2f ON f.id = c2f.family_id[] 
  []
 
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 229.
+               Default added (so using `tbp') on input line 1255.
 
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 253.
+               Default added (so using `tbp') on input line 1279.
 
-<figures/how_distribution.pdf, id=347, 1666.225pt x 397.485pt>
-File: figures/how_distribution.pdf Graphic file (type pdf)
-<use figures/how_distribution.pdf>
-Package pdftex.def Info: figures/how_distribution.pdf  used on input line 254.
-(pdftex.def)             Requested size: 390.0pt x 93.03294pt.
-[25 <./figures/how_distribution.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 278--283
+<figures/new_comparison.pdf, id=445, 1135.24126pt x 397.485pt>
+File: figures/new_comparison.pdf Graphic file (type pdf)
+<use figures/new_comparison.pdf>
+Package pdftex.def Info: figures/new_comparison.pdf  used on input line 1280.
+(pdftex.def)             Requested size: 312.00119pt x 109.23895pt.
+[27 <./figures/new_comparison.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 1304--1309
 
  []
 
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 293.
+               Default added (so using `tbp') on input line 1319.
 
-<figures/resp_example.pdf, id=486, 932.48375pt x 293.095pt>
-File: figures/resp_example.pdf Graphic file (type pdf)
-<use figures/resp_example.pdf>
-Package pdftex.def Info: figures/resp_example.pdf  used on input line 295.
+<resp_example.pdf, id=645, 932.48375pt x 293.095pt>
+File: resp_example.pdf Graphic file (type pdf)
+<use resp_example.pdf>
+Package pdftex.def Info: resp_example.pdf  used on input line 1321.
 (pdftex.def)             Requested size: 272.99881pt x 85.80484pt.
-[26]) (./section/experiments.tex [27 <./figures/resp_example.pdf>]
-<figures/paper_based.pdf, id=557, 3015.265pt x 1396.21625pt>
-File: figures/paper_based.pdf Graphic file (type pdf)
-<use figures/paper_based.pdf>
-Package pdftex.def Info: figures/paper_based.pdf  used on input line 18.
+[28] [29 <./resp_example.pdf>]
+<paper_based.pdf, id=718, 3015.265pt x 1396.21625pt>
+File: paper_based.pdf Graphic file (type pdf)
+<use paper_based.pdf>
+Package pdftex.def Info: paper_based.pdf  used on input line 1369.
 (pdftex.def)             Requested size: 390.0pt x 180.57709pt.
- [28 <./figures/paper_based.pdf>] [29] Excluding 'comment' comment. [30]
-Overfull \hbox (23.20404pt too wide) in paragraph at lines 185--186
+ [30 <./paper_based.pdf>] [31] Excluding 'comment' comment. [32]
+Overfull \hbox (23.20404pt too wide) in paragraph at lines 1536--1537
 \OT1/cmr/m/n/12 prove-nance poly-no-mial (the how-provenance), the cor-re-spond-ing why-provenance,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 188--249
+Underfull \hbox (badness 10000) in paragraph at lines 1539--1600
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 188--249
+Underfull \hbox (badness 10000) in paragraph at lines 1539--1600
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 188--249
+Underfull \hbox (badness 10000) in paragraph at lines 1539--1600
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 188--249
+Underfull \hbox (badness 10000) in paragraph at lines 1539--1600
 
  []
 
-<figures/experiments/synthetic_comparison.pdf, id=580, 2983.145pt x 1382.16376pt>
-File: figures/experiments/synthetic_comparison.pdf Graphic file (type pdf)
-<use figures/experiments/synthetic_comparison.pdf>
-Package pdftex.def Info: figures/experiments/synthetic_comparison.pdf  used on input line 255.
+<synthetic_comparison.pdf, id=742, 2983.145pt x 1382.16376pt>
+File: synthetic_comparison.pdf Graphic file (type pdf)
+<use synthetic_comparison.pdf>
+Package pdftex.def Info: synthetic_comparison.pdf  used on input line 1606.
 (pdftex.def)             Requested size: 390.0pt x 180.67883pt.
-[31] [32 <./figures/experiments/synthetic_comparison.pdf>]
+[33] [34 <./synthetic_comparison.pdf>]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 346.
+               Default added (so using `tbp') on input line 1697.
 
-[33]
-Overfull \hbox (12.34962pt too wide) in paragraph at lines 374--378
+[35]
+Overfull \hbox (12.34962pt too wide) in paragraph at lines 1725--1729
 []\OT1/cmr/m/n/12 Consider the how-provenance-based DS heat-map. As with why-provenance,
  []
 
-[34]
-<figures/experiments/comparison.pdf, id=612, 1775.63374pt x 3429.81375pt>
-File: figures/experiments/comparison.pdf Graphic file (type pdf)
-<use figures/experiments/comparison.pdf>
-Package pdftex.def Info: figures/experiments/comparison.pdf  used on input line 408.
+[36]
+<comparison.pdf, id=772, 1775.63374pt x 3429.81375pt>
+File: comparison.pdf Graphic file (type pdf)
+<use comparison.pdf>
+Package pdftex.def Info: comparison.pdf  used on input line 1759.
 (pdftex.def)             Requested size: 234.00238pt x 451.96227pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[35]
+[37]
 
-LaTeX Warning: Text page 36 contains only floats.
+LaTeX Warning: Text page 38 contains only floats.
 
-[36 <./figures/experiments/comparison.pdf, page is rotated 270 degrees>] [37]
+[38 <./comparison.pdf, page is rotated 270 degrees>] [39]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 477.
+               Default added (so using `tbp') on input line 1828.
 
-<figures/2_radars.pdf, id=654, 872.25874pt x 379.4175pt>
-File: figures/2_radars.pdf Graphic file (type pdf)
-<use figures/2_radars.pdf>
-Package pdftex.def Info: figures/2_radars.pdf  used on input line 479.
+<2_radars.pdf, id=814, 872.25874pt x 379.4175pt>
+File: 2_radars.pdf Graphic file (type pdf)
+<use 2_radars.pdf>
+Package pdftex.def Info: 2_radars.pdf  used on input line 1830.
 (pdftex.def)             Requested size: 390.0pt x 169.64209pt.
-[38 <./figures/2_radars.pdf>]
-<figures/radar.pdf, id=677, 1316.92pt x 425.59pt>
-File: figures/radar.pdf Graphic file (type pdf)
-<use figures/radar.pdf>
-Package pdftex.def Info: figures/radar.pdf  used on input line 529.
+[40 <./2_radars.pdf>]
+<radar.pdf, id=837, 1316.92pt x 425.59pt>
+File: radar.pdf Graphic file (type pdf)
+<use radar.pdf>
+Package pdftex.def Info: radar.pdf  used on input line 1880.
 (pdftex.def)             Requested size: 390.0pt x 126.035pt.
- [39] [40 <./figures/radar.pdf>]) (./section/more_experiments.tex) (./discussion.tex [41] [42]) (./section/conclusions.tex
-Overfull \hbox (13.47775pt too wide) in paragraph at lines 4--12
+ [41] [42 <./radar.pdf>] [43] [44]
+Overfull \hbox (13.47775pt too wide) in paragraph at lines 2071--2079
 []\OT1/cmr/m/n/12 This pa-per de-fines four new dis-tri-bu-tion strate-gies based on why-provenance,
  []
 
-[43] [44]) (/Users/dennisdosso/Dropbox/paper di Dennis/IN CORSO/2020_PeerJ_Credit_backup/2020_Elsevier_DSS/.texpadtmp/credit_distribution.bbl [45] [46] [47] [48] [49] [50] [51]) [52] (/Users/dennisdosso/Dropbox/paper di Dennis/IN CORSO/2020_PeerJ_Credit_backup/2020_Elsevier_DSS/.texpadtmp/credit_distribution.aux) ) 
+[45] [46] (/Users/dennisdosso/Desktop/temp/2021_Information_Science_Credit/2020_Elsevier_DSS/.texpadtmp/credit_distribution.bbl [47] [48] [49] [50] [51] [52] [53]) [54] (/Users/dennisdosso/Desktop/temp/2021_Information_Science_Credit/2020_Elsevier_DSS/.texpadtmp/credit_distribution.aux) ) 
 Here is how much of TeX's memory you used:
- 24421 strings out of 492616
- 472275 string characters out of 6129480
- 482602 words of memory out of 5000000
- 27939 multiletter control sequences out of 15000+600000
- 542665 words of font info for 65 fonts, out of 8000000 for 9000
+ 24389 strings out of 492616
+ 471302 string characters out of 6129480
+ 482643 words of memory out of 5000000
+ 27944 multiletter control sequences out of 15000+600000
+ 542306 words of font info for 64 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 64i,12n,81p,1125b,396s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2019/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmti7.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on "/Users/dennisdosso/Dropbox/paper di Dennis/IN CORSO/2020_PeerJ_Credit_backup/2020_Elsevier_DSS/.texpadtmp/credit_distribution.pdf" (52 pages, 3014308 bytes).
+ 62i,14n,81p,1106b,396s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmti7.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on /Users/dennisdosso/Desktop/temp/2021_Information_Science_Credit/2020_Elsevier_DSS/.texpadtmp/credit_distribution.pdf (54 pages, 3333900 bytes).
 PDF statistics:
- 820 PDF objects out of 1000 (max. 8388607)
- 586 compressed objects within 6 object streams
+ 981 PDF objects out of 1000 (max. 8388607)
+ 721 compressed objects within 8 object streams
  0 named destinations out of 1000 (max. 500000)
- 164 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 169 words of extra memory for PDF output out of 10000 (max. 10000000)
 
