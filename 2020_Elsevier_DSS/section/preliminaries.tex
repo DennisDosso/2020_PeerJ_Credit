@@ -210,7 +210,7 @@ It is observed in \cite{howProvenanceGreen, CheneyProvSurvey} that if the $K$-re
 The semiring operations document \emph{how} each output tuple is produced from source tuples. If each source tuple in a database $D$ is tagged with a distinct id, the semiring gives the how-provenance for each output tuple in the form of a polynomial with coefficient from the set $\mathbb{N}$ of natural numbers and variables from the set of source tuples id. 
 
 To define how-provenance in a compositional manner, as done in \citep{CheneyProvSurvey}, let us consider he algebraic structure $(\mathbb{N}(TupleLoc), 0, 1, +, \cdot)$, where $\mathbb{N}(TupleLoc)$ is the set of polynomials whose coefficients are the natural numbers and the variable are from the set $TupleLoc$. 
-The how-provenance of an output tuple is a function $\mathcal{H} = How(Q, I, o)$ that returns a polynomial in $\mathbb{N}(TupleLoc)$ called \emph{provenance polynomial}. 
+The how-provenance of an output tuple is a function $\mathcal{H} = How(Q, I, o)$ that returns a polynomial in $\mathbb{N}(TupleLoc)$ called \emph{provenance polynomial}. The following definition of how-provenance is adapted from \cite{CheneyProvSurvey}.
 
 \begin{definition}{How-Provenance}\\
 \label{definition:how_provenance}
