@@ -90,11 +90,8 @@ The DCD process that we use is summarized in Figure \ref{fig:system_overview}:
 % 	\SBD{The rest of this Step is confusing. Rewrote. What dos it matter how researcheers access the data?  and the sentence was not complete.} 
 	\item[Step 3] The citation to the data generates credit, that can be used as a proxy for the impact of the data on the citing paper. This credit is represented as a real value $k \in \mathbb{R}_{>0}$. 
 	\item[Step 4] Given the database instance $I$ and the query $Q$,  the \emph{data provenance} of $Q(I)$ is computed. The data provenance of $Q(I)$ is a form of metadata that captures how 
-	$Q$ used $I$ to generate the output~\citep{CheneyProvSurvey}. \eat{Many different notions of provenance have been proposed ~\citep{lineageCui, WhyProvBuneman, howProvenanceGreen}, which have been used in various applications such as annotation propagation and the view update problem~\citep{CheneyProvSurvey}.}
+	$Q$ used $I$ to generate the output~\citep{CheneyProvSurvey}. 
 	\eat{, describing different kinds of relationships between data in the input and the output of a query. As reported in \citep{CheneyProvSurvey}, these provenances have been used in several applications beyond giving information on how queries work, for example, annotation propagation and the view update problem. }
-	\eat{
-	In this paper, we consider three types of provenance: lineage, why-provenance, and how-provenance. \rtwo{Also, we consider ``causality and responsibility''~\cite{MeliouGMS11}, that enrich the information provided by provenance.}
-	}
 	\item[Step 5] Provenance is input to the 
 	\eat{DCD problem, whose aim is to compute the} \emph{Credit Distribution Strategy} (CDS, also referred only as Distribution Strategy, DS). CDS is a function $f$ that takes as input the credit value $k $, divides it and distributes it to the data in the input database $I$, and is defined on the basis of citation policies decided at the database administration level or at the domain community level. 
 	%Since we are not in a "one-size-fits-all" setting, CDS can be defined with great variability and flexibility, thus allowing for ample customization. 
@@ -113,12 +110,12 @@ One may argue that this DS is too simplistic, since lineage
 does not convey any information about the role or importance of input tuples in the query.
 Therefore, one may desire to give more credit to the tuples that are more {\em important} to the production of the output, i.e. those tuples that, if removed, would prevent the output tuple from appearing in the final result, or those tuples used more than once  by the query. 
 
-Therefore, in this paper, we expand the ideas in \citep{dosso2020data} by proposing new DSs based on two other forms of data provenance: why-provenance~\citep{WhyProvBuneman} and how-provenance~\citep{howProvenanceGreen}.
-\rtwo{We also propose other two DS based on the concepts of responsibility~\cite{MeliouGMS11} and the Shapley value~\cite{LivshitsBKS20,DFKM22}}.
-\rone{We show how these DS differ from each other and to the one based on lineage,} and discuss why one may be preferred to another depending on the application and its goals. 
-In particular, we show that the proposed new DSs are more sensitive than the lineage-based one to the {\em role} of a tuple in a query, i.e. how many times the tuple is used and how it is used. 
-We also show that the DSs based on why-provenance and \rtwo{responsibility} give more credit to tuples that are essential to the production of the result set, whereas the how-provenance-based DS takes into consideration the different ways in which a tuple is used.
-\rtwo{Finally, the DS based on the Shapley value sees the process of distribution as a competitive game in which tuples that contribute more to the generation of the output are correspondingly rewarded more.}. 
+Therefore, in this paper, we expand the ideas in \citep{dosso2020data} by proposing new DSs based on another, more general, form of data provenance: how-provenance~\citep{howProvenanceGreen}.
+We also propose other two DS based on the concepts of responsibility~\cite{MeliouGMS11} and the Shapley value~\cite{LivshitsBKS20,DFKM22}.
+We show how these DS differ from each other and discuss why one may be preferred to another depending on the application and its goals. 
+% In particular, we show that the proposed new DSs are sensitive than the lineage-based one to the {\em role} of a tuple in a query, i.e. how many times the tuple is used and how it is used. 
+We also show that the DSs based on \rtwo{responsibility} give more credit to tuples that are essential to the production of the result set, whereas the how-provenance-based DS takes into consideration the different ways in which a tuple is used.
+Finally, the DS based on the Shapley value sees the process of distribution as a competitive game in which tuples that contribute more to the generation of the output are correspondingly rewarded more. 
 %\scream{Perhaps we could also say "Surprisingly, we also demonstrate that even the most complex DS, i.e.  the one based on Shapley, can be computed efficiently based on results in \cite{DFKM22}." Not sure if this should be "efficiently" or "quickly" as we are using it rather than proposing a new implementation. DD: not sure it needs to go here. In any case, it is said in the paper}
 
 We use a well-known curated database called the IUPHAR/BPS\footnote{International Union of Basic and Clinical Pharmacology/British Pharmacology Society} Guide to Pharmacology~\citep{iuphar2018}, also known as GtoPdb\footnote{\url{https://www.guidetopharmacology.org/}}, to evaluate the DSs.  GtoPdb contains expertly curated information about diseases, drugs, cellular drug targets, and their mechanisms of action.
@@ -133,7 +130,7 @@ In the fourth set of experiments we use both real and synthetic queries to asses
 \textbf{Contributions}
  of this work include:
 \begin{itemize}
-    \item \rone{Four new Distribution Strategies based on why-provenance, how-provenance, \rtwo{responsibility and the Shapley value}.}
+    \item Four new Distribution Strategies based on why-provenance, how-provenance, \rtwo{responsibility and the Shapley value}.
     \item An in-depth analysis of the effects of credit distribution on real-world curated data and of the differences between the five proposed Distribution Strategies.
     \item A comparison between the behavior of traditional citations and data credit in rewarding data curators.
 \end{itemize}
