@@ -720,33 +720,81 @@ the notion of causality and responsibility, and the Shapley value function.
 While why-provenance describes the source tuples that witness an output tuple in the result of the query, it leaves out  information about how the source tuples are used.
 How-provenance was therefore defined in \citep{howProvenanceGreen} to capture this information using a \emph{semiring} algebraic structure.
 It takes the form of a polynomial, called \emph{provenance polynomial}, where the variables are taken from the set $X$ of identifiers of the tuples (provided that each tuple in $I$ has an identifier) and the coefficients are drew from the set of natural numbers $\mathbb{N}$.\footnote{\rtwo{This semiring is commonly referred as $\mathbb{N}[X]$ in the literature.}}
-%\scream{Why do we need this last? -- I added it because reviewer 2 talked about PosBool(X), a semiring contained in N[X]. I wanted to stree the fact that we work here, not in PosBool.}
+
 % SOME FORMALISM
-%A semiring $K$ is a \emph{set} equipped with two operations, typically denoted with the symbols $+$ and $\cdot$, satisfying the following axioms ~\cite[pg. 26]{berstel1985theory}:
-%\begin{enumerate}
-%	\item The set $K$ is a \emph{commutative monoid} for the operator $+$ with a neutral element $0$. Therefore, it has these properties:
-%		\begin{enumerate}
-%			\item $(a + b) + c = a + (b + c)$ (associative property)
-%			\item $0 + a = a + 0 = a$ ($0$ is the neutral element) 
-%			\item $a + b = b + a$ (commutative property)
-%		\end{enumerate}
-%	\item The set $K$ is a \emph{monoid} with identity element $1$. Therefore, it has these properties:
-%		\begin{enumerate}
-%			\item $(a \cdot b) \cdot c = a \cdot (b \cdot c)$ (associative property)
-%			\item $1 \cdot a = a \cdot 1 = a$ ($1$ is the neutral element)
-%		\end{enumerate}
-%	\item Multiplication is distributive on addition, i.e.:
-%		\begin{enumerate}
-%			\item $a \cdot (b + c) = (a \cdot b) + (a \cdot c)$
-%			\item $(a + b) \cdot c = (a \cdot c) + (b \cdot c)$
-%		\end{enumerate}
-%	\item Multiplication by $0$ annihilates $K$, i.e. $\forall x \in K, 0 \cdot x = x \cdot 0 = 0$
-%\end{enumerate}
+A semiring $K$ is a \emph{set} equipped with two operations, typically denoted with the symbols $+$ and $\cdot$, satisfying the following axioms ~\cite[pg. 26]{berstel1985theory}:
+\begin{enumerate}
+	\item The set $K$ is a \emph{commutative monoid} for the operator $+$ with a neutral element $0$. Therefore, it has these properties:
+		\begin{enumerate}
+			\item $(a + b) + c = a + (b + c)$ (associative property)
+			\item $0 + a = a + 0 = a$ ($0$ is the neutral element) 
+			\item $a + b = b + a$ (commutative property)
+		\end{enumerate}
+	\item The set $K$ is a \emph{monoid} with identity element $1$. Therefore, it has these properties:
+		\begin{enumerate}
+			\item $(a \cdot b) \cdot c = a \cdot (b \cdot c)$ (associative property)
+			\item $1 \cdot a = a \cdot 1 = a$ ($1$ is the neutral element)
+		\end{enumerate}
+	\item Multiplication is distributive on addition, i.e.:
+		\begin{enumerate}
+			\item $a \cdot (b + c) = (a \cdot b) + (a \cdot c)$
+			\item $(a + b) \cdot c = (a \cdot c) + (b \cdot c)$
+		\end{enumerate}
+	\item Multiplication by $0$ annihilates $K$, i.e. $\forall x \in K, 0 \cdot x = x \cdot 0 = 0$
+\end{enumerate}
 
 The key idea in \citet{howProvenanceGreen} is to use the two operators $+$ and $\cdot$ to represent two basic transformations that source tuples undergo as a result of applying a relational query to a database~\citep{CheneyProvSurvey}. 
 Two tuples may either be joined together (a join is represented with the $\cdot$ operator) or merged via union or projection (represented with the $+$ operator).
 
- 
+ Now we formally introduce the mathematical framework behind how-provenance~\cite{howProvenanceGreen}.
+Let $K$ be a set containing an element $0$. 
+A $K$-$relation$ is a function $R: U$-$Tuples \mapsto K$ which maps every $U$-tuple in an element in $K$ such that its support, defined as $supp(R) = \{t | R(t) \neq 0\}$, is finite. 
+We remember that a $U$-tuple is a tuple with attributes in the set $U$. The $K$-relation is a finite function which models a relation $R$, tagging each tuple in $R$ with an element of $K$ and each tuple that is not in $R$ with $0$.
+\begin{definition}{Operations on the algebraic structure $(K, 0, 1, +, \cdot)$\cite{howProvenanceGreen}}\\
+\label{definition:how_original}
+	Let $(K, 0, 1, +, \cdot)$ be an algebraic structure with two binary operations $+$ and $\cdot$ and two distinguished elements $0$ and $1$. The operations of the positive $K$-relational algebra are defined as follows:
+	\begin{enumerate}
+		\item \textsf{Empty relation}. For any set of attributes $U$, $\exists \emptyset: U-Tuples \mapsto K | \emptyset(t) = 0$.
+		\item \textsf{Selection} Let $R: U$-Tuples $\mapsto K$ and $\sigma$ be a selection predicate that maps each $U$-Tuple to either 0 or 1. Then $\sigma_\theta(R): U$-Tuples $\mapsto K$ is defined by $(\sigma_\theta(R))(t) = R(t) \cdot \sigma(t)$. 
+		\item \textsf{Projection} Let $R: U$-Tuples $\mapsto K$ and $V \subseteq U$. Then $\pi_V(R): V$-Tuples $\mapsto K$ is defined by $(\pi_V(R))(t) = \sum_{t = t'[V] \vee R(t') \neq 0 }R(t')$.
+		\item \textsf{Union} Let $R_1, R_2: U$-Tuples $\mapsto K$. Then $R_1 \cup R_2: U$-Tuples $\mapsto K$ is defined by $(R_1 \cup R_2)(t) = R_1(t) + R_2(t)$.
+		\item \textsf{Natural join} Let $R_1: U_1$-Tuples $\mapsto K$ and $R_2: U_2$-Tuples $\mapsto K$. Then $R_1 \Join R_2: U_1 \cup U_2$-Tuples $\mapsto K$ is defined by $(R_1 \Join R_2)(t) = R_1(t_1) \cdot R_2(t_2)$, where $t_1 = t[U_1]$ and $t_2 = t[U_2]$.
+	\end{enumerate}
+\end{definition}
+
+It is observed in \cite{howProvenanceGreen, CheneyProvSurvey} that if the $K$-relational semantics satisfies the same equivalence laws as positive relational algebra operators over bags, i.e. union (+) is associative, commutative and has identity $\emptyset$ and join ($\cdot$) is associative, commutative and distributive over union, and projection and selection commute with each other, as well as with union and join, then $(K, 0, 1, +, \cdot)$ must be a commutative semiring. 
+
+let us consider the algebraic structure $(\mathbb{N}(TupleLoc), 0, 1, +, \cdot)$, where $\mathbb{N}(TupleLoc)$ is the set of polynomials whose coefficients are the natural numbers and the variable are from the set $TupleLoc$. 
+The how-provenance of an output tuple is a function $\mathcal{H} = How(Q, I, o)$ that returns a polynomial in $\mathbb{N}(TupleLoc)$ called \emph{provenance polynomial}. 
+
+
+\begin{definition}{How-Provenance}\\
+\label{definition:how_provenance}
+		Let $Q$ be a (complex) SPJRU query. Let $I$ be a database instance, and $t$ be a tuple in $Q(I)$. Then, the \emph{how-provenance} of ~$t$ according to $Q$ and $I$, denoted as $How(Q, I, t)$, is an element of the set $\mathbb{N}(TupleLoc)$ defined as follows:
+\[
+	\begin{array}{rl}
+		How(\{u\}, I, t) = & \begin{cases}
+			1, & \mbox{if } t = u,\\
+			0 & \mbox{otherwise}.
+		\end{cases}\\
+		How(R, I, t) = & \begin{cases}
+			(R, t), & \mbox{if } t \in R,\\
+			0 & \mbox{otherwise}.
+		\end{cases}\\
+		How(\sigma_\theta(Q), I, t) = & \theta(t) \cdot How(Q, I, t) \\
+		How(\rho_{A \mapsto B}(Q), I, t) = & How(Q, I, t[B \mapsto A]) \\
+		How(\pi_V(Q), I, t) = & \sum_{u \in supp(Q), u[V] = t} How(Q, I, t) \\
+		How(Q_1 \Join Q_2, I, t) = & How(Q_1, I, t[U_1]) \cdot How(Q_2, I, t[U_2]) \\
+		How(Q_1 \cup Q_2, I, t) = & How(Q_1, I, t) + How(Q_2, I, t)\\
+	\end{array}
+\]
+\end{definition}
+
+We remember that $\{u\}$ is a query expression describing a constant, singleton relation, not a relation value per se. These constants correspond to $K$-relations that assign $1$ to $u$ and $0$ to all other tuples.
+The summation in the projection case is finite since the support of a $K$-relation is assumed to be finite. 
+In the selection rule, $\theta$ is seen as a function $\theta: U$-Tuples $\mapsto \{0, 1\}$.
+
+
 
 \begin{table}[]
 \centering
@@ -766,6 +814,8 @@ Two tuples may either be joined together (a join is represented with the $\cdot$
     \caption{Result of \texttt{Q1} over the database instance in Table \ref{table:running_example} with the  how-provenance polynomial of each output tuple.}
   \label{table:result_how_prov}
 \end{table} 
+
+
 
 Table \ref{table:result_how_prov} shows the two output tuples of our running example annotated with their respective how-provenances. 
 Tuple $o_2$ was produced by a join of the input tuples $f_4, c2f_4$, and $c_1$. The three provenance tokens are therefore  ``multiplied'' together. 
