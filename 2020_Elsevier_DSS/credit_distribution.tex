@@ -1316,24 +1316,31 @@ We therefore consider another query over GtoPdb, \texttt{Q2}, that asks for the 
 }
 \vspace{2mm}
 
-\begin{table}[]
+\begin{figure}[]
 \centering
-  \begin{tabular}{|l||c|}
-  \hline
-    id & name\\
-    \hline
-    $oxs_1$ &  Dopamine Receptors \\
-    \hline
-  \end{tabular}
-  \newline
-\vspace{2mm}
-  \begin{tabular}{c }
-  	 how-provenance   \\
-  	$f_1^2 c2f_1 c_1 + f_1^2 c2f_2 c_2$\\
-  \end{tabular}
-    \caption{Result of query \texttt{Q2} applied on the database of Table \ref{table:running_example} and its different provenances. The reported numbers are the credit distributed through the process.}
+  \includegraphics[width=.8\textwidth]{figures/how_second_example.pdf}
+  \caption{Result of query \texttt{Q2} applied on the database of Table \ref{table:running_example} and its different provenances. The reported numbers are the credit distributed through the process.}
   \label{table:difference_result}
-\end{table}
+\end{figure}
+
+% \begin{table}[]
+% \centering
+%   \begin{tabular}{|l||c|}
+%   \hline
+%     id & name\\
+%     \hline
+%     $oxs_1$ &  Dopamine Receptors \\
+%     \hline
+%   \end{tabular}
+%   \newline
+% \vspace{2mm}
+%   \begin{tabular}{c }
+%   	 how-provenance   \\
+%   	$f_1^2 c2f_1 c_1 + f_1^2 c2f_2 c_2$\\
+%   \end{tabular}
+%     \caption{Result of query \texttt{Q2} applied on the database of Table \ref{table:running_example} and its different provenances. The reported numbers are the credit distributed through the process.}
+%   \label{table:difference_result}
+% \end{table}
 
 The result of \texttt{Q2} is shown in Table \ref{table:difference_result}, and consists of one tuple, $oxs_1$, annotated with each of the three provenances. As can be seen, lineage and why-provenance are identical to those of the tuple $o_1$ in the previous example. 
 The how-provenance, however, is different since tuple $f_1$ is used twice: first in the join of the inner query, and second in the join of the outer query. This information is lost in the first two forms of provenances since they are sets, but it is captured in how-provenance through the use of the operator `$\cdot$'.
@@ -1611,32 +1618,32 @@ c2f_{17}=\frac{2}{9} , c_1 = \frac{2}{21}, c_2 = \frac{2}{15}, c_{18} = \frac{1}
 $
 }
 \\
-\\
-{\footnotesize{\bf Why-provenance:}
-$
-\{ \{f_1, c2f_1, c_1\}, \{f_1, c2f_2, c_2\}, \{ f_5, c2f_{17}, c_{18}\} \}
-$ 
-}
-\\
-{\footnotesize{\bf Credit distribution:}\\
-$
-f_1 = \frac{2}{9}, f_5 = \frac{1}{9}, c2f_1 = \frac{1}{9}, c2f_2 = \frac{1}{9}, 
-c2f_{17}=\frac{1}{9} , c_1 = \frac{1}{9}, c_2 = \frac{1}{9}, c_{18} = \frac{1}{9} 
-$
-}
-\\
-\\
-{\footnotesize{\bf Lineage: }
-$
-\{f_1, f_5, c2f_1, c2f_2, c2f_{17}, c_1, c_2, c_{18} \}
-$}
-\\
-{\footnotesize{\bf Credit distribution:}\\
-$
-f_1 = \frac{1}{8}, f_5 = \frac{1}{8}, c2f_1 = \frac{1}{8}, c2f_2 = \frac{1}{8}, 
-c2f_{17}=\frac{1}{8} , c_1 = \frac{1}{8}, c_2 = \frac{1}{8}, c_{18} = \frac{1}{8} 
-$}
-\\
+% \\
+% {\footnotesize{\bf Why-provenance:}
+% $
+% \{ \{f_1, c2f_1, c_1\}, \{f_1, c2f_2, c_2\}, \{ f_5, c2f_{17}, c_{18}\} \}
+% $ 
+% }
+% \\
+% {\footnotesize{\bf Credit distribution:}\\
+% $
+% f_1 = \frac{2}{9}, f_5 = \frac{1}{9}, c2f_1 = \frac{1}{9}, c2f_2 = \frac{1}{9}, 
+% c2f_{17}=\frac{1}{9} , c_1 = \frac{1}{9}, c_2 = \frac{1}{9}, c_{18} = \frac{1}{9} 
+% $
+% }
+% \\
+% \\
+% {\footnotesize{\bf Lineage: }
+% $
+% \{f_1, f_5, c2f_1, c2f_2, c2f_{17}, c_1, c_2, c_{18} \}
+% $}
+% \\
+% {\footnotesize{\bf Credit distribution:}\\
+% $
+% f_1 = \frac{1}{8}, f_5 = \frac{1}{8}, c2f_1 = \frac{1}{8}, c2f_2 = \frac{1}{8}, 
+% c2f_{17}=\frac{1}{8} , c_1 = \frac{1}{8}, c_2 = \frac{1}{8}, c_{18} = \frac{1}{8} 
+% $}
+% \\
 \\
 {\footnotesize{\bf \rtwo{Causality:}}
 \rtwo{counterfactual causes: $\emptyset$,\\
@@ -1663,7 +1670,7 @@ c2f_{17}=\frac{1}{8} , c_1 = 0.091\bar{6}, c_2 = 0.091\bar{6}, c_{18} = \frac{1}
 $
 }}
 
-\caption{\rtwo{Sample synthetic provenance polynomial (how-provenance) and corresponding why-provenance, lineage, responsibility, and Shapley values, together with the corresponding credit distributions. The sum of Shapley values  is equivalent to the quantity of credit being distributed (assuming that the input credit is equal to $1$).}}
+\caption{\rtwo{Sample synthetic provenance polynomial (how-provenance) and corresponding responsibility and Shapley values, together with the corresponding credit distributions. The sum of Shapley values is equivalent to the quantity of credit being distributed (assuming that the input credit is equal to $1$).}}
  \label{fig:syntheticDistributions}
  \end{figure}
 
@@ -1759,18 +1766,34 @@ We set the maximum value in the heat maps to the highest value reached by a tupl
 %   \label{table:in_detail}
 % \end{table}
 
+% \begin{table}[]
+% \center
+%   \caption{\rtwo{Results of the pairwise Kendall Tau confidence value on all the DSs on the \texttt{family} table (the p-vales are all below 0.05).}}
+%   \begin{tabular}{|r|l|l|l|l|l|}
+%   \hline
+%  & lineage & why & how & resp. & Shapley \\
+%   \hline
+%  lineage & 1.0 & 0.88 & 0.73 & 0.91  & 0.81 \\
+% why & 0.88 & 1.0 & 0.75 & 0.93 & 0.92 \\
+%  how & 0.73 & 0.75 & 1.0 & 0.74 & 0.74  \\
+%  resp. & 0.91 & 0.93 & 0.74 & 1.0 & 0.89 \\
+% Shapley & 0.81 & 0.91 & 0.74 & 0.89 & 1.0 \\
+%  \hline
+%   \end{tabular}
+%   \label{table:kendall_tau}
+% \end{table}
+% \normalsize
+
 \begin{table}[]
 \center
   \caption{\rtwo{Results of the pairwise Kendall Tau confidence value on all the DSs on the \texttt{family} table (the p-vales are all below 0.05).}}
-  \begin{tabular}{|r|l|l|l|l|l|}
+  \begin{tabular}{|r|l|l|l|}
   \hline
- & lineage & why & how & resp. & Shapley \\
+ & how & resp. & Shapley \\
   \hline
- lineage & 1.0 & 0.88 & 0.73 & 0.91  & 0.81 \\
-why & 0.88 & 1.0 & 0.75 & 0.93 & 0.92 \\
- how & 0.73 & 0.75 & 1.0 & 0.74 & 0.74  \\
- resp. & 0.91 & 0.93 & 0.74 & 1.0 & 0.89 \\
-Shapley & 0.81 & 0.91 & 0.74 & 0.89 & 1.0 \\
+ how & 1.0 & 0.74 & 0.74  \\
+ resp. & 0.74 & 1.0 & 0.89 \\
+Shapley & 0.74 & 0.89 & 1.0 \\
  \hline
   \end{tabular}
   \label{table:kendall_tau}
