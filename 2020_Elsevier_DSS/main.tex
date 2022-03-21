@@ -134,10 +134,10 @@ The notion of {\em data credit} has therefore recently emerged as a new metric, 
 
 Data credit is a real value that represents the importance of data cited by a paper or by another research entity. Credit can be used to annotate data contained in a curated scientific database, and then used as a measure for the importance and impact of that data in the research world. As such, it is a new method that, together with traditional citations, helps recognize the value of data and its creators.% in a world more and more dependent on data. 
 
-In this paper we explore the problem of Data Credit Distribution, the process by which credit is distributed to the database parts   responsible for the production of data being cited by a research entity. 
+In this paper we explore the problem of Data Credit Distribution, the process by which credit is distributed to the database parts responsible for the production of data being cited by a research entity. 
 
 We adopt as use case the IUPHAR/BPS Guide to Pharmacology (GtoPdb), a widely-used curated scientific relational database.
-We define four new distribution strategies, the first two based on two forms of data provenance, why-provenance and how-provenance, the third based on the concept of responsibility, the fourth on the Shapley value. 
+\rrtwo{We focus on SQL SPJ queries and bag semantics}, and we define three new distribution strategies, the first one based on how-provenance, the second based on the concept of responsibility, and the fourth on the Shapley value. 
 
 Using these distribution strategies we show how credit can highlight frequently used database areas and how it can be used as a new bibliometric measure for data and their corresponding curators. In particular, credit rewards data and authors based on their research impact, not merely on the number of citations.
 We also show how these distribution strategies vary in their sensitivity to the role of an input tuple in the generation of the output data, and reward input tuples differently.
@@ -285,7 +285,7 @@ does not convey any information about the role or importance of input tuples in 
 Therefore, one may desire to give more credit to the tuples that are more {\em important} to the production of the output, i.e. those tuples that, if removed, would prevent the output tuple from appearing in the final result, or those tuples used more than once  by the query. 
 
 Therefore, in this paper, we expand the ideas in \citep{dosso2020data} by proposing new DSs based on another form of data provenance:  how-provenance~\citep{howProvenanceGreen}.
-We also propose other two DS based on the concepts of responsibility~\cite{MeliouGMS11} and the Shapley value~\cite{LivshitsBKS20,DFKM22}.
+We also propose other two DS based on the concepts of responsibility~\cite{MeliouGMS11} and the Shapley value~\cite{LivshitsBKS20,DFKM22}. \rrtwo{We work with bag semantics, since our work focuses on the real-world scenario of SQL queries.}
 We discuss why one may be preferred to another depending on the application and its goals. 
 % In particular, we show that the proposed new DSs are more sensitive than the lineage-based one to the {\em role} of a tuple in a query, i.e. how many times the tuple is used and how it is used. 
 We also show that the DSs based on why-provenance and \rtwo{responsibility} give more credit to tuples that are essential to the production of the result set, whereas the how-provenance-based DS takes into consideration the different ways in which a tuple is used.
@@ -871,7 +871,7 @@ Provenance polynomials may also have monomials whose exponents and/or coefficien
 A formal study of causality was introduced in \cite{Halpern2013Causality,ChocklerH04} and later expanded by \citet{MeliouGMS11} to explain the causes of answers and non-answers to queries. 
 %Causality is related to the provenance of a query result such as lineage and adds more information to it.
 In the following, we refer to the definition of causality and responsibility provided in \cite{MeliouGMS11}. 
-In particular, we only focus on answers to a query since non-answers are not relevant in our context.
+In particular, we only focus on answers to a query since non-answers are not relevant in our context. 
 
 % paragraph added to make the subsection less formality heavy
 
@@ -1287,8 +1287,8 @@ More formally, consider the provenance polynomial $\mathcal{H} = H(Q, I, o)$ of 
 %\scream{You need to give a little example to clarify the ideas.}
 \begin{definition}{How-Provenance-Based Distribution Strategy}
     \label{def:how_distribution}\\
-    Let $I$ be a database instance, $Q$ a query over $I$, $o \in Q(I)$ an output tuple, $\mathcal{H}$ be the provenance polynomial for $o$, and $k_o$ the credit given to $o$.
-    The credit given to tuple $t$ in $I$ is:
+    Let I be a database instance, $Q$ a query over I, $o \in Q(I)$ an output tuple, $\mathcal{H}$ be the provenance polynomial for $o$, and $k_o$ the credit given to $o$.
+    The credit given to tuple $t$ in I is:
     \[
     f_{I, Q}(t, k_o) = \frac{k_o}{c(\mathcal{H})} \sum_{M \in \gamma(t, \mathcal{H})} mc(M) \frac{\rone{te(t, M)}}{\rone{e(M)}}
     \]
@@ -1370,7 +1370,7 @@ As we can see, the how-provenance highlights through the use of exponents the fa
 
 \begin{figure}[]
 \centering
-  \includegraphics[width=.8\textwidth]{figures/new_comparison}
+  \includegraphics[width=.8\textwidth]{new_comparison}
   \caption{Comparison of different distributions obtained with the how-provenance-based DS with queries \texttt{Q1} and \texttt{Q2}.}
   \label{figure:distributions_differences}
 \end{figure}
@@ -1381,7 +1381,7 @@ Figure \ref{figure:distributions_differences} shows how the DS based on how-prov
 
 % the differences between the three DS for the tuple $o_1$ of Table \ref{table:difference_result}.
 % Subfigure \ref{table:difference_result}.a uses lineage, sub-figure \ref{table:difference_result}.b uses why-provenance, and sub-figure \ref{table:difference_result}.c uses how-provenance. 
-\rrtwo{As we see, in case of Figure \ref{figure:distributions_differences}.a, tuple $f_1$ receives credit $1/3$ (the other tuples receive each credit $q/6$), while in Figure \ref{figure:distributions_differences}.b tuple $f_1$ receives credit $1/2$ (and the other receive credit $1/8$).}
+\rrtwo{As we see, in case of Figure \ref{figure:distributions_differences}.a, tuple $f_1$ receives credit $1/3$ (the other tuples receive each credit $1/6$), while in Figure \ref{figure:distributions_differences}.b tuple $f_1$ receives credit $1/2$ (and the other receive credit $1/8$).}
 % The DS based on the provenance polynomial gives credit $1/2$ to $f_1$, and $1/8$ to the other tuples.
 This is reasonable since \texttt{Q2} relies on $f_1$ even more than \texttt{Q1} does, \rrtwo{and shows how how-provenance is sensitive to the tuples' role in a query}.
 % The distribution based on how-provenance rewards $f_1$ more, showing that how-provenance is even more sensitive to the tuples' role in a query than why-provenance. %In this case, the why-provenance is not sensible to this difference. 
@@ -1403,12 +1403,12 @@ However, we want a DS that is also a function of the input credit value $k$ in o
 We define a new DS based on responsibility that is a function of the quantity of credit $k_o$ that assigns to each tuple of the lineage a portion of this credit weighted by its normalized quantity of responsibility.
 This will give a bigger portion of credit to tuples that are higher in the responsibility ranking.
 
-\rrtwo{In the following definition we call $L$ the \emph{lineage set} of a tuple $o \in Q(I)$, i.e., the set of all and only the tuples in the database instance $I$ that are used by query $Q$ to produce the output tuple $o$.}
+\rrtwo{In the following definition we call $L$ the \emph{lineage set} of a tuple $o \in Q(I)$, i.e., the set of all and only the tuples in the database instance I that are used by query $Q$ to produce the output tuple $o$.}
 
 % \newline
 \begin{definition}{Responsibility-based Distribution Strategy}\\
 \label{def:resp_ds}
-Let $I$ be a database instance, $Q$ a query over $I$, $o \in Q(I)$ an output tuple, $L$ the lineage of $o$, and $k_o$ the credit given to $o$. The credit given to tuple $t$ in $I$ is:
+Let I be a database instance, $Q$ a query over I, $o \in Q(I)$ an output tuple, $L$ the lineage of $o$, and $k_o$ the credit given to $o$. The credit given to tuple $t$ in I is:
 \[
 	f_{I, Q}(t, k_o) = k_o \frac{\rho_t}{\sum_{t' \in L} \rho_{t'}}
 \]
@@ -1437,7 +1437,7 @@ This is not always the case though, as we show in the example of Section \ref{se
 As with responsibility, the Shapley value can be seen both as a method to generate and distribute credit. Moreover, it can be seen that, using the definition of Shapley value for Boolean queries given in Section \ref{sec:shapley_value}, the sum of the Shapley values of all the tuples of the lineage $L$ of an output tuple $o$ is $1$. Thus, the definition of a Shapley value-based distribution strategy is straightforward:
 
 \begin{definition}{Shapley Value-Based Distribution Strategy} \\
-	Let $I$ be a database instance, $Q$ a query over $I$, $o \in Q(I)$ an output tuple, and $k_o$ the credit given to $o$. The credit given to tuple $t$ in $I$ is:
+	Let I be a database instance, $Q$ a query over I, $o \in Q(I)$ an output tuple, and $k_o$ the credit given to $o$. The credit given to tuple $t$ in I is:
 	\[
 		f_{I, Q}(t, k_o) = k_o \cdot 
 		Shapley(\bar{Q}_o, I, t)
@@ -1833,12 +1833,14 @@ Shapley & 0.74 & 0.89 & 1.0 \\
 
 There is a certain amount of consistency between the strategies in that tuples which are highly rewarded by one strategy are also highly rewarded by the others. This shows that the four DSs consistently reward certain tuples more than others. 
 
-\rtwo{Table \ref{table:kendall_tau} reports the pairwise Kendall $\tau$ correlation values\footnote{The Kendall's $\tau$ coefficient is a statistic used to measure the ordinal association between two measured quantities~\cite{Kendall1938new}. Intuitively, it is high between two variables when observation have a similar rank.} for the three DSs computed on the \texttt{family} table. 
+Table \ref{table:kendall_tau} reports the pairwise Kendall $\tau$ correlation values\footnote{The Kendall's $\tau$ coefficient is a statistic used to measure the ordinal association between two measured quantities~\cite{Kendall1938new}. Intuitively, it is high between two variables when observation have a similar rank.} for the three DSs computed on the \texttt{family} table. 
 % As we see, there are certain DS that are correlated to others, such as lineage with why-provenance, responsibility and lineage, or responsibility and why-provenance. 
 % The others are mildly correlated, such as the Shapley valye with how-provenance, responsibility and how-provenance, or why-provenance and lineage with how-provenance. We see, therefore, that the DS based on how-provenance is the one that correlates the least with the other DSs.
 As we see the distribution based on how-provenance is the one that correlates less with the other twos, while it seems that the DSs based on responsibility and the Shapley value are more correlated.
-\rrone{This may be explained considering the fact that, while how-provenance captures more the way in which the tuples are used, while the other two strategies are more concerned with the importance of the tuples in the query.}
-}
+\rrone{This may be explained considering the fact that, while how-provenance captures more the way in which the tuples are used, while the other two strategies are more concerned with the importance of the tuples in lineage of the query (responsibility) and the role that the tuples have in the query seen as a coalition game (Shapley value).  }
+
+% The provenance-based approaches certainly satisfy 1and 43 and I believe that at least why- and how-provenance satisfy 2.  However, they don’t satisfy linearity (Nave gave me a counterexample for this).
+
 
 % Note that lineage-based DS gives the least credit to tuples in the \texttt{family} table, indicated by an overall lighter hue. This is because the DS  distributes credit equally to all tuples appearing in the lineage. Since these queries also use two other tables, credit is distributed to tuples in those tables.
 
@@ -1884,7 +1886,7 @@ Since credit accrues over time, we simulate the passage of time by varying the n
 
 \begin{figure}[h!]
 \centering
-  \includegraphics[width=.60\textwidth]{comparison}
+  \includegraphics[width=1\textwidth]{comparison}
   \caption{\rtwo{Comparison of the distribution of credit performed by the \rtwo{five} DSs on a subset of 10 tuples taken from the \texttt{family} table, simulating the passing of time. The number at the top of each group of heat-maps represents the number of polynomials whose credit has been distributed.}}
   \label{fig:comparison}
 \end{figure}
@@ -2040,39 +2042,49 @@ It is worth noting that, when scaling up to $1K$ and $10K$ polynomials, the cred
 \eat{We note that, although not exactly overlapping, the values of credit assigned to the authors by those DS become quite similar with these higher quantities of polynomials, suggesting a sort of equivalence between the two DSs in this case, at least in the task of rewarding authors} (the linear correlation for the values of Figure \ref{figure:3_radars}.c is more than 0.99 with a p-value of 1.32e-32). This is consistent with what we observed in Figure \ref{figure:comparison_on_synthetic_polynomials_2}.
 
 
-\eat{
-\subsection{Execution time}
-The last experiment compared the time required to calculate the credit distribution for the three strategies. The results are shown in Table \ref{table:times}.  
+\subsection{\rrtwo{Execution Time}}
+\label{sec:time}
+\rrtwo{We studied the time required to compute the how-provenance and the other forms of information used in the paper, and to distribute the credit with the three proposed DSs. We first computed the how-provenance of the real queries using the code provided in \cite{Wu2020ProvCite} on the GtoPdb database, obtaining a total of $58037$ polynomials. 
+Responsibility and Shapley values of the output tuples of the queries were computed starting from these polynomials.  }
 
-\begin{table}[hbt]
-\centering
-  \begin{tabular}{| l |c | c | c | c ||}
-  \hline
-    \# of polynomials  & lineage & why-prov. & how-prov. \\
+\begin{table}[]
+    \centering
+    \caption{Average execution times (ms) to compute how-provenance, responsibility and Shapley values of one output tuple. The accompanying z-values were computed with confidence of $95\%$ and $\alpha=5$.}
+    \begin{tabular}{|c|c|c|c|}
     \hline
-    100 & 226.6 ms & 192.0 ms & 185.5 ms \\
-    200 & 431.2 ms & 392.2 ms & 403.2 ms \\
-    500 & 1.013 s  & 934.2 ms & 881.8 ms \\ 
-    1K  & 2.041 s  & 1.934 s  & 1.744 s  \\
-    2K  & 3.773 s  & 3.491 s  & 3.510 s  \\
-    5K  & 8.992 s  & 8.653 s  & 8.889 s  \\
-    10K & 17.10 s  & 16.84 s  & 16.84 s  \\
-    20K & 34.59 s  & 35.30 s  & 39.70 s \\
-    100K & 3.289 min & 3.442 min & 3.652 min \\
-    1M  & 35.91 min & 34.87 min & 37.91 min \\
-    \hline
-  \end{tabular}
-  \caption{The times required to perform the three DS for different number of synthetic polynomials.}
-  \label{table:times}
+         &  how-provenance & responsibility & Shapley \\
+         \hline
+         real queries & $57.29\pm0.25$ & $58.16\pm0.02$ & $85.18\pm0.24$ \\
+         \hline
+         synthetic polynomials & - & $1.48\pm0.05$ & $39.79\pm2.87$ \\
+         \hline
+    \end{tabular}
+    \label{tab:execution_times}
 \end{table}
 
-\scream{Perhaps you should plot these using lines?  It is not easy to see that it grows linearly.  Also, why is linage almost always slower than the why- and how-provenance?  How was the experiment performed?}
-As can be seen, the execution time grows linearly with the number of polynomials that are submitted to the system. When there are a large number of polynomials (1M), the time required by the DS based on lineage and why-provenance is slightly less than the time needed for the DS based on how-provenance. This is due to the increased complexity of the how-provenance calculation.  \scream{How significant is the difference?}
-We note that, since we created these polynomials on-the-fly, these values do not include the time required to compute the provenances.
-Therefore, just taking into account the time required to distribute credit, the three DS are roughly the same in terms of performance. 
-\scream{This seems a bit of a contraction to the previous claim of "increased complexity".}
-Only when there are a large number of complex polynomials do lineage and why-provenance  become preferable to how-provenance in terms of execution time, but coming at the cost of a less equitable credit distribution strategy.
-}
+\rrtwo{Table \ref{tab:execution_times} reports the average times required to compute how-provenance, responsibility, and Shapley values of one tuple of the outputs, both in the case of real queries and in the case of synthetic polynomials (here, we consider all $10000$ produced synthetic polynomials). All times are reported in milliseconds. 
+More precisely, the time reported in the table to compute how-provenance is the one reported using the code provided in \citep{Wu2020ProvCite}, while the times reported for responsibility and Shapley value are the one needed to derive them from the how-provenance of the single tuples. In these last two cases the total time is given by the sum of the time to compute the how-provenance and the time to convert it into responsibility/Shapley value. 
+The synthetic polynomials were produced directly and not from synthetic queries, thus there is no time for the computation of the how-provenance in that case.}
+
+\rrtwo{We notice from this table that the cost to compute responsibility is lower than the one to compute the Shapley value. In our implementation, in fact, we follow the definition of Shapley value and, as such, we compute the power set of the lineage of the output tuples. This requires, on average, a bigger computation time. In particular, in the case of synthetic polynomials, this time increases since, on average, the lineage is bigger.}
+
+
+\begin{table}[]
+    \centering
+    \caption{Average times to distribute the credit of one output tuple through different DSs in ms. The accompanying z-values were computed with confidence of $95\%$ and $\alpha=5$.}
+    \begin{tabular}{|c|c|c|c|}
+    \hline
+         &  how-provenance & responsibility & Shapley \\
+         \hline
+         real queries & ... & $15.71\pm0.47$ & ... \\
+         synthetic polynomials & $19.34\pm0.49$ & $22.37\pm0.47$ & $19.04\pm0.17$ \\
+         \hline
+    \end{tabular}
+    \label{tab:execution_times_dist}
+\end{table}
+
+\rrtwo{Table \ref{tab:execution_times_dist} reports the average times to distribute the credit, i.e. annotate the tuples of the relational database containing GtoPdb, using the different DSs, for one output tuple. As can be seen, once the computation of the provenance, responsibility or Shapley value is completed, the update operation is relatively fast, always under $30$ms. 
+This, in the considered case of this paper, is particularly true given the relatively small dimension of the database GtoPdb. With bigger databases and lineage sets the distribution times may increase, but we infer from this table that the process of distribution is not, in itself, a bottleneck for the approach. The true bottleneck, thus, is the one connected to the computation of the information required to define the DS. We explore more this aspect in the next Section.}
 
 
 %\subsection{Discussion}
@@ -2093,7 +2105,7 @@ Only when there are a large number of complex polynomials do lineage and why-pro
 
 \section{Discussion}
 \label{sec:discussion}
-Before concluding, we discuss some design decisions:  the focus on Credit Distribution (as opposed to Credit Generation), and the choice of Distribution Strategies.
+Before concluding, we discuss some design decisions:  the focus on Credit Distribution (as opposed to Credit Generation), the choice of Distribution Strategies and, finally, how the concept of Game Provenance can open up new possibilities for Credit Distribution in new contexts and for new classes of queries.
 
 \subsection{Credit Generation}
 \label{subsec: generation}
@@ -2138,18 +2150,14 @@ a graph of cited units that propagate credit between the units depending on  inf
 
 \subsection{Choice of Distribution Strategies}
 \label{subsec: DSs}
-\rone{In this paper we presented four different DSs, so the natural question is which one to use.  This depends on the task at hand.   When we want to highlight the tuples being used in the database by a workload, the lineage-based DS may be sufficient. When we also want to know the relative impact of tuples in the context of the query, the other DSs should be used since they give a better understanding of the importance of data.}
+\rone{In this paper we presented three different DSs, so the natural question is which one to use.  This depends on the task at hand.   When we want to highlight the tuples being used in the database by a workload, the lineage-based DS proposed in \cite{dosso2020data} may be sufficient. When we also want to know the relative impact of tuples in the context of the query, the other DSs should be used since they give a better understanding of the importance of data.}
 
 % \todo[size=\scriptsize]{GMS: Not superconvinced of the following paragraph. is it good to talk about SPARQL when we say that relational DBs are still widely used? Alternative example with SQL? Or do we just remove it?}
-\rone{In the real-world based experiments, the four DSs behaved the same, which was due to the specific nature of the data and the queries being used. However, the why-provenance of a query will differ from the lineage of the same query whenever the output tuples can be computed in more than one way by the query, i.e., if there is more than one witness. This is usually true when join and projection operators are used in the query.
-% There are several situations where the user-submitted queries present different distribution of credit.
-% For instance, the work by \citet{BonifatiMT17} showed that in the context of SPARQL query logs submitted to various databases such as DBpedia and Wikidata, more than $90\%$ of these queries are of type select, and of those more than $30\%$ perform join operations through the \texttt{and} operator. These queries contain triple patterns with cardinalities that range from one to eleven triples, thus showing some complexity that can be caught by why- and how-provenance based DSs.
+\rone{In the real-world based experiments presented in the paper, the three DSs behaved the same, which was due to the specific nature of the data and the queries being used. However, the how-provenance of a query will differ from the lineage of the same query whenever the output tuples can be computed in more than one way by the query. This is usually true when join and projection operators are used in the query.
 } 
 
-%\scream{SBD: this paragraph went all over the place and was confusing.  I eliminated a lot of details that you might think are important (original is in an eat environment.}
-
 \rone{To address the question of what types of queries are likely to extract cited data, we turn to the results of published studies on the characteristics of query workloads and the complexity of their queries~\cite{Vogelsgesang2018get,Remil2021makes,Jain2016sqlshare}.  
-These studies show that operations such as inner-/outer-joins and projections occur in a significant number of queries.  Therefore why- and how-provenances may become quite complex in certain cases and provide a distribution of credit that is significantly different from the one obtained with lineage. }
+These studies show that operations such as inner-/outer-joins and projections occur in a significant number of queries.  Therefore how-provenances may become quite complex in certain cases and provide a distribution of credit that is significantly different from the one obtained with lineage. }
 
 
 \eat{
@@ -2164,36 +2172,69 @@ These works provide us evidence of the fact that, potentially, why- and how-prov
 }
 
 % \scream{Is there more to say here? What are the general queries for which responsibility is hard to compute, and can the various provenances handle them at all?  I know that provenance semi-rings has been extended to SPJU and aggregate queries, so imagine this means the others can be extended since it is a general framework. -- DD: added more information from literature and comments}    
-\rtwo{From a computational complexity standpoint, all five DSs are similar since we focused on SPJ queries. Going beyond SPJ queries, \citet{howProvenanceGreen} proposed the provenance semiring framework for SPJRU (Select, Project, Join, Rename, and Union queries), and \citet{AmsterdamerDT11} showed how to extend the framework to aggregate queries.
+From a computational complexity standpoint, all three DSs are similar since we focused on SPJ queries. \rrtwo{Our experiments in Section \ref{sec:time} showed the bigger overhead connected to the Shapley value, but those results suffer by the limit of the test environment: a relatively small database and a rather na\"ive algorithm to compute responsibility and Shapley values.} 
+
+Going beyond SPJ queries, \citet{howProvenanceGreen} proposed the provenance semiring framework for SPJRU (Select, Project, Join, Rename, and Union queries), and \citet{AmsterdamerDT11} showed how to extend the framework to aggregate queries.
 \eat{ queries, thus we could expand our approach to those types of queries too.  \citet{AmsterdamerDT11} showed that it is also possible to compute provenance polynomials for aggregate queries by annotating with provenance tokens also the \emph{individual values} within the tuples, using provenance to describe the values computation. 
 } 
-Since lineage and why-provenance can be computed starting from how-provenance, it is possible to apply the first three DSs proposed in this paper to SPJRU and aggregation queries.} 
+ 
 \rtwo{Causality and subsequently Responsibility are harder to compute (NP-complete~\cite{MeliouGMS11}) for general queries. Credit Distribution is more concerned with Responsibility, which is in general hard to compute~\cite{ChocklerH04}. \citet{MeliouGMS11} proved a dichotomy result for conjunctive queries: for each query without self-joins, either its responsibility can be computed in PTIME in the size of the database, or checking if it has a responsibility below a given value is NP-hard. Queries with self-joins are NP-hard in general. This makes responsibility harder to be utilized for credit distribution in a real-world application, since for this problem it is necessary to actually know the responsibility value, not simply the ranking amongst tuples.}
 
-\rtwo{As for the Shapley Value, \citet{LivshitsBKS20} studied the computational complexity of calculating the Shapley values in query answering. They originally showed mainly lower bounds on the complexity of the problem, with the exception of the sub-class of self-join free SPJ queries called \emph{hierarchical} queries, where they gave a polynomial-time algorithm. 
-Very recently, \citet{DFKM22} proved that the Shapley value can be efficiently (polynomial-time) reduced to probabilistic query answering. This not only applies to hierarchical queries, but to general SPJ queries. This means that one can compute Shapley values using a query engine for probabilistic databases, for example, the practically effective \emph{Knowledge Compilation}~\cite{JhaS13}, making it a viable solution for Credit Distribution via SPJ queries.} 
-
-\eat{
-Another promising DS that could be developed is one based on Shapley values. This function has been widely used in knowledge representation and machine learning, and has strong theoretical justifications.  However, its use in databases as a metric for quantifying the influence of a tuple on the output of a query (thereby presenting an alternative to responsibility) has only recently been proposed~\cite{LivshitsBKS20}.    Furthermore, the initial theoretical analysis in~\cite{LivshitsBKS20} showed mainly lower bounds on the complexity of the problem, and did not suggest a feasible implementation.  However, very recently, an efficient implementation for Boolean queries (queries that output true or false) has been provided~\cite{DFKM22}, both in terms of an exact computation (which in practice works well for most queries) and an inexact one (which is extremely fast and provides the same ranking of tuples as the exact computation, but not necessarily the same values).  In future work, we will explore a Shapley-based DS and test its performance in Credit Distribution.}
-
-
-\eat{
-In particular, Shapley has (at least) four properties that are widely believed to be important:
+\rrtwo{As for the Shapley Value, one may choose it because it has (at least) four properties that are widely believed to be important:}
 \begin{enumerate}
-\item 
-Efficiency:  The sum of the Shapley values of all agents equals the value of the grand coalition, so that all the gain is distributed among the agents.  
-\item
-Symmetry:  If i and j are two actors who are equivalent in the sense that v(S U {i})= v(S U {j}) for every subset S of N that contained neither i nor j, then their Shapley values are the same.
-\item
-Linearity:  If two coalition games described by gain functions v and w are combined, then the distributed gains should correspond to the gains derived from v and the gains derived from w.
-Shap_i(v+w)= Shap_i(v) + Shap_i(w) for every I in N.  
-Also, for any real number a,  Shap_i(a*v)=a*Shap(v)
-\item
-Null player:  The Shapley value of a null player i in a game v is zero.  A player i is null if v(S U {I}) = v(S) for all coalitions S that do not contain i. 
+\item \rrtwo{\emph{Efficiency}:  The sum of the Shapley values of all agents equals the value of the \emph{grand coalition}, so that all the gain is distributed among the agents.}  
+\item \rrtwo{\emph{Symmetry}:  If i and j are two actors who are equivalent in the sense that $v(S \cup \{i\})= v(S \cup \{j\})$ for every subset $S \subseteq N$ that contained neither $i$ nor $j$, then their Shapley values are the same.}
+\item \rrtwo{\emph{Null player}:  The Shapley value of a \emph{null} player $i$ in a game $v$ is zero.  A player $i$ is null if $v(S \cup \{I\}) = v(S)$ for all coalitions $S$ such that $i \notin S$.} 
+\item  \rrtwo{Linearity:  If two coalition games described by gain functions $v$ and $w$ are combined, then the distributed gains should correspond to the gains derived from $v$ and the gains derived from $w$, that is: $Shap_i(v+w)= Shap_i(v) + Shap_i(w)$ for every $i \in N$.  
+Also, for any real number $a$,  $Shap_i(a \cdot v)=a \cdot Shap_i(v)$.}
 \end{enumerate}
 
-The provenance-based approaches certainly satisfy 1and 4, and I believe that at least why- and how-provenance satisfy 2.  However, they don’t satisfy linearity (Nave gave me a counterexample for this).
+\rtwo{\citet{LivshitsBKS20} studied the computational complexity of calculating the Shapley values in query answering. They originally showed mainly lower bounds on the complexity of the problem, with the exception of the sub-class of self-join free SPJ queries called \emph{hierarchical} queries, where they gave a polynomial-time algorithm. 
+Very recently, \citet{DFKM22} proved that the Shapley value can be efficiently (polynomial-time) reduced to probabilistic query answering. This not only applies to hierarchical queries, but to general SPJ queries. This means that one can compute Shapley values using a query engine for probabilistic databases, for example, the practically effective \emph{Knowledge Compilation}~\cite{JhaS13}, making it a viable solution for Credit Distribution via SPJ queries.} 
+
+\rrtwo{We can conclude that, given the available algorithm to compute how-provenance, responsibility and Shapley value, all the proposed DSs are feasible, even with bigger query logs and in particular for scientific databases, whose sizes are usually not a challenge for the algorithms. One may prefer one over the other due to the properties of the information at its base. Thus, if a user prefers to simply know whose tuples were used in the query, they can use lineage as described in \cite{dosso2020data}; if they prefer to weigth the DS on how the tuples were used, the how-provenance-based DS may be chosen; if they want to consider the ranking of the triples as expressed by their responsibility, or to exploit the properties of the Shapley value, the other two DSs presented in the paper may be taken into consideration.}
+
+
+
+
+\rrone{\subsection{The case of Game Provenance and Query Evaluation Games}}
+% \rrone{In this paper we focused on how-provenance, responsibility and the Shapley-value, three of the most famous forms of data provenance for relational databases and value measures in game theory. 
+% However, other forms of data provenance were defined in the literature. In this section we briefly discuss \emph{provenance games} and how they can potentially open up new possibilities for data credit and credit distribution.
+% }
+
+\rrone{\paragraph{Game Provenance} \citet{Kohler2013} described the notion of \emph{game provenance}, i.e. a form of provenance in the context of games.}
+
+\rrone{A generic game is modeled as a graph $G = (V, M)$, where the set of nodes $V$ represents the possible \emph{positions} in the game, while the set $M \subseteq V \times V$ represents the possible moves from one position to another. A \emph{play} $\pi$ is a sequence (finite or infinite) of edges $M$ that describes the subsequent moves performed by two players, I and II, that play one after the other. The player that finds themselves in a position where no move is possible loses ($\pi$ is lost by that player), at which point the other player wins ($\pi$ is won by that player).}
+
+\rrone{Plays do not include \emph{bad moves}, i.e., moves that unnecessarily allow the opponent to improve the outcome of a play. Thus, the starting question in \cite{Kohler2013} is: can player I force a win from the position $v \in V$, no matter what player II does?}
+
+\rrone{At this point, \citet{Kohler2013} define the concept of \emph{strategy}. A pure strategy is a partial function $S: V \rightarrow V$, with $S \subseteq M$, that prescribes which of the available moves a player will choose in a position $v$ (the strategy only takes into account the current position, and not how one arrived at $v$). It is said that the position $v_0 \in M$ is \emph{won for player I} in at most $n$ moves if there is a stragery $S_I$ for I such that for all strategies $S_{II}$ for II , there is a number $j = 2k + 1 \leq n$ such that $v_j = S_I \circ (S_{II} \circ S_I)^k (v_0)$ is defined and $S_{II}(v_j)$ is not (i.e., player II cannot move). In this case, $S_I$ is a winning strategy for I starting at $v_0$, and $v_0$ is defined as a winning position for I (and, vice versa, a losing position for II).}
+
+\rrone{A \emph{solved game} is a game $G^\gamma = (V, M, \gamma)$, where $\gamma$ is a labeling function $\gamma : V \rightarrow \{W, L, D\}$. In other words, a solved game is a game where each edge is annotated with the outcome of the game itself for player I if they start at that position. $W$ means that the game is won, $L$ that the game is lost, $D$ that from that position neither player can force a win, and thus it is a \emph{draw}.}
+
+\rrone{At this point the question is: why is $x \in V$ won, lost, or drawn?}
+\rrone{For this the notion of \emph{game provenance} $\Gamma(x)$ is introduced in ~\cite{Kohler2013}. In spirit, is similar to the notion of how-provenance but it works for games and explains the value (won, lost, or drawn) for a position $x$.}
+
+\rrone{Let us consider the function $\lambda : V \times V \rightarrow \{g, r, y\}$. This functions defines a color for a subset of edges from $M$. A move can either be \emph{winning} ($g$, moving from a winning node to a losing node), \emph{delaying} ($r$, moving from a losing node to a winning node), or \emph{drawing} ($y$, moving from a draw to a draw). Given a solved game $G^\gamma$, its game provenance is the $\lambda-$colored subgraph $\Gamma$ of $G^\gamma$ by the function $\lambda$. In other words, the game provenance is the subgraph of the game graph composed by the nodes together with their tags and the edges, together with the tags given by $\lambda$.}
+
+\rrone{Let us note that $\lambda$ does not annotate the edges that correspond to ``bad'' moves, i.e., moves that let the opponent end the game in a better position than they should have had given the starting position $v_0$. Those moves are excluded from the game provenance.}
+
+\rrone{\paragraph{Query Evaluation Games} Since any First-Order (FO) query $\varphi(\bar{x})$ on an input database instance $D$ can be expressed as a non-recursive Datalog$^\neg$ (Datalog with negation) program $Q_\varphi$, it is observed in \cite{Kohler2013} that the evaluation of $Q(D)$ can be seen as a game between players I and II who argue whether an atom $A \in Q(D)$. 
+% Moreover, it is shown that, given a positive Datalog programs $Q$, it is possible to generate semiring provenance polynomials as defined in \citep{howProvenanceGreen} for atoms $A(\bar{x}) \in Q(D)$. 
+Given a positive query $Q$ and an atom $A(\bar{x}) \in Q(D)$, it is possible to convert its provenance graph to an \emph{operator tree}, i.e., a special case of game graph where each node belongs to one of three classes: \emph{rule nodes}, \emph{goal nodes}, and \emph{relation/tuple nodes}  (the procedure to build these trees is described in~\cite{Kohler2013}). These trees are particularly interesting since they can be used to explain the presence (why-provenance) or absence (why-not provenance) of a fact in the output of a query.}
+
+\rrone{\paragraph{Game Provenance and How-provenance} It is shown in \cite{Kohler2013}  that it is possible to obtain the how-provenance of output facts in $Q(D)$ from their Game Provenance (the provenance polynomials for the result of a positive query can be ``read out'' from a provenance game~ \cite{Lee2018PUG}). 
+% Not only that, but it is also shown that game provenance yields meaningful explanations for $why-not$ questions (i.e., why an atom is not in $Q(D)$.
 }
+
+\rrone{ 
+% Consequently, it is possible to perform credit distribution for positive queries starting from their game provenance and deriving their how-provenance.
+We note that by using game provenance it is possible to expand the task of credit distribution to FO queries (i.e., non-recursive Datalog queries with negation). 
+In fact, new DSs based on the information provided by the operator trees of queries can be devised, thus dealing also with FO queries.
+For example, since the leaves of an operator tree are the tuples of the database being used by the query, the new DSs can be based on the tree topology,  propagating the credit as a flux through its nodes and edges. }
+
+\rrone{Moreover, as shown in \cite{Lee2018PUG}, these operator trees can also be used for why-not provenance, i.e., to explain the \emph{absence} of a fact from the query output. This can potentially open up new applications of data credit, i.e., the generation of credit to ``missing'' facts in the output of queries, aimed to assign  credit to ``missing'' facts in the database instance whose absence is responsible for the missing result. 
+This, in turn, may be useful for the administrators to understand what is missing in their database to correctly answer the most searched queries, and decide whether and where to allocate the necessary resources to create/add those data if possible.}
 
 
 
@@ -2252,8 +2293,8 @@ We plan to distribute credit through carefully planned and representative querie
 Another application is \emph{data reduction}~\cite{milo2019getting}, which addresses the problem of reducing the vast -- and rapidly expanding -- amount of data that is being produced. % in the evolving world of research and information technology. 
 %Ideas that are being explored include %Data reduction deals with different aspects of dealing with huge amounts of data, such as 
 %finding relevant data from the multi-gigabytes streams of data produced by big data systems every second,  and dealing with the curse of dimensionality which requires unbounded computational resources to uncover actionable knowledge patterns~\citep{ur2016big}. \scream{I'm not sure what the previous sentence means!}
-Data credit can help address this problem by identifying ``hotspots'' and ``coldspots'' of data. A hotspot is data in a database (e.g. a tuple) with a high quantity of credit, which is therefore valuable for the set of queries that execute frequently over the data and distribute the credit. 
-A coldspot is data with a low quantity of credit which can therefore be considered as less  important, and could be deleted, summarized, or moved to cheaper and/or less efficient memory. 
+Data credit can help address this problem by identifying ``hotspots'' and ``coldspots'' of data. A hot spot is data in a database (e.g. a tuple) with a high quantity of credit, which is therefore valuable for the set of queries that execute frequently over the data and distribute the credit. 
+A cold spot is data with a low quantity of credit which can therefore be considered as less  important, and could be deleted, summarized, or moved to cheaper and/or less efficient memory. 
 
 
 
