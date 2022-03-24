@@ -459,7 +459,11 @@ Its provenance is information about its generation through the tuples of the inp
 
 Where-provenance, differently from the other three, is \emph{attribute-based}, so we do not take it into account in this work since we consider the tuple as the finest citable unit. 
 
-\rrtwo{Overall, \citet{howProvenanceGreen} defined the how-provenance within the semiring annotation framework expressing set semantics, bag semantics, and some extensions of the relational model. Hence, how-provenance can express many other provenance models including why-provenance and lineage without any significant disadvantage over them. For data credit distribution, the results achieved with lineage and why-provenance can be subsumed from those obtained by using how-provenance on which we focus in this work.}
+\rrtwo{\citet{howProvenanceGreen} defined the semiring model which captures all of the above provenance models -- lineage, why-provenance, how-provenance and where-provenance -- and expresses set semantics, bag semantics and some extensions of the relational model. 
+For data credit distribution, the results achieved with lineage and why-provenance are subsumed by those obtained using how-provenance, which we focus on in this work.}
+\eat{\rrtwo{\citet{howProvenanceGreen} defined  how-provenance within the semiring annotation framework expressing set semantics, bag semantics, and some extensions of the relational model. Hence, how-provenance can capture many other provenance models including why-provenance and lineage. For data credit distribution, the results achieved with lineage and why-provenance are subsumed from those obtained using how-provenance, which we focus on in this work.}
+}
+
 
 \subsection{Causality and Responsibility}
 We also consider the notions of causality and responsibility, as defined in 
@@ -1832,8 +1836,10 @@ There is consistency between the strategies in that tuples which are highly rewa
 Table \ref{table:kendall_tau} reports the pairwise Kendall $\tau$ correlation values\footnote{The Kendall's $\tau$ coefficient is a statistic used to measure the ordinal association between two measured quantities~\cite{Kendall1938new}. Intuitively, it is high between two variables when observation have a similar rank.} for the three DSs computed on the \texttt{family} table. 
 % As we see, there are certain DS that are correlated to others, such as lineage with why-provenance, responsibility and lineage, or responsibility and why-provenance. 
 % The others are mildly correlated, such as the Shapley valye with how-provenance, responsibility and how-provenance, or why-provenance and lineage with how-provenance. We see, therefore, that the DS based on how-provenance is the one that correlates the least with the other DSs.
-As we see, the distribution based on how-provenance is the one that correlates less with the other two, while it seems that the DSs based on responsibility and the Shapley value are more correlated one with the other.
-\rrone{This may be explained because, while how-provenance captures more how the tuples are used, the other two strategies are more concerned with the importance of the tuples in the lineage of the query (responsibility) and the role that the tuples have in the query seen as a coalition game (Shapley value). Hence, the three DSs weigh slightly different viewpoints about the ``importance'' of a tuple, and this reflects on their distributions. }
+As we see, the distribution based on how-provenance is the one that correlates less with the other twos, while it seems that the DSs based on responsibility and the Shapley value are more correlated one with the other.
+\rrone{This may be explained because, while how-provenance captures how the tuples are used, the other two strategies are concerned with the importance of the tuples in the lineage of the query (responsibility) and the role that the tuples have in the query seen as a coalition game (Shapley value). Hence, the three DSs represent different viewpoints about the ``importance'' of a tuple, and this reflects on their distributions. }
+\rrone{Moreover, we have to considerp that how-provenance is a \emph{provenance}, and our approach uses its information to obtain a metric, while Responsibility and Shapley value are metrics. The main difference between the three resides in the definition of the metric itself. The definition of Shapley value resides on the concept of coalition and in the different possible combinations in which a coalition is built. Responsibility, on the other hand, is based on the concept of minimal contingency. The metric that we derived in this paper from how-provenance, instead, exploits the information in the polynomial to obtain a value metric that is not based on the concept of a set (respectively, coalition and contingency). This may be a further explanation of why how-provenance correlates the least with the other twos.
+}
 
 
 
@@ -1940,9 +1946,9 @@ This shows how the last two DS operate in a similar way. The differences between
 
 
 % To sum up, the DS based on lineage is sufficient to highlight which tuples in the database are used by a query, and distributes credit equally to these tuples. The resulting distribution rewards tuples that are used by more queries, but does not reward how many times tuples are used in the same query.  
-\rrtwo{To sum up, the DS based on how-provenance is sufficient to highlight which tuples in the database are used by a query.
-Not only that: it distributes credit to the tuples based on their role in the queries and, in particular, the tuples that were used more and in many different ways will be the ones receiving more credit.}
-\rrtwo{The distributions based on responsibility and the Shapley value are more concerned with the importance of the single tuples in the generation of the output, and thus they may differ. Responsibility, in particular, is concerned in the role of the tuple as an actual or counterfactual cause, and will reward more tuples that are more ``fundamental'' for the output. On the other side, Shapley value sees tuples as players in a coalition game where all the tuples of the lineage ``work'' toward the production of the output. The tuples whose role in the game defined by the query is more important are rewarded with higher quantities of credit.}
+\rrtwo{To sum up, the DS based on how-provenance highlights which tuples in the database are used by a query.
+It distributes credit to the tuples based on their role in the queries.  In particular, tuples that were used more frequently and in many different ways receive more credit.}
+\rrtwo{The distributions based on responsibility and the Shapley value are more concerned with the importance of individual tuples in generating the output. Responsibility, in particular, is concerned in the role of the tuple as an actual or counterfactual cause, and will reward tuples that are more ``fundamental'' for the output. On the other hand, the Shapley value sees tuples as players in a coalition game where all the tuples of the lineage ``work'' toward the production of the output. The tuples whose role is more important in the game defined by the query are rewarded with higher quantities of credit.}
 % However, a DS based on why-provenance, \rtwo{responsibility, Shapley value} or how-provenance may be better if the queries are complex, since they reward more tuples that have a critical role in generating the output. %These two DS are sensitive than the DS based on lineage (and the DS based on how-provenance is more sensible than the one based on why-provenance). 
 \eat{Using the why-provenance and how-provenance DS, it is possible to change the distribution of credit to the tuple, rewarding more the tuples that have a more critical role in generating the output. The distribution based on how-provenance is most of the times similar to the one based on why-provenance. 
 However, in certain instances, it differ from the other one due to the specific role of a tuple, an information that is present in the provenance polynomial but lost in the witness basis. }
@@ -2042,15 +2048,17 @@ It is worth noting that, when scaling up to $1K$ and $10K$ polynomials, the cred
 
 \subsection{\rrtwo{Execution Time}}
 \label{sec:time}
-\rrtwo{We studied the time required to compute the how-provenance, responsibility and Shapley value of the output tuples used in the previous experiments on GtoPdb, both for real and synthetic queries. 
+\rrtwo{We studied the time required to compute the how-provenance, responsibility and Shapley value of the output tuples used in the previous experiments on GtoPdb, for both real and synthetic queries. 
 All experiments were carried out on a MacBook Pro %13-inch, 2019 
 with a 2.4 GHz processor Intel Core i5 quad-core and 8 GB of memory at 2133 MHz.}
 
-\rrtwo{We notice that, in our approach, we first computed the how-provenance of the real queries obtaining a total of $58,037$ polynomials. In the case of synthetic queries, we directly produced the polynomials, so it was not necessary to compute the how-provenance; whereas, responsibility and Shapley values of the output tuples were computed starting from these polynomials. }
+% \scream{But isn't there a cost to computing the DS from the polynomials?  Seems strange to have "-" in the table. Answer: the cost of computing the DS and distributing the credit was described in the commented section down below}
+
+\rrtwo{Recall that we first compute the how-provenance of real queries, obtaining a total of $58,037$ polynomials. For synthetic queries, we directly produce the polynomials so it was not necessary to compute the how-provenance, whereas responsibility and Shapley values of the output tuples were computed starting from these polynomials. }
 
 \begin{table}[]
     \centering
-    \caption{Average execution times (ms) to compute how-provenance, responsibility and Shapley values of one output tuple. The accompanying z-values were computed with confidence of $95\%$ and $\alpha=5$.}
+    \caption{Average execution time (ms) to compute how-provenance, responsibility and Shapley values of one output tuple. The accompanying z-values were computed with confidence of $95\%$ and $\alpha=5$.}
     \begin{tabular}{|c|c|c|c|}
     \hline
          &  how-provenance & responsibility & Shapley \\
@@ -2063,15 +2071,21 @@ with a 2.4 GHz processor Intel Core i5 quad-core and 8 GB of memory at 2133 MHz.
     \label{tab:execution_times}
 \end{table}
 
-\rrtwo{Table \ref{tab:execution_times} reports the average times required to compute how-provenance, responsibility, and Shapley values of one output tuple, both in the case of real and synthetic queries (here, we consider all $10,000$ produced synthetic polynomials when computing the average). All times are reported in milliseconds. 
-The time reported in the table to compute how-provenance is the one obtained using the code provided in \citep{Wu2020ProvCite}, while the responsibility and Shapley value times are the result of the sum of this time with the time required to compute them starting from how-provenance.}
+\rrtwo{Table \ref{tab:execution_times} reports the average time required to compute how-provenance, responsibility, and Shapley values of one output tuple, both in the case of real and synthetic queries (here, we consider all $10,000$ produced synthetic polynomials when computing the average). All times are reported in milliseconds. 
+The time reported in the table to compute how-provenance is obtained using the code provided in \citep{Wu2020ProvCite}, while the responsibility and Shapley value times are the result of the sum of this time with the time required to compute them starting from how-provenance.}
 
-\rrtwo{From this table, we can see that the overhead required to compute responsibility is small, while the one for the Shapley value is more consistent, primarily due to the necessity to compute the power set of the lineage.
-We also note that the execution times for a single tuple are relatively small, but they become sizeable when the queries present a large result set and, in particular, for tuples with big lineage sets.} %This simple implementation of the computation for the Shapley value may become unfeasible for queries with big result sets on large databases, but it is still feasible on the cases of scientific databases of the size of GtoPdb.}
+\rrtwo{From this table, we can see that the overhead required to compute responsibility is small, while the overhead for the Shapley value is larger, primarily due to the need to compute the power set of the lineage.
+We also note that the execution times for a single tuple are relatively small, but become sizeable when the queries present a large result set and, in particular, for tuples with big lineage sets.} %This simple implementation of the computation for the Shapley value may become unfeasible for queries with big result sets on large databases, but it is still feasible on the cases of scientific databases of the size of GtoPdb.}
 
-\rrtwo{What we can see from these results is that the how-provenance can be chosen in the majority of cases as information for the credit distribution since its implementation on SPJ queries is efficient and allows for an informative distribution of credit. The conversion to responsibility is particularly efficient and can be easily used when its different perspective may be preferred. Due to the complexity of its computation, the Shapley value may be the form of DS to be least preferred by users (even though it is still feasible with small/medium databases and SPJ queries).}
+\eat{
+\rrtwo{What we can see from these results is that  how-provenance can be chosen in the majority of cases as information for the credit distribution since its implementation on SPJ queries is efficient and allows for an informative distribution of credit. The conversion to responsibility is particularly efficient and can be easily used when its different perspective may be preferred. Due to the complexity of its computation, the Shapley value may be the form of DS to be least preferred by users (even though it is still feasible with small/medium databases and SPJ queries).}
+}
+\rrtwo{
+What we can see from these results is that  how-provenance is efficient and gives an informative distribution of credit for SPJ queries. Responsibility is still efficient, and gives a slightly different perspective on credit distribution. 
+The Shapley value adds significant computational overhead, but is still feasible for small/medium databases and SPJ queries. Moreover, recent work is investigating new efficient and approximated ways to compute the Shapley value.}
 
-\rrtwo{In the following Sections we discuss the latest findings in the literature to provide a bigger picture on how to compute how-provenance, responsibility and Shapley value also in other contexts not limited to SPJ queries.}
+
+\rrtwo{In the following Sections we provide a bigger picture of computing how-provenance, responsibility and Shapley value for queries beyond SPJ, based on the latest findings in the literature.}
 
 
 
@@ -2178,15 +2192,19 @@ These works provide us evidence of the fact that, potentially, why- and how-prov
 }
 
 % \scream{Is there more to say here? What are the general queries for which responsibility is hard to compute, and can the various provenances handle them at all?  I know that provenance semi-rings has been extended to SPJU and aggregate queries, so imagine this means the others can be extended since it is a general framework. -- DD: added more information from literature and comments}    
-From a computational complexity standpoint, all three DSs are similar since we focused on SPJ queries. \rrtwo{Our experiments in Section \ref{sec:time} showed the bigger overhead is on the Shapley value. We also need to consider that the tests were conducted on a relatively small database and a rather na\"ive algorithm to compute responsibility and Shapley values. Hence, on a big database, the Shapley value might become prohibitive to be used; on the other hand, some faster algorithms to calculate the Shapley value are being investigated and might speed up the process at least for a specific class of queries (e.g., SPJ)~\cite{DFKM22}.} 
+From the perspective of computational complexity, all three DSs are similar since we focused on SPJ queries,
+\rrtwo{although there is a slightly larger overhead with the Shapley value (see Section \ref{sec:time}). However, the tests were conducted on a relatively small database using a rather na\"ive algorithm to compute responsibility and the Shapley values. Hence, on a big database, the Shapley value might become prohibitively expensive to  use.  On the other hand, faster algorithms to calculate the Shapley value are being investigated and might speed up the process at least for a specific class of queries (e.g., SPJ)~\cite{DFKM22}.} 
 
-Going beyond SPJ queries, \citet{howProvenanceGreen} proposed the provenance semiring framework for SPJRU (Select, Project, Join, Rename, and Union queries), and \citet{AmsterdamerDT11} showed how to extend the framework to aggregate queries. \rrtwo{This makes the DS based on how-provenance also suited for these frequent queries, thus increasing its utility and suitability in many contexts}.
+\eat{\rrtwo{However, our experiments in Section \ref{sec:time} showed that there is a larger overhead with the Shapley value. We also need to consider that the tests were conducted on a relatively small database and a rather na\"ive algorithm to compute responsibility and Shapley values. Hence, on a big database, the Shapley value might become prohibitive to be used; on the other hand, some faster algorithms to calculate the Shapley value are being investigated and might speed up the process at least for a specific class of queries (e.g., SPJ)~\cite{DFKM22}.} 
+}
+
+Going beyond SPJ queries, \citet{howProvenanceGreen} proposed the provenance semiring framework for SPJRU (Select, Project, Join, Rename, and Union queries), and \citet{AmsterdamerDT11} showed how to extend the framework to aggregate queries. \rrtwo{This makes the DS based on how-provenance also suited for these important types of queries.}
 \eat{ queries, thus we could expand our approach to those types of queries too.  \citet{AmsterdamerDT11} showed that it is also possible to compute provenance polynomials for aggregate queries by annotating with provenance tokens also the \emph{individual values} within the tuples, using provenance to describe the values computation. 
 } 
  
-\rtwo{Responsibility is harder to compute (NP-complete~\cite{MeliouGMS11}) for \emph{general queries}. \citet{MeliouGMS11} proved a dichotomy result for conjunctive queries: for each query without self-joins, either its responsibility can be computed in PTIME in the size of the database, or checking if it has a responsibility below a given value is NP-hard. Queries with self-joins are NP-hard in general. This makes responsibility harder to be utilized for credit distribution in a real-world application, since for this problem it is necessary to actually know the responsibility value, not simply the ranking amongst tuples.}
+\rtwo{Responsibility is harder to compute  for \emph{general queries} (NP-complete). \citet{MeliouGMS11} proved a dichotomy result for conjunctive queries: for each query without self-joins, either its responsibility can be computed in PTIME in the size of the database, or checking if it has a responsibility below a given value is NP-hard. Queries with self-joins are NP-hard in general. This makes responsibility harder to be utilized for credit distribution in a real-world application, since for this problem it is necessary to actually know the responsibility value, not simply the ranking amongst tuples.}
 
-\rrtwo{As for the Shapley Value, one may choose it because it has (at least) four properties that are widely believed to be important:}
+\rrtwo{The Shapley Value  has (at least) four properties that are widely believed to be important:}
 \begin{enumerate}
 \item \rrtwo{\emph{Efficiency}:  The sum of the Shapley values of all agents equals the value of the \emph{grand coalition}, so that all the gain is distributed among the agents.}  
 \item \rrtwo{\emph{Symmetry}:  If i and j are two actors who are equivalent in the sense that $v(S \cup \{i\})= v(S \cup \{j\})$ for every subset $S \subseteq N$ that contained neither $i$ nor $j$, then their Shapley values are the same.}
@@ -2195,7 +2213,7 @@ Going beyond SPJ queries, \citet{howProvenanceGreen} proposed the provenance sem
 Also, for any real number $a$,  $Shap_i(a \cdot v)=a \cdot Shap_i(v)$.}
 \end{enumerate}
 
-\rtwo{\citet{LivshitsBKS20} studied the computational complexity of calculating the Shapley values in query answering. They originally showed mainly lower bounds on the complexity of the problem, with the exception of the sub-class of self-join free SPJ queries called \emph{hierarchical} queries, where they gave a polynomial-time algorithm (which, however, does not show sign to be practically feasible in a real world scenario~\cite{DFKM22}). 
+\rtwo{\citet{LivshitsBKS20} studied the computational complexity of calculating the Shapley values in query answering. They showed lower bounds on the complexity of the problem, with the exception of the sub-class of self-join free SPJ queries called \emph{hierarchical} queries, where they gave a polynomial-time algorithm (which, however, do not appear to be useful for real world scenarios~\cite{DFKM22}). 
 Very recently, \citet{DFKM22} proved that the Shapley value can be efficiently (polynomial-time) reduced to probabilistic query answering. This not only applies to hierarchical queries, but to general SPJ queries. This means that one can compute Shapley values using a query engine for probabilistic databases, for example, the practically effective \emph{Knowledge Compilation}~\cite{JhaS13}. More precisely, the approach in \cite{DFKM22} shows that their approach can exactly compute the Shapley value quickly in most cases while, in other cases, the relative order given by the Shapley value may be obtained. This new work makes the Shapley value a viable solution for Credit Distribution for many queries.} 
 
 \rrtwo{We can conclude that, given the current state-of-the-art in computing provenances, the how-provenance-based DS is, at the moment, one of the most informative and cost-efficient type of provenance that can be used. The other forms of information such as responsibility and Shapley may still be used in the majority of cases, that may incur in computational problems, in particular with large databases and query logs.}
@@ -2231,12 +2249,12 @@ Since any First-Order (FO) query $\varphi(\bar{x})$ on an input database instanc
 %\rrone{Given a positive query $Q$ and an atom $A(\bar{x}) \in Q(D)$, it is possible to convert its provenance graph to an \emph{operator tree}, i.e., a special case of game graph where each node belongs to one of three classes: \emph{rule nodes}, \emph{goal nodes}, and \emph{relation/tuple nodes}.} % (the procedure to build these trees is described in~\cite{Kohler2013}).}
 
 \rrone{%\paragraph{Game Provenance and How-provenance} 
-\cite{Kohler2013}  also shows  that game provenance coincides with semiring provenance (i.e., how provenance) for positive queries but that, unlike semiring provenance, it naturally extends to full FO queries with negation.
+\cite{Kohler2013}  also shows  that game provenance coincides with semiring provenance (i.e., how provenance) for positive queries but that, unlike semiring provenance, it naturally extends to full FO queries with negation. This provenance can be represented as a particular type of tree, called \emph{operator tree}.
 }
 
 \rrone{ 
 Therefore, game provenance opens up new possibilities for credit distribution. 
-First of all, new DSs based on the information provided by the operator trees of queries can be devised.These new DSs can be based on the tree topology,  propagating the credit as a flux through its nodes and edges, devising new methods and dynamic for the distribution. Second, new DSs for the class of FO queries with negation may be devised.}
+First of all, new DSs based on the information provided by the operator trees of queries can be devised. These new DSs can be based on the operator tree topology,  propagating the credit as a flux through its nodes and edges, devising new methods and dynamic for the distribution. Second, new DSs for the class of FO queries with negation may be devised.}
 \rrone{In particular, as shown in \cite{Lee2018PUG}, these operator trees can also be used for \emph{why-not provenance}, i.e., to explain the \emph{absence} of a fact from the query output. In this case, new strategies may produce credit corresponding to ``missing'' facts in the query output. This, in turn, may allow to assign  credit to ``missing'' facts in the database instance whose absence is critical for the missing output fact. 
 This information can be useful for the database administrators to understand if some valuable information is missing, and help them decide whether and where to allocate the necessary resources to create/add those data if possible/sensible.}
 
